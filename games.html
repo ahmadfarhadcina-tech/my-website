@@ -1,87 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Cina Games Store</title>
+
+<style>
+body{
+  font-family: Arial;
+  color:white;
+  margin:0;
+  background: radial-gradient(circle at top, #1a1a1a, #0b0b0b, #000);
+}
+
+/* NAVBAR */
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background: rgba(17,17,17,0.8);
+  padding:15px 20px;
+  position:sticky;
+  top:0;
+}
+
+.logo{
+  color:#00ff99;
+  font-weight:bold;
+}
+
+.links a{
+  color:white;
+  text-decoration:none;
+  margin-left:12px;
+}
+
+.links a:hover{
+  color:#00ff99;
+}
+
+/* TITLE */
+h1{
+  text-align:center;
+  padding:20px;
+  color:#00ff99;
+}
+
+/* SEARCH */
+.search-box{
+  text-align:center;
+  margin:15px;
+}
+
+.search-box input{
+  padding:12px;
+  width:80%;
+  max-width:420px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
+/* FILTER BUTTONS */
+.categories{
+  text-align:center;
+  margin:10px;
+}
+
+.categories button{
+  padding:10px 14px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#00ff99;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.categories button:hover{
+  background:#00cc77;
+}
+
+/* GRID */
+.container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap:20px;
+  padding:20px;
+  max-width:1200px;
+  margin:auto;
+}
+
+/* CARD */
+.card{
+  background: rgba(255,255,255,0.05);
+  border-radius:15px;
+  overflow:hidden;
+  transition:0.3s;
+  display:flex;
+  flex-direction:column;
+}
+
+.card:hover{
+  transform:scale(1.05);
+}
+
+.card img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:10px;
+}
+
+.card p{
+  margin:0 10px 10px 10px;
+  color:#bbb;
+  font-size:13px;
+  flex-grow:1;
+}
+
+/* BUTTON */
+.btn{
+  margin:10px;
+  padding:10px;
+  background:#00ff99;
+  text-align:center;
+  border-radius:8px;
+  text-decoration:none;
+  color:black;
+}
+
+/* FOOTER */
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#aaa;
+  font-size:13px;
+  border-top:1px solid rgba(255,255,255,0.1);
+}
+</style>
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">🎮 Cina Games</div>
+  <div class="links">
+    <a href="#">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+    <a href="policy.html">Policy</a>
+  </div>
+</nav>
+
+<h1>🎮 Cina Games Store</h1>
+
+<!-- SEARCH -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="🔍 Search games...">
+</div>
+
+<!-- FILTER -->
+<div class="categories">
+  <button onclick="filterGames('all')">All</button>
+  <button onclick="filterGames('action')">Action</button>
+  <button onclick="filterGames('openworld')">Open World</button>
+  <button onclick="filterGames('sports')">Sports</button>
+</div>
+
+<!-- GAMES -->
 <div class="container">
 
   <div class="card sports">
     <img src="wwe25.jpg">
-    <h3>WWE 2K25 Netflix Edition</h3>
-    <p>یک بازی کشتی‌کج حرفه‌ای از Netflix با گرافیک جدید و مسابقات هیجانی واقعی بین سوپراستارهای WWE.</p>
-    <a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank">⬇ Download</a>
+    <h3>WWE 2K25</h3>
+    <p>کشتی کج حرفه‌ای</p>
+    <a class="btn" href="#">Download</a>
   </div>
 
   <div class="card openworld">
     <img src="gta-sa.jpg">
     <h3>GTA San Andreas</h3>
-    <p>یک بازی جهان باز افسانه‌ای از Rockstar که در آن می‌توانی در شهر Los Santos آزادانه رانندگی و مأموریت انجام دهی.</p>
-    <a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank">⬇ Download</a>
+    <p>جهان باز محبوب</p>
+    <a class="btn" href="#">Download</a>
   </div>
 
   <div class="card action">
-    <img src="eden.jpg">
-    <h3>Eden Golden Emulator</h3>
-    <p>شبیه‌ساز اجرای بازی‌های کنسولی روی موبایل با عملکرد روان و سریع.</p>
-    <a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank">⬇ Download</a>
+    <img src="spiderman3.jpg">
+    <h3>Spider-Man 3</h3>
+    <p>بازی اکشن اسپایدرمن</p>
+    <a class="btn" href="#">Download</a>
   </div>
 
   <div class="card action">
     <img src="winlator.jpg">
     <h3>Winlator</h3>
-    <p>برنامه اجرای بازی‌های PC روی اندروید با پشتیبانی از بازی‌های ویندوزی.</p>
-    <a class="btn" href="https://winlator.com/download-winlator/" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card action">
-    <img src="spiderman3.jpg">
-    <h3>Amazing Spider-Man 3</h3>
-    <p>بازی اکشن اسپایدرمن که در آن باید شهر را از دشمنان نجات بدهی.</p>
-    <a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card sports">
-    <img src="wwe.jpg">
-    <h3>WWE 2K15</h3>
-    <p>بازی محبوب کشتی‌کج با سوپراستارهای معروف WWE.</p>
-    <a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card openworld">
-    <img src="gta.jpg">
-    <h3>GTA V</h3>
-    <p>بازی جهان باز با آزادی کامل برای رانندگی، مأموریت و ماجراجویی.</p>
-    <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card action">
-    <img src="watchdogs.jpg">
-    <h3>Watch Dogs</h3>
-    <p>بازی هکری اکشن با امکان کنترل سیستم‌های شهری.</p>
-    <a class="btn" href="https://watch-dogs-2.en.softonic.com/android/download" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card sports">
-    <img src="efootball.jpg">
-    <h3>eFootball</h3>
-    <p>بازی فوتبال حرفه‌ای با رقابت آنلاین واقعی.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card openworld">
-    <img src="minecraft.jpg">
-    <h3>Minecraft</h3>
-    <p>بازی ساخت و بقا در دنیای آزاد و بی‌نهایت.</p>
-    <a class="btn" href="https://minecraft.techylist.com/" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card action">
-    <img src="fortnite.jpg">
-    <h3>Fortnite</h3>
-    <p>بازی بتل رویال آنلاین برای بقا در میدان جنگ.</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank">⬇ Download</a>
-  </div>
-
-  <div class="card action">
-    <img src="undefeated.jpg">
-    <h3>Undefeated Hero Mod</h3>
-    <p>نسخه مود شده با قدرت‌های ویژه و اکشن سریع.</p>
-    <a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank">⬇ Download</a>
+    <p>اجرای بازی PC</p>
+    <a class="btn" href="#">Download</a>
   </div>
 
 </div>
+
+<!-- JS SEARCH + FILTER -->
+<script>
+const input = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+input.addEventListener("keyup", function(){
+  let value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    let title = card.querySelector("h3").innerText.toLowerCase();
+    card.style.display = title.includes(value) ? "flex" : "none";
+  });
+});
+
+function filterGames(category){
+  cards.forEach(card => {
+    if(category === "all"){
+      card.style.display = "flex";
+    } else {
+      card.style.display = card.classList.contains(category) ? "flex" : "none";
+    }
+  });
+}
+</script>
+
+<!-- FOOTER -->
+<div class="footer">
+  © 2026 Cina Games | All Rights Reserved
+</div>
+
+</body>
+</html>
