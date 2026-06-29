@@ -1,53 +1,68 @@
-<h1>🎮 Games</h1>
-<p>لیست بازی‌های ما:</p>
-
-<ul>
-  <li>WWE 2K15</li>
-  <li>Android Games</li>
-  <li>PC Games</li>
-</ul>
-<h2>🎮 Game Image</h2>
-
-<img src="splash.bmp" width="300">
 <!DOCTYPE html>
 <html>
 <head>
-<title>Games - Cina Games</title>
+<title>Cina Games Store</title>
 
 <style>
 body{
   font-family:Arial;
-  background:#111;
+  background:#0f0f0f;
   color:white;
+  margin:0;
+  padding:0;
+}
+
+h1{
+  text-align:center;
+  padding:20px;
+  color:#00ff99;
+}
+
+.container{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:20px;
+  padding:20px;
+}
+
+.card{
+  background:#1e1e1e;
+  width:250px;
+  border-radius:12px;
+  overflow:hidden;
+  box-shadow:0 0 10px #000;
   text-align:center;
 }
 
-.game-card{
-  background:#222;
-  width:300px;
-  margin:20px auto;
-  padding:15px;
-  border-radius:12px;
-  box-shadow:0 0 10px #000;
-}
-
-img{
+.card img{
   width:100%;
-  border-radius:10px;
+  height:150px;
+  object-fit:cover;
 }
 
-button{
-  background:#00ff99;
-  border:none;
+.card h3{
+  margin:10px 0;
+}
+
+.card p{
+  font-size:14px;
+  padding:0 10px;
+  color:#ccc;
+}
+
+.btn{
+  display:block;
+  margin:10px;
   padding:10px;
-  margin-top:10px;
-  width:100%;
+  background:#00ff99;
+  color:black;
+  text-decoration:none;
   border-radius:8px;
-  cursor:pointer;
   font-weight:bold;
 }
 
-button:hover{
+.btn:hover{
   background:#00cc77;
 }
 </style>
@@ -56,17 +71,30 @@ button:hover{
 
 <body>
 
-<h1>🎮 Games</h1>
+<h1>🎮 Cina Games Store</h1>
 
-<div class="game-card">
+<div class="container">
 
-  <img src="splash.bmp">
+  <div class="card">
+    <img src="splash.bmp">
+    <h3>WWE 2K15</h3>
+    <p>بازی کشتی کج محبوب WWE</p>
+    <a class="btn" href="#">⬇ Download</a>
+  </div>
 
-  <h2>WWE 2K15</h2>
+  <div class="card">
+    <img src="splash.bmp">
+    <h3>GTA V</h3>
+    <p>بازی جهان باز GTA 5</p>
+    <a class="btn" href="#">⬇ Download</a>
+  </div>
 
-  <p>یکی از بهترین بازی‌های کشتی کج.</p>
-
-  <button>⬇ Download</button>
+  <div class="card">
+    <img src="splash.bmp">
+    <h3>Watch Dogs</h3>
+    <p>بازی هکری و اکشن</p>
+    <a class="btn" href="#">⬇ Download</a>
+  </div>
 
 </div>
 
