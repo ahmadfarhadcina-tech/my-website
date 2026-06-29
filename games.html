@@ -137,8 +137,14 @@ h1{
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="🔍 Search games...">
 </div>
+<div class="categories">
+  <button onclick="filterGames('all')">All</button>
+  <button onclick="filterGames('action')">Action</button>
+  <button onclick="filterGames('openworld')">Open World</button>
+  <button onclick="filterGames('sports')">Sports</button>
+</div>
 
-<div class="container">
+  <div class="container">
 
   <div class="card">
   <img src="wwe25.jpg">
@@ -263,6 +269,25 @@ input.addEventListener("keyup", function(){
     card.style.display = title.includes(value) ? "block" : "none";
   });
 });
+</script>
+
+  <script>
+function filterGames(category){
+  let cards = document.querySelectorAll('.card');
+
+  cards.forEach(card => {
+    if(category === 'all'){
+      card.style.display = "block";
+    }
+    else{
+      if(card.classList.contains(category)){
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    }
+  });
+}
 </script>
 
 </body>
