@@ -37,6 +37,21 @@ body{
   color:#00ff99;
 }
 
+/* SEARCH */
+.search-box{
+  text-align:center;
+  margin:20px;
+}
+
+.search-box input{
+  padding:10px;
+  width:80%;
+  max-width:400px;
+  border-radius:10px;
+  border:none;
+  outline:none;
+}
+
 /* TITLE */
 h1{
   text-align:center;
@@ -118,6 +133,11 @@ h1{
 
 <h1>🎮 Cina Games Store</h1>
 
+<!-- SEARCH BAR -->
+<div class="search-box">
+  <input type="text" id="searchInput" placeholder="🔍 Search games...">
+</div>
+
 <div class="container">
 
   <div class="card">
@@ -184,6 +204,21 @@ h1{
   </div>
 
 </div>
+
+<!-- SEARCH SCRIPT -->
+<script>
+const input = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
+
+input.addEventListener("keyup", function(){
+  let value = this.value.toLowerCase();
+
+  cards.forEach(card => {
+    let title = card.querySelector("h3").innerText.toLowerCase();
+    card.style.display = title.includes(value) ? "block" : "none";
+  });
+});
+</script>
 
 </body>
 </html>
