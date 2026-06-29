@@ -6,9 +6,18 @@
 <style>
 body{
   font-family: Arial;
-  background:#0b0b0b;
   color:white;
   margin:0;
+
+  background: linear-gradient(-45deg, #0b0b0b, #111, #1a1a1a, #000);
+  background-size: 400% 400%;
+  animation: bgMove 10s ease infinite;
+}
+
+@keyframes bgMove{
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
 }
 
 /* NAVBAR */
@@ -37,6 +46,14 @@ body{
   color:#00ff99;
 }
 
+/* TITLE */
+h1{
+  text-align:center;
+  padding:20px;
+  color:#00ff99;
+  font-size:32px;
+}
+
 /* SEARCH */
 .search-box{
   text-align:center;
@@ -52,12 +69,25 @@ body{
   outline:none;
 }
 
-/* TITLE */
-h1{
+/* CATEGORIES */
+.categories{
   text-align:center;
-  padding:20px;
-  color:#00ff99;
-  font-size:32px;
+  margin:10px;
+}
+
+.categories button{
+  padding:10px 15px;
+  margin:5px;
+  border:none;
+  border-radius:8px;
+  background:#00ff99;
+  color:black;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.categories button:hover{
+  background:#00cc77;
 }
 
 /* CONTAINER */
@@ -71,7 +101,8 @@ h1{
 
 /* CARD */
 .card{
-  background:#1a1a1a;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(8px);
   width:260px;
   border-radius:15px;
   overflow:hidden;
@@ -80,8 +111,8 @@ h1{
 }
 
 .card:hover{
-  transform:scale(1.05);
-  box-shadow:0 0 20px rgba(0,255,153,0.3);
+  transform:scale(1.07);
+  box-shadow:0 0 25px rgba(0,255,153,0.3);
 }
 
 .card img{
@@ -110,6 +141,7 @@ h1{
   border-radius:8px;
   font-weight:bold;
   text-align:center;
+  box-shadow:0 0 10px #00ff99;
 }
 
 .btn:hover{
@@ -133,10 +165,12 @@ h1{
 
 <h1>🎮 Cina Games Store</h1>
 
-<!-- SEARCH BAR -->
+<!-- SEARCH -->
 <div class="search-box">
   <input type="text" id="searchInput" placeholder="🔍 Search games...">
 </div>
+
+<!-- CATEGORIES -->
 <div class="categories">
   <button onclick="filterGames('all')">All</button>
   <button onclick="filterGames('action')">Action</button>
@@ -144,119 +178,95 @@ h1{
   <button onclick="filterGames('sports')">Sports</button>
 </div>
 
-  <div class="container">
+<div class="container">
 
-  <div class="card">
+  <div class="card sports">
   <img src="wwe25.jpg">
   <h3>WWE 2K25 Netflix Edition</h3>
   <p>بازی کشتی‌کج حرفه‌ای از Netflix</p>
-  <a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
+<div class="card openworld">
   <img src="gta-sa.jpg">
   <h3>GTA San Andreas</h3>
   <p>بازی جهان باز و محبوب راک‌استار</p>
-  <a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
+<div class="card action">
   <img src="eden.jpg">
   <h3>Eden Golden Emulator</h3>
   <p>شبیه‌ساز اجرای بازی‌های کنسولی روی موبایل</p>
-  <a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank">⬇ Download</a>
 </div>
- 
-  <div class="card">
+
+<div class="card action">
   <img src="winlator.jpg">
   <h3>Winlator</h3>
-  <p>برنامه اجرای بازی‌های PC روی اندروید</p>
-  <a class="btn" href="https://winlator.com/download-winlator/" target="_blank">
-    ⬇ Download
-</a>
-
+  <p>اجرای بازی‌های PC روی اندروید</p>
+  <a class="btn" href="https://winlator.com/download-winlator/" target="_blank">⬇ Download</a>
 </div>
-  <div class="card">
+
+<div class="card action">
   <img src="spiderman3.jpg">
   <h3>Amazing Spider-Man 3</h3>
-  <p>بازی اکشن و ماجراجویی اسپایدرمن</p>
-  <a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank">
-    ⬇ Download
-  </a>
+  <p>بازی اکشن اسپایدرمن</p>
+  <a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank">⬇ Download</a>
 </div>
-  
-  <div class="card">
+
+<div class="card sports">
   <img src="wwe.jpg">
   <h3>WWE 2K15</h3>
   <p>کشتی کج محبوب WWE</p>
-  <a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
+<div class="card openworld">
   <img src="gta.jpg">
   <h3>GTA V</h3>
   <p>بازی مورد علاقه سینا ❤️</p>
-  <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
+<div class="card action">
   <img src="watchdogs.jpg">
   <h3>Watch Dogs</h3>
   <p>بازی هکری و اکشن</p>
-  <a class="btn" href="https://watch-dogs-2.en.softonic.com/android/download" target="_blank">
-    ⬇ Download
-  </a>
+  <a class="btn" href="https://watch-dogs-2.en.softonic.com/android/download" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
-    <img src="efootball.jpg">
-    <h3>eFootball</h3>
-    <p>بازی فوتبال حرفه‌ای</p>
-    <a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank">
-⬇ Download on Google Play
-    </a>
-  </div>
+<div class="card sports">
+  <img src="efootball.jpg">
+  <h3>eFootball</h3>
+  <p>بازی فوتبال حرفه‌ای</p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank">⬇ Download</a>
+</div>
 
-  <div class="card">
+<div class="card openworld">
   <img src="minecraft.jpg">
   <h3>Minecraft</h3>
-  <p>بازی ساخت و بقا در دنیای باز</p>
-  <a class="btn" href="https://minecraft.techylist.com/" target="_blank">
-    ⬇ Download
-  </a>
+  <p>بازی ساخت و بقا</p>
+  <a class="btn" href="https://minecraft.techylist.com/" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
+<div class="card action">
   <img src="fortnite.jpg">
   <h3>Fortnite</h3>
-  <p>بازی بتل رویال</p>
-  <a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank">
-    ⬇ Download on Google Play
-  </a>
+  <p>بتل رویال</p>
+  <a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank">⬇ Download</a>
 </div>
 
-  <div class="card">
-    <img src="undefeated.jpg">
-    <h3>Undefeated Hero Mod</h3>
-    <p>مود قوی بازی Undefeated</p>
-    <a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank">
-⬇ Download Now
-    </a>
-  </div>
+<div class="card action">
+  <img src="undefeated.jpg">
+  <h3>Undefeated Hero Mod</h3>
+  <p>مود قوی بازی Undefeated</p>
+  <a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank">⬇ Download</a>
+</div>
 
 </div>
 
-<!-- SEARCH SCRIPT -->
+<!-- SEARCH JS -->
 <script>
 const input = document.getElementById("searchInput");
 const cards = document.querySelectorAll(".card");
@@ -269,9 +279,7 @@ input.addEventListener("keyup", function(){
     card.style.display = title.includes(value) ? "block" : "none";
   });
 });
-</script>
 
-  <script>
 function filterGames(category){
   let cards = document.querySelectorAll('.card');
 
