@@ -10,7 +10,20 @@ body{
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
-  padding-bottom:70px; /* برای منوی پایین */
+  padding-bottom:70px;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* 🔥 APP START ANIMATION */
+@keyframes fadeIn{
+  from{
+    opacity:0;
+    transform:translateY(15px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 /* HEADER */
@@ -21,7 +34,7 @@ h1{
   font-size:28px;
 }
 
-/* NAV BAR TOP */
+/* NAV BAR */
 .navbar{
   display:flex;
   justify-content:center;
@@ -42,9 +55,11 @@ h1{
   background:#007bff;
   border-radius:8px;
   font-size:13px;
+  transition:0.3s;
 }
 
 .navbar a:hover{
+  transform:scale(1.05);
   background:#0056b3;
 }
 
@@ -57,6 +72,18 @@ h1{
   padding:40px 20px;
   background:#111;
   text-align:center;
+  animation: slideUp 0.6s ease;
+}
+
+@keyframes slideUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
 }
 
 .hero h2{
@@ -89,12 +116,25 @@ h1{
   color:white;
   font-size:18px;
   font-weight:bold;
-  transition:0.3s;
+  transition:0.25s ease;
   box-shadow:0 0 15px rgba(0,0,0,0.3);
+  animation: pop 0.6s ease;
+}
+
+@keyframes pop{
+  from{
+    transform:scale(0.9);
+    opacity:0;
+  }
+  to{
+    transform:scale(1);
+    opacity:1;
+  }
 }
 
 .box:hover{
-  transform:scale(1.07);
+  transform:scale(1.08);
+  box-shadow:0 10px 25px rgba(0,255,153,0.25);
 }
 
 /* COLORS */
@@ -108,9 +148,10 @@ h1{
   padding:20px;
   text-align:center;
   color:#ccc;
+  animation: fadeIn 0.6s ease;
 }
 
-/* 🔥 BOTTOM MENU (مثل اپ واقعی) */
+/* 🔥 BOTTOM NAV (APP STYLE) */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -130,10 +171,11 @@ h1{
   text-align:center;
   font-size:12px;
   flex:1;
-  padding:5px;
+  transition:0.2s;
 }
 
-.bottom-nav a:hover{
+.bottom-nav a:active{
+  transform:scale(0.85);
   color:#00ff99;
 }
   </style>
@@ -165,11 +207,8 @@ h1{
 <div class="menu">
 
   <a href="games.html" class="box games">🎮<br>Games</a>
-
   <a href="#desc" class="box desc">📄<br>Description</a>
-
   <a href="#alerts" class="box alerts">🔔<br>Alerts</a>
-
   <a href="#settings" class="box settings">⚙️<br>Settings</a>
 
 </div>
@@ -190,15 +229,13 @@ h1{
   <p>تنظیمات سایت در حال توسعه است.</p>
 </div>
 
-<!-- 🔥 BOTTOM MENU -->
+<!-- BOTTOM NAV -->
 <div class="bottom-nav">
-
   <a href="#home">🏠<br>Home</a>
   <a href="games.html">🎮<br>Games</a>
   <a href="#alerts">🔔<br>Alerts</a>
   <a href="#settings">⚙️<br>Settings</a>
   <a href="about.html">📄<br>About</a>
-
 </div>
 
 </body>
