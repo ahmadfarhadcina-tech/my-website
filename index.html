@@ -1,241 +1,158 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Cina Games</title>
+<meta charset="UTF-8">
+<title>Cina Games Store</title>
 
-  <style>
+<style>
 body{
   margin:0;
+  font-family:Arial;
   background:#0f0f0f;
   color:white;
-  font-family:Arial,sans-serif;
-  padding-bottom:70px;
-  animation: fadeIn 0.5s ease-in;
 }
 
-/* 🔥 APP START ANIMATION */
-@keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(15px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-/* HEADER */
-h1{
-  text-align:center;
-  color:#00ff99;
-  margin:20px 0;
-  font-size:28px;
-}
-
-/* NAV BAR */
-.navbar{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-  padding:12px;
-  background:#111;
+/* TOP BAR */
+.topbar{
   position:sticky;
   top:0;
-  z-index:1000;
-  flex-wrap:wrap;
-}
-
-.navbar a{
-  color:white;
-  text-decoration:none;
-  padding:8px 12px;
-  background:#007bff;
-  border-radius:8px;
-  font-size:13px;
-  transition:0.3s;
-}
-
-.navbar a:hover{
-  transform:scale(1.05);
-  background:#0056b3;
-}
-
-/* SOCIAL */
-.telegram{ background:#0088cc !important; font-weight:bold; }
-.youtube{ background:#ff0000 !important; font-weight:bold; }
-
-/* HERO */
-.hero{
-  padding:40px 20px;
   background:#111;
+  padding:12px;
   text-align:center;
-  animation: slideUp 0.6s ease;
-}
-
-@keyframes slideUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
-
-.hero h2{
+  font-size:20px;
   color:#00ff99;
-  font-size:28px;
-}
-
-.hero p{
-  color:#ccc;
-}
-
-/* 🎮 GRID MENU */
-.menu{
-  display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  gap:15px;
-  padding:20px;
-  max-width:500px;
-  margin:auto;
-}
-
-.box{
-  height:120px;
-  border-radius:18px;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  text-decoration:none;
-  color:white;
-  font-size:18px;
   font-weight:bold;
-  transition:0.25s ease;
-  box-shadow:0 0 15px rgba(0,0,0,0.3);
-  animation: pop 0.6s ease;
+  border-bottom:1px solid #00ff9955;
 }
 
-@keyframes pop{
-  from{
-    transform:scale(0.9);
-    opacity:0;
-  }
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
-}
-
-.box:hover{
-  transform:scale(1.08);
-  box-shadow:0 10px 25px rgba(0,255,153,0.25);
-}
-
-/* COLORS */
-.games{ background:linear-gradient(135deg,#00ff99,#00cc77); color:black; }
-.desc{ background:linear-gradient(135deg,#007bff,#0056b3); }
-.alerts{ background:linear-gradient(135deg,#ffcc00,#ff9900); color:black; }
-.settings{ background:linear-gradient(135deg,#ff4444,#cc0000); }
-
-/* SECTION */
-.section{
-  padding:20px;
-  text-align:center;
-  color:#ccc;
-  animation: fadeIn 0.6s ease;
-}
-
-/* 🔥 BOTTOM NAV (APP STYLE) */
-.bottom-nav{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
+/* CATEGORY */
+.categories{
   display:flex;
-  justify-content:space-around;
-  background:#111;
-  padding:10px 0;
-  border-top:1px solid #00ff99;
-  z-index:2000;
+  overflow-x:auto;
+  gap:10px;
+  padding:10px;
 }
 
-.bottom-nav a{
+.categories button{
+  flex:none;
+  padding:8px 14px;
+  border:none;
+  border-radius:20px;
+  background:#222;
   color:white;
-  text-decoration:none;
-  text-align:center;
-  font-size:12px;
-  flex:1;
+}
+
+/* STORE GRID */
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:12px;
+  padding:12px;
+}
+
+/* CARD */
+.card{
+  background:#1a1a1a;
+  border-radius:16px;
+  overflow:hidden;
+  box-shadow:0 0 10px rgba(0,0,0,0.5);
   transition:0.2s;
 }
 
-.bottom-nav a:active{
-  transform:scale(0.85);
+.card:hover{
+  transform:scale(1.03);
+}
+
+.card img{
+  width:100%;
+  height:120px;
+  object-fit:cover;
+}
+
+.card h3{
+  margin:8px;
+  font-size:14px;
+}
+
+.card p{
+  margin:0 8px 8px;
+  font-size:12px;
+  color:#aaa;
+}
+
+.btn{
+  display:block;
+  margin:8px;
+  padding:8px;
+  background:#00ff99;
+  color:black;
+  text-align:center;
+  text-decoration:none;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+/* BOTTOM NAV (APP STYLE) */
+.bottom{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  display:flex;
+  background:#111;
+  border-top:1px solid #00ff99;
+}
+
+.bottom a{
+  flex:1;
+  text-align:center;
+  padding:10px;
+  color:white;
+  text-decoration:none;
+  font-size:12px;
+}
+
+.bottom a:hover{
   color:#00ff99;
 }
-  </style>
+</style>
 
 </head>
 
 <body>
 
-<h1>🎮 Cina Games</h1>
+<div class="topbar">🎮 Cina Games Store</div>
 
-<!-- TOP NAV -->
-<div class="navbar">
-  <a href="#home">Home</a>
-  <a href="games.html">Games</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-
-  <a class="telegram" href="https://t.me/afghangamerx" target="_blank">Telegram</a>
-  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
+<div class="categories">
+  <button>All</button>
+  <button>Action</button>
+  <button>Open World</button>
+  <button>Sports</button>
+  <button>Tools</button>
 </div>
 
-<!-- HERO -->
-<div id="home" class="hero">
-  <h2>Welcome to Cina Games Store 🎮</h2>
-  <p>Download games, watch updates, and explore gaming world</p>
+<div class="grid">
+
+  <div class="card">
+    <img src="dark-wallpaper.jpg">
+    <h3>Dark Wallpaper</h3>
+    <p>HD Wallpapers pack</p>
+    <a class="btn" href="https://www.mediafire.com/file/456vkzxxtq61bgy/Dark_Person_Wallpaper_1.0.apk/file">Download</a>
+  </div>
+
+  <div class="card">
+    <img src="wwe25.jpg">
+    <h3>WWE 2K25</h3>
+    <p>Action Wrestling Game</p>
+    <a class="btn" href="https://example.com">Download</a>
+  </div>
+
 </div>
 
-<!-- MENU -->
-<div class="menu">
-
-  <a href="games.html" class="box games">🎮<br>Games</a>
-  <a href="#desc" class="box desc">📄<br>Description</a>
-  <a href="#alerts" class="box alerts">🔔<br>Alerts</a>
-  <a href="#settings" class="box settings">⚙️<br>Settings</a>
-
-</div>
-
-<!-- SECTIONS -->
-<div id="desc" class="section">
-  <h2>Description</h2>
-  <p>این سایت برای دانلود بازی‌ها و محتوای گیم ساخته شده است.</p>
-</div>
-
-<div id="alerts" class="section">
-  <h2>Alerts</h2>
-  <p>هیچ اعلان جدیدی وجود ندارد.</p>
-</div>
-
-<div id="settings" class="section">
-  <h2>Settings</h2>
-  <p>تنظیمات سایت در حال توسعه است.</p>
-</div>
-
-<!-- BOTTOM NAV -->
-<div class="bottom-nav">
-  <a href="#home">🏠<br>Home</a>
-  <a href="games.html">🎮<br>Games</a>
-  <a href="#alerts">🔔<br>Alerts</a>
-  <a href="#settings">⚙️<br>Settings</a>
-  <a href="about.html">📄<br>About</a>
+<div class="bottom">
+  <a href="#home">🏠 Home</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="#alerts">🔔 Alerts</a>
+  <a href="#settings">⚙️ Settings</a>
 </div>
 
 </body>
