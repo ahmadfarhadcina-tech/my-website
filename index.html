@@ -10,6 +10,7 @@ body{
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
+  padding-bottom:70px; /* برای منوی پایین */
 }
 
 /* HEADER */
@@ -20,7 +21,7 @@ h1{
   font-size:28px;
 }
 
-/* NAV BAR */
+/* NAV BAR TOP */
 .navbar{
   display:flex;
   justify-content:center;
@@ -67,7 +68,7 @@ h1{
   color:#ccc;
 }
 
-/* 🎮 APP MENU */
+/* 🎮 GRID MENU */
 .menu{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
@@ -108,6 +109,33 @@ h1{
   text-align:center;
   color:#ccc;
 }
+
+/* 🔥 BOTTOM MENU (مثل اپ واقعی) */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
+  background:#111;
+  padding:10px 0;
+  border-top:1px solid #00ff99;
+  z-index:2000;
+}
+
+.bottom-nav a{
+  color:white;
+  text-decoration:none;
+  text-align:center;
+  font-size:12px;
+  flex:1;
+  padding:5px;
+}
+
+.bottom-nav a:hover{
+  color:#00ff99;
+}
   </style>
 
 </head>
@@ -116,7 +144,7 @@ h1{
 
 <h1>🎮 Cina Games</h1>
 
-<!-- NAVBAR -->
+<!-- TOP NAV -->
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="games.html">Games</a>
@@ -133,24 +161,16 @@ h1{
   <p>Download games, watch updates, and explore gaming world</p>
 </div>
 
-<!-- 🔥 APP STYLE MENU -->
+<!-- MENU -->
 <div class="menu">
 
-  <a href="games.html" class="box games">
-    🎮<br>Games
-  </a>
+  <a href="games.html" class="box games">🎮<br>Games</a>
 
-  <a href="#desc" class="box desc">
-    📄<br>Description
-  </a>
+  <a href="#desc" class="box desc">📄<br>Description</a>
 
-  <a href="#alerts" class="box alerts">
-    🔔<br>Alerts
-  </a>
+  <a href="#alerts" class="box alerts">🔔<br>Alerts</a>
 
-  <a href="#settings" class="box settings">
-    ⚙️<br>Settings
-  </a>
+  <a href="#settings" class="box settings">⚙️<br>Settings</a>
 
 </div>
 
@@ -170,9 +190,16 @@ h1{
   <p>تنظیمات سایت در حال توسعه است.</p>
 </div>
 
-<hr>
+<!-- 🔥 BOTTOM MENU -->
+<div class="bottom-nav">
 
-<p style="text-align:center;">© 2026 Cina Games</p>
+  <a href="#home">🏠<br>Home</a>
+  <a href="games.html">🎮<br>Games</a>
+  <a href="#alerts">🔔<br>Alerts</a>
+  <a href="#settings">⚙️<br>Settings</a>
+  <a href="about.html">📄<br>About</a>
+
+</div>
 
 </body>
 </html>
