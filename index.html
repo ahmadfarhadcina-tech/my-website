@@ -4,9 +4,6 @@
   <meta charset="UTF-8">
   <title>Cina Games</title>
 
-  <link rel="manifest" href="manifest.json">
-  <meta name="theme-color" content="#00ff99">
-
   <style>
 body{
   margin:0;
@@ -32,6 +29,7 @@ h1{
   background:#111;
   position:sticky;
   top:0;
+  z-index:1000;
   flex-wrap:wrap;
 }
 
@@ -112,19 +110,16 @@ ul{
 
 <h1>🎮 Cina Games</h1>
 
-<!-- NAVBAR FIXED -->
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="games.html">Games</a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
 
-  <!-- SOCIAL LINKS -->
   <a class="telegram" href="https://t.me/afghangamerx" target="_blank">Telegram</a>
   <a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
 </div>
 
-<!-- HOME -->
 <div id="home" class="hero">
   <h2>Welcome to Cina Games Store 🎮</h2>
   <p>Download games, watch updates, and explore gaming world</p>
@@ -162,14 +157,6 @@ ul{
 <hr>
 
 <p style="text-align:center;">© 2026 Cina Games</p>
-
-<script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-  .then(() => console.log("Service Worker Active"))
-  .catch(err => console.log(err));
-}
-</script>
 
 </body>
 </html>
