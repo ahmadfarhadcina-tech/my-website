@@ -14,16 +14,10 @@ body{
   animation: fadeIn 0.5s ease-in;
 }
 
-/* 🔥 APP START ANIMATION */
+/* ANIMATION */
 @keyframes fadeIn{
-  from{
-    opacity:0;
-    transform:translateY(15px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
 }
 
 /* HEADER */
@@ -34,7 +28,7 @@ h1{
   font-size:28px;
 }
 
-/* NAV BAR */
+/* NAV */
 .navbar{
   display:flex;
   justify-content:center;
@@ -54,13 +48,6 @@ h1{
   padding:8px 12px;
   background:#007bff;
   border-radius:8px;
-  font-size:13px;
-  transition:0.3s;
-}
-
-.navbar a:hover{
-  transform:scale(1.05);
-  background:#0056b3;
 }
 
 /* SOCIAL */
@@ -72,30 +59,12 @@ h1{
   padding:40px 20px;
   background:#111;
   text-align:center;
-  animation: slideUp 0.6s ease;
 }
 
-@keyframes slideUp{
-  from{
-    opacity:0;
-    transform:translateY(20px);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
-}
+.hero h2{ color:#00ff99; }
+.hero p{ color:#ccc; }
 
-.hero h2{
-  color:#00ff99;
-  font-size:28px;
-}
-
-.hero p{
-  color:#ccc;
-}
-
-/* 🎮 GRID MENU */
+/* MENU */
 .menu{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
@@ -113,29 +82,12 @@ h1{
   justify-content:center;
   align-items:center;
   text-decoration:none;
-  color:white;
   font-size:18px;
   font-weight:bold;
-  transition:0.25s ease;
-  box-shadow:0 0 15px rgba(0,0,0,0.3);
-  animation: pop 0.6s ease;
+  transition:0.2s;
 }
 
-@keyframes pop{
-  from{
-    transform:scale(0.9);
-    opacity:0;
-  }
-  to{
-    transform:scale(1);
-    opacity:1;
-  }
-}
-
-.box:hover{
-  transform:scale(1.08);
-  box-shadow:0 10px 25px rgba(0,255,153,0.25);
-}
+.box:hover{ transform:scale(1.07); }
 
 /* COLORS */
 .games{ background:linear-gradient(135deg,#00ff99,#00cc77); color:black; }
@@ -148,10 +100,9 @@ h1{
   padding:20px;
   text-align:center;
   color:#ccc;
-  animation: fadeIn 0.6s ease;
 }
 
-/* 🔥 BOTTOM NAV (APP STYLE) */
+/* BOTTOM NAV */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -160,33 +111,24 @@ h1{
   display:flex;
   justify-content:space-around;
   background:#111;
-  padding:10px 0;
   border-top:1px solid #00ff99;
-  z-index:2000;
 }
 
 .bottom-nav a{
+  flex:1;
+  text-align:center;
+  padding:10px;
   color:white;
   text-decoration:none;
-  text-align:center;
   font-size:12px;
-  flex:1;
-  transition:0.2s;
-}
-
-.bottom-nav a:active{
-  transform:scale(0.85);
-  color:#00ff99;
 }
   </style>
-
 </head>
 
 <body>
 
 <h1>🎮 Cina Games</h1>
 
-<!-- TOP NAV -->
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="games.html">Games</a>
@@ -197,45 +139,55 @@ h1{
   <a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
 </div>
 
-<!-- HERO -->
 <div id="home" class="hero">
   <h2>Welcome to Cina Games Store 🎮</h2>
-  <p>Download games, watch updates, and explore gaming world</p>
+  <p>Download Android & PC games, wallpapers, tools and updates in one place.</p>
 </div>
 
 <!-- MENU -->
 <div class="menu">
-
   <a href="games.html" class="box games">🎮<br>Games</a>
   <a href="#desc" class="box desc">📄<br>Description</a>
   <a href="#alerts" class="box alerts">🔔<br>Alerts</a>
   <a href="#settings" class="box settings">⚙️<br>Settings</a>
-
 </div>
 
-<!-- SECTIONS -->
+<!-- DESCRIPTION -->
 <div id="desc" class="section">
-  <h2>Description</h2>
-  <p>این سایت برای دانلود بازی‌ها و محتوای گیم ساخته شده است.</p>
+  <h2>📄 About Cina Games</h2>
+  <p>
+    Cina Games is a mobile-style gaming store website where you can download games, wallpapers,
+    apps and updates. Designed for fast browsing and easy use like a real app store.
+  </p>
 </div>
 
+<!-- ALERTS -->
 <div id="alerts" class="section">
-  <h2>Alerts</h2>
-  <p>هیچ اعلان جدیدی وجود ندارد.</p>
+  <h2>🔔 Alerts</h2>
+  <p>✔ New games added weekly<br>✔ Stay tuned for updates<br>✔ No critical alerts right now</p>
 </div>
 
+<!-- SETTINGS -->
 <div id="settings" class="section">
-  <h2>Settings</h2>
-  <p>تنظیمات سایت در حال توسعه است.</p>
+  <h2>⚙️ Settings</h2>
+
+  <p>🌙 Dark Mode: ON</p>
+  <p>🔔 Notifications: Enabled</p>
+  <p>🌐 Language: Auto</p>
+  <p>📊 Download Quality: High</p>
+
+  <button style="padding:10px 20px;background:#00ff99;border:none;border-radius:10px;font-weight:bold;">
+    Save Settings
+  </button>
 </div>
 
 <!-- BOTTOM NAV -->
 <div class="bottom-nav">
-  <a href="#home">🏠<br>Home</a>
-  <a href="games.html">🎮<br>Games</a>
-  <a href="#alerts">🔔<br>Alerts</a>
-  <a href="#settings">⚙️<br>Settings</a>
-  <a href="about.html">📄<br>About</a>
+  <a href="#home">🏠 Home</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="#alerts">🔔 Alerts</a>
+  <a href="#settings">⚙️ Settings</a>
+  <a href="about.html">📄 About</a>
 </div>
 
 </body>
