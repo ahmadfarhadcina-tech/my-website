@@ -2,28 +2,55 @@
 <html>
 <head>
   <meta charset="UTF-8">
-<title>Cina Games</title>
+  <title>Cina Games</title>
 
   <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00ff99">
+  <meta name="theme-color" content="#00ff99">
 
   <style>
 body{
+  margin:0;
   background:#1b1b1b;
   color:white;
   font-family:Arial,sans-serif;
-  text-align:center;
 }
 
+/* HEADER */
 h1{
+  text-align:center;
   color:#00ff99;
+  margin:20px 0;
+}
+
+/* NAV BAR */
+.navbar{
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  padding:15px;
+  background:#111;
+  position:sticky;
+  top:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  padding:8px 15px;
+  background:#007bff;
+  border-radius:8px;
+  transition:0.3s;
+}
+
+.navbar a:hover{
+  background:#0056b3;
 }
 
 /* HERO */
 .hero{
   padding:50px 20px;
   background:#111;
-  margin-bottom:20px;
+  text-align:center;
 }
 
 .hero h2{
@@ -35,26 +62,34 @@ h1{
   color:#ccc;
 }
 
-/* BUTTON */
-a{
+/* SECTIONS */
+.section{
+  padding:20px;
+  text-align:center;
+}
+
+/* BUTTON (DOWNLOAD STYLE) */
+.btn{
   display:inline-block;
   margin:8px;
   padding:10px 20px;
-  background:#007bff;
-  color:white;
+  background:#00ff99;
+  color:black;
   text-decoration:none;
   border-radius:8px;
+  font-weight:bold;
 }
 
-a:hover{
-  background:#0056b3;
+.btn:hover{
+  background:#00cc77;
 }
 
+/* LIST */
 ul{
   list-style:none;
   padding:0;
 }
-</style>
+  </style>
 
 </head>
 
@@ -62,47 +97,61 @@ ul{
 
 <h1>🎮 Cina Games</h1>
 
-<!-- HOME SECTION ADDED -->
-<div class="hero">
+<!-- NAVBAR FIXED -->
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="games.html">Games</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HOME -->
+<div id="home" class="hero">
   <h2>Welcome to Cina Games Store 🎮</h2>
   <p>Download games, watch updates, and explore gaming world</p>
 </div>
 
-<p>به سایت ما خوش آمدید! اینجا بازی‌ها، آموزش‌ها و لینک‌های دانلود قرار می‌گیرد.</p>
+<div class="section">
+  <p>به سایت ما خوش آمدید! اینجا بازی‌ها، آموزش‌ها و لینک‌های دانلود قرار می‌گیرد.</p>
+</div>
 
 <hr>
 
+<div class="section">
 <h2>🔥 بخش‌ها</h2>
-
 <ul>
-<li>🎮 بازی‌های اندروید</li>
-<li>💻 بازی‌های PC</li>
-<li>📺 ویدیو و آموزش</li>
+  <li>🎮 بازی‌های اندروید</li>
+  <li>💻 بازی‌های PC</li>
+  <li>📺 ویدیو و آموزش</li>
 </ul>
+</div>
 
 <hr>
 
+<div class="section">
 <h2>📩 درباره ما</h2>
-
 <p>این سایت برای معرفی بازی‌ها و محتوای گیم ساخته شده است.</p>
+</div>
 
 <hr>
 
-<a href="games.html">🎮 Games</a>
-<a href="about.html">📖 About</a>
-<a href="contact.html">📩 Contact</a>
+<!-- DOWNLOAD BUTTON FIXED -->
+<div class="section">
+  <h2>⬇ Download Section</h2>
+
+  <a class="btn" href="games.html">🎮 View Games</a>
+</div>
 
 <hr>
 
-<p>© 2026 Cina Games</p>
+<p style="text-align:center;">© 2026 Cina Games</p>
 
-  <script>
+<!-- SERVICE WORKER -->
+<script>
 if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js')
-  .then(() => {
-    console.log("Service Worker Active");
-  })
-  .catch(err => console.log("Error", err));
+  .then(() => console.log("Service Worker Active"))
+  .catch(err => console.log(err));
 }
 </script>
 
