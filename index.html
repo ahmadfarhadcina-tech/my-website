@@ -27,6 +27,28 @@ body{
   box-shadow:0 0 15px rgba(0,255,153,0.1);
 }
 
+.ai-chat{
+  text-align:center;
+  margin:15px;
+}
+
+.ai-chat input{
+  width:70%;
+  max-width:500px;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+.ai-chat button{
+  padding:10px 15px;
+  background:#00ff99;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  margin-left:8px;
+}
+    
 .ai-box h3{
   color:#00ff99;
   margin-bottom:10px;
@@ -251,6 +273,11 @@ h1{
 <div class="ai-box">
   <h3>🤖 AI Response</h3>
   <p id="out">Here will show AI answer...</p>
+</div>
+
+<div class="ai-chat">
+  <input id="msg" type="text" placeholder="Ask Cina AI...">
+  <button onclick="send()">Send</button>
 </div>
   
 <div id="desc" class="section">
