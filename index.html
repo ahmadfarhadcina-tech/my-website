@@ -5,16 +5,26 @@
   <title>Cina Games</title>
 
   <style>
+/* ===== BODY ===== */
 body{
   margin:0;
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
   padding-bottom:70px;
+}
+
+/* ===== PAGE FADE ===== */
+body{
   animation: fadeIn 0.5s ease-in;
 }
-  /* ===== Splash Screen ===== */
 
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(15px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+/* ===== SPLASH SCREEN ===== */
 #splash{
 position:fixed;
 top:0;
@@ -23,48 +33,50 @@ width:100%;
 height:100%;
 background:radial-gradient(circle,#1a1a1a,#000);
 
-/* 👇 اینا مهمه برای وسط شدن کامل */
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
 
 z-index:99999;
-transform:translateY(0);
+
+/* 5 ثانیه نمایش */
+animation: fadeSplash 5s forwards;
 }
 
+/* TITLE BIG */
 #splash h1{
 margin:0;
-font-size:85px;
+font-size:95px;
 color:#00ff99;
-text-shadow:
-0 0 10px #00ff99,
-0 0 20px #00ff99,
-0 0 40px #00ff99;
-animation:zoom 1s infinite alternate;
+text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
+animation: zoom 1s infinite alternate;
 text-align:center;
 }
 
+/* TEXT */
 #splash p{
-margin-top:15px;
-font-size:22px;
+margin-top:20px;
+font-size:26px;
 color:white;
 letter-spacing:2px;
 text-align:center;
 }
 
+/* BIG ZOOM */
 @keyframes zoom{
 from{transform:scale(1);}
-to{transform:scale(1.08);}
+to{transform:scale(1.1);}
 }
 
-/* ANIMATION */
-@keyframes fadeIn{
-  from{opacity:0; transform:translateY(15px);}
-  to{opacity:1; transform:translateY(0);}
+/* SPLASH FADE OUT */
+@keyframes fadeSplash{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0; visibility:hidden; pointer-events:none;}
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 h1{
   text-align:center;
   color:#00ff99;
@@ -72,7 +84,7 @@ h1{
   font-size:28px;
 }
 
-/* NAV */
+/* ===== NAVBAR ===== */
 .navbar{
   display:flex;
   justify-content:center;
@@ -94,11 +106,10 @@ h1{
   border-radius:8px;
 }
 
-/* SOCIAL */
 .telegram{ background:#0088cc !important; font-weight:bold; }
 .youtube{ background:#ff0000 !important; font-weight:bold; }
 
-/* HERO */
+/* ===== HERO ===== */
 .hero{
   padding:40px 20px;
   background:#111;
@@ -108,7 +119,7 @@ h1{
 .hero h2{ color:#00ff99; }
 .hero p{ color:#ccc; }
 
-/* MENU */
+/* ===== MENU ===== */
 .menu{
   display:grid;
   grid-template-columns:repeat(2, 1fr);
@@ -133,20 +144,19 @@ h1{
 
 .box:hover{ transform:scale(1.07); }
 
-/* COLORS */
 .games{ background:linear-gradient(135deg,#00ff99,#00cc77); color:black; }
 .desc{ background:linear-gradient(135deg,#007bff,#0056b3); }
 .alerts{ background:linear-gradient(135deg,#ffcc00,#ff9900); color:black; }
 .settings{ background:linear-gradient(135deg,#ff4444,#cc0000); }
 
-/* SECTION */
+/* ===== SECTIONS ===== */
 .section{
   padding:20px;
   text-align:center;
   color:#ccc;
 }
 
-/* BOTTOM NAV */
+/* ===== BOTTOM NAV ===== */
 .bottom-nav{
   position:fixed;
   bottom:0;
@@ -168,14 +178,17 @@ h1{
 }
   </style>
 </head>
-  <body>
 
-  <div id="splash">
-    <h1>🎮 Cina Games</h1>
-    <p>Welcome to Cina Games</p>
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <h1>🎮 Cina Games</h1>
+  <p>Welcome to Cina Games</p>
 </div>
 
-  <h1>🎮 Cina Games</h1>
+<!-- MAIN CONTENT -->
+<h1>🎮 Cina Games</h1>
 
 <div class="navbar">
   <a href="#home">Home</a>
@@ -192,7 +205,6 @@ h1{
   <p>Download Android & PC games, wallpapers, tools and updates in one place.</p>
 </div>
 
-<!-- MENU -->
 <div class="menu">
   <a href="games.html" class="box games">🎮<br>Games</a>
   <a href="#desc" class="box desc">📄<br>Description</a>
@@ -200,36 +212,25 @@ h1{
   <a href="#settings" class="box settings">⚙️<br>Settings</a>
 </div>
 
-<!-- DESCRIPTION -->
 <div id="desc" class="section">
   <h2>📄 About Cina Games</h2>
-  <p>
-    Cina Games is a mobile-style gaming store website where you can download games, wallpapers,
-    apps and updates. Designed for fast browsing and easy use like a real app store.
-  </p>
+  <p>Cina Games is a mobile-style gaming store website...</p>
 </div>
 
-<!-- ALERTS -->
 <div id="alerts" class="section">
   <h2>🔔 Alerts</h2>
-  <p>✔ New games added weekly<br>✔ Stay tuned for updates<br>✔ No critical alerts right now</p>
+  <p>✔ New games added weekly<br>✔ Stay tuned for updates</p>
 </div>
 
-<!-- SETTINGS -->
 <div id="settings" class="section">
   <h2>⚙️ Settings</h2>
-
   <p>🌙 Dark Mode: ON</p>
   <p>🔔 Notifications: Enabled</p>
-  <p>🌐 Language: Auto</p>
-  <p>📊 Download Quality: High</p>
-
   <button style="padding:10px 20px;background:#00ff99;border:none;border-radius:10px;font-weight:bold;">
     Save Settings
   </button>
 </div>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-nav">
   <a href="#home">🏠 Home</a>
   <a href="games.html">🎮 Games</a>
@@ -237,10 +238,12 @@ h1{
   <a href="#settings">⚙️ Settings</a>
   <a href="about.html">📄 About</a>
 </div>
+
 <script>
 setTimeout(function(){
   document.getElementById("splash").style.display = "none";
-}, 5000);
+}, 4000);
 </script>
+
 </body>
 </html>
