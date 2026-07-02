@@ -1,162 +1,266 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Cina Games</title>
+  <meta charset="UTF-8">
+  <title>Cina Games</title>
 
-<style>
+  <style>
+
+/* ===== BODY ===== */
 body{
   margin:0;
-  font-family:Arial, sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  background:#0f0f0f;
   color:white;
+  font-family:Arial,sans-serif;
+  padding-bottom:70px;
+  opacity:0;
+  animation: pageShow 1s ease-in forwards;
 }
 
-/* HEADER */
-.header{
+/* صفحه با نرم باز شدن */
+@keyframes pageShow{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ===== SPLASH SCREEN ===== */
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1a1a1a,#000);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+z-index:99999;
+
+animation: fadeSplash 5s forwards;
+}
+
+/* TITLE */
+#splash h1{
+margin:0;
+font-size:95px;
+color:#00ff99;
+text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
+
+opacity:0;
+animation: zoom 1s infinite alternate, showText 1s forwards;
+
+/* ⛔ مشکل تو اینجا بود → delay درست نبود */
+animation-delay: 1s;
+text-align:center;
+}
+
+/* TEXT */
+#splash p{
+margin-top:20px;
+font-size:26px;
+color:white;
+letter-spacing:2px;
+text-align:center;
+
+opacity:0;
+animation: showText 1s forwards;
+animation-delay: 0.5s;
+}
+
+/* ظاهر شدن نرم */
+@keyframes showText{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* zoom */
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+/* fade splash */
+@keyframes fadeSplash{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0; visibility:hidden; pointer-events:none;}
+}
+
+/* ===== HEADER ===== */
+h1{
   text-align:center;
-  padding:25px;
-  background:#111;
-  border-bottom:2px solid #00ff99;
-}
-
-.header h1{
-  margin:0;
   color:#00ff99;
-  font-size:40px;
+  margin:20px 0;
+  font-size:28px;
 }
 
-/* WELCOME */
-.welcome{
+/* ===== NAVBAR ===== */
+.navbar{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  padding:12px;
+  background:#111;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  flex-wrap:wrap;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  background:#007bff;
+  border-radius:8px;
+}
+
+.telegram{ background:#0088cc !important; font-weight:bold; }
+.youtube{ background:#ff0000 !important; font-weight:bold; }
+
+/* ===== HERO ===== */
+.hero{
+  padding:40px 20px;
+  background:#111;
   text-align:center;
-  padding:15px;
+}
+
+.hero h2{ color:#00ff99; }
+.hero p{ color:#ccc; }
+
+/* ===== MENU ===== */
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:15px;
+  padding:20px;
+  max-width:500px;
+  margin:auto;
+}
+
+.box{
+  height:120px;
+  border-radius:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-decoration:none;
+  font-size:18px;
+  font-weight:bold;
+  transition:0.2s;
+}
+
+.box:hover{ transform:scale(1.07); }
+
+.games{ background:linear-gradient(135deg,#00ff99,#00cc77); color:black; }
+.desc{ background:linear-gradient(135deg,#007bff,#0056b3); }
+.alerts{ background:linear-gradient(135deg,#ffcc00,#ff9900); color:black; }
+.settings{ background:linear-gradient(135deg,#ff4444,#cc0000); }
+
+/* ===== SECTIONS ===== */
+.section{
+  padding:20px;
+  text-align:center;
   color:#ccc;
 }
 
-/* NAV */
-.nav{
-  text-align:center;
-  margin:10px 0;
-}
-
-.nav a{
-  margin:5px;
-  padding:10px 15px;
-  display:inline-block;
-  background:#222;
-  color:white;
-  text-decoration:none;
-  border-radius:8px;
-  transition:0.3s;
-}
-
-.nav a:hover{
-  background:#00ff99;
-  color:black;
-}
-
-/* BOX */
-.box{
-  max-width:800px;
-  margin:15px auto;
+/* ===== BOTTOM NAV ===== */
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  display:flex;
+  justify-content:space-around;
   background:#111;
-  padding:15px;
-  border-radius:12px;
-  border-left:4px solid #00ff99;
+  border-top:1px solid #00ff99;
 }
 
-/* LINKS */
-.links{
+.bottom-nav a{
+  flex:1;
   text-align:center;
-  margin:20px;
-}
-
-.links a{
-  display:inline-block;
-  margin:10px;
-  padding:12px 20px;
-  background:#007bff;
+  padding:10px;
   color:white;
   text-decoration:none;
-  border-radius:10px;
-  font-size:18px;
+  font-size:12px;
 }
 
-.links a:hover{
-  transform:scale(1.05);
-}
-
-footer{
-  text-align:center;
-  padding:20px;
-  color:#777;
-  margin-top:20px;
-}
-</style>
-
+  </style>
 </head>
 
 <body>
 
-<div class="header">
+<!-- SPLASH -->
+<div id="splash">
   <h1>🎮 Cina Games</h1>
-</div>
-
-<div class="welcome">
-  <h2>Welcome to Cina Games</h2>
-  <p>به سینا گیمز خوش آمدید</p>
-</div>
-
-<!-- NAVIGATION -->
-<div class="nav">
-  <a href="index.html">Home</a>
-  <a href="games.html">Games</a>
-  <a href="about-creator.html">About Creator</a>
-  <a href="#about">About</a>
-  <a href="#contact">Contact</a>
-  <a href="#settings">Settings</a>
+  <p>Welcome to Cina Games</p>
 </div>
 
 <!-- MAIN -->
-<div class="box">
-  <h2>🎮 Welcome to Cina Games Store</h2>
+<h1>🎮 Cina Games</h1>
+
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="games.html">Games</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+
+  <a class="telegram" href="https://t.me/afghangamerx" target="_blank">Telegram</a>
+  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
+</div>
+
+<div id="home" class="hero">
+  <h2>Welcome to Cina Games Store 🎮</h2>
   <p>Download Android & PC games...</p>
 </div>
 
-<div class="box" id="about">
+<div class="menu">
+  <a href="games.html" class="box games">🎮<br>Games</a>
+  <a href="#desc" class="box desc">📄<br>Description</a>
+  <a href="#alerts" class="box alerts">🔔<br>Alerts</a>
+  <a href="#settings" class="box settings">⚙️<br>Settings</a>
+</div>
+
+<div id="desc" class="section">
   <h2>📄 About Cina Games</h2>
-  <p>
-    Cina Games is a gaming website focused on WWE, PC games,
-    Android games and gaming content.
-  </p>
 </div>
 
-<div class="box" id="alerts">
+<div id="alerts" class="section">
   <h2>🔔 Alerts</h2>
-  <p>No new alerts.</p>
 </div>
 
-<div class="box" id="settings">
+<div id="settings" class="section">
   <h2>⚙️ Settings</h2>
-  <p>Customize your experience.</p>
 </div>
 
-<!-- LINKS -->
-<div class="links" id="contact">
-
-  <a href="https://t.me/afghangamerx" target="_blank">
-    📲 Telegram
-  </a>
-
-  <a href="https://www.youtube.com/@Farhad_Cina" target="_blank">
-    ▶ YouTube
-  </a>
-
+<div class="bottom-nav">
+  <a href="#home">🏠 Home</a>
+  <a href="games.html">🎮 Games</a>
+  <a href="#alerts">🔔 Alerts</a>
+  <a href="#settings">⚙️ Settings</a>
+  <a href="about.html">📄 About</a>
 </div>
 
-<footer>
-  🏠 Home | 🎮 Games | 👤 Creator | 📄 About | 📞 Contact
-</footer>
+<!-- 🔊 SOUND FIX -->
+<audio id="dingSound" src="ding.mp3"></audio>
+
+<script>
+setTimeout(function(){
+
+  document.getElementById("splash").style.display = "none";
+
+  // 🔊 صدا وقتی اسپلش بسته شد
+  let sound = document.getElementById("dingSound");
+  sound.volume = 0.6;
+  sound.play();
+
+}, 5000);
+</script>
 
 </body>
 </html>
