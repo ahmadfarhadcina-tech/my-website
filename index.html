@@ -260,6 +260,26 @@ setTimeout(function(){
 
 }, 5000);
 </script>
+<input id="msg" placeholder="Ask AI...">
+<button onclick="send()">Send</button>
 
+<p id="out"></p>
+
+<script>
+async function send(){
+  let msg = document.getElementById("msg").value;
+
+  let res = await fetch("http://localhost:3000/chat", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ message: msg })
+  });
+
+  let data = await res.json();
+
+  document.getElementById("out").innerText =
+    data.choices[0].message.content;
+}
+</script>
 </body>
 </html>
