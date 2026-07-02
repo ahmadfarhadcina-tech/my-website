@@ -122,5 +122,111 @@ footer{
     ▶ YouTube  
   </a>  </div>  <footer>  
   🏠 Home | 🎮 Games | 👤 Creator | 📄 About | 📞 Contact  
-</footer>  </body>  
+</footer>  
+<!-- کدهای مربوط به باکس چت شناور هوش مصنوعی -->
+<div id="ai-chat-widget" style="position: fixed; bottom: 85px; left: 20px; z-index: 1000; font-family: Arial, sans-serif;">
+  
+  <!-- دکمه شناور چت -->
+  <button id="chat-toggle-btn" onclick="toggleChat()" style="width: 55px; height: 55px; background: #00ff99; border: none; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,255,153,0.3); cursor: pointer; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s;">
+    🤖
+  </button>
+
+  <!-- پنجره چت (در حالت اولیه پنهان است) -->
+  <div id="chat-window" style="display: none; width: 320px; height: 400px; background: #111; border: 2px solid #00ff99; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.5); position: absolute; bottom: 65px; left: 0; flex-direction: column; overflow: hidden;">
+    
+    <!-- هدر پنجره چت -->
+    <div style="background: #1a1a1a; padding: 12px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center;">
+      <span style="color: #00ff99; font-weight: bold; font-size: 15px;">🤖 پشتیبان هوشمند Cina Games</span>
+      <button onclick="toggleChat()" style="background: none; border: none; color: #777; cursor: pointer; font-size: 18px;">✕</button>
+    </div>
+
+    <!-- محل نمایش پیام‌ها -->
+    <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 14px; color: white;">
+      <div style="background: #222; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #00ff99; direction: rtl;">
+        سلام! چطور می‌تونم کمکتون کنم؟
+      </div>
+    </div>
+
+    <!-- فرم ارسال پیام -->
+    <div style="padding: 10px; background: #1a1a1a; border-top: 1px solid #222; display: flex; gap: 6px;">
+      <input type="text" id="chat-user-input" placeholder="سوال خود را بپرسید..." style="flex: 1; padding: 8px; background: #222; border: 1px solid #333; border-radius: 6px; color: white; outline: none; font-size: 13px; direction: rtl;">
+      <button onclick="sendChatMessage()" style="background: #00ff99; border: none; padding: 0 15px; border-radius: 6px; color: black; font-weight: bold; cursor: pointer; font-size: 13px;">ارسال</button>
+    </div>
+
+  </div>
+</div>
+
+<script>
+// تابع باز و بسته کردن پنجره چت
+function toggleChat() {
+  const chatWindow = document.getElementById('chat-window');
+  if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
+    chatWindow.style.display = 'flex';
+  } else {
+    chatWindow.style.display = 'none';
+  }
+}
+
+// تابع ارسال پیام به هوش مصنوعی
+async function sendChatMessage() {
+  const inputElement = document.getElementById('chat-user-input');
+  const messagesContainer = document.getElementById('chat-messages');
+  const text = inputElement.value.trim();
+  
+  if (!text) return;
+
+  // اضافه کردن پیام کاربر به صفحه
+  messagesContainer.innerHTML += `
+    <div style="background: #007bff; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 85%; direction: rtl;">
+      ${text}
+    </div>
+  `;
+  
+  inputElement.value = '';
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  // شبیه‌سازی لودینگ پاسخ هوش مصنوعی
+  const loadingId = 'loading-' + Date.now();
+  messagesContainer.innerHTML += `
+    <div id="${loadingId}" style="background: #222; padding: 8px 12px; border-radius: 8px; align-self: flex-start; color: #777; direction: rtl;">
+      در حال نوشتن پاسخ...
+    </div>
+  `;
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+
+  try {
+    // ⚠️ توجه: برای کارکرد واقعی باید آدرس API یا وب‌هوک هوش مصنوعی خود را در این بخش ست کنید
+    const response = await fetch('https://your-ai-provider.com', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer YOUR_API_KEY_HERE'
+      },
+      body: JSON.stringify({ message: text })
+    });
+    
+    const data = await response.json();
+    document.getElementById(loadingId).remove();
+
+    // اضافه کردن پاسخ هوش مصنوعی به صفحه
+    messagesContainer.innerHTML += `
+      <div style="background: #222; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #00ff99; direction: rtl;">
+        ${data.reply || 'پاسخ هوش مصنوعی در اینجا قرار می‌گیرد.'}
+      </div>
+    `;
+  } catch (error) {
+    document.getElementById(loadingId).remove();
+    // برای دمو یک پاسخ فرضی در صورت عدم اتصال واقعی به سرور نمایش داده می‌شود
+    messagesContainer.innerHTML += `
+      <div style="background: #222; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #00ff99; direction: rtl;">
+        سیستم چت آماده است. برای اتصال واقعی، لطفاً کلید API پلتفرم هوش مصنوعی مورد نظر خود را در کدها جایگذاری کنید.
+      </div>
+    `;
+  }
+  
+  messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+</script>
+
+</body>  
 </html>
