@@ -7,7 +7,6 @@ body{
   font-family:Arial, sans-serif;  
   background:linear-gradient(135deg,#0f0f0f,#1a1a1a);  
   color:white;  
-  padding-bottom: 90px; /* برای جلوگیری از مخفی شدن محتوا پشت چت */
 }  
   
 /* HEADER */  
@@ -124,116 +123,6 @@ footer{
   </a>  </div>  <footer>  
   🏠 Home | 🎮 Games | 👤 Creator | 📄 About | 📞 Contact  
 </footer>  
-
-<!-- باکس چت شناور هوش مصنوعی کاملاً هوشمند -->
-<div id="ai-chat-widget" style="position: fixed; bottom: 85px; left: 20px; z-index: 10000; font-family: Arial, sans-serif;">
-  
-  <!-- دکمه شناور چت -->
-  <button id="chat-toggle-btn" onclick="toggleChat()" style="width: 55px; height: 55px; background: #00ff99; border: none; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,255,153,0.4); cursor: pointer; font-size: 26px; display: flex; align-items: center; justify-content: center; transition: 0.3s; z-index: 10001;">
-    🤖
-  </button>
-
-  <!-- پنجره چت -->
-  <div id="chat-window" style="display: none; width: 290px; height: 380px; background: #111; border: 2px solid #00ff99; border-radius: 12px; box-shadow: 0 5px 25px rgba(0,0,0,0.6); position: absolute; bottom: 65px; left: 0; flex-direction: column; overflow: hidden; z-index: 10002;">
-    
-    <!-- هدر پنجره چت -->
-    <div style="background: #1a1a1a; padding: 12px; border-bottom: 1px solid #222; display: flex; justify-content: space-between; align-items: center;">
-      <span style="color: #00ff99; font-weight: bold; font-size: 13px;">🤖 پشتیبان هوشمند Cina Games</span>
-      <button onclick="toggleChat()" style="background: none; border: none; color: #777; cursor: pointer; font-size: 16px;">✕</button>
-    </div>
-
-    <!-- محل نمایش پیام‌ها -->
-    <div id="chat-messages" style="flex: 1; padding: 15px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; font-size: 13px; color: white; background: #0c0c0c;">
-      <div style="background: #1c1c1c; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #00ff99; direction: rtl;">
-        سلام رفیق! چطور می‌تونم در سایت سینا گیمز کمکت کنم؟
-      </div>
-    </div>
-
-    <!-- فرم ارسال پیام -->
-    <div style="padding: 10px; background: #1a1a1a; border-top: 1px solid #222; display: flex; gap: 6px;">
-      <input type="text" id="chat-user-input" placeholder="سوال خود را بپرسید..." style="flex: 1; padding: 8px; background: #222; border: 1px solid #333; border-radius: 6px; color: white; outline: none; font-size: 13px; direction: rtl;">
-      <button onclick="sendChatMessage()" style="background: #00ff99; border: none; padding: 0 12px; border-radius: 6px; color: black; font-weight: bold; cursor: pointer; font-size: 13px;">ارسال</button>
-    </div>
-
-  </div>
-</div>
-
-<script>
-function toggleChat() {
-  const chatWindow = document.getElementById('chat-window');
-  if (chatWindow.style.display === 'none' || chatWindow.style.display === '') {
-    chatWindow.style.display = 'flex';
-  } else {
-    chatWindow.style.display = 'none';
-  }
-}
-
-async function sendChatMessage() {
-  const inputElement = document.getElementById('chat-user-input');
-  const messagesContainer = document.getElementById('chat-messages');
-  const text = inputElement.value.trim();
-  
-  if (!text) return;
-
-  messagesContainer.innerHTML += `
-    <div style="background: #007bff; padding: 8px 12px; border-radius: 8px; align-self: flex-end; max-width: 85%; direction: rtl;">
-      ${text}
-    </div>
-  `;
-  
-  inputElement.value = '';
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  const loadingId = 'loading-' + Date.now();
-  messagesContainer.innerHTML += `
-    <div id="${loadingId}" style="background: #1c1c1c; padding: 8px 12px; border-radius: 8px; align-self: flex-start; color: #777; direction: rtl;">
-      در حال نوشتن پاسخ...
-    </div>
-  `;
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-  try {
-    const response = await fetch('https://openrouter.ai', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        model: 'meta-llama/llama-3-8b-instruct:free',
-        messages: [
-          { role: 'system', content: 'تو پشتیبان هوشمند سایت سینا گیمز (Cina Games) هستی. پاسخ‌هایت را همیشه به زبان فارسی، بسیار کوتاه و صمیمی ارسال کن.' },
-          { role: 'user', content: text }
-        ]
-      })
-    });
-    
-    const data = await response.json();
-    document.getElementById(loadingId).remove();
-    const aiResponse = data.choices[0].message.content;
-
-    messagesContainer.innerHTML += `
-      <div style="background: #1c1c1c; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #00ff99; direction: rtl; white-space: pre-wrap;">
-        ${aiResponse}
-      </div>
-    `;
-  } catch (error) {
-    document.getElementById(loadingId).remove();
-    messagesContainer.innerHTML += `
-      <div style="background: #1c1c1c; padding: 8px 12px; border-radius: 8px; align-self: flex-start; max-width: 85%; border-left: 3px solid #ff3333; color: #ff5555; direction: rtl;">
-        مشکلی پیش آمد. دوباره امتحان کنید.
-      </div>
-    `;
-  }
-  
-  messagesContainer.scrollTop = messagesContainer.scrollHeight;
-}
-
-document.getElementById('chat-user-input').addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
-    sendChatMessage();
-  }
-});
-</script>
 
 </body>  
 </html>
