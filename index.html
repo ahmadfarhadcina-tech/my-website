@@ -309,7 +309,7 @@ button{
 </style>
 
 <script>
-
+<!-- AI BOT -->
 <input id="msg" placeholder="سوال بپرس..." />
 <button onclick="askAI()">Send</button>
 
@@ -327,9 +327,7 @@ async function askAI(){
     },
     body: JSON.stringify({
       contents: [{
-        parts: [{
-          text: text
-        }]
+        parts: [{ text: text }]
       }]
     })
   });
@@ -340,6 +338,5 @@ async function askAI(){
     data.candidates[0].content.parts[0].text;
 }
 </script>
-
 </body>
 </html>
