@@ -269,6 +269,73 @@ setTimeout(function(){
 
 }, 5000);
 </script>
+<!-- SIMPLE BOT -->
+<div id="bot">
+  <div id="chat"></div>
+
+  <input id="text" placeholder="سوال بپرس..." />
+  <button onclick="reply()">Send</button>
+</div>
+
+<style>
+#bot{
+  position:fixed;
+  bottom:80px;
+  right:10px;
+  width:260px;
+  background:#111;
+  border:2px solid #00ff99;
+  border-radius:12px;
+  padding:10px;
+  color:white;
+}
+
+#chat{
+  height:130px;
+  overflow:auto;
+  font-size:13px;
+  margin-bottom:10px;
+}
+
+#text{
+  width:70%;
+  padding:5px;
+}
+
+button{
+  padding:5px;
+  background:#00ff99;
+  border:none;
+  cursor:pointer;
+}
+</style>
+
+<script>
+function reply(){
+  let msg = document.getElementById("text").value;
+  let chat = document.getElementById("chat");
+
+  let answer = "";
+
+  if(msg.includes("hello") || msg.includes("سلام")){
+    answer = "سلام رفیق 💚 خوش آمدی به Cina Games";
+  }
+  else if(msg.includes("wwe")){
+    answer = "WWE 2K15 یک بازی کشتی کج حرفه‌ای است 🎮";
+  }
+  else if(msg.includes("watch dogs")){
+    answer = "Watch Dogs 2 یک بازی هکری جهان باز است 🔥";
+  }
+  else{
+    answer = "من هنوز ساده هستم 😅 ولی دارم یاد میگیرم...";
+  }
+
+  chat.innerHTML += "<p><b>You:</b> " + msg + "</p>";
+  chat.innerHTML += "<p><b>Bot:</b> " + answer + "</p>";
+
+  document.getElementById("text").value = "";
+}
+</script>
 
 </body>
 </html>
