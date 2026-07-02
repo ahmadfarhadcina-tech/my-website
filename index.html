@@ -311,31 +311,7 @@ button{
 </style>
 
 <script>
-function reply(){
-  let msg = document.getElementById("text").value;
-  let chat = document.getElementById("chat");
 
-  let answer = "";
-
-  if(msg.includes("hello") || msg.includes("سلام")){
-    answer = "سلام رفیق 💚 خوش آمدی به Cina Games";
-  }
-  else if(msg.includes("wwe")){
-    answer = "WWE 2K15 یک بازی کشتی کج حرفه‌ای است 🎮";
-  }
-  else if(msg.includes("watch dogs")){
-    answer = "Watch Dogs 2 یک بازی هکری جهان باز است 🔥";
-  }
-  else{
-    answer = "من هنوز ساده هستم 😅 ولی دارم یاد میگیرم...";
-  }
-
-  chat.innerHTML += "<p><b>You:</b> " + msg + "</p>";
-  chat.innerHTML += "<p><b>Bot:</b> " + answer + "</p>";
-
-  document.getElementById("text").value = "";
-}
-</script>
 <input id="msg" placeholder="سوال بپرس..." />
 <button onclick="askAI()">Send</button>
 
