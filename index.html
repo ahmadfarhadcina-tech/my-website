@@ -336,6 +336,36 @@ function reply(){
   document.getElementById("text").value = "";
 }
 </script>
+<input id="msg" placeholder="سوال بپرس..." />
+<button onclick="askAI()">Send</button>
+
+<p id="out"></p>
+
+<script>
+async function askAI(){
+
+  let text = document.getElementById("msg").value;
+
+  let res = await fetch("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=YOUR_API_KEY", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      contents: [{
+        parts: [{
+          text: text
+        }]
+      }]
+    })
+  });
+
+  let data = await res.json();
+
+  document.getElementById("out").innerText =
+    data.candidates[0].content.parts[0].text;
+}
+</script>
 
 </body>
 </html>
