@@ -13,7 +13,67 @@ body{
   padding-bottom:70px;
   animation: fadeIn 0.5s ease-in;
 }
+  /* ===== Splash Screen ===== */
 
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1a1a1a,#000);
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+z-index:99999;
+animation:fadeSplash 3s forwards;
+}
+
+#splash h1{
+margin:0;
+font-size:42px;
+color:#00ff99;
+text-shadow:
+0 0 10px #00ff99,
+0 0 20px #00ff99,
+0 0 40px #00ff99;
+animation:zoom 1s infinite alternate;
+}
+
+#splash p{
+margin-top:15px;
+font-size:22px;
+color:white;
+letter-spacing:2px;
+}
+
+@keyframes zoom{
+from{
+transform:scale(1);
+}
+to{
+transform:scale(1.08);
+}
+}
+
+@keyframes fadeSplash{
+0%{
+opacity:1;
+visibility:visible;
+}
+
+80%{
+opacity:1;
+visibility:visible;
+}
+
+100%{
+opacity:0;
+visibility:hidden;
+pointer-events:none;
+}
+}
 /* ANIMATION */
 @keyframes fadeIn{
   from{opacity:0; transform:translateY(15px);}
@@ -124,69 +184,6 @@ h1{
 }
   </style>
 </head>
-
-  /* ===== Splash Screen ===== */
-
-#splash{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#1a1a1a,#000);
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-z-index:99999;
-animation:fadeSplash 3s forwards;
-}
-
-#splash h1{
-margin:0;
-font-size:42px;
-color:#00ff99;
-text-shadow:
-0 0 10px #00ff99,
-0 0 20px #00ff99,
-0 0 40px #00ff99;
-animation:zoom 1s infinite alternate;
-}
-
-#splash p{
-margin-top:15px;
-font-size:22px;
-color:white;
-letter-spacing:2px;
-}
-
-@keyframes zoom{
-from{
-transform:scale(1);
-}
-to{
-transform:scale(1.08);
-}
-}
-
-@keyframes fadeSplash{
-0%{
-opacity:1;
-visibility:visible;
-}
-
-80%{
-opacity:1;
-visibility:visible;
-}
-
-100%{
-opacity:0;
-visibility:hidden;
-pointer-events:none;
-}
-}
-
   <body>
 
   <div id="splash">
@@ -256,6 +253,10 @@ pointer-events:none;
   <a href="#settings">⚙️ Settings</a>
   <a href="about.html">📄 About</a>
 </div>
-
+<script>
+setTimeout(function(){
+  document.getElementById("splash").style.display = "none";
+}, 3000);
+</script>
 </body>
 </html>
