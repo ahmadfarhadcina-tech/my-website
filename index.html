@@ -39,7 +39,6 @@ flex-direction:column;
 
 z-index:99999;
 
-/* 5 ثانیه کل اسپلش */
 animation: fadeSplash 5s forwards;
 }
 
@@ -50,10 +49,11 @@ font-size:95px;
 color:#00ff99;
 text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
 
-/* 👇 2 ثانیه بعد شروع شود */
 opacity:0;
 animation: zoom 1s infinite alternate, showText 1s forwards;
-animation-delay: 2s;
+
+/* ⛔ مشکل تو اینجا بود → delay درست نبود */
+animation-delay: 1s;
 text-align:center;
 }
 
@@ -65,13 +65,12 @@ color:white;
 letter-spacing:2px;
 text-align:center;
 
-/* 👇 2 ثانیه بعد ظاهر شود */
 opacity:0;
 animation: showText 1s forwards;
-animation-delay: 1s;
+animation-delay: 0.5s;
 }
 
-/* متن آرام ظاهر شود */
+/* ظاهر شدن نرم */
 @keyframes showText{
   from{opacity:0;}
   to{opacity:1;}
@@ -217,7 +216,7 @@ h1{
 
 <div id="home" class="hero">
   <h2>Welcome to Cina Games Store 🎮</h2>
-  <p>Download Android & PC games, wallpapers, tools and updates in one place.</p>
+  <p>Download Android & PC games...</p>
 </div>
 
 <div class="menu">
@@ -229,18 +228,14 @@ h1{
 
 <div id="desc" class="section">
   <h2>📄 About Cina Games</h2>
-  <p>Cina Games is a mobile-style gaming store website...</p>
 </div>
 
 <div id="alerts" class="section">
   <h2>🔔 Alerts</h2>
-  <p>✔ New games added weekly</p>
 </div>
 
 <div id="settings" class="section">
   <h2>⚙️ Settings</h2>
-  <p>🌙 Dark Mode: ON</p>
-  <button>Save Settings</button>
 </div>
 
 <div class="bottom-nav">
@@ -251,11 +246,19 @@ h1{
   <a href="about.html">📄 About</a>
 </div>
 
-  <audio id="dingSound" src="ding.mp3"></audio>
+<!-- 🔊 SOUND FIX -->
+<audio id="dingSound" src="ding.mp3"></audio>
 
-  <script>
+<script>
 setTimeout(function(){
+
   document.getElementById("splash").style.display = "none";
+
+  // 🔊 صدا وقتی اسپلش بسته شد
+  let sound = document.getElementById("dingSound");
+  sound.volume = 0.6;
+  sound.play();
+
 }, 5000);
 </script>
 
