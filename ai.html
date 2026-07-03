@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Cina AI Chat</title>
+
+<style>
+body{
+  margin:0;
+  background:#0f0f0f;
+  color:white;
+  font-family:Arial;
+}
+
+.header{
+  text-align:center;
+  padding:15px;
+  background:#111;
+  color:#00ff99;
+  font-size:20px;
+}
+
+.chat-box{
+  max-width:600px;
+  margin:auto;
+  padding:15px;
+  height:70vh;
+  overflow:auto;
+}
+
+.msg{
+  padding:8px;
+  margin:8px 0;
+  background:#222;
+  border-radius:8px;
+}
+
+.ai{
+  color:#00ff99;
+}
+
+.input-box{
+  position:fixed;
+  bottom:10px;
+  width:100%;
+  text-align:center;
+}
+
+input{
+  width:70%;
+  padding:10px;
+  border:none;
+  border-radius:8px;
+}
+
+button{
+  padding:10px;
+  background:#00ff99;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="header">🤖 Cina AI Chat</div>
+
+<div id="chat" class="chat-box"></div>
+
+<div class="input-box">
+  <input id="msg" placeholder="Type message...">
+  <button onclick="send()">Send</button>
+</div>
+
+<script>
+function send(){
+  let msg=document.getElementById("msg").value;
+  if(!msg) return;
+
+  let chat=document.getElementById("chat");
+
+  chat.innerHTML += "<div class='msg'><b>You:</b> "+msg+"</div>";
+
+  let reply="🤖 I don't understand";
+
+  if(msg.includes("hi")){
+    reply="Hello 👋 I am Cina AI";
+  }
+  else if(msg.includes("name")){
+    reply="I am Cina AI 🤖";
+  }
+  else if(msg.includes("game")){
+    reply="This is Cina Games 🎮";
+  }
+
+  setTimeout(()=>{
+    chat.innerHTML += "<div class='msg ai'><b>AI:</b> "+reply+"</div>";
+    chat.scrollTop=chat.scrollHeight;
+  },500);
+
+  document.getElementById("msg").value="";
+}
+</script>
+
+</body>
+</html>
