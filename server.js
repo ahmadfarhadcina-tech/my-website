@@ -4,23 +4,16 @@ const path = require("path");
 const app = express();
 app.use(express.json());
 
-// صفحه
+// صفحه اصلی
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
 // chat route
-app.post("/chat", (req, res) => {
-  console.log("message received:", req.body);
+app.post("/chat", async (req, res) => {
+  try {
+    console.log("message received:", req.body);
 
-  res.json({
-    choices: [{
-      message: {
-        content: "سلام 👋 سرور کار می‌کند"
-      }
-    }]
-  });
-});
     const message = req.body.message;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -36,8 +29,9 @@ app.post("/chat", (req, res) => {
     });
 
     const data = await response.json();
-console.log(JSON.stringify(data, null, 2));
-  
+
+    console.log(JSON.stringify(data, null, 2));
+
     const reply = data?.choices?.[0]?.message?.content || "No response";
 
     res.json({
@@ -48,6 +42,7 @@ console.log(JSON.stringify(data, null, 2));
 
   } catch (error) {
     console.log(error);
+
     res.status(500).json({
       choices: [{
         message: { content: "Server error 😢" }
@@ -56,6 +51,7 @@ console.log(JSON.stringify(data, null, 2));
   }
 });
 
+// اجرا
 app.listen(3000, () =>
   console.log("AI Server running on http://localhost:3000")
 );
