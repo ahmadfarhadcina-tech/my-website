@@ -23,16 +23,33 @@ body{
   to{opacity:1;}
 }
 
+/* ===== PROFILE BOX (CLICKABLE) ===== */
 .profile-box{
   position:fixed;
   top:10px;
   left:10px;
+
+  display:flex;
+  align-items:center;
+  gap:10px;
+
   background:#111;
-  padding:10px 12px;
+  padding:8px 12px;
   border-radius:12px;
   border:1px solid #00ff99;
+
   box-shadow:0 0 10px rgba(0,255,153,0.3);
-  z-index:9999;
+  z-index:100000;
+
+  text-decoration:none;
+  color:white;
+}
+
+.profile-box img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid #00ff99;
 }
 
 .profile-box h4{
@@ -46,7 +63,7 @@ body{
   font-size:11px;
   color:#ccc;
 }
-  
+
 /* splash */
 #splash{
 position:fixed;
@@ -185,14 +202,16 @@ color:#ccc;
 
 <h1>🎮 Cina Games</h1>
 
-  <div id="about-creator" class="section">
-  <h2>👤 About Creator</h2>
-  <p>
-    This website is created by Cina Games developer. Passionate about gaming, apps and web development.
-  </p>
-</div>
+<!-- PROFILE (CLICKABLE) -->
+<a href="about-creator.html" class="profile-box">
+  <img src="profile.jpg">
+  <div>
+    <h4>Cina</h4>
+    <p>Creator of Cina Games</p>
+  </div>
+</a>
 
-  <div class="navbar">
+<div class="navbar">
 <a href="#home">Home</a>
 <a href="games.html">Games</a>
 <a href="about.html">About</a>
@@ -229,9 +248,6 @@ setTimeout(function(){
   sound.play();
 },5000);
 </script>
-<div class="profile-box">
-  <h4>👤 Cina</h4>
-  <p>Creator of Cina Games</p>
-</div>
+
 </body>
 </html>
