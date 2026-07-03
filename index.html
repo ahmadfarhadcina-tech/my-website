@@ -17,13 +17,12 @@ body{
   animation: pageShow 1s ease-in forwards;
 }
 
-/* page animation */
 @keyframes pageShow{
   from{opacity:0;}
   to{opacity:1;}
 }
 
-/* ===== PROFILE BOX (CLICKABLE) ===== */
+/* ===== PROFILE BOX ===== */
 .profile-box{
   position:fixed;
   top:10px;
@@ -107,15 +106,8 @@ animation:showText 1s forwards;
 animation-delay:1.5s;
 }
 
-@keyframes showText{
-from{opacity:0;}
-to{opacity:1;}
-}
-
-@keyframes zoom{
-from{transform:scale(1);}
-to{transform:scale(1.1);}
-}
+@keyframes showText{ from{opacity:0;} to{opacity:1;} }
+@keyframes zoom{ from{transform:scale(1);} to{transform:scale(1.1);} }
 
 @keyframes fadeSplash{
 0%{opacity:1;}
@@ -123,13 +115,7 @@ to{transform:scale(1.1);}
 100%{opacity:0;visibility:hidden;pointer-events:none;}
 }
 
-h1{
-text-align:center;
-color:#00ff99;
-margin:20px 0;
-font-size:28px;
-}
-
+/* navbar */
 .navbar{
 display:flex;
 justify-content:center;
@@ -151,6 +137,7 @@ border-radius:8px;
 .telegram{background:#0088cc!important;}
 .youtube{background:#ff0000!important;}
 
+/* hero */
 .hero{
 padding:40px 20px;
 background:#111;
@@ -160,6 +147,7 @@ text-align:center;
 .hero h2{color:#00ff99;}
 .hero p{color:#ccc;}
 
+/* menu */
 .menu{
 display:grid;
 grid-template-columns:repeat(2,1fr);
@@ -189,6 +177,81 @@ text-align:center;
 color:#ccc;
 }
 
+/* ===== FLOAT AI CHAT ===== */
+.ai-float{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  background:#00ff99;
+
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  font-size:24px;
+  cursor:pointer;
+  z-index:99999;
+
+  box-shadow:0 0 15px rgba(0,255,153,0.5);
+}
+
+.ai-panel{
+  position:fixed;
+  bottom:90px;
+  right:20px;
+
+  width:320px;
+  height:420px;
+  background:#111;
+  border:1px solid #00ff99;
+  border-radius:15px;
+
+  display:none;
+  flex-direction:column;
+  z-index:99999;
+}
+
+.ai-header{
+  background:#00ff99;
+  color:black;
+  padding:10px;
+  display:flex;
+  justify-content:space-between;
+  font-weight:bold;
+}
+
+.chat-box{
+  flex:1;
+  padding:10px;
+  overflow:auto;
+  color:white;
+}
+
+.ai-input{
+  display:flex;
+  padding:10px;
+}
+
+.ai-input input{
+  flex:1;
+  padding:8px;
+  border:none;
+  border-radius:6px;
+}
+
+.ai-input button{
+  margin-left:5px;
+  background:#00ff99;
+  border:none;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
 </style>
 </head>
 
@@ -202,7 +265,7 @@ color:#ccc;
 
 <h1>🎮 Cina Games</h1>
 
-<!-- PROFILE (CLICKABLE) -->
+<!-- PROFILE -->
 <a href="about-creator.html" class="profile-box">
   <img src="profile.jpg">
   <div>
@@ -211,6 +274,7 @@ color:#ccc;
   </div>
 </a>
 
+<!-- NAVBAR -->
 <div class="navbar">
 <a href="#home">Home</a>
 <a href="games.html">Games</a>
@@ -220,11 +284,13 @@ color:#ccc;
 <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
 <h2>Welcome to Cina Games Store 🎮</h2>
 <p>Download Android & PC games...</p>
 </div>
 
+<!-- MENU -->
 <div class="menu">
 <a href="games.html" class="box games">🎮 Games</a>
 <a href="#desc" class="box desc">📄 Description</a>
@@ -240,6 +306,26 @@ color:#ccc;
 <!-- SOUND -->
 <audio id="dingSound" src="ding.mp3"></audio>
 
+<!-- FLOAT AI BUTTON -->
+<div class="ai-float" onclick="toggleAI()">🤖</div>
+
+<!-- AI PANEL -->
+<div id="aiPanel" class="ai-panel">
+
+  <div class="ai-header">
+    🤖 Cina AI
+    <span onclick="toggleAI()">✖</span>
+  </div>
+
+  <div id="chatBox" class="chat-box"></div>
+
+  <div class="ai-input">
+    <input id="msg" placeholder="Type message...">
+    <button onclick="send()">Send</button>
+  </div>
+
+</div>
+
 <script>
 setTimeout(function(){
   document.getElementById("splash").style.display="none";
@@ -247,6 +333,37 @@ setTimeout(function(){
   sound.volume=0.6;
   sound.play();
 },5000);
+
+function toggleAI(){
+  let panel=document.getElementById("aiPanel");
+  panel.style.display = panel.style.display === "flex" ? "none" : "flex";
+}
+
+function send(){
+  let msg=document.getElementById("msg").value;
+  if(!msg) return;
+
+  let chat=document.getElementById("chatBox");
+
+  chat.innerHTML += "<p><b>You:</b> "+msg+"</p>";
+
+  let reply="🤖 I am learning...";
+
+  if(msg.includes("hi")){
+    reply="Hello 👋 I am Cina AI";
+  } else if(msg.includes("name")){
+    reply="My name is Cina AI 🤖";
+  } else if(msg.includes("game")){
+    reply="This is Cina Games 🎮";
+  }
+
+  setTimeout(()=>{
+    chat.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
+    chat.scrollTop=chat.scrollHeight;
+  },500);
+
+  document.getElementById("msg").value="";
+}
 </script>
 
 </body>
