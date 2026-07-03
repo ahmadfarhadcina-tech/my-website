@@ -75,34 +75,29 @@ button{
 </div>
 
 <script>
-function send(){
-  let msg=document.getElementById("msg").value;
-  if(!msg) return;
+function getAnswer(msg){
 
-  let chat=document.getElementById("chat");
+  if(msg.includes("سلام")) return "سلام 👋 خوش آمدی به Cina AI";
+  if(msg.includes("اسم تو چیست")) return "اسم من Cina AI 🤖 است";
+  if(msg.includes("سازنده تو کیست")) return "سازنده من Cina (احمد فرهاد سینا) است 👤";
+  if(msg.includes("این لینک برای چیست")) return "این لینک برای ورود به بخش‌های سایت Cina Games ساخته شده است 🔗";
 
-  chat.innerHTML += "<div class='msg'><b>You:</b> "+msg+"</div>";
+  if(msg.includes("wwe 2k15")) return "🎮 WWE 2K15 یک بازی کشتی کج با گرافیک خوب است";
+  if(msg.includes("gtav")) return "🎮 GTA V یک بازی جهان باز بسیار معروف است";
+  if(msg.includes("gta iv")) return "🎮 GTA IV نسخه قدیمی GTA است";
+  if(msg.includes("wwe 2k25")) return "🎮 WWE 2K25 نسخه جدید کشتی کج است";
+  if(msg.includes("watch dogs")) return "🎮 Watch Dogs بازی هک کردن است";
+  if(msg.includes("bully")) return "🎮 Bully بازی مدرسه‌ای است";
+  if(msg.includes("god of war 2")) return "🎮 God of War 2 بازی اکشن است";
 
-  let reply="🤖 I don't understand";
+  if(msg.includes("معرفی همه بازی های تو سایت")) return "🎮 سایت شامل GTA، WWE، God of War و Watch Dogs است";
+  if(msg.includes("این لینک مربوط کیست")) return "این لینک مربوط به Cina Games و پروژه‌های سینا است 🔗";
+  if(msg.includes("بخاطر چی درست شده")) return "این سایت برای معرفی و دانلود بازی‌ها ساخته شده است 🎮";
+  if(msg.includes("احمد فرهاد سینا از کجا است")) return "احمد فرهاد سینا از افغانستان 🇦🇫 است";
 
-  if(msg.includes("hi")){
-    reply="Hello 👋 I am Cina AI";
-  }
-  else if(msg.includes("name")){
-    reply="I am Cina AI 🤖";
-  }
-  else if(msg.includes("game")){
-    reply="This is Cina Games 🎮";
-  }
+  if(msg.includes("تیم عقابان")) 
+    return "تیم عقابان یک تیم فوتبال است در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر است و سازنده این سایت یکی از بازیکنان عقابان فرهاد سینا میباشد";
 
-  setTimeout(()=>{
-    chat.innerHTML += "<div class='msg ai'><b>AI:</b> "+reply+"</div>";
-    chat.scrollTop=chat.scrollHeight;
-  },500);
-
-  document.getElementById("msg").value="";
+  // 💥 این قسمت مهمه 👇
+  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
 }
-</script>
-
-</body>
-</html>
