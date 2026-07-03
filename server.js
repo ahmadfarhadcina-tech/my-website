@@ -1,16 +1,15 @@
 const express = require("express");
 const path = require("path");
-const fetch = require("node-fetch");
 
 const app = express();
 app.use(express.json());
 
-// صفحه اصلی
+// صفحه
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "index.html"));
 });
 
-// چت AI
+// chat route
 app.post("/chat", async (req, res) => {
   try {
     const message = req.body.message;
@@ -28,12 +27,25 @@ app.post("/chat", async (req, res) => {
     });
 
     const data = await response.json();
-    res.json(data);
+
+    const reply = data?.choices?.[0]?.message?.content || "No response";
+
+    res.json({
+      choices: [{
+        message: { content: reply }
+      }]
+    });
 
   } catch (error) {
-    res.status(500).json({ error: "Server Error", details: error.message });
+    console.log(error);
+    res.status(500).json({
+      choices: [{
+        message: { content: "Server error 😢" }
+      }]
+    });
   }
 });
 
-// اجرا
-app.listen(3000, () => console.log("AI Server running on http://localhost:3000"));
+app.listen(3000, () =>
+  console.log("AI Server running on http://localhost:3000")
+);
