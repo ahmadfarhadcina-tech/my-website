@@ -83,6 +83,112 @@ function getAnswer(msg){
 
   msg = msg.toLowerCase();
 
+  // ===== GREET =====
+  if(msg.includes("سلام"))
+    return "سلام 👋 خوش آمدی به Cina AI 🤖 چطوری می‌توانم کمکت کنم؟";
+
+  // =========================
+  // 👤 NAME SYSTEM
+  // =========================
+
+  if(msg.includes("سلام من امید هستم")){
+    return "چطوری جسور جان 😎 چه کمکی می‌توانم برایت انجام بدهم؟";
+  }
+
+  if(msg.includes("سلام من رشاد هستم")){
+    return "بفرما کاپیتان جهانگیر 👑⚽ خوش آمدی 😎";
+  }
+
+  if(msg.includes("سلام من نجات هستم")){
+    return "بفرمایید شاهین جان 🦅 چطوری می‌توانم کمک کنم؟";
+  }
+
+  if(msg.includes("سلام من عابدین هستم") || msg.includes("من عاب الدین هستم")){
+    return "بفرما مبارز جان ⚔️ چه کاری از دستم ساخته است؟";
+  }
+
+  if(msg.includes("سلام من فرهاد هستم")){
+    return "سلام سینا جان 👤 سازنده عزیز 🤖 خوش آمدی";
+  }
+
+  if(msg.includes("سلام من امرالدین هستم")){
+    return "بفرما شریفی جان 😎 خوش آمدی به Cina AI";
+  }
+
+  if(msg.includes("سلام من جواد هستم")){
+    return "بفرما آریان جان 👋 خوش آمدی 😎";
+  }
+
+  if(msg.includes("سلام من مجیب هستم")){
+    return "بفرما سرفراز جان 💪 خوش آمدی به Cina AI 🤖";
+  }
+
+  // ===== TEAM =====
+  if(msg.includes("در مورد تیم عقابان معلومات بده"))
+    return "تیم عقابان ⚽ یک تیم فوتبال در جوزجان است و کاپیتان آن جهانگیر 👑 می‌باشد";
+
+  // ===== DEFAULT =====
+  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
+}
+
+  // ===== GREET =====
+  if(msg.includes("سلام") || msg.includes("hi") || msg.includes("hello"))
+    return "سلام 👋 خوش آمدی به Cina AI 🤖";
+
+  // ===== ABOUT AI =====
+  if(msg.includes("اسم تو چیست"))
+    return "اسم من Cina AI 🤖 است";
+
+  if(msg.includes("تو کی هستی"))
+    return "من یک هوش مصنوعی ساده هستم که برای کمک به تو ساخته شده‌ام 🤖";
+
+  if(msg.includes("سازنده تو کیست"))
+    return "سازنده من احمد فرهاد سینا 👤 است";
+
+  // ===== WEBSITE =====
+  if(msg.includes("این سایت برای چیست"))
+    return "این سایت Cina Games 🎮 برای معرفی و دانلود بازی‌ها ساخته شده است";
+
+  if(msg.includes("بخاطر چی ساخته شده"))
+    return "برای سرگرمی و معرفی بازی‌ها ساخته شده 🎮";
+
+  // ===== GAMES =====
+  if(msg.includes("gta v"))
+    return "🎮 GTA V یک بازی جهان باز خیلی معروف است";
+
+  if(msg.includes("gta iv"))
+    return "🎮 GTA IV نسخه قدیمی GTA است";
+
+  if(msg.includes("wwe 2k15"))
+    return "🎮 WWE 2K15 بازی کشتی کج است";
+
+  if(msg.includes("wwe 2k25"))
+    return "🎮 WWE 2K25 نسخه جدید کشتی کج است";
+
+  if(msg.includes("watch dogs"))
+    return "🎮 Watch Dogs بازی هک و اکشن است";
+
+  if(msg.includes("bully"))
+    return "🎮 Bully بازی مدرسه‌ای از Rockstar است";
+
+  if(msg.includes("god of war"))
+    return "🎮 God of War بازی اکشن افسانه‌ای است";
+
+  // ===== COUNTRY =====
+  if(msg.includes("افغانستان"))
+    return "🇦🇫 افغانستان کشور زیبایی است";
+
+  if(msg.includes("جوزجان"))
+    return "جوزجان یکی از ولایت‌های افغانستان است";
+
+  // ===== TEAM =====
+  if(msg.includes("تیم عقابان"))
+    return "تیم عقابان یک تیم فوتبال در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر است و یکی از بازیکنان آن فرهاد سینا می‌باشد";
+
+  // ===== UNKNOWN =====
+  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
+}
+
   if(msg.includes("سلام")) return "سلام 👋 خوش آمدی به Cina AI";
   if(msg.includes("اسم تو چیست")) return "اسم من Cina AI 🤖 است";
   if(msg.includes("سازنده تو کیست")) return "سازنده من احمد فرهاد سینا است 👤";
