@@ -10,8 +10,17 @@ app.get("/", (req, res) => {
 });
 
 // chat route
-app.post("/chat", async (req, res) => {
-  try {
+app.post("/chat", (req, res) => {
+  console.log("message received:", req.body);
+
+  res.json({
+    choices: [{
+      message: {
+        content: "سلام 👋 سرور کار می‌کند"
+      }
+    }]
+  });
+});
     const message = req.body.message;
 
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
