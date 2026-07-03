@@ -1,297 +1,267 @@
-<!DOCTYPE html>  <html>  
-<head>  
-  <meta charset="UTF-8">  
-  <title>Cina Games</title>    <style>  
-  
-/* ===== BODY ===== */  
-body{  
-  margin:0;  
-  background:#0f0f0f;  
-  color:white;  
-  font-family:Arial,sans-serif;  
-  padding-bottom:70px;  
-  opacity:0;  
-  animation: pageShow 1s ease-in forwards;  
-}  
-  
-   .ai-box{  
-  margin:20px auto;  
-  max-width:700px;  
-  background:#111;  
-  padding:15px;  
-  border-radius:15px;  
-  border-left:4px solid #00ff99;  
-  box-shadow:0 0 15px rgba(0,255,153,0.1);  
-}  
-  
-.ai-chat{  
-  text-align:center;  
-  margin:15px;  
-}  
-  
-.ai-chat input{  
-  width:70%;  
-  max-width:500px;  
-  padding:10px;  
-  border-radius:8px;  
-  border:none;  
-}  
-  
-.ai-chat button{  
-  padding:10px 15px;  
-  background:#00ff99;  
-  border:none;  
-  border-radius:8px;  
-  cursor:pointer;  
-  margin-left:8px;  
-}  
-      
-.ai-box h3{  
-  color:#00ff99;  
-  margin-bottom:10px;  
-}   
-      
-/* صفحه با نرم باز شدن */  
-@keyframes pageShow{  
-  from{opacity:0;}  
-  to{opacity:1;}  
-}  
-  
-/* ===== SPLASH SCREEN ===== */  
-#splash{  
-position:fixed;  
-top:0;  
-left:0;  
-width:100%;  
-height:100%;  
-background:radial-gradient(circle,#1a1a1a,#000);  
-  
-display:flex;  
-justify-content:center;  
-align-items:center;  
-flex-direction:column;  
-  
-z-index:99999;  
-  
-animation: fadeSplash 5s forwards;  
-}  
-  
-/* TITLE */  
-#splash h1{  
-margin:0;  
-font-size:95px;  
-color:#00ff99;  
-text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;  
-  
-opacity:0;  
-animation: zoom 1s infinite alternate, showText 1s forwards;  
-  
-/* ⛔ مشکل تو اینجا بود → delay درست نبود */  
-animation-delay: 1s;  
-text-align:center;  
-}  
-  
-/* TEXT */  
-#splash p{  
-margin-top:20px;  
-font-size:26px;  
-color:white;  
-letter-spacing:2px;  
-text-align:center;  
-  
-opacity:0;  
-animation: showText 1s forwards;  
-animation-delay: 1.5s;  
-}  
-  
-/* ظاهر شدن نرم */  
-@keyframes showText{  
-  from{opacity:0;}  
-  to{opacity:1;}  
-}  
-  
-/* zoom */  
-@keyframes zoom{  
-from{transform:scale(1);}  
-to{transform:scale(1.1);}  
-}  
-  
-/* fade splash */  
-@keyframes fadeSplash{  
-0%{opacity:1;}  
-80%{opacity:1;}  
-100%{opacity:0; visibility:hidden; pointer-events:none;}  
-}  
-  
-/* ===== HEADER ===== */  
-h1{  
-  text-align:center;  
-  color:#00ff99;  
-  margin:20px 0;  
-  font-size:28px;  
-}  
-  
-/* ===== NAVBAR ===== */  
-.navbar{  
-  display:flex;  
-  justify-content:center;  
-  align-items:center;  
-  gap:12px;  
-  padding:12px;  
-  background:#111;  
-  position:sticky;  
-  top:0;  
-  z-index:1000;  
-  flex-wrap:wrap;  
-}  
-  
-.navbar a{  
-  color:white;  
-  text-decoration:none;  
-  padding:8px 12px;  
-  background:#007bff;  
-  border-radius:8px;  
-}  
-  
-.telegram{ background:#0088cc !important; font-weight:bold; }  
-.youtube{ background:#ff0000 !important; font-weight:bold; }  
-  
-/* ===== HERO ===== */  
-.hero{  
-  padding:40px 20px;  
-  background:#111;  
-  text-align:center;  
-}  
-  
-.hero h2{ color:#00ff99; }  
-.hero p{ color:#ccc; }  
-  
-/* ===== MENU ===== */  
-.menu{  
-  display:grid;  
-  grid-template-columns:repeat(2, 1fr);  
-  gap:15px;  
-  padding:20px;  
-  max-width:500px;  
-  margin:auto;  
-}  
-  
-.box{  
-  height:120px;  
-  border-radius:18px;  
-  display:flex;  
-  flex-direction:column;  
-  justify-content:center;  
-  align-items:center;  
-  text-decoration:none;  
-  font-size:18px;  
-  font-weight:bold;  
-  transition:0.2s;  
-}  
-  
-.box:hover{ transform:scale(1.07); }  
-  
-.games{ background:linear-gradient(135deg,#00ff99,#00cc77); color:black; }  
-.desc{ background:linear-gradient(135deg,#007bff,#0056b3); }  
-.alerts{ background:linear-gradient(135deg,#ffcc00,#ff9900); color:black; }  
-.settings{ background:linear-gradient(135deg,#ff4444,#cc0000); }  
-  
-/* ===== SECTIONS ===== */  
-.section{  
-  padding:20px;  
-  text-align:center;  
-  color:#ccc;  
-}  
-  
-/* ===== BOTTOM NAV ===== */  
-.bottom-nav{  
-  position:fixed;  
-  bottom:0;  
-  left:0;  
-  width:100%;  
-  display:flex;  
-  justify-content:space-around;  
-  background:#111;  
-  border-top:1px solid #00ff99;  
-}  
-  
-.bottom-nav a{  
-  flex:1;  
-  text-align:center;  
-  padding:10px;  
-  color:white;  
-  text-decoration:none;  
-  font-size:12px;  
-}  
-  
-  </style>  </head>  <body>  <!-- SPLASH -->  <div id="splash">  
-  <h1>🎮 Cina Games</h1>  
-  <p>Welcome to Cina Games</p>  
-</div>  <!-- MAIN -->  <h1>🎮 Cina Games</h1>    <h2>👤 About Creator</h2>  
-  <p>  
-    Cina (Farhad) - Creator of Cina Games 🎮  
-  </p>  <a href="about-creator.html">View Full Profile</a>
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Cina Games</title>
 
-</div>  
-<div class="navbar">  
-  <a href="#home">Home</a>  
-  <a href="games.html">Games</a>  
-  <a href="about.html">About</a>  
-  <a href="contact.html">Contact</a>  <a class="telegram" href="https://t.me/afghangamerx" target="_blank">Telegram</a>
-<a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
+<style>
 
-</div>  <div id="home" class="hero">  
-  <h2>Welcome to Cina Games Store 🎮</h2>  
-  <p>Download Android & PC games...</p>  
-</div>  <div class="menu">  
-  <a href="games.html" class="box games">🎮<br>Games</a>  
-  <a href="#desc" class="box desc">📄<br>Description</a>  
-  <a href="#alerts" class="box alerts">🔔<br>Alerts</a>  
-  <a href="#settings" class="box settings">⚙️<br>Settings</a>  
-</div> 
-    <div class="ai-chat">  
-  <input id="msg" type="text" placeholder="Ask Cina AI...">  
-  <button onclick="send()">Send</button>  
-</div> 
-    <div class="ai-box">  
-  <h3>🤖 AI Response</h3>  
-  <p id="out">Here will show AI answer...</p>  
-</div> 
-  
-    <div id="desc" class="section">  
-  <h2>📄 About Cina Games</h2>  
-</div>  <div id="alerts" class="section">  
-  <h2>🔔 Alerts</h2>  
-</div>  <div id="settings" class="section">  
-  <h2>⚙️ Settings</h2>  
-</div>  <!-- 🔊 SOUND FIX -->  <audio id="dingSound" src="ding.mp3"></audio>
+/* ===== BODY ===== */
+body{
+  margin:0;
+  background:#0f0f0f;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding-bottom:70px;
+  opacity:0;
+  animation: pageShow 1s ease-in forwards;
+}
 
-<script>  
-setTimeout(function(){  
-  
-  document.getElementById("splash").style.display = "none";  
-  
-  // 🔊 صدا وقتی اسپلش بسته شد  
-  let sound = document.getElementById("dingSound");  
-  sound.volume = 0.6;  
-  sound.play();  
-  
-}, 5000);  
-</script>  <input id="msg" placeholder="Ask AI...">  
-<button onclick="send()">Send</button>  <p id="out"></p>  <script>  
-async function send(){  
-  let msg = document.getElementById("msg").value;  
-  
-  let res = await fetch("http://localhost:3000/chat", {  
-    method:"POST",  
-    headers:{ "Content-Type":"application/json" },  
-    body: JSON.stringify({ message: msg })  
-  });  
-  
-  let data = await res.json();  
-  
-  document.getElementById("out").innerText =  
-    data.choices[0].message.content;  
-}  
-</script>  </body>  
-</html> 
+.ai-box{
+  margin:20px auto;
+  max-width:700px;
+  background:#111;
+  padding:15px;
+  border-radius:15px;
+  border-left:4px solid #00ff99;
+  box-shadow:0 0 15px rgba(0,255,153,0.1);
+}
+
+.ai-chat{
+  text-align:center;
+  margin:15px;
+}
+
+.ai-chat input{
+  width:70%;
+  max-width:500px;
+  padding:10px;
+  border-radius:8px;
+  border:none;
+}
+
+.ai-chat button{
+  padding:10px 15px;
+  background:#00ff99;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+  margin-left:8px;
+}
+
+.ai-box h3{
+  color:#00ff99;
+  margin-bottom:10px;
+}
+
+/* page animation */
+@keyframes pageShow{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* splash */
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1a1a1a,#000);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+z-index:99999;
+
+animation: fadeSplash 5s forwards;
+}
+
+#splash h1{
+margin:0;
+font-size:95px;
+color:#00ff99;
+text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
+
+opacity:0;
+animation: zoom 1s infinite alternate, showText 1s forwards;
+animation-delay: 1s;
+text-align:center;
+}
+
+#splash p{
+margin-top:20px;
+font-size:26px;
+color:white;
+letter-spacing:2px;
+text-align:center;
+
+opacity:0;
+animation: showText 1s forwards;
+animation-delay: 1.5s;
+}
+
+@keyframes showText{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+@keyframes fadeSplash{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0; visibility:hidden; pointer-events:none;}
+}
+
+/* rest design unchanged */
+h1{text-align:center;color:#00ff99;margin:20px 0;font-size:28px;}
+
+.navbar{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  padding:12px;
+  background:#111;
+  position:sticky;
+  top:0;
+}
+
+.navbar a{
+  color:white;
+  text-decoration:none;
+  padding:8px 12px;
+  background:#007bff;
+  border-radius:8px;
+}
+
+.telegram{ background:#0088cc !important; }
+.youtube{ background:#ff0000 !important; }
+
+.hero{
+  padding:40px 20px;
+  background:#111;
+  text-align:center;
+}
+
+.hero h2{ color:#00ff99; }
+.hero p{ color:#ccc; }
+
+.menu{
+  display:grid;
+  grid-template-columns:repeat(2, 1fr);
+  gap:15px;
+  padding:20px;
+  max-width:500px;
+  margin:auto;
+}
+
+.box{
+  height:120px;
+  border-radius:18px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-weight:bold;
+}
+
+.games{ background:#00ff99; color:black; }
+.desc{ background:#007bff; }
+.alerts{ background:#ffcc00; color:black; }
+.settings{ background:#ff4444; }
+
+.section{
+  padding:20px;
+  text-align:center;
+  color:#ccc;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+  <h1>🎮 Cina Games</h1>
+  <p>Welcome to Cina Games</p>
+</div>
+
+<h1>🎮 Cina Games</h1>
+
+<div class="navbar">
+  <a href="#home">Home</a>
+  <a href="games.html">Games</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
+  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
+</div>
+
+<div class="hero">
+  <h2>Welcome to Cina Games Store 🎮</h2>
+  <p>Download Android & PC games...</p>
+</div>
+
+<div class="menu">
+  <a href="games.html" class="box games">🎮 Games</a>
+  <a href="#desc" class="box desc">📄 Description</a>
+  <a href="#alerts" class="box alerts">🔔 Alerts</a>
+  <a href="#settings" class="box settings">⚙️ Settings</a>
+</div>
+
+<!-- AI CHAT -->
+<div class="ai-chat">
+  <input id="msg" placeholder="Ask Cina AI...">
+  <button onclick="send()">Send</button>
+</div>
+
+<div class="ai-box">
+  <h3>🤖 AI Response</h3>
+  <p id="out">Here will show AI answer...</p>
+</div>
+
+<!-- SECTIONS -->
+<div id="desc" class="section"><h2>📄 About Cina Games</h2></div>
+<div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
+<div id="settings" class="section"><h2>⚙️ Settings</h2></div>
+
+<!-- SOUND -->
+<audio id="dingSound" src="ding.mp3"></audio>
+
+<script>
+setTimeout(function(){
+  document.getElementById("splash").style.display = "none";
+  let sound = document.getElementById("dingSound");
+  sound.volume = 0.6;
+  sound.play();
+}, 5000);
+</script>
+
+<script>
+async function send(){
+  let msg = document.getElementById("msg").value;
+  if(!msg) return;
+
+  document.getElementById("out").innerText = "Loading...";
+
+  let res = await fetch("http://127.0.0.1:3000/chat", {
+    method:"POST",
+    headers:{ "Content-Type":"application/json" },
+    body: JSON.stringify({ message: msg })
+  });
+
+  let data = await res.json();
+
+  document.getElementById("out").innerText =
+    data.choices[0].message.content;
+}
+</script>
+
+</body>
+</html>
