@@ -12,7 +12,6 @@ body{
   font-family:Arial;
 }
 
-/* header */
 .header{
   text-align:center;
   padding:15px;
@@ -21,7 +20,6 @@ body{
   font-size:20px;
 }
 
-/* chat area */
 .chat-box{
   max-width:600px;
   margin:auto;
@@ -30,7 +28,6 @@ body{
   overflow:auto;
 }
 
-/* messages */
 .msg{
   padding:8px;
   margin:8px 0;
@@ -42,7 +39,6 @@ body{
   color:#00ff99;
 }
 
-/* input */
 .input-box{
   position:fixed;
   bottom:10px;
@@ -84,66 +80,33 @@ function getAnswer(msg){
   msg = msg.toLowerCase();
 
   // ===== GREET =====
-  if(msg.includes("سلام"))
-    return "سلام 👋 خوش آمدی به Cina AI 🤖 چطوری می‌توانم کمکت کنم؟";
-
-  // =========================
-  // 👤 NAME SYSTEM
-  // =========================
-
-  if(msg.includes("من امید هستم")){
-    return "چطوری جسور جان 😎 چه کمکی می‌توانم برایت انجام بدهم؟";
-  }
-
-  if(msg.includes("من رشاد هستم")){
-    return "بفرما کاپیتان جهانگیر 👑⚽ خوش آمدی 😎";
-  }
-
-  if(msg.includes("من نجات هستم")){
-    return "بفرمایید شاهین جان 🦅 چطوری می‌توانم کمک کنم؟";
-  }
-
-  if(msg.includes("من عابدین هستم") || msg.includes("من عاب الدین هستم")){
-    return "بفرما مبارز جان ⚔️ چه کاری از دستم ساخته است؟";
-  }
-
-  if(msg.includes("من فرهاد هستم")){
-    return "سلام سینا جان 👤 سازنده عزیز 🤖 خوش آمدی";
-  }
-
-  if(msg.includes("من امرالدین هستم")){
-    return "بفرما شریفی جان 😎 خوش آمدی به Cina AI";
-  }
-
-  if(msg.includes("من جواد هستم")){
-    return "بفرما آریان جان 👋 خوش آمدی 😎";
-  }
-
-  if(msg.includes("من مجیب هستم")){
-    return " به کیرم که کی هستی کیرم ده کونت Cina AI 🤖";
-  }
-
-  // ===== TEAM =====
-  if(msg.includes("در مورد تیم عقابان معلومات بده"))
-    return "تیم عقابان ⚽ یک تیم فوتبال در جوزجان است و کاپیتان آن جهانگیر 👑 می‌باشد";
-
-  // ===== DEFAULT =====
-  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
-}
-
-  // ===== GREET =====
   if(msg.includes("سلام") || msg.includes("hi") || msg.includes("hello"))
     return "سلام 👋 خوش آمدی به Cina AI 🤖";
 
-  // ===== ABOUT AI =====
-  if(msg.includes("اسم تو چیست"))
-    return "اسم من Cina AI 🤖 است";
+  // ===== NAME SYSTEM =====
+  if(msg.includes("من امید هستم"))
+    return "چطوری جسور جان 😎 چی کمکی می‌توانم برایت انجام بدهم؟";
 
-  if(msg.includes("تو کی هستی"))
-    return "من یک هوش مصنوعی ساده هستم که برای کمک به تو ساخته شده‌ام 🤖";
+  if(msg.includes("من رشاد هستم"))
+    return "بفرما کاپیتان جهانگیر 👑⚽ خوش آمدی 😎";
 
-  if(msg.includes("سازنده تو کیست"))
-    return "سازنده من احمد فرهاد سینا 👤 است";
+  if(msg.includes("من نجات هستم"))
+    return "بفرمایید شاهین جان 🦅 چطوری می‌توانم کمک کنم؟";
+
+  if(msg.includes("من عابدین هستم") || msg.includes("من عاب الدین هستم"))
+    return "بفرما مبارز جان ⚔️ چه کاری از دستم ساخته است؟";
+
+  if(msg.includes("من فرهاد هستم"))
+    return "سلام سینا جان 👤 سازنده عزیز 🤖 خوش آمدی";
+
+  if(msg.includes("من امرالدین هستم"))
+    return "بفرما شریفی جان 😎 خوش آمدی به Cina AI";
+
+  if(msg.includes("من جواد هستم"))
+    return "بفرما آریان جان 👋 خوش آمدی 😎";
+
+  if(msg.includes("من مجیب هستم"))
+    return"به کیرم که کی هستی لاشی اونجا برم میکنمت";
 
   // ===== WEBSITE =====
   if(msg.includes("این سایت برای چیست"))
@@ -183,31 +146,9 @@ function getAnswer(msg){
 
   // ===== TEAM =====
   if(msg.includes("تیم عقابان"))
-    return "تیم عقابان یک تیم فوتبال در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر است و یکی از بازیکنان آن فرهاد سینا می‌باشد";
+    return "تیم عقابان ⚽ در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر 👑 می‌باشد";
 
-  // ===== UNKNOWN =====
-  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
-}
-
-  if(msg.includes("سلام")) return "سلام 👋 خوش آمدی به Cina AI";
-  if(msg.includes("اسم تو چیست")) return "اسم من Cina AI 🤖 است";
-  if(msg.includes("سازنده تو کیست")) return "سازنده من احمد فرهاد سینا است 👤";
-  if(msg.includes("این لینک")) return "این لینک برای بخش‌های سایت Cina Games است 🔗";
-
-  if(msg.includes("wwe 2k15")) return "🎮 WWE 2K15 یک بازی کشتی کج است";
-  if(msg.includes("gtav")) return "🎮 GTA V یک بازی جهان باز معروف است";
-  if(msg.includes("gta iv")) return "🎮 GTA IV نسخه قدیمی GTA است";
-  if(msg.includes("wwe 2k25")) return "🎮 WWE 2K25 نسخه جدید کشتی کج است";
-  if(msg.includes("watch dogs")) return "🎮 Watch Dogs بازی هک کردن است";
-  if(msg.includes("bully")) return "🎮 Bully بازی مدرسه‌ای است";
-  if(msg.includes("god of war 2")) return "🎮 God of War 2 بازی اکشن است";
-
-  if(msg.includes("معرفی همه بازی")) return "🎮 سایت شامل GTA، WWE، God of War و Watch Dogs است";
-  if(msg.includes("احمد فرهاد")) return "احمد فرهاد سینا از افغانستان 🇦🇫 است";
-
-  if(msg.includes("تیم عقابان"))
-    return "تیم عقابان یک تیم فوتبال است در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر است و سازنده این سایت یکی از بازیکنان عقابان فرهاد سینا میباشد";
-
+  // ===== DEFAULT =====
   return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
 }
 
@@ -219,7 +160,7 @@ function send(){
 
   chat.innerHTML += "<div class='msg'><b>You:</b> " + msg + "</div>";
 
-  let reply = getAnswer(msg); // 💥 مهم
+  let reply = getAnswer(msg);
 
   setTimeout(()=>{
     chat.innerHTML += "<div class='msg ai'><b>AI:</b> " + reply + "</div>";
