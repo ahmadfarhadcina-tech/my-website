@@ -1,556 +1,389 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cina Games</title>
 
 <style>
-/* ===== انیمیشن ورود روان به کل صفحه ===== */
-@keyframes pageEnter {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-    filter: blur(4px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-    filter: blur(0);
-  }
-}
 
 /* ===== BODY ===== */
-body {
-  margin: 0;
-  background: radial-gradient(circle at top, #161616, #0b0b0b, #000);
-  color: white;
-  font-family: Arial, sans-serif;
-  padding-bottom: 70px;
-  overflow-x: hidden;
-  animation: pageEnter 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+body{
+  margin:0;
+  background:#0f0f0f;
+  color:white;
+  font-family:Arial,sans-serif;
+  padding-bottom:70px;
+  opacity:0;
+  animation: pageShow 1s ease-in forwards;
 }
 
-/* ===== SPLASH SCREEN (انیمیشن جدید و فوق تیت) ===== */
-#splash {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, #111111, #000000);
+@keyframes pageShow{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* ===== PROFILE BOX (اصلاح شد: دیگر فیکس و مزاحم نیست) ===== */
+.profile-container {
+  padding: 15px 0 0 15px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  z-index: 999999;
-  animation: fadeSplash 0.5s ease forwards;
-  animation-delay: 4.5s;
 }
 
-/* انیمیشن زوم و تپش نئونی متن اصلی */
-#splash h1 {
-  margin: 0;
-  font-size: 60px;
-  color: #00ff99;
+.profile-box{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  background:#111;
+  padding:8px 12px;
+  border-radius:12px;
+  border:1px solid #00ff99;
+
+  box-shadow:0 0 10px rgba(0,255,153,0.3);
+  z-index:100000;
+
+  text-decoration:none;
+  color:white;
+}
+
+.profile-box img{
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  border:2px solid #00ff99;
+}
+
+.profile-box h4{
+  margin:0;
+  color:#00ff99;
+  font-size:14px;
+}
+
+.profile-box p{
+  margin:0;
+  font-size:11px;
+  color:#ccc;
+}
+
+/* ===== SPLASH SCREEN (اصلاح شد: کاملاً وسط‌چین و تیت در اسکرین گوشی) ===== */
+#splash{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:radial-gradient(circle,#1a1a1a,#000);
+
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+
+z-index:99999;
+
+animation: fadeSplash 5s forwards;
+}
+
+/* باکس داخلی برای مهار و تراز دقیق نوشته‌ها در مرکز */
+.splash-content {
   text-align: center;
-  font-weight: 900;
-  letter-spacing: 2px;
-  animation: splashIntro 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
-            neonPulse 1.5s ease-in-out infinite alternate;
+  padding: 20px;
 }
 
-/* انیمیشن متن Welcome و اخطار امتحانات */
-#splash p {
-  margin-top: 25px;
-  font-size: 18px;
-  color: #ffffff;
-  text-align: center;
-  max-width: 85%;
-  line-height: 1.6;
-  opacity: 0;
-  animation: splashIntro 1s ease forwards;
-  animation-delay: 0.5s;
+#splash h1{
+margin:0 0 20px 0;
+font-size:55px; /* اندازه استاندارد برای گوشی */
+color:#00ff99;
+text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
+
+opacity:0;
+animation: zoom 1s infinite alternate, showText 1s forwards;
+animation-delay:1s;
+text-align:center;
 }
 
-/* کی‌فریم ورود ارتجاعی متن‌ها */
-@keyframes splashIntro {
-  from {
-    opacity: 0;
-    transform: scale(0.7) translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+#splash p{
+margin:0;
+font-size:18px;
+color:white;
+letter-spacing:2px;
+text-align:center;
+line-height: 1.6;
+
+opacity:0;
+animation:showText 1s forwards;
+animation-delay:1.5s;
 }
 
-/* کی‌فریم تپش نئون گیمینگ */
-@keyframes neonPulse {
-  from {
-    text-shadow: 0 0 10px rgba(0, 255, 153, 0.5), 0 0 20px rgba(0, 255, 153, 0.3);
-  }
-  to {
-    text-shadow: 0 0 25px #00ff99, 0 0 45px #00ff99, 0 0 70px rgba(0, 255, 153, 0.6);
-    transform: scale(1.02);
-  }
+@keyframes showText{ from{opacity:0;} to{opacity:1;} }
+@keyframes zoom{ from{transform:scale(1);} to{transform:scale(1.1);} }
+
+@keyframes fadeSplash{
+0%{opacity:1;}
+80%{opacity:1;}
+100%{opacity:0;visibility:hidden;pointer-events:none;}
 }
 
-/* محو شدن اسپلش */
-@keyframes fadeSplash {
-  to { opacity: 0; visibility: hidden; pointer-events: none; }
+/* navbar */
+.navbar{
+display:flex;
+justify-content:center;
+gap:12px;
+padding:12px;
+background:#111;
+position:sticky;
+top:0;
 }
 
-/* ===== PROFILE BOX (شیک و شیشه‌ای) ===== */
-.profile-box {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(17, 17, 17, 0.6);
-  backdrop-filter: blur(10px);
-  padding: 8px 14px;
-  border-radius: 50px;
-  border: 1px solid rgba(0, 255, 153, 0.3);
-  box-shadow: 0 5px 15px rgba(0,255,153,0.1);
-  z-index: 100000;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
+.navbar a{
+color:white;
+text-decoration:none;
+padding:8px 12px;
+background:#007bff;
+border-radius:8px;
 }
 
-.profile-box:hover {
-  transform: scale(1.05);
-  border-color: #00ff99;
-  box-shadow: 0 5px 20px rgba(0,255,153,0.3);
+.telegram{background:#0088cc!important;}
+.youtube{background:#ff0000!important;}
+
+/* hero */
+.hero{
+padding:40px 20px;
+background:#111;
+text-align:center;
 }
 
-.profile-box img {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  border: 2px solid #00ff99;
-  object-fit: cover;
+.hero h2{color:#00ff99;}
+.hero p{color:#ccc;}
+
+/* menu */
+.menu{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+padding:20px;
+max-width:500px;
+margin:auto;
 }
 
-.profile-box div {
-  display: flex;
-  flex-direction: column;
+.box{
+height:140px;
+border-radius:18px;
+display:flex;
+justify-content:center;
+align-items:center;
+font-weight:bold;
+font-size:18px;
+text-decoration:none;
+color:white;
+transition:0.3s;
+box-shadow:0 0 10px rgba(0,0,0,0.4);
 }
 
-.profile-box h4 {
-  margin: 0;
-  color: #00ff99;
-  font-size: 13px;
+.box:hover{
+transform:scale(1.05);
 }
 
-.profile-box p {
-  margin: 0;
-  font-size: 10px;
-  color: #aaa;
+/* رنگ‌ها */
+.games{background:#00ff99;color:black;}
+.desc{background:#007bff;}
+.alerts{background:#ffcc00;color:black;}
+.settings{background:#ff4444;}
+
+.section{
+padding:20px;
+text-align:center;
+color:#ccc;
 }
 
-/* ===== MAIN HEADER ===== */
-.main-title {
-  font-size: 32px;
-  color: white;
-  text-align: center;
-  margin-top: 85px;
-  margin-bottom: 5px;
+/* ===== FLOAT AI CHAT ===== */
+.ai-float{
+position:fixed;
+bottom:20px;
+right:20px;
+
+width:55px;
+height:55px;
+border-radius:50%;
+background:#00ff99;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+font-size:24px;
+cursor:pointer;
+z-index:99999;
+
+box-shadow:0 0 15px rgba(0,255,153,0.5);
 }
 
-/* ===== EXAM ALERT BOX ===== */
-.exam-alert {
-  margin: 15px auto;
-  font-size: 14px;
-  color: #ffd54f;
-  text-align: center;
-  background: rgba(255, 213, 79, 0.08);
-  border: 1px solid rgba(255, 213, 79, 0.25);
-  padding: 12px;
-  border-radius: 12px;
-  max-width: 90%;
-  width: 460px;
-  box-sizing: border-box;
+.ai-panel{
+position:fixed;
+bottom:90px;
+right:20px;
+
+width:320px;
+height:420px;
+background:#111;
+border:1px solid #00ff99;
+border-radius:15px;
+
+display:none;
+flex-direction:column;
+z-index:99999;
 }
 
-/* ===== BIG AI CHAT BUTTON ===== */
-.ai-big-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
-  width: 90%;
-  max-width: 460px;
-  height: 52px;
-  margin: 15px auto 25px auto;
-  border-radius: 14px;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  background: linear-gradient(135deg, #007bff, #0056b3);
-  color: white;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
-  transition: 0.3s;
+.ai-header{
+background:#00ff99;
+color:black;
+padding:10px;
+display:flex;
+justify-content:space-between;
+font-weight:bold;
 }
 
-.ai-big-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(0, 123, 255, 0.5);
+.chat-box{
+flex:1;
+padding:10px;
+overflow:auto;
+color:white;
 }
 
-/* ===== NAVBAR ===== */
-.navbar {
-  display: flex;
-  justify-content: center;
-  gap: 8px;
-  padding: 12px;
-  background: rgba(17, 17, 17, 0.8);
-  backdrop-filter: blur(12px);
-  position: sticky;
-  top: 0;
-  z-index: 9999;
-  border-bottom: 1px solid rgba(255,255,255,0.05);
-  flex-wrap: wrap;
+.ai-input{
+display:flex;
+padding:10px;
 }
 
-.navbar a {
-  color: white;
-  text-decoration: none;
-  padding: 8px 14px;
-  background: #222;
-  border-radius: 8px;
-  font-size: 13px;
-  font-weight: bold;
-  transition: 0.2s;
-  border: 1px solid rgba(255,255,255,0.05);
+.ai-input input{
+flex:1;
+padding:8px;
+border:none;
+border-radius:6px;
 }
 
-.navbar a:hover {
-  background: #007bff;
-  transform: translateY(-2px);
+.ai-input button{
+margin-left:5px;
+background:#00ff99;
+border:none;
+padding:8px 10px;
+border-radius:6px;
+cursor:pointer;
 }
 
-.navbar .telegram { background: #0088cc !important; }
-.navbar .youtube { background: #ff0000 !important; }
-.navbar .telegram:hover, .navbar .youtube:hover { transform: translateY(-2px); }
-
-/* ===== HERO ===== */
-.hero {
-  padding: 35px 20px;
-  text-align: center;
-}
-
-.hero h2 {
-  color: #00ff99;
-  font-size: 24px;
-  margin-bottom: 8px;
-  text-shadow: 0 0 10px rgba(0,255,153,0.1);
-}
-
-.hero p {
-  color: #aaa;
-  font-size: 14px;
-  margin: 0;
-}
-
-/* ===== 4-BOX GRID MENU ===== */
-.menu {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 15px;
-  padding: 0 20px;
-  max-width: 480px;
-  margin: auto;
-}
-
-.box {
-  height: 120px;
-  border-radius: 18px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  font-weight: bold;
-  font-size: 16px;
-  text-decoration: none;
-  color: white;
-  transition: 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-  border: 1px solid rgba(255,255,255,0.05);
-}
-
-.box:hover {
-  transform: translateY(-5px) scale(1.02);
-}
-
-.games { background: linear-gradient(135deg, #00ff99, #00cc77); color: black; box-shadow: 0 5px 15px rgba(0, 255, 153, 0.2); }
-.desc { background: linear-gradient(135deg, #007bff, #0056b3); box-shadow: 0 5px 15px rgba(0, 123, 255, 0.2); }
-.alerts { background: linear-gradient(135deg, #ffcc00, #ffaa00); color: black; box-shadow: 0 5px 15px rgba(255, 204, 0, 0.2); }
-.settings { background: linear-gradient(135deg, #ff4444, #cc2222); box-shadow: 0 5px 15px rgba(255, 77, 77, 0.2); }
-
-/* ===== SECTIONS ===== */
-.section {
-  padding: 40px 20px;
-  text-align: center;
-  color: #ccc;
-  max-width: 600px;
-  margin: auto;
-}
-
-.section h2 {
-  color: white;
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-/* ===== FOOTER CREATOR BUTTON ===== */
-.footer-creator {
-  text-align: center;
-  margin-top: 40px;
-  margin-bottom: 20px;
-}
-
-.creator-link {
-  display: inline-block;
-  padding: 12px 30px;
-  background: #00ff99;
-  color: black;
-  text-decoration: none;
-  border-radius: 50px;
-  font-weight: bold;
-  box-shadow: 0 5px 15px rgba(0,255,153,.2);
-  transition: 0.3s;
-}
-
-.creator-link:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 25px rgba(0,255,153,.4);
-}
-
-/* ===== FLOAT AI CHAT PANEL ===== */
-.ai-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #00ff99;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 99999;
-  box-shadow: 0 5px 20px rgba(0,255,153,0.4);
-  transition: 0.3s;
-}
-
-.ai-float:hover { transform: scale(1.1) rotate(10deg); }
-
-.ai-panel {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 420px;
-  background: #111;
-  border: 1px solid #00ff99;
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  z-index: 99999;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-  overflow: hidden;
-}
-
-.ai-header {
-  background: #00ff99;
-  color: black;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-}
-
-.chat-box {
-  flex: 1;
-  padding: 15px;
-  overflow-y: auto;
-  color: white;
-  font-size: 14px;
-}
-
-.ai-input {
-  display: flex;
-  padding: 10px;
-  background: #1a1a1a;
-  border-top: 1px solid #222;
-}
-
-.ai-input input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  border-radius: 8px;
-  background: #222;
-  color: white;
-  outline: none;
-}
-
-.ai-input button {
-  margin-left: 8px;
-  background: #00ff99;
-  border: none;
-  padding: 0 15px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-weight: bold;
-}
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH SCREEN -->
 <div id="splash">
-  <h1>🎮 Cina Games</h1>
-  <p>Welcome to Cina Games<br>📚 تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p>
-</div>
-
-<!-- FLOATING PROFILE -->
-<a href="about-creator.html" class="profile-box">
-  <img src="profile.jpg" alt="Cina">
-  <div>
-    <h4>Cina</h4>
-    <p>Creator of Cina Games</p>
+  <div class="splash-content">
+    <h1>🎮 Cina Games</h1>
+    <p>Welcome to Cina Games<br>تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p>
   </div>
-</a>
-
-<!-- MAIN TITLE -->
-<h1 class="main-title">🎮 Cina Games</h1>
-
-<!-- EXAM ALERT BOX -->
-<div class="exam-alert">
-  📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
 </div>
 
-<!-- AI BIG BUTTON -->
-<a href="ai.html" class="ai-big-btn">🤖 AI Chat Page</a>
+<p style="margin-top:10px;font-size:18px;color:#ffd54f;text-align:center;">
+📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
+</p>
 
-<!-- NAVBAR -->
+<h1>🎮 Cina Games</h1>
+
+<div style="text-align:center; margin-bottom:15px;">
+  <a href="ai.html" class="box desc" style="display:inline-flex; width:90%; max-width:500px; height:50px;">🤖 AI Chat</a>
+</div>
+
+<div class="profile-container">
+  <a href="about-creator.html" class="profile-box">
+    <img src="profile.jpg">
+    <div>
+      <h4>Cina</h4>
+      <p>Creator of Cina Games</p>
+    </div>
+  </a>
+</div>
+
 <div class="navbar">
-  <a href="#home">Home</a>
-  <a href="games.html">Games</a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a class="telegram" href="https://t.me/afghangamerx" target="_blank">Telegram</a>
-  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina" target="_blank">YouTube</a>
+<a href="#home">Home</a>
+<a href="games.html">Games</a>
+<a href="about.html">About</a>
+<a href="contact.html">Contact</a>
+<a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
+<a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
 </div>
 
-<!-- HERO SECTION -->
 <div class="hero">
-  <h2>Welcome to Cina Games Store 🎮</h2>
-  <p>Download Android & PC games...</p>
+<h2>Welcome to Cina Games Store 🎮</h2>
+<p>Download Android & PC games...</p>
 </div>
 
-<!-- 4-BOX GRID MENU -->
 <div class="menu">
-  <a href="games.html" class="box games">🎮 Games</a>
-  <a href="#desc" class="box desc">📄 Description</a>
-  <a href="#alerts" class="box alerts">🔔 Alerts</a>
-  <a href="#settings" class="box settings">⚙️ Settings</a>
+<a href="games.html" class="box games">🎮 Games</a>
+<a href="#desc" class="box desc">📄 Description</a>
+<a href="#alerts" class="box alerts">🔔 Alerts</a>
+<a href="#settings" class="box settings">⚙️ Settings</a>
 </div>
 
-<!-- CONTENT SECTIONS -->
-<div id="desc" class="section">
-  <h2>📄 About Cina Games</h2>
-  <p>Welcome to the ultimate central hub for gaming downloads and setup guides.</p>
+<div id="desc" class="section"><h2>📄 About Cina Games</h2></div>
+<div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
+<div id="settings" class="section"><h2>⚙️ Settings</h2></div>
+
+<div style="text-align:center;margin-top:20px;">
+  <a href="about-creator.html"
+     style="
+       display:inline-block;
+       padding:12px 25px;
+       background:#00ff99;
+       color:black;
+       text-decoration:none;
+       border-radius:12px;
+       font-weight:bold;
+       box-shadow:0 0 10px rgba(0,255,153,.4);
+     ">
+     👤 About Creator
+  </a>
 </div>
 
-<div id="alerts" class="section">
-  <h2>🔔 Alerts</h2>
-  <p>Stay tuned! Important news and application updates will be displayed right here.</p>
-</div>
-
-<div id="settings" class="section">
-  <h2>⚙️ Settings</h2>
-  <p>Customize your experience. Site configuration options are coming soon.</p>
-</div>
-
-<!-- FOOTER CREATOR BUTTON -->
-<div class="footer-creator">
-  <a href="about-creator.html" class="creator-link">👤 About Creator</a>
-</div>
-
-<!-- FLOATING AI CHAT TRIGGER & PANEL -->
-<div class="ai-float" onclick="toggleAI()">🤖</div>
-
-<div id="aiPanel" class="ai-panel">
-  <div class="ai-header">
-    <span>🤖 Cina AI Chat</span>
-    <span style="cursor:pointer;" onclick="toggleAI()">✕</span>
-  </div>
-  <div id="chatBox" class="chat-box">
-    <p style="color:#aaa;">تایپ کنید و با هوش مصنوعی گپ بزنید...</p>
-  </div>
-  <div class="ai-input">
-    <input type="text" id="msg" placeholder="پیام خود را بنویسید..." onkeypress="if(event.key === 'Enter') send()">
-    <button onclick="send()">ارسال</button>
-  </div>
-</div>
-
-<!-- SOUND ELEMENT -->
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
-// کنترل اسپلش و صدا
 setTimeout(function(){
-  const splash = document.getElementById("splash");
-  if(splash) {
-    splash.style.display = "none";
+  document.getElementById("splash").style.display="none";
+  let sound=document.getElementById("dingSound");
+  if(sound){
+    sound.volume=0.6;
+    sound.play().catch(e => console.log("Audio play blocked"));
   }
-  let sound = document.getElementById("dingSound");
-  if(sound) {
-    sound.volume = 0.6;
-    sound.play().catch(e => console.log("Audio play blocked."));
-  }
-}, 5000);
+},5000);
 
-// کنترل پنل شناور هوش مصنوعی
 function toggleAI(){
-  let panel = document.getElementById("aiPanel");
+  let panel=document.getElementById("aiPanel");
   panel.style.display = panel.style.display === "flex" ? "none" : "flex";
 }
 
-// ارسال پیام هوش مصنوعی
 function send(){
-  let msg = document.getElementById("msg").value;
-  if(!msg.trim()) return;
+  let msg=document.getElementById("msg").value;
+  if(!msg) return;
 
-  let chat = document.getElementById("chatBox");
-  chat.innerHTML += "<p style='margin: 5px 0;'><b>You:</b> " + msg + "</p>";
+  let chat=document.getElementById("chatBox");
 
-  let reply = "🤖 I am learning...";
-  let lowerMsg = msg.toLowerCase();
+  chat.innerHTML += "<p><b>You:</b> "+msg+"</p>";
 
-  if(lowerMsg.includes("hi") || lowerMsg.includes("سلام")){
-    reply = "Hello 👋 I am Cina AI";
-  } else if(lowerMsg.includes("name") || lowerMsg.includes("نام") || lowerMsg.includes("اسم")){
-    reply = "My name is Cina AI 🤖";
-  } else if(lowerMsg.includes("game") || lowerMsg.includes("بازی")){
-    reply = "This is Cina Games 🎮";
+  let reply="🤖 I am learning...";
+
+  if(msg.includes("hi")){
+    reply="Hello 👋 I am Cina AI";
+  } else if(msg.includes("name")){
+    reply="My name is Cina AI 🤖";
+  } else if(msg.includes("game")){
+    reply="This is Cina Games 🎮";
   }
 
-  setTimeout(() => {
-    chat.innerHTML += "<p style='margin: 5px 0; color:#00ff99;'><b>AI:</b> " + reply + "</p>";
-    chat.scrollTop = chat.scrollHeight;
-  }, 500);
+  setTimeout(()=>{
+    chat.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
+    chat.scrollTop=chat.scrollHeight;
+  },500);
 
-  document.getElementById("msg").value = "";
+  document.getElementById("msg").value="";
 }
 </script>
 
