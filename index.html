@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cina Games</title>
 
 <style>
@@ -12,7 +13,7 @@ body{
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
-  padding-bottom:70px;
+  padding-bottom:40px;
   opacity:0;
   animation: pageShow 1s ease-in forwards;
 }
@@ -22,9 +23,9 @@ body{
   to{opacity:1;}
 }
 
-/* ===== PROFILE BOX (اصلاح شد: دیگر فیکس و مزاحم نیست) ===== */
+/* ===== PROFILE BOX (مرتب و شیک در بالای صفحه) ===== */
 .profile-container {
-  padding: 15px 0 0 15px;
+  padding: 20px 0 10px 20px;
   display: flex;
 }
 
@@ -32,22 +33,19 @@ body{
   display:flex;
   align-items:center;
   gap:10px;
-
   background:#111;
-  padding:8px 12px;
-  border-radius:12px;
+  padding:10px 16px;
+  border-radius:14px;
   border:1px solid #00ff99;
-
-  box-shadow:0 0 10px rgba(0,255,153,0.3);
+  box-shadow:0 0 15px rgba(0,255,153,0.3);
   z-index:100000;
-
   text-decoration:none;
   color:white;
 }
 
 .profile-box img{
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
   border-radius:50%;
   border:2px solid #00ff99;
 }
@@ -55,226 +53,245 @@ body{
 .profile-box h4{
   margin:0;
   color:#00ff99;
-  font-size:14px;
+  font-size:15px;
 }
 
 .profile-box p{
   margin:0;
-  font-size:11px;
+  font-size:12px;
   color:#ccc;
 }
 
-/* ===== SPLASH SCREEN (اصلاح شد: کاملاً وسط‌چین و تیت در اسکرین گوشی) ===== */
+/* ===== SPLASH SCREEN (متن‌های متناسب و خوردتر) ===== */
 #splash{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-background:radial-gradient(circle,#1a1a1a,#000);
-
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-
-z-index:99999;
-
-animation: fadeSplash 5s forwards;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:radial-gradient(circle,#1a1a1a,#000);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:99999;
+  animation: fadeSplash 5s forwards;
 }
 
-/* باکس داخلی برای مهار و تراز دقیق نوشته‌ها در مرکز */
 .splash-content {
   text-align: center;
   padding: 20px;
 }
 
 #splash h1{
-margin:0 0 20px 0;
-font-size:55px; /* اندازه استاندارد برای گوشی */
-color:#00ff99;
-text-shadow:0 0 10px #00ff99,0 0 20px #00ff99,0 0 40px #00ff99;
-
-opacity:0;
-animation: zoom 1s infinite alternate, showText 1s forwards;
-animation-delay:1s;
-text-align:center;
+  margin:0 0 15px 0;
+  font-size:40px; /* خوردتر و شیک‌تر شد */
+  color:#00ff99;
+  text-shadow:0 0 10px #00ff99,0 0 20px #00ff99;
+  opacity:0;
+  animation: zoom 1s infinite alternate, showText 1s forwards;
+  animation-delay:1s;
+  text-align:center;
 }
 
 #splash p{
-margin:0;
-font-size:18px;
-color:white;
-letter-spacing:2px;
-text-align:center;
-line-height: 1.6;
-
-opacity:0;
-animation:showText 1s forwards;
-animation-delay:1.5s;
+  margin:0;
+  font-size:15px; /* اندازه متناسب برای گوشی */
+  color:white;
+  text-align:center;
+  line-height: 1.6;
+  opacity:0;
+  animation:showText 1s forwards;
+  animation-delay:1.5s;
 }
 
 @keyframes showText{ from{opacity:0;} to{opacity:1;} }
-@keyframes zoom{ from{transform:scale(1);} to{transform:scale(1.1);} }
+@keyframes zoom{ from{transform:scale(1);} to{transform:scale(1.05);} }
 
 @keyframes fadeSplash{
-0%{opacity:1;}
-80%{opacity:1;}
-100%{opacity:0;visibility:hidden;pointer-events:none;}
+  0%{opacity:1;}
+  80%{opacity:1;}
+  100%{opacity:0;visibility:hidden;pointer-events:none;}
 }
 
-/* navbar */
+/* ===== MAIN TITLE ===== */
+.main-title-text {
+  font-size: 34px;
+  text-align: center;
+  margin: 15px 0;
+}
+
+/* ===== EXAM ALERT (بزرگ و تمام‌صفحه‌وار) ===== */
+.exam-banner {
+  margin: 10px auto 20px auto;
+  font-size: 15px;
+  color: #ffd54f;
+  text-align: center;
+  background: rgba(255, 213, 79, 0.08);
+  border: 1px solid rgba(255, 213, 79, 0.25);
+  padding: 14px;
+  border-radius: 14px;
+  width: 90%;
+  max-width: 500px;
+  box-sizing: border-box;
+  line-height: 1.5;
+}
+
+/* ===== AI BIG BUTTON (بزرگ و کشیده مثل عکس اول) ===== */
+.ai-button-container {
+  text-align: center; 
+  margin-bottom: 25px;
+  padding: 0 20px;
+}
+
+.ai-big-link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 500px;
+  height: 54px;
+  background: #007bff;
+  border-radius: 14px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+}
+
+/* ===== NAVBAR ===== */
 .navbar{
-display:flex;
-justify-content:center;
-gap:12px;
-padding:12px;
-background:#111;
-position:sticky;
-top:0;
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  padding:14px;
+  background:#111;
+  position:sticky;
+  top:0;
+  flex-wrap: wrap;
+  z-index: 999;
 }
 
 .navbar a{
-color:white;
-text-decoration:none;
-padding:8px 12px;
-background:#007bff;
-border-radius:8px;
+  color:white;
+  text-decoration:none;
+  padding:10px 16px;
+  background:#222;
+  border-radius:8px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
+.navbar a:hover { background: #007bff; }
 .telegram{background:#0088cc!important;}
 .youtube{background:#ff0000!important;}
 
-/* hero */
+/* ===== HERO ===== */
 .hero{
-padding:40px 20px;
-background:#111;
-text-align:center;
+  padding: 50px 20px;
+  background: #111;
+  text-align: center;
+  margin: 20px 0;
 }
 
-.hero h2{color:#00ff99;}
-.hero p{color:#ccc;}
+.hero h2{ color: #00ff99; font-size: 26px; margin-bottom: 10px; }
+.hero p{ color: #ccc; font-size: 16px; }
 
-/* menu */
+/* ===== 4-BOX GRID MENU (بزرگ و پرکننده صفحه) ===== */
 .menu{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:15px;
-padding:20px;
-max-width:500px;
-margin:auto;
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  box-sizing: border-box;
 }
 
 .box{
-height:140px;
-border-radius:18px;
-display:flex;
-justify-content:center;
-align-items:center;
-font-weight:bold;
-font-size:18px;
-text-decoration:none;
-color:white;
-transition:0.3s;
-box-shadow:0 0 10px rgba(0,0,0,0.4);
+  height: 140px; /* ارتفاع بزرگ و عالی */
+  border-radius: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 19px;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
 }
 
-.box:hover{
-transform:scale(1.05);
-}
+.box:hover{ transform: scale(1.04); }
+.games{ background: #00ff99; color: black; }
+.desc{ background: #007bff; }
+.alerts{ background: #ffcc00; color: black; }
+.settings{ background: #ff4444; }
 
-/* رنگ‌ها */
-.games{background:#00ff99;color:black;}
-.desc{background:#007bff;}
-.alerts{background:#ffcc00;color:black;}
-.settings{background:#ff4444;}
-
+/* ===== SECTIONS ===== */
 .section{
-padding:20px;
-text-align:center;
-color:#ccc;
+  padding: 40px 20px;
+  text-align: center;
+  color: #ccc;
+  font-size: 16px;
 }
+
+.section h2 { color: white; margin-bottom: 15px; }
 
 /* ===== FLOAT AI CHAT ===== */
 .ai-float{
-position:fixed;
-bottom:20px;
-right:20px;
-
-width:55px;
-height:55px;
-border-radius:50%;
-background:#00ff99;
-
-display:flex;
-justify-content:center;
-align-items:center;
-
-font-size:24px;
-cursor:pointer;
-z-index:99999;
-
-box-shadow:0 0 15px rgba(0,255,153,0.5);
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background: #00ff99;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  cursor: pointer;
+  z-index: 99999;
+  box-shadow: 0 0 15px rgba(0,255,153,0.5);
 }
 
 .ai-panel{
-position:fixed;
-bottom:90px;
-right:20px;
-
-width:320px;
-height:420px;
-background:#111;
-border:1px solid #00ff99;
-border-radius:15px;
-
-display:none;
-flex-direction:column;
-z-index:99999;
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  height: 420px;
+  background: #111;
+  border: 1px solid #00ff99;
+  border-radius: 15px;
+  display: none;
+  flex-direction: column;
+  z-index: 99999;
 }
 
 .ai-header{
-background:#00ff99;
-color:black;
-padding:10px;
-display:flex;
-justify-content:space-between;
-font-weight:bold;
+  background: #00ff99;
+  color: black;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
 }
 
-.chat-box{
-flex:1;
-padding:10px;
-overflow:auto;
-color:white;
-}
-
-.ai-input{
-display:flex;
-padding:10px;
-}
-
-.ai-input input{
-flex:1;
-padding:8px;
-border:none;
-border-radius:6px;
-}
-
-.ai-input button{
-margin-left:5px;
-background:#00ff99;
-border:none;
-padding:8px 10px;
-border-radius:6px;
-cursor:pointer;
-}
+.chat-box{ flex: 1; padding: 10px; overflow: auto; color: white; }
+.ai-input{ display: flex; padding: 10px; }
+.ai-input input{ flex: 1; padding: 8px; border: none; border-radius: 6px; }
+.ai-input button{ margin-left: 5px; background: #00ff99; border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
 
 </style>
 </head>
 
 <body>
 
+<!-- SPLASH -->
 <div id="splash">
   <div class="splash-content">
     <h1>🎮 Cina Games</h1>
@@ -282,16 +299,7 @@ cursor:pointer;
   </div>
 </div>
 
-<p style="margin-top:10px;font-size:18px;color:#ffd54f;text-align:center;">
-📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
-</p>
-
-<h1>🎮 Cina Games</h1>
-
-<div style="text-align:center; margin-bottom:15px;">
-  <a href="ai.html" class="box desc" style="display:inline-flex; width:90%; max-width:500px; height:50px;">🤖 AI Chat</a>
-</div>
-
+<!-- PROFILE CONTAINER -->
 <div class="profile-container">
   <a href="about-creator.html" class="profile-box">
     <img src="profile.jpg">
@@ -302,47 +310,67 @@ cursor:pointer;
   </a>
 </div>
 
+<!-- MAIN TITLE -->
+<h1 class="main-title-text">🎮 Cina Games</h1>
+
+<!-- EXAM ALERT BANNER -->
+<div class="exam-banner">
+  📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
+</div>
+
+<!-- AI BIG BUTTON -->
+<div class="ai-button-container">
+  <a href="ai.html" class="ai-big-link">🤖 AI Chat Page</a>
+</div>
+
+<!-- NAVBAR -->
 <div class="navbar">
-<a href="#home">Home</a>
-<a href="games.html">Games</a>
-<a href="about.html">About</a>
-<a href="contact.html">Contact</a>
-<a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
-<a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
+  <a href="#home">Home</a>
+  <a href="games.html">Games</a>
+  <a href="about.html">About</a>
+  <a href="contact.html">Contact</a>
+  <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
+  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
 </div>
 
+<!-- HERO -->
 <div class="hero">
-<h2>Welcome to Cina Games Store 🎮</h2>
-<p>Download Android & PC games...</p>
+  <h2>Welcome to Cina Games Store 🎮</h2>
+  <p>Download Android & PC games...</p>
 </div>
 
+<!-- MENU (بزرگ و تمام صفحه واری) -->
 <div class="menu">
-<a href="games.html" class="box games">🎮 Games</a>
-<a href="#desc" class="box desc">📄 Description</a>
-<a href="#alerts" class="box alerts">🔔 Alerts</a>
-<a href="#settings" class="box settings">⚙️ Settings</a>
+  <a href="games.html" class="box games">🎮 Games</a>
+  <a href="#desc" class="box desc">📄 Description</a>
+  <a href="#alerts" class="box alerts">🔔 Alerts</a>
+  <a href="#settings" class="box settings">⚙️ Settings</a>
 </div>
 
+<!-- SECTIONS -->
 <div id="desc" class="section"><h2>📄 About Cina Games</h2></div>
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
-<div style="text-align:center;margin-top:20px;">
+<!-- ABOUT CREATOR FOOTER BUTTON -->
+<div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
   <a href="about-creator.html"
      style="
        display:inline-block;
-       padding:12px 25px;
+       padding:14px 35px;
        background:#00ff99;
        color:black;
        text-decoration:none;
-       border-radius:12px;
+       border-radius:50px;
        font-weight:bold;
-       box-shadow:0 0 10px rgba(0,255,153,.4);
+       font-size: 16px;
+       box-shadow:0 0 15px rgba(0,255,153,.4);
      ">
      👤 About Creator
   </a>
 </div>
 
+<!-- SOUND -->
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
@@ -365,7 +393,6 @@ function send(){
   if(!msg) return;
 
   let chat=document.getElementById("chatBox");
-
   chat.innerHTML += "<p><b>You:</b> "+msg+"</p>";
 
   let reply="🤖 I am learning...";
