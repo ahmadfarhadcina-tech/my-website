@@ -10,6 +10,7 @@
         color: white;
         margin: 0;
         background: radial-gradient(circle at top, #1a1a1a, #0b0b0b, #000);
+        padding-bottom: 90px; /* برای اینکه دکمه‌های پایین روی کارت‌ها نیفتند */
       }
       /* NAVBAR */
       .navbar {
@@ -18,7 +19,7 @@
         align-items: center;
         background: rgba(17, 17, 17, 0.7);
         backdrop-filter: blur(10px);
-        padding: 15px 20px;
+        padding: 12px 15px;
         position: sticky;
         top: 0;
         border-bottom: 1px solid rgba(0, 255, 153, 0.2);
@@ -28,207 +29,202 @@
       .logo {
         color: #00ff99;
         font-weight: bold;
+        font-size: 16px;
       }
 
       .links a {
         color: white;
         text-decoration: none;
-        margin-left: 15px;
+        margin-left: 10px;
+        font-size: 14px;
       }
 
       .links a:hover {
         color: #00ff99;
       }
 
-      /* TITLE */
       h1 {
         text-align: center;
-        padding: 20px;
+        padding: 15px 10px 5px 10px;
         color: #00ff99;
-        font-size: 34px;
+        font-size: 24px;
+        margin: 0;
         text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
       }
 
       /* SEARCH */
       .search-box {
         text-align: center;
-        margin: 20px;
+        margin: 10px 15px;
       }
 
       .search-box input {
-        padding: 12px;
-        width: 80%;
+        padding: 10px;
+        width: 90%;
         max-width: 420px;
-        border-radius: 12px;
+        border-radius: 10px;
         border: none;
         outline: none;
-        box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
+        background: #222;
+        color: white;
+        box-shadow: 0 0 10px rgba(0, 255, 153, 0.1);
       }
 
       /* CATEGORIES */
       .categories {
         text-align: center;
-        margin: 10px;
+        margin: 5px 10px;
       }
 
       .categories button {
-        padding: 10px 15px;
-        margin: 5px;
+        padding: 6px 12px;
+        margin: 3px;
         border: none;
-        border-radius: 10px;
+        border-radius: 8px;
         background: linear-gradient(90deg, #00ff99, #00cc77);
         color: black;
         font-weight: bold;
+        font-size: 12px;
         cursor: pointer;
         transition: 0.3s;
       }
 
-      .categories button:hover {
-        transform: scale(1.05);
-      }
-
-      /* CONTAINER */
+      /* CONTAINER - تبدیل به حالت ۲ ستونه در موبایل */
       .container {
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 20px;
-        padding: 20px;
+        grid-template-columns: repeat(2, 1fr); /* دو ستون در موبایل */
+        gap: 10px;
+        padding: 10px;
         max-width: 1200px;
         margin: 0 auto;
       }
 
+      @media (min-width: 768px) {
+        .container {
+          grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); /* در دسکتاپ بزرگتر می‌شود */
+          gap: 20px;
+          padding: 20px;
+        }
+      }
+
       /* CARD STYLE */
       .card {
-        background: rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.04);
         backdrop-filter: blur(10px);
-        border-radius: 18px;
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 0 20px rgba(0, 255, 153, 0.08);
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 0 15px rgba(0, 255, 153, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.06);
         display: flex;
         flex-direction: column;
-        transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+        transition: transform 0.2s;
       }
 
       .card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 10px 25px rgba(0, 255, 153, 0.2);
+        transform: translateY(-4px);
         border-color: #00ff99;
       }
 
       .card img {
         width: 100%;
-        height: 160px;
+        height: 110px;
         object-fit: cover;
       }
 
-      .card h3 {
-        margin: 10px 10px 5px 10px;
+      @media (min-width: 768px) {
+        .card img { height: 160px; }
       }
 
-      /* RATING & INFO */
+      .card h3 {
+        margin: 8px 8px 4px 8px;
+        font-size: 13px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
       .rating {
-        margin: 0 10px 5px 10px;
-        font-size: 15px;
+        margin: 0 8px 4px 8px;
+        font-size: 11px;
         color: #fff;
       }
       
       .info-row {
-        margin: 0 10px 10px 10px;
+        margin: 0 8px 8px 8px;
         display: flex;
-        gap: 5px;
-        flex-wrap: wrap;
+        flex-direction: column;
+        gap: 4px;
       }
 
-      .game-status {
-        display: inline-block;
-        padding: 3px 6px;
-        border-radius: 6px;
-        font-size: 11px;
+      .game-status, .game-size, .req-tag {
+        display: block;
+        padding: 3px 5px;
+        border-radius: 5px;
+        font-size: 10px;
         font-weight: bold;
+        text-align: center;
       }
 
-      .status-offline {
-        background-color: #00ff99;
-        color: black;
-      }
+      .status-offline { background-color: #00ff99; color: black; }
+      .status-online { background-color: #00ccff; color: black; }
+      .game-size { background-color: rgba(255, 255, 255, 0.15); color: #fff; }
 
-      .status-online {
-        background-color: #00ccff;
-        color: black;
-      }
-
-      .game-size {
-        display: inline-block;
-        background-color: rgba(255, 255, 255, 0.15);
-        color: #fff;
-        padding: 3px 6px;
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: bold;
-      }
-
-      /* تگ‌های سیستم سخت‌افزاری (سه رنگ) */
-      .req-tag {
-        display: inline-block;
-        padding: 3px 6px;
-        border-radius: 6px;
-        font-size: 11px;
-        font-weight: bold;
-      }
-      .req-low {
-        background-color: #22c55e; /* سبز */
-        color: white;
-      }
-      .req-med {
-        background-color: #eab308; /* زرد */
-        color: black;
-      }
-      .req-high {
-        background-color: #ef4444; /* سرخ */
-        color: white;
-      }
+      /* استایل جدید تگ‌های سخت‌افزاری بر اساس دستور شما */
+      .req-low { background-color: #22c55e; color: white; }
+      .req-med { background-color: #eab308; color: black; }
+      .req-high { background-color: #ef4444; color: white; }
 
       .card p {
-        font-size: 13px;
+        font-size: 11px;
         color: #bbb;
-        margin: 0 10px 15px;
+        margin: 0 8px 10px 8px;
+        line-height: 1.4;
+        display: -webkit-box;
+        -webkit-line-clamp: 3; /* نمایش حداکثر ۳ خط از توضیحات برای جلوگیری از بزرگ شدن کارت */
+        -webkit-box-orient: vertical;
+        overflow: hidden;
         flex-grow: 1;
       }
 
       .btn {
         display: block;
-        margin: 5px 10px;
-        padding: 10px;
+        margin: 3px 6px;
+        padding: 8px 4px;
         background: linear-gradient(90deg, #00ff99, #00cc77);
         color: black;
         text-decoration: none;
-        border-radius: 10px;
+        border-radius: 8px;
         font-weight: bold;
+        font-size: 11px;
         text-align: center;
-        box-shadow: 0 0 10px rgba(0, 255, 153, 0.2);
         transition: 0.2s;
-      }
-      .btn:hover {
-        transform: scale(1.03);
       }
       
       .btn-yt {
         display: block;
-        margin: 5px 10px 10px 10px;
-        padding: 10px;
+        margin: 3px 6px 8px 6px;
+        padding: 8px 4px;
         background: linear-gradient(90deg, #ff3333, #cc0000);
         color: white;
         text-decoration: none;
-        border-radius: 10px;
+        border-radius: 8px;
         font-weight: bold;
+        font-size: 11px;
         text-align: center;
-        box-shadow: 0 0 10px rgba(255, 0, 0, 0.3);
         transition: 0.2s;
       }
-      .btn-yt:hover {
-        transform: scale(1.03);
-        box-shadow: 0 0 15px rgba(255, 0, 0, 0.5);
+
+      /* دکمه‌های شناور پایین صفحه - کوچک‌تر و با فاصله مناسب */
+      .fixed-btn {
+        position: fixed;
+        bottom: 15px;
+        padding: 10px 14px;
+        border-radius: 10px;
+        font-size: 13px;
+        font-weight: bold;
+        text-decoration: none;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        z-index: 9999;
       }
     </style>
   </head>
@@ -239,21 +235,10 @@
       <div class="links">
         <a href="index.html">Home</a>
         <a href="games.html">Games</a>
-        <a href="contact.html">Contact</a>
       </div>
     </nav>
 
     <h1>🎮 Cina Games Store</h1>
-
-    <div style="text-align:center;margin:10px;">
-      <span style="background:#FFD700;color:black;padding:6px 10px;border-radius:8px;font-weight:bold;">
-        🔥 Featured Section
-      </span>
-    </div>
-
-    <div style="text-align:center;color:#00ff99;font-size:14px;margin-bottom:10px;">
-      ⭐ New games added every week
-    </div>
 
     <!-- SEARCH -->
     <div class="search-box">
@@ -266,471 +251,147 @@
       <button onclick="filterGames('action')">Action</button>
       <button onclick="filterGames('openworld')">Open World</button>
       <button onclick="filterGames('sports')">Sports</button>
-      <button onclick="filterGames('lite')" style="background: linear-gradient(90deg, #22c55e, #16a34a); color: white;">⚡ مخصوص گوشی ضعیف</button>
     </div>
 
     <div class="container">
     
       <!-- WR3D 2K26 Mod -->
       <div class="card lite sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="wr3d2k26.jpg" />
         <h3>WR3D 2K26 (Mod Edition)</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (4.8/5)
-        </div>
+        <div class="rating">⭐ (4.8/5)</div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (Android)</span>
-          <span class="game-size">💾 حجم: ۴۰۰ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
+          <span class="game-size">💾 ۴۰۰ مگابایت</span>
+          <span class="req-tag req-low">🟢 نیاز به گوشی ضعیف</span>
         </div>
-        <p>یکی از خفن‌ترین، محبوب‌ترین و بهترین مدهای ساخته شده برای بازی نوستالژیک و بی‌نظیر کشتی کج اندروید که حالا نسخه ویژه سال ۲۰۲۶ آن آماده شده است! این بازی با حجم فوق‌العاده بهینه و عالی ۴۰۰ مگابایتی، شامل جدیدترین آپدیت رستر کشتی‌گیران، لباس‌های کاملاً جدید، رینگ‌های شیک، آرناها و تم‌سانگ‌های واقعی است. بزرگ‌ترین مزیت این نسخه این است که نیازی به هیچ شبیه‌سازی ندارد و کاملاً آفلاین و مستقیم روی تمام گوشی‌های اندروید مثل هلو اجرا می‌شود و لذت می‌برید❤️</p>
-        <a class="btn" href="https://www.apkfiles.com/apk-620814/wr3d-26-v4-by-federation-online" target="_blank">⬇ دانلود بازی WR3D 2K26</a>
+        <p>یکی از خفن‌ترین، محبوب‌ترین و بهترین مدهای ساخته شده برای بازی نوستالژیک و بی‌نظیر کشتی کج اندروید که حالا نسخه ویژه سال ۲۰۲۶ آن آماده شده است!</p>
+        <a class="btn" href="https://www.apkfiles.com/apk-620814/wr3d-26-v4-by-federation-online" target="_blank">⬇ دانلود بازی</a>
       </div>
   
       <!-- WWE 2K18 -->
       <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="wwe2k18.jpg" />
-        <h3>WWE 2K18 (Switch Edition)</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
+        <h3>WWE 2K18 (Switch)</h3>
+        <div class="rating">⭐ (5/5)</div>
         <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین (Android Emulator)</span>
-          <span class="game-size">💾 حجم: کامل ۲۲ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
+          <span class="game-status status-offline">🟢 آفلاین (Emulator)</span>
+          <span class="game-size">💾 ۲۲ گیگابایت</span>
+          <span class="req-tag req-high">🔴 نیاز به گوشی قوی</span>
         </div>
-        <p>بازی محبوب و فوق‌العاده مهیج کشتی کج WWE 2K18 نسخه کنسول نینتندو سوییچ، مخصوص اجرا روی موبایل اندروید با شبیه‌ساز! این پکیج کامل شامل فایل اصلی بازی، فایل آپدیت برای رفع باگ‌ها و فایل خفن DLC (کشتی‌گیران اضافه) است که هم‌اکنون می‌توانید دانلود کنید❤️</p>
-        <a class="btn" href="https://drive.usercontent.google.com/download?id=161L98L5jl5WL-Mgecj6YiV7L5RpAJPpT&export=download&authuser=0" target="_blank">⬇ دانلود فایل اصلی بازی</a>
-        <a class="btn" href="https://filecrypt.cc/Container/3AC12701A3.html" target="_blank">⬇ دانلود آپدیت بازی</a>
-        <a class="btn" href="https://drive.google.com/file/d/1S5g3WHwclBn1Cd7PSvds3GUAmIkvJQyZ/view" target="_blank">⬇ دانلود فایل DLC</a>
-        <a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank"> 🎥 آموزش اجرای WWE 2K18 روی موبایل </a>
+        <p>بازی محبوب و فوق‌العاده مهیج کشتی کج WWE 2K18 نسخه کنسول نینتندو سوییچ، مخصوص اجرا روی موبایل اندروید با شبیه‌ساز!</p>
+        <a class="btn" href="https://drive.usercontent.google.com/download?id=161L98L5jl5WL-Mgecj6YiV7L5RpAJPpT&export=download&authuser=0" target="_blank">⬇ دانلود اصلی</a>
+        <a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank">🎥 آموزش اجرا</a>
       </div>
       
       <!-- Far Cry 3 -->
       <div class="card openworld">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="farcry3.jpg" />
         <h3>Far Cry 3 (Lite Mod)</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
+        <div class="rating">⭐ (5/5)</div>
         <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
-          <span class="game-size">💾 حجم: ۷.۵ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
+          <span class="game-status status-offline">🟢 آفلاین (Winlator)</span>
+          <span class="game-size">💾 ۷.۵ گیگابایت</span>
+          <span class="req-tag req-high">🔴 نیاز به گوشی قوی</span>
         </div>
         <p>نسخه فوق‌العاده لایت و بهینه‌سازی شده بازی محبوب فارکرای ۳ برای اجرای روان روی اندروید با شبیه‌ساز Winlator و کامپیوتر!</p>
         <a class="btn" href="https://winlator.me/game/f/far-cry-3/" target="_blank">⬇ Download</a>
-        <a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank"> 🎥 آموزش اجرای ۷.۵ گیگ روی موبایل </a>
       </div>
 
       <!-- GTA IV -->
       <div class="card openworld">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
-        <img src="gtaiv.jpg" alt="GTA IV" />
+        <img src="gtaiv.jpg" />
         <h3>GTA IV</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
+        <div class="rating">⭐ (5/5)</div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱۴ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
+          <span class="game-size">💾 ۱۴ گیگابایت</span>
+          <span class="req-tag req-high">🔴 نیاز به گوشی قوی</span>
         </div>
         <p>بازی خفن جهان باز یکی از بهترین بازی های راکستار و همچنین با بهترین گرافیک نصب کن پشیمان نمیشی</p>
-        <a class="btn" href="https://www.apunkagames.net/2026/01/grand-theft-auto-iv-the-complete-edition-game-e7.html" target="_blank"> ⬇ Download </a>
-        <a class="btn-yt" href="https://youtu.be/ylT9p0asbVw?is=sHa7cNDxWD2MWBlx" target="_blank"> 🎥 آموزش نصب روی اندروید </a>
+        <a class="btn" href="https://www.apunkagames.net/2026/01/grand-theft-auto-iv-the-complete-edition-game-e7.html" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Batman -->
       <div class="card action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="batman.jpg" />
-        <h3>Batman: The Dark Knight Rises</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
+        <h3>Batman: Dark Knight</h3>
+        <div class="rating">⭐ (4/5)</div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱.۸ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
+          <span class="game-size">💾 ۱.۸ گیگابایت</span>
+          <span class="req-tag req-med">🟡 هم‌خوانی با گوشی متوسط</span>
         </div>
-        <p>بازی اکشن و ماجراجویی الهام گرفته از فیلم معروف Batman. در نقش بتمن وارد شهر Gotham شو، با دشمنان مبارزه کن و مأموریت‌های هیجان‌انگیز را انجام بده.</p>
-        <a class="btn" href="https://apkaward.com/the-dark-knight-rises" target="_blank"> ⬇ Download </a>
-        <a href="batman.html" class="btn"> Open Page </a>
-        <a class="btn-yt" href="https://youtu.be/3j0dZpZ2b0E?feature=shared" target="_blank"> 🎥 آموزش نصب (یوتیوب) </a>
+        <p>بازی اکشن و ماجراجویی الهام گرفته از فیلم معروف Batman. در نقش بتمن وارد شهر Gotham شو.</p>
+        <a class="btn" href="https://apkaward.com/the-dark-knight-rises" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Tekken 8 -->
       <div class="card action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="tekken8.jpg" />
         <h3>Tekken 8 Mobile</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
+        <div class="rating">⭐ (4/5)</div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۸۰۰ مگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
+          <span class="game-size">💾 ۸۰۰ مگابایت</span>
+          <span class="req-tag req-med">🟡 هم‌خوانی با گوشی متوسط</span>
         </div>
-        <p>نسخه موبایلی Tekken 8 با گرافیک جذاب، مبارزات هیجان‌انگیز و شخصیت‌های معروف. اگر عاشق بازی‌های مبارزه‌ای هستی، این نسخه را از دست نده.</p>
-        <a class="btn" href="https://tekken-8-1.latestmodapks.com/download/" target="_blank"> ⬇ Download </a>
-        <a href="tekken8.html" class="btn">📖 Open Page</a>
-      </div>
-
-      <!-- MadOut2 -->
-      <div class="card openworld">
-        <img src="madout2.jpg" />
-        <h3>MadOut2 BigCityOnline</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۱.۲ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی جهان‌باز با ماشین‌های متنوع، مأموریت‌های مختلف و حالت آنلاین. اگر به بازی‌هایی مثل GTA علاقه داری، MadOut2 یکی از بهترین انتخاب‌هاست.</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.MadOut.BIG" target="_blank"> ⬇ Download </a>
+        <p>نسخه موبایلی Tekken 8 با گرافیک جذاب، مبارزات هیجان‌انگیز و شخصیت‌های معروف.</p>
+        <a class="btn" href="https://tekken-8-1.latestmodapks.com/download/" target="_blank">⬇ Download</a>
       </div>
 
       <!-- God of War II -->
       <div class="card action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="god-of-war-2.jpg" />
         <h3>God of War II</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
+        <div class="rating">⭐ (5/5)</div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۶.۵ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
+          <span class="game-size">💾 ۶.۵ گیگابایت</span>
+          <span class="req-tag req-high">🔴 نیاز به گوشی قوی</span>
         </div>
-        <p>بازی افسانه‌ای PS2 با شخصیت Kratos در دنیای اساطیر یونان. یکی از بهترین بازی‌های اکشن تاریخ است و این بازی در مورود اتنقام از پدرش زیوس میباشد.</p>
-        <a class="btn" href="https://romsfun.com/roms/playstation-2/god-of-war-ii.html" target="_blank"> ⬇ Download </a>
-      </div>
-
-      <!-- Call of Duty -->
-      <div class="card action">
-        <img src="cod-strike-team.jpg" />
-        <h3>Call of Duty: Strike Team</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی action تیراندازی Call of Duty: Strike Team با حالت داستانی آفلاین و نسخه Fix برای گوشی‌های اندرویدی و بدون انترنت میباشد ببینید و لذت ببرید.</p>
-        <a class="btn" href="https://apkaward.com/call-of-duty-strike-team-fix-android-10" target="_blank"> ⬇ Download </a>
+        <p>بازی افسانه‌ای PS2 با شخصیت Kratos در دنیای اساطیر یونان. یکی از بهترین بازی‌های اکشن تاریخ است.</p>
+        <a class="btn" href="https://romsfun.com/roms/playstation-2/god-of-war-ii.html" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Cina Games APK -->
       <div class="card lite action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
+        <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:10px;">
           🔥 Top Download
         </div>
         <img src="cina-app.jpg" />
-        <h3>Cina Games APK (Official App)</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
+        <h3>Cina Games APK</h3>
+        <div class="rating">⭐ (5/5)</div>
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۱۵ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
+          <span class="game-size">💾 ۱۵ مگابایت</span>
+          <span class="req-tag req-low">🟢 نیاز به گوشی ضعیف</span>
         </div>
-        <p>این فایل یک اپلیکیشن مستقل از سایت Cina Games است که به صورت APK ساخته شده. با نصب آن می‌توانی به صورت سریع‌تر به تمام بازی‌ها، آپدیت‌ها و بخش‌های سایت دسترسی داشته باشی.</p>
-        <a class="btn" href="https://www.mediafire.com/file/ihagxbiw448ssz2/CinaGames.apk/file" target="_blank"> ⬇ Download App APK </a>
+        <p>این فایل یک اپلیکیشن مستقل از سایت Cina Games است که به صورت APK ساخته شده است.</p>
+        <a class="btn" href="https://www.mediafire.com/file/ihagxbiw448ssz2/CinaGames.apk/file" target="_blank">⬇ Download</a>
       </div>
 
-      <!-- PUBG Mobile -->
-      <div class="card action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="pubg.jpg" />
-        <h3>PUBG Mobile</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۲ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>PUBG Mobile یکی از محبوب‌ترین بازی‌های بتل رویال است که در آن با 100 بازیکن دیگر رقابت می‌کنی و خیلی باحال است حتما نصب کنید.</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank"> ⬇ Download </a>
-      </div>
-
-      <!-- Bully -->
-      <div class="card openworld">
-        <img src="bully.jpg" />
-        <h3>Bully Anniversary Edition</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۲.۵ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی جهان‌باز کلاسیک Rockstar که در آن نقش یک دانش‌آموز را در مدرسه بازی می‌کنی و ماموریت‌های مختلف انجام می‌دهی.</p>
-        <a class="btn" href="https://apkvision.org/games/action/bullyanniversaryeditionsapk-54560/" target="_blank"> ⬇ Download </a>
-      </div>
-
-      <!-- Dark Wallpaper -->
-      <div class="card lite action">
-        <img src="dark-wallpaper.jpg" />
-        <h3>Dark Person Wallpaper</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐</span><span style="color: #555;">★★</span> (3/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۲۵ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
-        </div>
-        <p>مجموعه‌ای از والپیپرهای تیره و باکیفیت برای گوشی و زیادی از این والیپر ها از ساخت اکشن میباشد و جوکر مانند و رمز آلود.</p>
-        <a class="btn" href="https://www.mediafire.com/file/456vkzxxtq61bgy/Dark_Person_Wallpaper_1.0.apk/file" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- WWE 2K25 -->
-      <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="wwe25.jpg" />
-        <h3>WWE 2K25 Netflix Edition</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۲.۵ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
-        </div>
-        <p>بازی کشتی‌کج حرفه‌ای از است که دقیقا گرافیک اش مانند PC و بسیار عالی است و از wwe 2k25 واقعی الهام گرفته استNetflix</p>
-        <a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank">⬇ Download</a>
-        <a href="wwe25.html" class="btn">Open Page</a>
-      </div>
-
-      <!-- GTA SA -->
-      <div class="card openworld">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="gta-sa.jpg" />
-        <h3>GTA San Andreas</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۲.۴ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی جهان باز و محبوب راک‌استار یک بازی بسیار عالی پیشنهاد من بر شما این است اگه نکردید باید صد در صد این بازی را اجرا کنید پشیمون نمیشید</p>
-        <a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- Eden Emulator -->
-      <div class="card lite action">
-        <img src="eden.jpg" />
-        <h3>Eden Golden Emulator</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۴۵ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
-        </div>
-        <p>شبیه‌ساز اجرای بازی‌های کنسولی یک شبیه ساز بازی های switchمیباشد که تمام بازی های سویچ رویش اجرا میشه از جمله wwe 2k18 rdr 1....</p>
-        <a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank">⬇ Download</a>
-        <a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank"> 🎥 آموزش کار با شبیه‌ساز </a>
-      </div>
-
-      <!-- Winlator -->
-      <div class="card lite action">
-        <img src="winlator.jpg" />
-        <h3>Winlator</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۷۵ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
-        </div>
-        <p>اجرای بازی‌های PC روی اندروید تین یک شبیه ساز واقعی است از pc و تمام بازی های pc را میتوانید روی اندروید اجرا کنید</p>
-        <a class="btn" href="https://winlator.com/download-winlator/" target="_blank">⬇ Download</a>
-        <a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank"> 🎥 آموزش تنظیمات Winlator </a>
-      </div>
-
-      <!-- Spider-Man 3 -->
-      <div class="card action">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="spiderman3.jpg" />
-        <h3>Amazing Spider-Man 3</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱.۲ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی اکشن اسپایدرمن بازی خاص برای طرفداران اسپایدر من جهان باز اکشن خاص بهترین بازی قهرمانا</p>
-        <a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- WWE 2K15 -->
-      <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥🤯 Top Download
-        </div>
-        <img src="wwe.jpg" />
-        <h3>WWE 2K15</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
-          <span class="game-size">💾 حجم: ۱۶ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
-        </div>
-        <p>کشتی کج محبوب بازی است که از 11 سال پیش که الانم هیچ کمی از بازی های امروزی ندارد و با گرافیک 16k روی اندروید با شبیه ساز winlator و هم روی pc میشه اجرا کردWWE</p>
-        <a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank">⬇ Download</a>
-        <a href="wwe-2k15.html" class="btn"> Open Page </a>
-        <a class="btn-yt" href="https://youtu.be/rb-5g9HGGlc?feature=shared" target="_blank"> 🎥 آموزش نصب روی اندروید </a>
-      </div>
-
-      <!-- GTA V -->
-      <div class="card openworld">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="gta.jpg" />
-        <h3>GTA V</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
-          <span class="game-size">💾 حجم: ۱۴ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
-        </div>
-        <p>بازی مورد علاقه سینا بهترین بازی جهان باز رده اول دنیا که نسخه حک شده ا این است با حجم ۱۴ گیگابایت روی اندروید و لپ تاپ❤️</p>
-        <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">⬇ Download</a>
-        <a href="gta-v.html" class="btn">Open Page</a>
-        <a class="btn-yt" href="https://youtu.be/c6MRiuQSk0o?feature=shared" target="_blank"> 🎥 آموزش اجرای ۱۴ گیگ روی موبایل </a>
-      </div>
-
-      <!-- Watch Dogs -->
-      <div class="card action">
-        <img src="watchdogs.jpg" />
-        <h3>Watch Dogs</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۲۶ گیگابایت</span>
-          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
-        </div>
-        <p>بازی هکری و اکشن یک بازی جهان باز رمز آلود است بهترینه باید دانلود کنید برای اندروید میباشد</p>
-        <a class="btn" href="https://watch-dogs-2.en.softonic.com/android/download" target="_blank">⬇ Download</a>
-        <a href="watch-dogs-2.html" class="btn"> 🎮 Open Watch Dogs 2 Page </a>
-      </div>
-
-      <!-- eFootball -->
-      <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="efootball.jpg" />
-        <h3>eFootball</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۲.۸ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بازی فوتبال حرفه‌ای برای اندروید است و نصب کنید لذت ببرید</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- Minecraft -->
-      <div class="card lite openworld">
-        <img src="minecraft.jpg" />
-        <h3>Minecraft</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱ گیگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
-        </div>
-        <p>بازی ساخت و بقا</p>
-        <a class="btn" href="https://minecraft.techylist.com/" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- Fortnite -->
-      <div class="card action">
-        <img src="fortnite.jpg" />
-        <h3>Fortnite</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐</span><span style="color: #555;">★</span> (4/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۳ گیگابایت</span>
-          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
-        </div>
-        <p>بتل رویال</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank">⬇ Download</a>
-      </div>
-
-      <!-- Undefeated Hero Mod -->
-      <div class="card lite action">
-        <img src="undefeated.jpg" />
-        <h3>Undefeated Hero Mod</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐</span><span style="color: #555;">★★</span> (3/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۱۵۰ مگابایت</span>
-          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
-        </div>
-        <p>مود قوی بازی Undefeated</p>
-        <a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank">⬇ Download</a>
-      </div>
     </div>
 
     <!-- SEARCH + FILTER JS -->
@@ -745,8 +406,6 @@
         });
       });
       function filterGames(category) {
-        let cards = document.querySelectorAll(".card");
-
         cards.forEach((card) => {
           if (category === "all") {
             card.style.display = "flex";
@@ -757,13 +416,12 @@
       }
     </script>
 
-    <!-- Telegram (Bottom Left) -->
-    <a href="https://t.me/afghangamerx" target="_blank" style="position:fixed;bottom:25px;left:25px; background:#229ED9;color:white; padding:18px 22px;border-radius:14px; font-size:18px; font-weight:bold; text-decoration:none; box-shadow:0 0 15px rgba(0,0,0,0.5); z-index:9999;">
+    <!-- دکمه‌های شناور پایین صفحه (بدون تداخل با محتوا) -->
+    <a href="https://t.me/afghangamerx" target="_blank" class="fixed-btn" style="left:15px; background:#229ED9; color:white;">
       📲 Telegram
     </a>
 
-    <!-- YouTube (Bottom Right) -->
-    <a href="https://www.youtube.com/@Farhad_Cina" target="_blank" style="position:fixed;bottom:25px;right:25px; background:#FF0000;color:white; padding:18px 22px;border-radius:14px; font-size:18px; font-weight:bold; text-decoration:none; box-shadow:0 0 15px rgba(0,0,0,0.5); z-index:9999;">
+    <a href="https://www.youtube.com/@Farhad_Cina" target="_blank" class="fixed-btn" style="right:15px; background:#FF0000; color:white;">
       ▶️ YouTube
     </a>
   </body>
