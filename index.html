@@ -28,7 +28,6 @@ body{
   font-family: 'Old English Text MT', 'Georgia', serif;
   font-weight: bold;
   color: #ffffff !important;
-  /* ایجاد حاشیه مشکی ضخیم دور متن و افکت نئونی آبی فیروزه‌ای */
   text-shadow: 
     -3px -3px 0 #000,  
      3px -3px 0 #000,
@@ -39,7 +38,7 @@ body{
   letter-spacing: 2px;
 }
 
-/* ===== PROFILE BOX (مرتب و شیک در بالای صفحه) ===== */
+/* ===== PROFILE BOX ===== */
 .profile-container {
   padding: 20px 0 10px 20px;
   display: flex;
@@ -52,7 +51,7 @@ body{
   background:#111;
   padding:10px 16px;
   border-radius:14px;
-  border:1px solid #40E0D0; /* هماهنگ با تم آبی نئونی لوگو */
+  border:1px solid #40E0D0;
   box-shadow:0 0 15px rgba(64,224,208,0.3);
   z-index:100000;
   text-decoration:none;
@@ -78,7 +77,7 @@ body{
   color:#ccc;
 }
 
-/* ===== SPLASH SCREEN (انیمیشن ۵ ثانیه‌ای خوش‌آمدگویی) ===== */
+/* ===== SPLASH SCREEN ===== */
 #splash{
   position:fixed;
   top:0;
@@ -91,7 +90,6 @@ body{
   align-items:center;
   flex-direction:column;
   z-index:99999;
-  /* انیمیشن برای کل اسپلش که پس از ۵ ثانیه نرم محو شود */
   animation: fadeSplash 5s forwards;
 }
 
@@ -104,7 +102,6 @@ body{
   margin:0 0 25px 0;
   font-size:48px; 
   opacity:0;
-  /* ترکیب لرزش پالس و نمایش متن */
   animation: logoPulse 2.5s infinite ease-in-out alternate, showText 1s forwards;
   animation-delay: 0.5s;
   text-align:center;
@@ -123,7 +120,6 @@ body{
 
 @keyframes showText{ from{opacity:0;} to{opacity:1;} }
 
-/* انیمیشن پالس نئونی متناسب با استایل تصویر لوگو */
 @keyframes logoPulse {
   0% { transform: scale(0.95); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 15px #40E0D0; }
   100% { transform: scale(1.03); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 35px #00ffff, 0 0 10px #00ffff; }
@@ -176,10 +172,19 @@ body{
   border-radius: 14px;
   color: white;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 19px;
   text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  box-shadow: 0 0 15px #007bff;
+  transition: 0.3s;
+  animation: aiPulse 1.8s infinite ease-in-out alternate;
 }
+
+@keyframes aiPulse {
+  0% { transform: scale(1); box-shadow: 0 0 12px rgba(0, 123, 255, 0.6); }
+  100% { transform: scale(1.03); box-shadow: 0 0 25px #007bff, 0 0 10px #40E0D0; border: 1px solid #40E0D0; }
+}
+
+.ai-big-link:hover { background: #0069d9; }
 
 /* ===== NAVBAR ===== */
 .navbar{
@@ -208,7 +213,6 @@ body{
 
 .navbar a:hover { background: #007bff; }
 
-/* ===== استایل جدید و کاملاً متفاوت دکمه کاراکترها همراه با عکس پروفایلی رونده ===== */
 .characters-btn { 
   background: #ff0055 !important; 
   color: white !important; 
@@ -217,7 +221,7 @@ body{
   display: inline-flex !important;
   align-items: center;
   gap: 8px;
-  padding: 6px 14px !important; /* فضای دکمه برای جا شدن عکس */
+  padding: 6px 14px !important;
 }
 
 .characters-btn img {
@@ -279,7 +283,7 @@ body{
 }
 
 .box:hover{ transform: scale(1.04); }
-.games{ background: #40E0D0; color: black; } /* هماهنگی رنگ باکس با تم جدید */
+.games{ background: #40E0D0; color: black; }
 .desc{ background: #007bff; }
 .alerts{ background: #ffcc00; color: black; }
 .settings{ background: #ff4444; }
@@ -356,19 +360,23 @@ body{
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
 <!-- =================================================== -->
-<!-- باکس نظرات فوق‌العاده سریع، زنده و تضمینی برای CINA GAMES -->
+<!-- باکس نظرات مستقیم، سریع و ۱۰۰٪ فعال با دکمه ارسال واضح -->
 <!-- =================================================== -->
-<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;" dir="ltr">
-    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;" dir="rtl">💬 بخش نظرات و گفتگوی گیمرها</h3>
+<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
+    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و گفتگوی گیمرها</h3>
     
-    <!-- اسکریپت لودر مستقیم کامنت‌ها متصل به ریپازیتوری شما بدون فیلتر -->
-    <script src="https://utteranc.es/client.js"
-        repo="cina-games/cina-games.github.io"
-        issue-term="pathname"
-        theme="github-dark"
-        crossorigin="anonymous"
-        async>
-    </script>
+    <form action="https://formsubmit.co/farhadcina.games@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <!-- جلوگیری از کپچا برای راحتی کاربران -->
+        <input type="hidden" name="_captcha" value="false">
+        <!-- ریدایرکت پس از ارسال به صفحه اصلی -->
+        <input type="hidden" name="_next" value="https://cina-games.github.io">
+        
+        <input type="text" name="name" placeholder="نام شما" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
+        
+        <textarea name="message" rows="4" placeholder="نظر، پیشنهاد یا بازی درخواستی خود را بنویسید..." required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; resize: none; font-size: 15px; font-family: Arial, sans-serif;"></textarea>
+        
+        <button type="submit" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button>
+    </form>
 </div>
 
 <div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
@@ -391,7 +399,7 @@ body{
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
-// اسکریپت کنترل اسپلش اسکرین ۵ ثانیه‌ای شما بدون تغییر منطقی
+// اسکریپت کنترل اسپلش اسکرین ۵ ثانیه‌ای بدون تغییر منطقی
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
