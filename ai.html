@@ -40,44 +40,65 @@
             color: #10b981;
             margin-top: 0;
             font-size: 24px;
+            letter-spacing: 1px;
         }
-        p {
-            color: #d1d5db;
-            line-height: 1.6;
-            font-size: 15px;
-        }
-        .features {
-            text-align: right;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px;
-            border-radius: 12px;
-            margin: 20px 0;
-        }
-        .features li {
-            list-style: none;
-            margin-bottom: 8px;
+        .warning-text {
+            background-color: rgba(239, 68, 68, 0.15);
+            border: 1px solid #ef4444;
+            color: #fca5a5;
+            padding: 10px;
+            border-radius: 8px;
             font-size: 14px;
+            font-weight: bold;
+            margin: 15px 0;
         }
-        .features li::before {
-            content: "🎮 ";
+        .copy-box {
+            background: rgba(0, 0, 0, 0.4);
+            border: 2px dashed #10b981;
+            border-radius: 12px;
+            padding: 15px;
+            margin: 15px 0;
+            font-size: 14px;
+            color: #a7f3d0;
+            line-height: 1.6;
+            text-align: justify;
         }
-        .chat-btn {
+        .btn {
             display: inline-block;
-            background-color: #10b981;
-            color: #ffffff;
             text-decoration: none;
             padding: 14px 28px;
             border-radius: 50px;
             font-weight: bold;
-            font-size: 16px;
+            font-size: 15px;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
             width: 80%;
+            margin: 8px 0;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+        .copy-btn {
+            background-color: #f59e0b;
+            color: #000000;
+            border: none;
+            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
+            animation: bounce 2s infinite;
+        }
+        .copy-btn:hover {
+            background-color: #d97706;
+            transform: translateY(-2px);
+        }
+        .chat-btn {
+            background-color: #10b981;
+            color: #ffffff;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
         }
         .chat-btn:hover {
             background-color: #059669;
             transform: translateY(-2px);
-            box-shadow: 0 7px 20px rgba(5, 150, 105, 0.6);
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
     </style>
 </head>
@@ -86,22 +107,33 @@
     <div class="ai-container">
         <div class="avatar-box">🐺</div>
         <h2>اتاق مشاوره با گرگی جان</h2>
-        <p>به بخش هوش مصنوعی اختصاصی <b>Cina Games</b> خوش آمدی کاکا! من اینجام تا در دنیای گیم و سایت کمکت کنم.</p>
+        <p>به بخش هوش مصنوعی اختصاصی <b>Cina Games</b> خوش آمدی کاکا!</p>
         
-        <div class="features">
-            <li>حل مشکل لگ و اجرای بازی‌ها روی موبایل</li>
-            <li>پیشنهاد بهترین ترکیب‌ها و اسم تیم برای DLS</li>
-            <li>پاسخ به سوالات فنی و کدهای وب‌سایت</li>
+        <!-- کادر هشدار قرمز رنگ برای جلب توجه کاربر -->
+        <div class="warning-text">
+            ⚠️ خیلی مهم: حتماً قبل از ورود به چت، متن طلایی زیر را کپی کنید؛ در غیر این صورت هوش مصنوعی شما را نمی‌شناسد!
         </div>
+        
+        <!-- متن کپی شونده -->
+        <div class="copy-box" id="copyText">سلام! من از طرف استور Cina Games کاکا فرهاد آمدم. تو گرگی جان، هوش مصنوعی و راهنمای گیم این سایت هستی. با لحن رفیقانه، لوتی و خفن به من کمک کن و راهنمایی‌ام کن.</div>
 
-        <p style="font-size: 13px; color: #9ca3af; margin-bottom: 25px;">
-            روی دکمه زیر بزن تا مستقیم وارد اتاق چت اختصاصی من بشوی!
-        </p>
+        <!-- دکمه اول: کپی کردن متن با رنگ زرد که تو چشم باشد -->
+        <button class="btn copy-btn" onclick="copyInstructions()">
+            Step 1: 📋 کپی کردن متن بالا
+        </button>
 
-        <a href="https://gemini.google.com" target="_blank" class="chat-btn">
-            💬 شروع گفتگو با گرگی جان
+        <!-- دکمه دوم: ورود به چت -->
+        <a href="https://gemini.google.com" target="_blank" class="btn chat-btn">
+            Step 2: 💬 ورود به چت و پیست کردن متن
         </a>
     </div>
 
+    <script>
+        function copyInstructions() {
+            var text = document.getElementById("copyText").innerText;
+            navigator.clipboard.writeText(text);
+            alert("✅ متن با موفقیت کپی شد! حالا روی دکمه سبز رنگ بزنید، وارد چت شوید و متن را پیست (Paste) کنید. 🔥");
+        }
+    </script>
 </body>
 </html>
