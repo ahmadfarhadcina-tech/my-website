@@ -1,175 +1,107 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<title>Cina AI Chat</title>
-
-<style>
-body{
-  margin:0;
-  background:#0f0f0f;
-  color:white;
-  font-family:Arial;
-}
-
-.header{
-  text-align:center;
-  padding:15px;
-  background:#111;
-  color:#00ff99;
-  font-size:20px;
-}
-
-.chat-box{
-  max-width:600px;
-  margin:auto;
-  padding:15px;
-  height:70vh;
-  overflow:auto;
-}
-
-.msg{
-  padding:8px;
-  margin:8px 0;
-  background:#222;
-  border-radius:8px;
-}
-
-.ai{
-  color:#00ff99;
-}
-
-.input-box{
-  position:fixed;
-  bottom:10px;
-  width:100%;
-  text-align:center;
-}
-
-input{
-  width:70%;
-  padding:10px;
-  border:none;
-  border-radius:8px;
-}
-
-button{
-  padding:10px;
-  background:#00ff99;
-  border:none;
-  border-radius:8px;
-  cursor:pointer;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مشاوره با گرگی جان | Cina Games</title>
+    <style>
+        body {
+            background-color: #0b0f19;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .ai-container {
+            background: linear-gradient(145deg, #111827, #1f2937);
+            border: 2px solid #10b981;
+            border-radius: 20px;
+            padding: 30px;
+            max-width: 450px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+        }
+        .avatar-box {
+            font-size: 70px;
+            margin-bottom: 15px;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        h2 {
+            color: #10b981;
+            margin-top: 0;
+            font-size: 24px;
+        }
+        p {
+            color: #d1d5db;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+        .features {
+            text-align: right;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+        .features li {
+            list-style: none;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        .features li::before {
+            content: "🎮 ";
+        }
+        .chat-btn {
+            display: inline-block;
+            background-color: #10b981;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+            width: 80%;
+        }
+        .chat-btn:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+            box-shadow: 0 7px 20px rgba(5, 150, 105, 0.6);
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="header">🤖 Cina AI Chat</div>
+    <div class="ai-container">
+        <div class="avatar-box">🐺</div>
+        <h2>اتاق مشاوره با گرگی جان</h2>
+        <p>به بخش هوش مصنوعی اختصاصی <b>Cina Games</b> خوش آمدی کاکا! من اینجام تا در دنیای گیم و سایت کمکت کنم.</p>
+        
+        <div class="features">
+            <li>حل مشکل لگ و اجرای بازی‌ها روی موبایل</li>
+            <li>پیشنهاد بهترین ترکیب‌ها و اسم تیم برای DLS</li>
+            <li>پاسخ به سوالات فنی و کدهای وب‌سایت</li>
+        </div>
 
-<div id="chat" class="chat-box"></div>
+        <p style="font-size: 13px; color: #9ca3af; margin-bottom: 25px;">
+            روی دکمه زیر بزن تا مستقیم وارد اتاق چت اختصاصی من بشوی!
+        </p>
 
-<div class="input-box">
-  <input id="msg" placeholder="Type message...">
-  <button onclick="send()">Send</button>
-</div>
-
-<script>
-function getAnswer(msg){
-
-  msg = msg.toLowerCase();
-
-  // ===== GREET =====
-  if(msg.includes("سلام") || msg.includes("hi") || msg.includes("hello"))
-    return "سلام 👋 خوش آمدی به Cina AI 🤖";
-
-  // ===== NAME SYSTEM =====
-  if(msg.includes("من امید هستم"))
-    return "چطوری جسور جان 😎 چی کمکی می‌توانم برایت انجام بدهم؟";
-
-  if(msg.includes("من رشاد هستم"))
-    return "بفرما کاپیتان جهانگیر 👑⚽ خوش آمدی 😎";
-
-  if(msg.includes("من نجات هستم"))
-    return "بفرمایید شاهین جان 🦅 چطوری می‌توانم کمک کنم؟";
-
-  if(msg.includes("من عابدین هستم") || msg.includes("من عاب الدین هستم"))
-    return "بفرما مبارز جان ⚔️ چه کاری از دستم ساخته است؟";
-
-  if(msg.includes("من فرهاد هستم"))
-    return "سلام سینا جان 👤 سازنده عزیز 🤖 خوش آمدی";
-
-  if(msg.includes("من امرالدین هستم"))
-    return "بفرما شریفی جان 😎 خوش آمدی به Cina AI";
-
-  if(msg.includes("من جواد هستم"))
-    return "بفرما آریان جان 👋 خوش آمدی 😎";
-
-  if(msg.includes("من مجیب هستم"))
-    return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
-
-  // ===== WEBSITE =====
-  if(msg.includes("این سایت برای چیست"))
-    return "این سایت Cina Games 🎮 برای معرفی و دانلود بازی‌ها ساخته شده است";
-
-  if(msg.includes("بخاطر چی ساخته شده"))
-    return "برای سرگرمی و معرفی بازی‌ها ساخته شده 🎮";
-
-  // ===== GAMES =====
-  if(msg.includes("gta v"))
-    return "🎮 GTA V یک بازی جهان باز خیلی معروف است";
-
-  if(msg.includes("gta iv"))
-    return "🎮 GTA IV نسخه قدیمی GTA است";
-
-  if(msg.includes("wwe 2k15"))
-    return "🎮 WWE 2K15 بازی کشتی کج است";
-
-  if(msg.includes("wwe 2k25"))
-    return "🎮 WWE 2K25 نسخه جدید کشتی کج است";
-
-  if(msg.includes("watch dogs"))
-    return "🎮 Watch Dogs بازی هک و اکشن است";
-
-  if(msg.includes("bully"))
-    return "🎮 Bully بازی مدرسه‌ای از Rockstar است";
-
-  if(msg.includes("god of war"))
-    return "🎮 God of War بازی اکشن افسانه‌ای است";
-
-  // ===== COUNTRY =====
-  if(msg.includes("افغانستان"))
-    return "🇦🇫 افغانستان کشور زیبایی است";
-
-  if(msg.includes("جوزجان"))
-    return "جوزجان یکی از ولایت‌های افغانستان است";
-
-  // ===== TEAM =====
-  if(msg.includes("تیم عقابان"))
-    return "تیم عقابان ⚽ در قریه حیدرآباد جوزجان است و کاپیتان آن جهانگیر 👑 می‌باشد";
-
-  // ===== DEFAULT =====
-  return "ببخشید 🙏 من در حال یادگیری هستم، لطفاً سوال دیگری بپرس";
-}
-
-function send(){
-  let msg = document.getElementById("msg").value;
-  if(!msg) return;
-
-  let chat = document.getElementById("chat");
-
-  chat.innerHTML += "<div class='msg'><b>You:</b> " + msg + "</div>";
-
-  let reply = getAnswer(msg);
-
-  setTimeout(()=>{
-    chat.innerHTML += "<div class='msg ai'><b>AI:</b> " + reply + "</div>";
-    chat.scrollTop = chat.scrollHeight;
-  }, 500);
-
-  document.getElementById("msg").value = "";
-}
-</script>
+        <a href="https://gemini.google.com" target="_blank" class="chat-btn">
+            💬 شروع گفتگو با گرگی جان
+        </a>
+    </div>
 
 </body>
 </html>
