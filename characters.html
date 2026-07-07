@@ -20,12 +20,33 @@
             max-width: 1200px;
             margin: 0 auto;
         }
+        /* دکمه بازگشت به خانه در بالای صفحه */
+        .home-nav {
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: flex-start;
+        }
+        .home-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #222;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            border: 1px solid #40E0D0;
+            transition: 0.3s;
+        }
+        .home-btn:hover {
+            background: #40E0D0;
+            color: #000;
+        }
         h1.main-title {
             text-align: center;
             margin-bottom: 40px;
             font-size: 2.5rem;
-            color: #ffcc00;
-            text-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3);
+            color: #40E0D0;
+            text-shadow: 0px 4px 10px rgba(64, 224, 208, 0.3);
         }
         .character-section {
             display: flex;
@@ -48,7 +69,7 @@
             min-width: 300px;
             background-size: cover;
             background-position: center;
-            min-height: 350px;
+            min-height: 400px;
         }
         .char-info {
             flex: 2;
@@ -67,15 +88,28 @@
             color: #b3b3cc;
             margin-bottom: 25px;
         }
+        /* لیست دکمه‌های دانلود تکی */
+        .download-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
         .download-btn {
-            display: inline-block;
-            align-self: flex-start;
-            padding: 12px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 12px 15px;
             font-weight: bold;
             text-decoration: none;
             border-radius: 8px;
             color: #fff;
-            transition: background 0.3s ease;
+            font-size: 14px;
+            transition: background 0.3s ease, transform 0.2s;
+        }
+        .download-btn:hover {
+            transform: scale(1.03);
         }
         /* تم اختصاصی جان سینا */
         .john-cena { border-color: #00ff44; }
@@ -103,13 +137,19 @@
             .char-card { flex-direction: column; }
             .char-img { min-height: 250px; }
             .char-info h2 { font-size: 1.8rem; }
+            .download-links-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1 class="main-title">اسطوره‌های دنیای بازی در کلمبیا گیمز</h1>
+        <!-- منوی بالای صفحه برای برگشتن به خانه -->
+        <div class="home-nav">
+            <a href="index.html" class="home-btn">🏠 بازگشت به صفحه اصلی</a>
+        </div>
+
+        <h1 class="main-title">اسطوره‌های دنیای بازی در Cina Games</h1>
         
         <div class="character-section">
             
@@ -118,8 +158,14 @@
                 <div class="char-img" style="background-image: url('cena.jpg');"></div>
                 <div class="char-info">
                     <h2>جان سینا (John Cena) - قهرمان WWE 2K</h2>
-                    <p>به دنیای هیجان و رینگ کشتی کج خوش آمدید! جان سینا یکی از بزرگ‌ترین اسطوره‌های تاریخ کمپانی WWE است که با شعار "Never Give Up" (هرگز تسلیم نشو) شناخته می‌شود. اگر عاشق مسابقات پر هیجان، فینیشرهای سنگین و تجربه مسابقات با این ستاره در بازی‌های محبوب WWE 2K هستید، درست آمده‌اید.</p>
-                    <a href="#" class="download-btn">دانلود بازی‌های WWE 2K</a>
+                    <p>به دنیای هیجان و رینگ کشتی کج خوش آمدید! جان سینا یکی از بزرگ‌ترین اسطوره‌های تاریخ کمپانی WWE است. در این بخش می‌توانید نسخه‌های مختلف بازی‌های کشتی کج را به صورت تفکیک‌شده دانلود کنید.</p>
+                    
+                    <div class="download-links-grid">
+                        <a href="#" class="download-btn">دانلود WWE 2K15</a>
+                        <a href="#" class="download-btn">دانلود WWE 2K18</a>
+                        <a href="#" class="download-btn">دانلود WR3D 2K26</a>
+                        <a href="#" class="download-btn">دانلود WWE 2K26 Netflix</a>
+                    </div>
                 </div>
             </div>
 
@@ -128,18 +174,28 @@
                 <div class="char-img" style="background-image: url('kratos.jpg');"></div>
                 <div class="char-info">
                     <h2>کریتوس (Kratos) - خدای جنگ</h2>
-                    <p>داستان حماسی، خشم بی‌پایان و نبردهای سهمگین با خدایان اساطیری! کریتوس، ملقب به شبح اسپارتا، یکی از محبوب‌ترین و قدرتمندترین کاراکترهای تاریخ بازی‌های ویدیویی در مجمموعه خدای جنگ (God of War) است. در این بخش می‌توانید نسخه‌های مختلف این بازی شاهکار را دانلود کرده و همراه او به نبرد بروید.</p>
-                    <a href="#" class="download-btn">دانلود بازی‌های God of War</a>
+                    <p>داستان حماسی، خشم بی‌پایان و نبردهای سهمگین با خدایان اساطیری در مجموعه شاهکار God of War! از دکمه زیر نسخه اصلی و تست شده این بازی را دانلود کنید.</p>
+                    
+                    <div class="download-links-grid">
+                        <a href="#" class="download-btn">دانلود بازی God of War</a>
+                    </div>
                 </div>
             </div>
 
-            <!-- بخش سی‌جی -->
+            <!-- بخش سی‌جی / جی‌تی‌ای -->
             <div class="char-card cj">
                 <div class="char-img" style="background-image: url('cj.jpg');"></div>
                 <div class="char-info">
-                    <h2>کارل جانسون (CJ) - اسطوره GTA</h2>
-                    <p>بازگشت به خیابان‌های نوستالژیک لوس سانتوس و خاطرات فراموش‌نشدنی بازی جی تی ای سن آندرس! کاراکتر محبوب CJ با گنگسترهای خیابانی، ماموریت‌های هیجان‌انگیز جهان‌باز (Open World) و کدهای تقلب خاطره‌انگیز، بخش بزرگی از زندگی گیمرها را تشکیل داده است. بازی‌های مربوط به این شخصیت و مودهای خفن را از این بخش دانلود کنید.</p>
-                    <a href="#" class="download-btn">دانلود بازی‌های GTA</a>
+                    <h2>کارل جانسون (CJ) - اسطوره‌های GTA & Open World</h2>
+                    <p>بازگشت به دنیای جهان‌باز، ماموریت‌های گنگستری و هیجان بی‌قانون! بهترین بازی‌های سبک جی‌تی‌ای و واچ داگز را می‌توانید مستقیم از باکس‌های زیر دانلود کنید.</p>
+                    
+                    <div class="download-links-grid">
+                        <a href="#" class="download-btn">دانلود GTA V</a>
+                        <a href="#" class="download-btn">دانلود GTA San Andreas</a>
+                        <a href="#" class="download-btn">دانلود GTA IV</a>
+                        <a href="#" class="download-btn">دانلود GTA MadOut</a>
+                        <a href="#" class="download-btn">دانلود Watch Dogs</a>
+                    </div>
                 </div>
             </div>
 
