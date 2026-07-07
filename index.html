@@ -185,6 +185,7 @@ body{
 .navbar{
   display:flex;
   justify-content:center;
+  align-items:center;
   gap:10px;
   padding:14px;
   background:#111;
@@ -206,8 +207,37 @@ body{
 }
 
 .navbar a:hover { background: #007bff; }
-.characters-btn { background: #40E0D0 !important; color: black !important; } /* دکمه هم‌رنگ تم کاراکترها */
-.characters-btn:hover { background: #007bff !important; color: white !important; }
+
+/* ===== استایل جدید و کاملاً متفاوت دکمه کاراکترها همراه با عکس پروفایلی رونده ===== */
+.characters-btn { 
+  background: #ff0055 !important; 
+  color: white !important; 
+  box-shadow: 0 0 15px #ff0055;
+  animation: btnPulse 1.5s infinite ease-in-out alternate;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px !important; /* فضای دکمه برای جا شدن عکس */
+}
+
+.characters-btn img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1.5px solid white;
+  object-fit: cover;
+}
+
+.characters-btn:hover { 
+  background: #ff3377 !important; 
+  box-shadow: 0 0 25px #ff3377;
+}
+
+@keyframes btnPulse {
+  0% { transform: scale(1); box-shadow: 0 0 10px #ff0055; }
+  100% { transform: scale(1.05); box-shadow: 0 0 22px #ff0055; }
+}
+
 .telegram{background:#0088cc!important;}
 .youtube{background:#ff0000!important;}
 
@@ -315,7 +345,6 @@ body{
 
 <body>
 
-<!-- SPLASH (خوش‌آمدگویی ۵ ثانیه‌ای خفن) -->
 <div id="splash">
   <div class="splash-content">
     <h1 class="gothic-cina-games">Cina Games</h1>
@@ -323,7 +352,6 @@ body{
   </div>
 </div>
 
-<!-- PROFILE CONTAINER -->
 <div class="profile-container">
   <a href="about-creator.html" class="profile-box">
     <img src="profile.jpg">
@@ -334,37 +362,34 @@ body{
   </a>
 </div>
 
-<!-- MAIN TITLE -->
 <h1 class="main-title-text gothic-cina-games">Cina Games</h1>
 
-<!-- EXAM ALERT BANNER -->
 <div class="exam-banner">
   📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
 </div>
 
-<!-- AI BIG BUTTON -->
 <div class="ai-button-container">
   <a href="ai.html" class="ai-big-link">🤖 Cina AI Chat</a>
 </div>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="games.html">Games</a>
-  <a class="characters-btn" href="characters.html">Characters</a> <!-- دکمه جدید برای اتصال به صفحه کاراکترهای شما -->
+  <a class="characters-btn" href="characters.html">
+    <img src="char-icon.jpg" alt="icon">
+    Characters
+  </a>
   <a href="about.html">About</a>
   <a href="contact.html">Contact</a>
   <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
   <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
 </div>
 
-<!-- HERO -->
 <div class="hero">
   <h2 class="gothic-cina-games" style="font-size: 30px; margin-bottom: 15px;">Welcome to Cina Games Store</h2>
   <p>Download Android & PC games...</p>
 </div>
 
-<!-- MENU -->
 <div class="menu">
   <a href="games.html" class="box games">🎮 Games</a>
   <a href="#desc" class="box desc">📄 Description</a>
@@ -372,12 +397,10 @@ body{
   <a href="#settings" class="box settings">⚙️ Settings</a>
 </div>
 
-<!-- SECTIONS -->
 <div id="desc" class="section"><h2 class="gothic-cina-games" style="font-size:26px;">About Cina Games</h2></div>
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
-<!-- ABOUT CREATOR FOOTER BUTTON -->
 <div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
   <a href="about-creator.html"
      style="
@@ -395,7 +418,6 @@ body{
   </a>
 </div>
 
-<!-- SOUND -->
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
