@@ -23,7 +23,7 @@ body{
   to{opacity:1;}
 }
 
-/* ===== استایل اختصاصی و خفن برای تمام متن‌های CINA GAMES ===== */
+/* ===== استایل اختصاصی برای متن‌های CINA GAMES ===== */
 .gothic-cina-games {
   font-family: 'Old English Text MT', 'Georgia', serif;
   font-weight: bold;
@@ -213,6 +213,13 @@ body{
 
 .navbar a:hover { background: #007bff; }
 
+/* دکمه چت روم در ناوبار */
+.chat-nav-btn {
+  background: #00ff55 !important;
+  color: black !important;
+  box-shadow: 0 0 10px #00ff55;
+}
+
 .characters-btn { 
   background: #ff0055 !important; 
   color: white !important; 
@@ -230,11 +237,6 @@ body{
   border-radius: 50%;
   border: 1.5px solid white;
   object-fit: cover;
-}
-
-.characters-btn:hover { 
-  background: #ff3377 !important; 
-  box-shadow: 0 0 25px #ff3377;
 }
 
 @keyframes btnPulse {
@@ -286,7 +288,8 @@ body{
 .games{ background: #40E0D0; color: black; }
 .desc{ background: #007bff; }
 .alerts{ background: #ffcc00; color: black; }
-.settings{ background: #ff4444; }
+/* باکس چت‌روم جایگزین تنظیمات شد */
+.chatroom-box { background: #00ff55; color: black; box-shadow: 0 0 15px #00ff55; }
 
 /* ===== SECTIONS ===== */
 .section{
@@ -333,6 +336,7 @@ body{
 <div class="navbar">
   <a href="#home">Home</a>
   <a href="games.html">Games</a>
+  <a class="chat-nav-btn" href="chat.html">💬 Chatroom</a>
   <a class="characters-btn" href="characters.html">
     <img src="char-icon.jpg" alt="icon">
     Characters
@@ -352,31 +356,12 @@ body{
   <a href="games.html" class="box games">🎮 Games</a>
   <a href="#desc" class="box desc">📄 Description</a>
   <a href="#alerts" class="box alerts">🔔 Alerts</a>
-  <a href="#settings" class="box settings">⚙️ Settings</a>
+  <!-- دکمه ورود به چت روم جداگانه -->
+  <a href="chat.html" class="box chatroom-box">💬 Chatroom</a>
 </div>
 
 <div id="desc" class="section"><h2 class="gothic-cina-games" style="font-size:26px;">About Cina Games</h2></div>
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
-<div id="settings" class="section"><h2>⚙️ Settings</h2></div>
-
-<!-- =================================================== -->
-<!-- باکس نظرات با ایمیل و لینک برگشت ۱۰۰٪ اصلاح‌شده و بدون خطای ۴۰۴ -->
-<!-- =================================================== -->
-<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
-    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و گفتگوی گیمرها</h3>
-    
-    <form action="https://formsubmit.co/ahmadfarhadcina@gmail.com" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-        <input type="hidden" name="_captcha" value="false">
-        <!-- آدرس دقیق بازگشت برای جلوگیری از خطای ۴۰۴ -->
-        <input type="hidden" name="_next" value="https://ahmadfarhadcina-tech.github.io/my-website/">
-        
-        <input type="text" name="name" placeholder="نام شما" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
-        
-        <textarea name="message" rows="4" placeholder="نظر، پیشنهاد یا بازی درخواستی خود را بنویسید..." required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; resize: none; font-size: 15px; font-family: Arial, sans-serif;"></textarea>
-        
-        <button type="submit" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button>
-    </form>
-</div>
 
 <div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
   <a href="about-creator.html"
@@ -395,22 +380,13 @@ body{
   </a>
 </div>
 
-<audio id="dingSound" src="ding.mp3"></audio>
-
 <script>
-// اسکریپت کنترل اسپلش اسکرین ۵ ثانیه‌ای بدون تغییر منطقی
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
   setTimeout(function(){
     document.getElementById("splash").style.display="none";
   }, 500);
-  
-  let sound=document.getElementById("dingSound");
-  if(sound){
-    sound.volume=0.6;
-    sound.play().catch(e => console.log("Audio play blocked"));
-  }
 },5000);
 </script>
 
