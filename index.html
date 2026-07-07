@@ -294,52 +294,6 @@ body{
 
 .section h2 { color: white; margin-bottom: 15px; }
 
-/* ===== FLOAT AI CHAT ===== */
-.ai-float{
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  background: #40E0D0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 24px;
-  cursor: pointer;
-  z-index: 99999;
-  box-shadow: 0 0 15px rgba(64,224,208,0.5);
-}
-
-.ai-panel{
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  height: 420px;
-  background: #111;
-  border: 1px solid #40E0D0;
-  border-radius: 15px;
-  display: none;
-  flex-direction: column;
-  z-index: 99999;
-}
-
-.ai-header{
-  background: #40E0D0;
-  color: black;
-  padding: 10px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-}
-
-.chat-box{ flex: 1; padding: 10px; overflow: auto; color: white; }
-.ai-input{ display: flex; padding: 10px; }
-.ai-input input{ flex: 1; padding: 8px; border: none; border-radius: 6px; }
-.ai-input button{ margin-left: 5px; background: #40E0D0; border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
-
 </style>
 </head>
 
@@ -402,19 +356,19 @@ body{
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
 <!-- =================================================== -->
-<!-- باکس نظرات جهانی، بسیار سریع و بدون فیلتر CINA GAMES -->
+<!-- باکس نظرات فوق‌العاده سریع، زنده و تضمینی برای CINA GAMES -->
 <!-- =================================================== -->
 <div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;" dir="ltr">
     <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;" dir="rtl">💬 بخش نظرات و گفتگوی گیمرها</h3>
     
-    <!-- کادر لود شدن کامنت‌ها بدون تحریم و فیلتر -->
-    <div id="cusdis_thread"
-      data-host="https://cusdis.com"
-      data-app-id="6ff35fa4-5264-4bf8-b6df-85f0ef1fdf24"
-      data-page-id="cina-games-main-home"
-      data-page-url="https://cina-games.github.io"
-      data-page-title="Cina Games Home">
-    </div>
+    <!-- اسکریپت لودر مستقیم کامنت‌ها متصل به ریپازیتوری شما بدون فیلتر -->
+    <script src="https://utteranc.es/client.js"
+        repo="cina-games/cina-games.github.io"
+        issue-term="pathname"
+        theme="github-dark"
+        crossorigin="anonymous"
+        async>
+    </script>
 </div>
 
 <div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
@@ -451,40 +405,7 @@ setTimeout(function(){
     sound.play().catch(e => console.log("Audio play blocked"));
   }
 },5000);
-
-function toggleAI(){
-  let panel=document.getElementById("aiPanel");
-  panel.style.display = panel.style.display === "flex" ? "none" : "flex";
-}
-
-function send(){
-  let msg=document.getElementById("msg").value;
-  if(!msg) return;
-
-  let chat=document.getElementById("chatBox");
-  chat.innerHTML += "<p><b>You:</b> "+msg+"</p>";
-
-  let reply="🤖 I am learning...";
-
-  if(msg.includes("hi")){
-    reply="Hello 👋 I am Cina AI";
-  } else if(msg.includes("name")){
-    reply="My name is Cina AI 🤖";
-  } else if(msg.includes("game")){
-    reply="This is Cina Games 🎮";
-  }
-
-  setTimeout(()=>{
-    chat.innerHTML += "<p><b>AI:</b> "+reply+"</p>";
-    chat.scrollTop=chat.scrollHeight;
-  },500);
-
-  document.getElementById("msg").value="";
-}
 </script>
-
-<!-- لود شدن سریع اسکریپت کامنت‌ها بدون نیاز به فیلترشکن -->
-<script async defer src="https://cusdis.com/js/cusdis.es.js"></script>
 
 </body>
 </html>
