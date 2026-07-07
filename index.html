@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +23,22 @@ body{
   to{opacity:1;}
 }
 
+/* ===== استایل اختصاصی و خفن برای تمام متن‌های CINA GAMES ===== */
+.gothic-cina-games {
+  font-family: 'Old English Text MT', 'Georgia', serif;
+  font-weight: bold;
+  color: #ffffff !important;
+  /* ایجاد حاشیه مشکی ضخیم دور متن و افکت نئونی آبی فیروزه‌ای */
+  text-shadow: 
+    -3px -3px 0 #000,  
+     3px -3px 0 #000,
+    -3px  3px 0 #000,
+     3px  3px 0 #000,
+    0 0 15px #40E0D0,
+    0 0 30px #008b8b;
+  letter-spacing: 2px;
+}
+
 /* ===== PROFILE BOX (مرتب و شیک در بالای صفحه) ===== */
 .profile-container {
   padding: 20px 0 10px 20px;
@@ -36,8 +52,8 @@ body{
   background:#111;
   padding:10px 16px;
   border-radius:14px;
-  border:1px solid #00ff99;
-  box-shadow:0 0 15px rgba(0,255,153,0.3);
+  border:1px solid #40E0D0; /* هماهنگ با تم آبی نئونی لوگو */
+  box-shadow:0 0 15px rgba(64,224,208,0.3);
   z-index:100000;
   text-decoration:none;
   color:white;
@@ -47,12 +63,12 @@ body{
   width:42px;
   height:42px;
   border-radius:50%;
-  border:2px solid #00ff99;
+  border:2px solid #40E0D0;
 }
 
 .profile-box h4{
   margin:0;
-  color:#00ff99;
+  color:#40E0D0;
   font-size:15px;
 }
 
@@ -62,7 +78,7 @@ body{
   color:#ccc;
 }
 
-/* ===== SPLASH SCREEN (متن‌های متناسب و خوردتر) ===== */
+/* ===== SPLASH SCREEN (انیمیشن ۵ ثانیه‌ای خوش‌آمدگویی) ===== */
 #splash{
   position:fixed;
   top:0;
@@ -75,6 +91,7 @@ body{
   align-items:center;
   flex-direction:column;
   z-index:99999;
+  /* انیمیشن برای کل اسپلش که پس از ۵ ثانیه نرم محو شود */
   animation: fadeSplash 5s forwards;
 }
 
@@ -84,19 +101,18 @@ body{
 }
 
 #splash h1{
-  margin:0 0 15px 0;
-  font-size:40px; /* خوردتر و شیک‌تر شد */
-  color:#00ff99;
-  text-shadow:0 0 10px #00ff99,0 0 20px #00ff99;
+  margin:0 0 25px 0;
+  font-size:48px; 
   opacity:0;
-  animation: zoom 1s infinite alternate, showText 1s forwards;
-  animation-delay:1s;
+  /* ترکیب لرزش پالس و نمایش متن */
+  animation: logoPulse 2.5s infinite ease-in-out alternate, showText 1s forwards;
+  animation-delay: 0.5s;
   text-align:center;
 }
 
 #splash p{
   margin:0;
-  font-size:15px; /* اندازه متناسب برای گوشی */
+  font-size:15px; 
   color:white;
   text-align:center;
   line-height: 1.6;
@@ -106,22 +122,27 @@ body{
 }
 
 @keyframes showText{ from{opacity:0;} to{opacity:1;} }
-@keyframes zoom{ from{transform:scale(1);} to{transform:scale(1.05);} }
+
+/* انیمیشن پالس نئونی متناسب با استایل تصویر لوگو */
+@keyframes logoPulse {
+  0% { transform: scale(0.95); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 15px #40E0D0; }
+  100% { transform: scale(1.03); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 35px #00ffff, 0 0 10px #00ffff; }
+}
 
 @keyframes fadeSplash{
   0%{opacity:1;}
-  80%{opacity:1;}
+  85%{opacity:1;}
   100%{opacity:0;visibility:hidden;pointer-events:none;}
 }
 
 /* ===== MAIN TITLE ===== */
 .main-title-text {
-  font-size: 34px;
+  font-size: 38px;
   text-align: center;
-  margin: 15px 0;
+  margin: 20px 0;
 }
 
-/* ===== EXAM ALERT (بزرگ و تمام‌صفحه‌وار) ===== */
+/* ===== EXAM ALERT ===== */
 .exam-banner {
   margin: 10px auto 20px auto;
   font-size: 15px;
@@ -137,7 +158,7 @@ body{
   line-height: 1.5;
 }
 
-/* ===== AI BIG BUTTON (بزرگ و کشیده مثل عکس اول) ===== */
+/* ===== AI BIG BUTTON ===== */
 .ai-button-container {
   text-align: center; 
   margin-bottom: 25px;
@@ -171,6 +192,7 @@ body{
   top:0;
   flex-wrap: wrap;
   z-index: 999;
+  border-bottom: 1px solid rgba(64, 224, 208, 0.2);
 }
 
 .navbar a{
@@ -195,10 +217,10 @@ body{
   margin: 20px 0;
 }
 
-.hero h2{ color: #00ff99; font-size: 26px; margin-bottom: 10px; }
+.hero h2{ font-size: 26px; margin-bottom: 10px; }
 .hero p{ color: #ccc; font-size: 16px; }
 
-/* ===== 4-BOX GRID MENU (بزرگ و پرکننده صفحه) ===== */
+/* ===== 4-BOX GRID MENU ===== */
 .menu{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -211,7 +233,7 @@ body{
 }
 
 .box{
-  height: 140px; /* ارتفاع بزرگ و عالی */
+  height: 140px; 
   border-radius: 22px;
   display: flex;
   justify-content: center;
@@ -225,7 +247,7 @@ body{
 }
 
 .box:hover{ transform: scale(1.04); }
-.games{ background: #00ff99; color: black; }
+.games{ background: #40E0D0; color: black; } /* هماهنگی رنگ باکس با تم جدید */
 .desc{ background: #007bff; }
 .alerts{ background: #ffcc00; color: black; }
 .settings{ background: #ff4444; }
@@ -248,14 +270,14 @@ body{
   width: 55px;
   height: 55px;
   border-radius: 50%;
-  background: #00ff99;
+  background: #40E0D0;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 24px;
   cursor: pointer;
   z-index: 99999;
-  box-shadow: 0 0 15px rgba(0,255,153,0.5);
+  box-shadow: 0 0 15px rgba(64,224,208,0.5);
 }
 
 .ai-panel{
@@ -265,7 +287,7 @@ body{
   width: 320px;
   height: 420px;
   background: #111;
-  border: 1px solid #00ff99;
+  border: 1px solid #40E0D0;
   border-radius: 15px;
   display: none;
   flex-direction: column;
@@ -273,7 +295,7 @@ body{
 }
 
 .ai-header{
-  background: #00ff99;
+  background: #40E0D0;
   color: black;
   padding: 10px;
   display: flex;
@@ -284,17 +306,17 @@ body{
 .chat-box{ flex: 1; padding: 10px; overflow: auto; color: white; }
 .ai-input{ display: flex; padding: 10px; }
 .ai-input input{ flex: 1; padding: 8px; border: none; border-radius: 6px; }
-.ai-input button{ margin-left: 5px; background: #00ff99; border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
+.ai-input button{ margin-left: 5px; background: #40E0D0; border: none; padding: 8px 10px; border-radius: 6px; cursor: pointer; }
 
 </style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
+<!-- SPLASH (خوش‌آمدگویی ۵ ثانیه‌ای خفن) -->
 <div id="splash">
   <div class="splash-content">
-    <h1>🎮 Cina Games</h1>
+    <h1 class="gothic-cina-games">Cina Games</h1>
     <p>Welcome to Cina Games<br>تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p>
   </div>
 </div>
@@ -304,14 +326,14 @@ body{
   <a href="about-creator.html" class="profile-box">
     <img src="profile.jpg">
     <div>
-      <h4>Cina</h4>
+      <h4 style="font-family: serif; letter-spacing: 1px;">Cina</h4>
       <p>Creator of Cina Games</p>
     </div>
   </a>
 </div>
 
 <!-- MAIN TITLE -->
-<h1 class="main-title-text">🎮 Cina Games</h1>
+<h1 class="main-title-text gothic-cina-games">Cina Games</h1>
 
 <!-- EXAM ALERT BANNER -->
 <div class="exam-banner">
@@ -335,11 +357,11 @@ body{
 
 <!-- HERO -->
 <div class="hero">
-  <h2>Welcome to Cina Games Store 🎮</h2>
+  <h2 class="gothic-cina-games" style="font-size: 30px; margin-bottom: 15px;">Welcome to Cina Games Store</h2>
   <p>Download Android & PC games...</p>
 </div>
 
-<!-- MENU (بزرگ و تمام صفحه واری) -->
+<!-- MENU -->
 <div class="menu">
   <a href="games.html" class="box games">🎮 Games</a>
   <a href="#desc" class="box desc">📄 Description</a>
@@ -348,7 +370,7 @@ body{
 </div>
 
 <!-- SECTIONS -->
-<div id="desc" class="section"><h2>📄 About Cina Games</h2></div>
+<div id="desc" class="section"><h2 class="gothic-cina-games" style="font-size:26px;">About Cina Games</h2></div>
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
@@ -358,13 +380,13 @@ body{
      style="
        display:inline-block;
        padding:14px 35px;
-       background:#00ff99;
+       background:#40E0D0;
        color:black;
        text-decoration:none;
        border-radius:50px;
        font-weight:bold;
        font-size: 16px;
-       box-shadow:0 0 15px rgba(0,255,153,.4);
+       box-shadow:0 0 15px rgba(64,224,208,.4);
      ">
      👤 About Creator
   </a>
@@ -374,8 +396,14 @@ body{
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
+// اسکریپت کنترل اسپلش اسکرین ۵ ثانیه‌ای شما بدون تغییر منطقی
 setTimeout(function(){
-  document.getElementById("splash").style.display="none";
+  document.getElementById("splash").style.opacity="0";
+  document.getElementById("splash").style.visibility="hidden";
+  setTimeout(function(){
+    document.getElementById("splash").style.display="none";
+  }, 500);
+  
   let sound=document.getElementById("dingSound");
   if(sound){
     sound.volume=0.6;
