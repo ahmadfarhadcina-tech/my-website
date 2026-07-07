@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شخصیت‌های محبوب دنیای گیم - Cina Games</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #0d0d13;
+            color: #fff;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1.main-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+            color: #ffcc00;
+            text-shadow: 0px 4px 10px rgba(255, 204, 0, 0.3);
+        }
+        .character-section {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+        .char-card {
+            display: flex;
+            background: #161622;
+            border-radius: 15px;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+        .char-card:hover {
+            transform: translateY(-5px);
+        }
+        .char-img {
+            flex: 1;
+            min-width: 300px;
+            background-size: cover;
+            background-position: center;
+            min-height: 350px;
+        }
+        .char-info {
+            flex: 2;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .char-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+        .char-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b3b3cc;
+            margin-bottom: 25px;
+        }
+        .download-btn {
+            display: inline-block;
+            align-self: flex-start;
+            padding: 12px 25px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 8px;
+            color: #fff;
+            transition: background 0.3s ease;
+        }
+        /* تم اختصاصی جان سینا */
+        .john-cena { border-color: #00ff44; }
+        .john-cena:hover { box-shadow: 0 0 20px rgba(0, 255, 68, 0.2); }
+        .john-cena h2 { color: #00ff44; }
+        .john-cena .download-btn { background-color: #00cc36; }
+        .john-cena .download-btn:hover { background-color: #009928; }
+
+        /* تم اختصاصی کریتوس */
+        .kratos { border-color: #ff2200; }
+        .kratos:hover { box-shadow: 0 0 20px rgba(255, 34, 0, 0.2); }
+        .kratos h2 { color: #ff2200; }
+        .kratos .download-btn { background-color: #cc1b00; }
+        .kratos .download-btn:hover { background-color: #991400; }
+
+        /* تم اختصاصی سی‌جی */
+        .cj { border-color: #00ccff; }
+        .cj:hover { box-shadow: 0 0 20px rgba(0, 204, 255, 0.2); }
+        .cj h2 { color: #00ccff; }
+        .cj .download-btn { background-color: #0099cc; }
+        .cj .download-btn:hover { background-color: #0077a3; }
+
+        /* ریسپانسیو برای گوشی */
+        @media (max-width: 768px) {
+            .char-card { flex-direction: column; }
+            .char-img { min-height: 250px; }
+            .char-info h2 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="main-title">اسطوره‌های دنیای بازی در کلمبیا گیمز</h1>
+        
+        <div class="character-section">
+            
+            <!-- بخش جان سینا -->
+            <div class="char-card john-cena">
+                <div class="char-img" style="background-image: url('cena.jpg');"></div>
+                <div class="char-info">
+                    <h2>جان سینا (John Cena) - قهرمان WWE 2K</h2>
+                    <p>به دنیای هیجان و رینگ کشتی کج خوش آمدید! جان سینا یکی از بزرگ‌ترین اسطوره‌های تاریخ کمپانی WWE است که با شعار "Never Give Up" (هرگز تسلیم نشو) شناخته می‌شود. اگر عاشق مسابقات پر هیجان، فینیشرهای سنگین و تجربه مسابقات با این ستاره در بازی‌های محبوب WWE 2K هستید، درست آمده‌اید.</p>
+                    <a href="#" class="download-btn">دانلود بازی‌های WWE 2K</a>
+                </div>
+            </div>
+
+            <!-- بخش کریتوس -->
+            <div class="char-card kratos">
+                <div class="char-img" style="background-image: url('kratos.jpg');"></div>
+                <div class="char-info">
+                    <h2>کریتوس (Kratos) - خدای جنگ</h2>
+                    <p>داستان حماسی، خشم بی‌پایان و نبردهای سهمگین با خدایان اساطیری! کریتوس، ملقب به شبح اسپارتا، یکی از محبوب‌ترین و قدرتمندترین کاراکترهای تاریخ بازی‌های ویدیویی در مجمموعه خدای جنگ (God of War) است. در این بخش می‌توانید نسخه‌های مختلف این بازی شاهکار را دانلود کرده و همراه او به نبرد بروید.</p>
+                    <a href="#" class="download-btn">دانلود بازی‌های God of War</a>
+                </div>
+            </div>
+
+            <!-- بخش سی‌جی -->
+            <div class="char-card cj">
+                <div class="char-img" style="background-image: url('cj.jpg');"></div>
+                <div class="char-info">
+                    <h2>کارل جانسون (CJ) - اسطوره GTA</h2>
+                    <p>بازگشت به خیابان‌های نوستالژیک لوس سانتوس و خاطرات فراموش‌نشدنی بازی جی تی ای سن آندرس! کاراکتر محبوب CJ با گنگسترهای خیابانی، ماموریت‌های هیجان‌انگیز جهان‌باز (Open World) و کدهای تقلب خاطره‌انگیز، بخش بزرگی از زندگی گیمرها را تشکیل داده است. بازی‌های مربوط به این شخصیت و مودهای خفن را از این بخش دانلود کنید.</p>
+                    <a href="#" class="download-btn">دانلود بازی‌های GTA</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
