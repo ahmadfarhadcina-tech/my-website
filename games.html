@@ -1,6 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="fa" dir="rtl">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cina Games - Download Android & PC Games Free</title>
     <style>
       body {
@@ -95,7 +97,7 @@
         margin: 0 auto;
       }
 
-      /* CARD STYLE UPDATED */
+      /* CARD STYLE */
       .card {
         background: rgba(255, 255, 255, 0.05);
         backdrop-filter: blur(10px);
@@ -108,7 +110,6 @@
         transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
       }
 
-      /* EFFECT ON HOVER */
       .card:hover {
         transform: translateY(-8px);
         box-shadow: 0 10px 25px rgba(0, 255, 153, 0.2);
@@ -167,15 +168,34 @@
         font-weight: bold;
       }
 
-      /* FLEX CONTAINER FOR CONTENT */
+      /* تگ‌های سیستم سخت‌افزاری (سه رنگ) */
+      .req-tag {
+        display: inline-block;
+        padding: 3px 6px;
+        border-radius: 6px;
+        font-size: 11px;
+        font-weight: bold;
+      }
+      .req-low {
+        background-color: #22c55e; /* سبز */
+        color: white;
+      }
+      .req-med {
+        background-color: #eab308; /* زرد */
+        color: black;
+      }
+      .req-high {
+        background-color: #ef4444; /* سرخ */
+        color: white;
+      }
+
       .card p {
         font-size: 13px;
         color: #bbb;
         margin: 0 10px 15px;
-        flex-grow: 1; /* این خط باعث می‌شود توضیحات فضای خالی را پر کنند تا دکمه‌ها به پایین کارت بچسبند */
+        flex-grow: 1;
       }
 
-      /* BUTTONS ADJUSTED TO THE BOTTOM */
       .btn {
         display: block;
         margin: 5px 10px;
@@ -246,12 +266,13 @@
       <button onclick="filterGames('action')">Action</button>
       <button onclick="filterGames('openworld')">Open World</button>
       <button onclick="filterGames('sports')">Sports</button>
+      <button onclick="filterGames('lite')" style="background: linear-gradient(90deg, #22c55e, #16a34a); color: white;">⚡ مخصوص گوشی ضعیف</button>
     </div>
 
     <div class="container">
     
       <!-- WR3D 2K26 Mod -->
-      <div class="card sports">
+      <div class="card lite sports">
         <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
           🔥 Top Download
         </div>
@@ -263,6 +284,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (Android)</span>
           <span class="game-size">💾 حجم: ۴۰۰ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>یکی از خفن‌ترین، محبوب‌ترین و بهترین مدهای ساخته شده برای بازی نوستالژیک و بی‌نظیر کشتی کج اندروید که حالا نسخه ویژه سال ۲۰۲۶ آن آماده شده است! این بازی با حجم فوق‌العاده بهینه و عالی ۴۰۰ مگابایتی، شامل جدیدترین آپدیت رستر کشتی‌گیران، لباس‌های کاملاً جدید، رینگ‌های شیک، آرناها و تم‌سانگ‌های واقعی است. بزرگ‌ترین مزیت این نسخه این است که نیازی به هیچ شبیه‌سازی ندارد و کاملاً آفلاین و مستقیم روی تمام گوشی‌های اندروید مثل هلو اجرا می‌شود و لذت می‌برید❤️</p>
         <a class="btn" href="https://www.apkfiles.com/apk-620814/wr3d-26-v4-by-federation-online" target="_blank">⬇ دانلود بازی WR3D 2K26</a>
@@ -280,7 +302,8 @@
         </div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (Android Emulator)</span>
-          <span class="game-size">💾 حجم: کامل + آپدیت 22 GB و DLC</span>
+          <span class="game-size">💾 حجم: کامل ۲۲ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی محبوب و فوق‌العاده مهیج کشتی کج WWE 2K18 نسخه کنسول نینتندو سوییچ، مخصوص اجرا روی موبایل اندروید با شبیه‌ساز! این پکیج کامل شامل فایل اصلی بازی، فایل آپدیت برای رفع باگ‌ها و فایل خفن DLC (کشتی‌گیران اضافه) است که هم‌اکنون می‌توانید دانلود کنید❤️</p>
         <a class="btn" href="https://drive.usercontent.google.com/download?id=161L98L5jl5WL-Mgecj6YiV7L5RpAJPpT&export=download&authuser=0" target="_blank">⬇ دانلود فایل اصلی بازی</a>
@@ -302,6 +325,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
           <span class="game-size">💾 حجم: ۷.۵ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>نسخه فوق‌العاده لایت و بهینه‌سازی شده بازی محبوب فارکرای ۳ برای اجرای روان روی اندروید با شبیه‌ساز Winlator و کامپیوتر!</p>
         <a class="btn" href="https://winlator.me/game/f/far-cry-3/" target="_blank">⬇ Download</a>
@@ -321,6 +345,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۱۴ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی خفن جهان باز یکی از بهترین بازی های راکستار و همچنین با بهترین گرافیک نصب کن پشیمان نمیشی</p>
         <a class="btn" href="https://www.apunkagames.net/2026/01/grand-theft-auto-iv-the-complete-edition-game-e7.html" target="_blank"> ⬇ Download </a>
@@ -340,6 +365,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۱.۸ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی اکشن و ماجراجویی الهام گرفته از فیلم معروف Batman. در نقش بتمن وارد شهر Gotham شو، با دشمنان مبارزه کن و مأموریت‌های هیجان‌انگیز را انجام بده.</p>
         <a class="btn" href="https://apkaward.com/the-dark-knight-rises" target="_blank"> ⬇ Download </a>
@@ -360,29 +386,11 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۸۰۰ مگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>نسخه موبایلی Tekken 8 با گرافیک جذاب، مبارزات هیجان‌انگیز و شخصیت‌های معروف. اگر عاشق بازی‌های مبارزه‌ای هستی، این نسخه را از دست نده.</p>
         <a class="btn" href="https://tekken-8-1.latestmodapks.com/download/" target="_blank"> ⬇ Download </a>
         <a href="tekken8.html" class="btn">📖 Open Page</a>
-      </div>
-
-      <!-- DLS 19 -->
-      <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="dls19-100.jpg" />
-        <h3>DLS 19 - 100% Complete Save</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: ۳۵۰ مگابایت</span>
-        </div>
-        <p>مود لباس تیم عقابان برای Dream League Soccer 2019 با طراحی زیبا و کیفیت بالا. این فایل شامل لباس‌های اختصاصی تیم عقابان است که ظاهر تیم شما را حرفه‌ای‌تر و جذاب‌تر می‌کند. اگر از طرفداران DLS 19 هستی، این مود را از دست نده و با لباس‌های جدید، تجربه‌ای متفاوت از بازی داشته باش.</p>
-        <a class="btn" href="https://www.mediafire.com/file/qidz8r7qchp1epa/Oqaban_FC_team_dls_19.7z/file" target="_blank"> ⬇ Download </a>
-        <a class="btn-yt" href="https://youtu.be/UhtPZWsR38g?feature=shared" target="_blank"> 🎥 آموزش نصب مود </a>
       </div>
 
       <!-- MadOut2 -->
@@ -395,6 +403,7 @@
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
           <span class="game-size">💾 حجم: ۱.۲ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی جهان‌باز با ماشین‌های متنوع، مأموریت‌های مختلف و حالت آنلاین. اگر به بازی‌هایی مثل GTA علاقه داری، MadOut2 یکی از بهترین انتخاب‌هاست.</p>
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.MadOut.BIG" target="_blank"> ⬇ Download </a>
@@ -413,6 +422,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۶.۵ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی افسانه‌ای PS2 با شخصیت Kratos در دنیای اساطیر یونان. یکی از بهترین بازی‌های اکشن تاریخ است و این بازی در مورود اتنقام از پدرش زیوس میباشد.</p>
         <a class="btn" href="https://romsfun.com/roms/playstation-2/god-of-war-ii.html" target="_blank"> ⬇ Download </a>
@@ -428,31 +438,14 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۱ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی action تیراندازی Call of Duty: Strike Team با حالت داستانی آفلاین و نسخه Fix برای گوشی‌های اندرویدی و بدون انترنت میباشد ببینید و لذت ببرید.</p>
         <a class="btn" href="https://apkaward.com/call-of-duty-strike-team-fix-android-10" target="_blank"> ⬇ Download </a>
       </div>
 
-      <!-- DLS 26 -->
-      <div class="card sports">
-        <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
-          🔥 Top Download
-        </div>
-        <img src="dls26.jpg" />
-        <h3>DLS 26 (Dream League Soccer)</h3>
-        <div class="rating">
-          امتیاز: <span style="color: #FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
-        </div>
-        <div class="info-row">
-          <span class="game-status status-online">🔵 آنلاین</span>
-          <span class="game-size">💾 حجم: ۵۰۰ مگابایت</span>
-        </div>
-        <p>بازی فوتبال جدید DLS 26 با گرافیک بهتر، تیم‌های جدید و گیم‌پلی حرفه‌ای. مناسب برای طرفداران فوتبال و این بازی از fc 26 الهام گرفته شده است.</p>
-        <a class="btn" href="https://play.google.com/store/apps/details?id=com.firsttouchgames.dls7" target="_blank"> ⬇ Download </a>
-      </div>
-
       <!-- Cina Games APK -->
-      <div class="card action">
+      <div class="card lite action">
         <div style="background:#FFD700;color:black;padding:6px;text-align:center;font-weight:bold;">
           🔥 Top Download
         </div>
@@ -464,6 +457,7 @@
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
           <span class="game-size">💾 حجم: ۱۵ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>این فایل یک اپلیکیشن مستقل از سایت Cina Games است که به صورت APK ساخته شده. با نصب آن می‌توانی به صورت سریع‌تر به تمام بازی‌ها، آپدیت‌ها و بخش‌های سایت دسترسی داشته باشی.</p>
         <a class="btn" href="https://www.mediafire.com/file/ihagxbiw448ssz2/CinaGames.apk/file" target="_blank"> ⬇ Download App APK </a>
@@ -482,6 +476,7 @@
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
           <span class="game-size">💾 حجم: ۲ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>PUBG Mobile یکی از محبوب‌ترین بازی‌های بتل رویال است که در آن با 100 بازیکن دیگر رقابت می‌کنی و خیلی باحال است حتما نصب کنید.</p>
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank"> ⬇ Download </a>
@@ -497,13 +492,14 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۲.۵ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی جهان‌باز کلاسیک Rockstar که در آن نقش یک دانش‌آموز را در مدرسه بازی می‌کنی و ماموریت‌های مختلف انجام می‌دهی.</p>
         <a class="btn" href="https://apkvision.org/games/action/bullyanniversaryeditionsapk-54560/" target="_blank"> ⬇ Download </a>
       </div>
 
       <!-- Dark Wallpaper -->
-      <div class="card action">
+      <div class="card lite action">
         <img src="dark-wallpaper.jpg" />
         <h3>Dark Person Wallpaper</h3>
         <div class="rating">
@@ -511,7 +507,8 @@
         </div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: 25 مگابایت</span>
+          <span class="game-size">💾 حجم: ۲۵ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>مجموعه‌ای از والپیپرهای تیره و باکیفیت برای گوشی و زیادی از این والیپر ها از ساخت اکشن میباشد و جوکر مانند و رمز آلود.</p>
         <a class="btn" href="https://www.mediafire.com/file/456vkzxxtq61bgy/Dark_Person_Wallpaper_1.0.apk/file" target="_blank">⬇ Download</a>
@@ -530,6 +527,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۲.۵ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی کشتی‌کج حرفه‌ای از است که دقیقا گرافیک اش مانند PC و بسیار عالی است و از wwe 2k25 واقعی الهام گرفته استNetflix</p>
         <a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank">⬇ Download</a>
@@ -549,13 +547,14 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۲.۴ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی جهان باز و محبوب راک‌استار یک بازی بسیار عالی پیشنهاد من بر شما این است اگه نکردید باید صد در صد این بازی را اجرا کنید پشیمون نمیشید</p>
         <a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Eden Emulator -->
-      <div class="card action">
+      <div class="card lite action">
         <img src="eden.jpg" />
         <h3>Eden Golden Emulator</h3>
         <div class="rating">
@@ -564,6 +563,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۴۵ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>شبیه‌ساز اجرای بازی‌های کنسولی یک شبیه ساز بازی های switchمیباشد که تمام بازی های سویچ رویش اجرا میشه از جمله wwe 2k18 rdr 1....</p>
         <a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank">⬇ Download</a>
@@ -571,7 +571,7 @@
       </div>
 
       <!-- Winlator -->
-      <div class="card action">
+      <div class="card lite action">
         <img src="winlator.jpg" />
         <h3>Winlator</h3>
         <div class="rating">
@@ -580,6 +580,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۷۵ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>اجرای بازی‌های PC روی اندروید تین یک شبیه ساز واقعی است از pc و تمام بازی های pc را میتوانید روی اندروید اجرا کنید</p>
         <a class="btn" href="https://winlator.com/download-winlator/" target="_blank">⬇ Download</a>
@@ -599,6 +600,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۱.۲ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی اکشن اسپایدرمن بازی خاص برای طرفداران اسپایدر من جهان باز اکشن خاص بهترین بازی قهرمانا</p>
         <a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank">⬇ Download</a>
@@ -616,7 +618,8 @@
         </div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
-          <span class="game-size">💾 حجم: 16 گیگابایت</span>
+          <span class="game-size">💾 حجم: ۱۶ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>کشتی کج محبوب بازی است که از 11 سال پیش که الانم هیچ کمی از بازی های امروزی ندارد و با گرافیک 16k روی اندروید با شبیه ساز winlator و هم روی pc میشه اجرا کردWWE</p>
         <a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank">⬇ Download</a>
@@ -637,6 +640,7 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین (PC & Winlator)</span>
           <span class="game-size">💾 حجم: ۱۴ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی مورد علاقه سینا بهترین بازی جهان باز رده اول دنیا که نسخه حک شده ا این است با حجم ۱۴ گیگابایت روی اندروید و لپ تاپ❤️</p>
         <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">⬇ Download</a>
@@ -653,7 +657,8 @@
         </div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: 26 گیگابایت</span>
+          <span class="game-size">💾 حجم: ۲۶ گیگابایت</span>
+          <span class="req-tag req-high">🔴 گوشی‌های قوی</span>
         </div>
         <p>بازی هکری و اکشن یک بازی جهان باز رمز آلود است بهترینه باید دانلود کنید برای اندروید میباشد</p>
         <a class="btn" href="https://watch-dogs-2.en.softonic.com/android/download" target="_blank">⬇ Download</a>
@@ -673,13 +678,14 @@
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
           <span class="game-size">💾 حجم: ۲.۸ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بازی فوتبال حرفه‌ای برای اندروید است و نصب کنید لذت ببرید</p>
         <a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Minecraft -->
-      <div class="card openworld">
+      <div class="card lite openworld">
         <img src="minecraft.jpg" />
         <h3>Minecraft</h3>
         <div class="rating">
@@ -687,7 +693,8 @@
         </div>
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
-          <span class="game-size">💾 حجم: 1 gb مگابایت</span>
+          <span class="game-size">💾 حجم: ۱ گیگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>بازی ساخت و بقا</p>
         <a class="btn" href="https://minecraft.techylist.com/" target="_blank">⬇ Download</a>
@@ -703,13 +710,14 @@
         <div class="info-row">
           <span class="game-status status-online">🔵 آنلاین</span>
           <span class="game-size">💾 حجم: ۳ گیگابایت</span>
+          <span class="req-tag req-med">🟡 گوشی‌های متوسط</span>
         </div>
         <p>بتل رویال</p>
         <a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank">⬇ Download</a>
       </div>
 
       <!-- Undefeated Hero Mod -->
-      <div class="card action">
+      <div class="card lite action">
         <img src="undefeated.jpg" />
         <h3>Undefeated Hero Mod</h3>
         <div class="rating">
@@ -718,13 +726,14 @@
         <div class="info-row">
           <span class="game-status status-offline">🟢 آفلاین</span>
           <span class="game-size">💾 حجم: ۱۵۰ مگابایت</span>
+          <span class="req-tag req-low">🟢 گوشی‌های ضعیف</span>
         </div>
         <p>مود قوی بازی Undefeated</p>
         <a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank">⬇ Download</a>
       </div>
     </div>
 
-    <!-- SEARCH + FILTER JS (UPDATED FOR GRID) -->
+    <!-- SEARCH + FILTER JS -->
     <script>
       const input = document.getElementById("searchInput");
       const cards = document.querySelectorAll(".card");
