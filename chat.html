@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cina Games - Chatroom</title>
+<style>
+  body {
+    margin: 0;
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    text-align: center;
+  }
+  .gothic-cina-games {
+    font-family: 'Old English Text MT', 'Georgia', serif;
+    font-weight: bold;
+    color: #ffffff;
+    text-shadow: 0 0 15px #40E0D0, 0 0 30px #008b8b;
+    font-size: 32px;
+    margin-bottom: 10px;
+  }
+  .back-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #222;
+    color: #40E0D0;
+    text-decoration: none;
+    border-radius: 8px;
+    border: 1px solid #40E0D0;
+    margin-bottom: 20px;
+    font-weight: bold;
+  }
+  .back-btn:hover {
+    background: #40E0D0;
+    color: black;
+  }
+  .chat-container {
+    background: #161622;
+    padding: 20px;
+    border-radius: 15px;
+    border: 2px solid #40E0D0;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+</style>
+</head>
+<body>
+
+  <h1 class="gothic-cina-games">Cina Games Chatroom</h1>
+  <p style="color: #ccc; margin-bottom: 20px;">به پاتوق عمومی گیمرهای سینا گیمز خوش آمدید!</p>
+  
+  <!-- دکمه بازگشت به صفحه اصلی -->
+  <a href="index.html" class="back-btn">🔙 بازگشت به سایت</a>
+
+  <!-- کادر اصلی چت‌روم زنده -->
+  <div class="chat-container" dir="ltr">
+    <div id="disqus_thread"></div>
+  </div>
+
+<script>
+var disqus_config = function () {
+    this.page.url = "https://ahmadfarhadcina-tech.github.io/my-website/chat.html";  
+    this.page.identifier = "cina-games-public-chat"; 
+};
+(function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://cinagames.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();
+</script>
+
+</body>
+</html>
