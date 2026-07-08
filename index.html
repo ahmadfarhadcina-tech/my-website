@@ -298,22 +298,6 @@ body{
 
 .section h2 { color: white; margin-bottom: 15px; }
 
-/* کادر اسکرول‌دار نظرات برای جلوگیری از قطاری شدن صفحه */
-.scroll-chat-box {
-  max-height: 450px; 
-  overflow-y: auto; 
-  padding-right: 10px;
-}
-
-/* زیباتر کردن میله اسکرول */
-.scroll-chat-box::-webkit-scrollbar {
-  width: 6px;
-}
-.scroll-chat-box::-webkit-scrollbar-thumb {
-  background: #40E0D0;
-  border-radius: 10px;
-}
-
 </style>
 </head>
 
@@ -376,14 +360,14 @@ body{
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
 <!-- =================================================== -->
-<!-- باکس چت عمومی هوشمند (اسکرول‌دار با قابلیت پاسخ دوجانبه) -->
+<!-- باکس چت عمومی ۱۰۰٪ رایگان و آزاد، بدون نیاز به ثبت نام و بدون خطای d -->
 <!-- =================================================== -->
-<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
-    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و گفتگو</h3>
+<div class="container" style="margin: 40px auto; background: #161622; padding: 25px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
+    <h3 style="color: #40E0D0; margin-bottom: 15px; font-family: sans-serif; text-align: center;">💬 چت‌روم زنده و عمومی گیمرها</h3>
     
-    <!-- این کادر قدش ثابته و کش نمیاد، کاربر توش اسکرول می‌کنه -->
-    <div class="scroll-chat-box" dir="ltr">
-        <div id="disqus_thread"></div>
+    <!-- مهار قد کادر چت در ۴۰۰ پیکسل برای جلوگیری از قطاری شدن سایت -->
+    <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 10px; background: #fff;">
+        <iframe src="https://www3.minnit.chat/CinaGames?embed&dark" style="border:none; width:100%; height:100%;" allowTransparency="true"></iframe>
     </div>
 </div>
 
@@ -404,10 +388,7 @@ body{
   </a>
 </div>
 
-<div id="dingSound"></div>
-
 <script>
-// اسکریپت کنترل اسپلش اسکرین
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
@@ -415,18 +396,6 @@ setTimeout(function(){
     document.getElementById("splash").style.display="none";
   }, 500);
 },5000);
-
-/* ===== تنظیمات سیستم دیسکاس با آدرس دقیق شما برای کارکرد صحیح ===== */
-var disqus_config = function () {
-    this.page.url = "https://ahmadfarhadcina-tech.github.io/my-website/";  
-    this.page.identifier = "cina-games-smart-chat"; 
-};
-(function() { 
-    var d = document, s = d.createElement('script');
-    s.src = 'https://cinagames.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-})();
 </script>
 
 </body>
