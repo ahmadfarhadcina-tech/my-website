@@ -443,7 +443,8 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
     formData.append('message', msgInput.value);
     formData.append('_captcha', 'false');
 
-    fetch('https://formsubmit.co/api/webhook/ahmadfarhadcina@gmail.com', {
+    // استفاده از متد رسمی AJAX بدون نیاز به ریفرش
+    fetch('https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com', {
         method: 'POST',
         body: formData,
         headers: {
