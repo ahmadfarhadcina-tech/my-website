@@ -360,15 +360,21 @@ body{
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
 <!-- =================================================== -->
-<!-- باکس چت عمومی ۱۰۰٪ رایگان و آزاد، بدون نیاز به ثبت نام و بدون خطای d -->
+<!-- باکس نظرات (بدون ریفرش شدن صفحه و ارسال مستقیم به جی‌میل) -->
 <!-- =================================================== -->
-<div class="container" style="margin: 40px auto; background: #161622; padding: 25px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
-    <h3 style="color: #40E0D0; margin-bottom: 15px; font-family: sans-serif; text-align: center;">💬 چت‌روم زنده و عمومی گیمرها</h3>
+<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
+    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و پیشنهادات</h3>
     
-    <!-- مهار قد کادر چت در ۴۰۰ پیکسل برای جلوگیری از قطاری شدن سایت -->
-    <div style="width: 100%; height: 400px; overflow: hidden; border-radius: 10px; background: #fff;">
-        <iframe src="https://www3.minnit.chat/CinaGames?embed&dark" style="border:none; width:100%; height:100%;" allowTransparency="true"></iframe>
-    </div>
+    <form id="cinaCommentForm" style="display: flex; flex-direction: column; gap: 15px;">
+        <input type="text" name="name" id="userName" placeholder="نام شما" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
+        
+        <textarea name="message" id="userMsg" rows="4" placeholder="نظر، پیشنهاد یا بازی درخواستی خود را بنویسید..." required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; resize: none; font-size: 15px; font-family: Arial, sans-serif;"></textarea>
+        
+        <button type="submit" id="submitBtn" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button>
+        
+        <!-- متن وضعیت ارسال موفقیت‌آمیز -->
+        <p id="formStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p>
+    </form>
 </div>
 
 <div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
@@ -388,14 +394,68 @@ body{
   </a>
 </div>
 
+<audio id="dingSound" src="ding.mp3"></audio>
+
 <script>
+// اسکریپت کنترل اسپلش اسکرین ۵ ثانیه‌ای بدون تغییر منطقی
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
   setTimeout(function(){
     document.getElementById("splash").style.display="none";
   }, 500);
+  
+  let sound=document.getElementById("dingSound");
+  if(sound){
+    sound.volume=0.6;
+    sound.play().catch(e => console.log("Audio play blocked"));
+  }
 },5000);
+
+// اسکریپت خفن AJAX برای ارسال فرم بدون ریفرش شدن صفحه
+document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // جلوگیری از ریفرش شدن صفحه
+    
+    var btn = document.getElementById('submitBtn');
+    var status = document.getElementById('formStatus');
+    var nameInput = document.getElementById('userName');
+    var msgInput = document.getElementById('userMsg');
+    
+    btn.disabled = true;
+    btn.innerText = "⏳ در حال ارسال...";
+    status.style.display = "none";
+
+    var formData = new FormData();
+    formData.append('name', nameInput.value);
+    formData.append('message', msgInput.value);
+    formData.append('_captcha', 'false');
+
+    fetch('https://formsubmit.co/api/webhook/ahmadfarhadcina@gmail.com', {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'Accept': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        btn.disabled = false;
+        btn.innerText = "🚀 ارسال نظر (Send)";
+        status.style.color = "#00ff55";
+        status.innerText = "✅ پیام شما با موفقیت فرستاده شد!";
+        status.style.display = "block";
+        // خالی کردن کادر متن بعد از ارسال موفقیت‌آمیز
+        nameInput.value = "";
+        msgInput.value = "";
+    })
+    .catch(error => {
+        btn.disabled = false;
+        btn.innerText = "🚀 ارسال نظر (Send)";
+        status.style.color = "#ff4444";
+        status.innerText = "❌ خطا در ارسال! دوباره تلاش کنید.";
+        status.style.display = "block";
+    });
+});
 </script>
 
 </body>
