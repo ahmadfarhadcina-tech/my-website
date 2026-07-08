@@ -4,18 +4,27 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- ========================================== -->
+<!-- تنظیمات فوق پیشرفته SEO (بهینه‌سازی برای گوگل) -->
+<!-- ========================================== -->
 <title>Cina Games | سینا گیمز - دانلود بازی های اندروید و PC</title>
 <meta name="description" content="سایت رسمی سینا گیمز (Cina Games). مرجع دانلود رایگان بهترین بازی‌های اندروید، PC، اجرای بازی wwe 2k15 winlator pc، بازی‌های مود شده و هوش مصنوعی اختصاصی.">
 <meta name="keywords" content="Cina Games, سینا گیمز, cina games, wwe 2k15 winlator pc, wwe 2k15 pc android, دانلود بازی های سینا گیمز, دانلود بازی مود شده, دانلود بازی اندروید, بازی های winlator, دیسکاس سینا گیمز, وبسایت سینا گیمز">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://farhad-cina.github.io/"> <meta property="og:title" content="Cina Games | وبسایت رسمی سینا گیمز">
+<link rel="canonical" href="https://farhad-cina.github.io/"> 
+
+<!-- سئوی اشتراک‌گذاری در تلگرام و شبکه‌های اجتماعی (Open Graph) -->
+<meta property="og:title" content="Cina Games | وبسایت رسمی سینا گیمز">
 <meta property="og:description" content="دانلود جدیدترین بازی‌های اندروید و کامپیوتر از جمله wwe 2k15 winlator pc، به همراه چت‌روم گیمرها و هوش مصنوعی اختصاصی CINA AI.">
 <meta property="og:image" content="profile.jpg">
 <meta property="og:url" content="https://farhad-cina.github.io/">
 <meta property="og:type" content="website">
 
-<style>
+<!-- کتابخانه‌های مورد نیاز Firebase (نسخه سازگار با مرورگر و گیت‌هاب) -->
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 
+<style>
 /* ===== BODY ===== */
 body{
   margin:0;
@@ -47,12 +56,17 @@ body{
   letter-spacing: 2px;
 }
 
-/* ===== PROFILE BOX ===== */
-.profile-container {
-  padding: 20px 0 10px 20px;
+/* ===== TOP BAR (Profile + Auth) ===== */
+.top-header-bar {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 }
 
+/* ===== PROFILE BOX ===== */
 .profile-box{
   display:flex;
   align-items:center;
@@ -62,7 +76,6 @@ body{
   border-radius:14px;
   border:1px solid #40E0D0;
   box-shadow:0 0 15px rgba(64,224,208,0.3);
-  z-index:100000;
   text-decoration:none;
   color:white;
 }
@@ -84,6 +97,26 @@ body{
   margin:0;
   font-size:12px;
   color:#ccc;
+}
+
+/* ===== TOP AUTH BUTTON ===== */
+.top-auth-btn {
+  background: #00ff55; 
+  color: black; 
+  font-weight: bold;
+  text-decoration: none;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 14px;
+  box-shadow: 0 0 15px rgba(0, 255, 85, 0.4);
+  transition: 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.top-auth-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px #00ff55;
 }
 
 /* ===== SPLASH SCREEN ===== */
@@ -319,7 +352,9 @@ body{
   </div>
 </div>
 
-<div class="profile-container">
+<!-- هدر جدید شامل پروفایل در راست و دکمه ورود در چپ -->
+<div class="top-header-bar">
+  <!-- باکس پروفایل (راست) -->
   <a href="about-creator.html" class="profile-box">
     <img src="profile.jpg">
     <div>
@@ -327,6 +362,12 @@ body{
       <p>Creator of Cina Games</p>
     </div>
   </a>
+
+  <!-- دکمه هوشمند ورود / ثبت‌نام (چپ) -->
+  <div>
+    <a href="#authSection" id="authBtn" class="top-auth-btn">👤 ورود / ثبت‌نام</a>
+    <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; font-size: 13px; background: #111; padding: 10px 14px; border-radius: 14px; border: 1px solid #40E0D0;"></span>
+  </div>
 </div>
 
 <h1 class="main-title-text gothic-cina-games">Cina Games</h1>
@@ -350,9 +391,6 @@ body{
   <a href="contact.html">Contact</a>
   <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
   <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
-  
-  <a href="#authSection" id="authBtn" style="background: #00ff55; color: black; box-shadow: 0 0 10px #00ff55;">👤 ورود / ثبت‌نام</a>
-  <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; margin-right: 10px; font-size: 14px;"></span>
 </div>
 
 <div class="hero">
@@ -371,6 +409,9 @@ body{
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
+<!-- =================================================== -->
+<!-- باکس خفن ثبت‌نام و ورود کاربران (Cina Games Auth) -->
+<!-- =================================================== -->
 <div id="authSection" class="container" style="margin: 40px auto; background: #11111a; padding: 30px; border-radius: 15px; border: 2px solid #00ff55; box-shadow: 0 0 15px rgba(0,255,85,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
     <h3 id="authTitle" style="color: #00ff55; margin-bottom: 20px; text-align: center; font-family: sans-serif;">🔐 ورود به حساب کاربری</h3>
     
@@ -389,6 +430,9 @@ body{
     </form>
 </div>
 
+<!-- =================================================== -->
+<!-- باکس نظرات -->
+<!-- =================================================== -->
 <div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
     <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و پیشنهادات</h3>
     
@@ -423,6 +467,22 @@ body{
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
+// تنظیمات اتصال اختصاصی فایربیس سینا گیمز
+const firebaseConfig = {
+  apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
+  authDomain: "cina-games.firebaseapp.com",
+  projectId: "cina-games",
+  storageBucket: "cina-games.firebasestorage.app",
+  messagingSenderId: "449625451730",
+  appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
+  measurementId: "G-YSQZ60ZNC8"
+};
+
+// راه‌اندازی فایربیس
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+// اسپلش اسکرین و صدا
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
@@ -437,9 +497,9 @@ setTimeout(function(){
   }
 },5000);
 
+// فرم نظرات ارسال مستقیم به جی‌میل
 document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
-    
     var btn = document.getElementById('submitBtn');
     var status = document.getElementById('formStatus');
     var nameInput = document.getElementById('userName');
@@ -454,13 +514,10 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
     formData.append('message', msgInput.value);
     formData.append('_captcha', 'false');
 
-    // استفاده از متد رسمی AJAX بدون نیاز به ریفرش
     fetch('https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com', {
         method: 'POST',
         body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
+        headers: { 'Accept': 'application/json' }
     })
     .then(response => response.json())
     .then(data => {
@@ -481,7 +538,7 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
     });
 });
 
-// جاوااسکریپت اختصاصی برای دکمه سوئیچ بین لاگین و ثبت نام
+// مدیریت سیستم ثبت‌نام و ورود فایربیس
 let isLoginMode = true;
 const authTitle = document.getElementById('authTitle');
 const authSubmitBtn = document.getElementById('authSubmitBtn');
@@ -489,9 +546,14 @@ const authToggleText = document.getElementById('authToggleText');
 const authSection = document.getElementById('authSection');
 const authEmail = document.getElementById('authEmail');
 const authPassword = document.getElementById('authPassword');
+const authStatus = document.getElementById('authStatus');
+const authBtn = document.getElementById('authBtn');
+const userWelcome = document.getElementById('userWelcome');
 
+// سوئیچ بین حالت ورود و ثبت‌نام
 authToggleText.addEventListener('click', function() {
     isLoginMode = !isLoginMode;
+    authStatus.style.display = "none";
     if (!isLoginMode) {
         authTitle.innerText = "📝 ساخت حساب جدید";
         authTitle.style.color = "#40E0D0";
@@ -512,6 +574,59 @@ authToggleText.addEventListener('click', function() {
         authEmail.style.borderColor = "#00ff55";
         authPassword.style.borderColor = "#00ff55";
         authToggleText.innerHTML = 'اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>';
+    }
+});
+
+// مدیریت زدن دکمه سابمیت فرم ورود/ثبت‌نام
+document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = authEmail.value;
+    const password = authPassword.value;
+    
+    authStatus.style.display = "block";
+    authStatus.style.color = "#ffcc00";
+    authStatus.innerText = "⏳ لطفا صبر کنید...";
+
+    if (isLoginMode) {
+        auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            authStatus.style.color = "#00ff55";
+            authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!";
+            authEmail.value = "";
+            authPassword.value = "";
+        })
+        .catch((error) => {
+            authStatus.style.color = "#ff4444";
+            authStatus.innerText = "❌ خطا: رمز اشتباه است یا حساب وجود ندارد.";
+        });
+    } else {
+        auth.createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+            authStatus.style.color = "#00ff55";
+            authStatus.innerText = "✅ اکانت شما با موفقیت ساخته شد!";
+            authEmail.value = "";
+            authPassword.value = "";
+        })
+        .catch((error) => {
+            authStatus.style.color = "#ff4444";
+            authStatus.innerText = "❌ خطا: ایمیل نامعتبر است یا رمز زیر ۶ رقم است.";
+        });
+    }
+});
+
+// چک کردن وضعیت لاگین کاربر به‌صورت لحظه‌ای
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        authBtn.style.display = "none";
+        authSection.style.display = "none"; 
+        userWelcome.style.display = "inline-block";
+        // تکه اول ایمیل را قبل از علامت @ برای ظاهر زیباتر جدا می‌کنیم
+        let userNameClean = user.email.split('@')[0];
+        userWelcome.innerText = "👤 کاربر: " + userNameClean;
+    } else {
+        authBtn.style.display = "inline-block";
+        authSection.style.display = "block";
+        userWelcome.style.display = "none";
     }
 });
 </script>
