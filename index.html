@@ -298,7 +298,7 @@ body{
 .hero h2{ font-size: 26px; margin-bottom: 10px; }
 .hero p{ color: #ccc; font-size: 16px; }
 
-/* ===== 4-BOX GRID MENU ===== */
+/* ===== 4-BOX GRID MENU (GAMING & NEON EDITED) ===== */
 .menu{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -312,23 +312,70 @@ body{
 
 .box{
   height: 140px; 
-  border-radius: 22px;
+  border-radius: 25px; /* کمی گردتر و شیک‌تر */
   display: flex;
+  flex-direction: column; /* چیدمان عمودی برای قرارگیری متن و آیکون‌ها */
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 19px;
+  font-size: 20px;
   text-decoration: none;
   color: white;
-  transition: 0.3s;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+  gap: 6px;
 }
 
-.box:hover{ transform: scale(1.04); }
-.games{ background: #40E0D0; color: black; }
-.desc{ background: #007bff; }
-.alerts{ background: #ffcc00; color: black; }
-.settings{ background: #ff4444; }
+/* افکت فوق‌العاده شیک جلو آمدن دکمه‌ها هنگام اشاره */
+.box:hover{ 
+  transform: scale(1.06) translateY(-4px); 
+}
+
+/* باکس مخصوص بازی‌ها (سبز متحرک و تیت گیمینگ) */
+.games{ 
+  background: linear-gradient(135deg, #00ff66, #009933); 
+  color: black !important; 
+  box-shadow: 0 0 20px #00ff66, inset 0 0 10px rgba(0,0,0,0.15);
+  animation: gamesGlow 2s infinite ease-in-out alternate;
+}
+@keyframes gamesGlow {
+  0% { box-shadow: 0 0 15px #00ff66; }
+  100% { box-shadow: 0 0 30px #00ff66, 0 0 10px #40E0D0; }
+}
+
+/* ردیف آیکون‌های کوچک و ریز پایین کلمه‌ی Games */
+.mini-game-icons {
+  font-size: 13px;
+  opacity: 0.9;
+  background: rgba(0, 0, 0, 0.12);
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 2px;
+}
+
+/* باکس توضیحات (آبی سایبرپانک و نئون) */
+.desc{ 
+  background: linear-gradient(135deg, #0088ff, #0044cc); 
+  box-shadow: 0 0 20px #0088ff;
+}
+.desc:hover { box-shadow: 0 0 35px #0088ff; }
+
+/* باکس هشدارها (زرد نئونی و برقی) */
+.alerts{ 
+  background: linear-gradient(135deg, #ffcc00, #cc9900); 
+  color: black !important; 
+  box-shadow: 0 0 20px #ffcc00;
+}
+.alerts:hover { box-shadow: 0 0 35px #ffcc00; }
+
+/* باکس تنظیمات (قرمز لایو و نئون آتشین) */
+.settings{ 
+  background: linear-gradient(135deg, #ff3333, #b30000); 
+  box-shadow: 0 0 20px #ff3333;
+}
+.settings:hover { box-shadow: 0 0 35px #ff3333; }
 
 /* ===== SECTIONS ===== */
 .section{
@@ -398,8 +445,12 @@ body{
   <p>Download Android & PC games...</p>
 </div>
 
+<!-- منوی ۴ تایی جدید، گیمینگ و شیک با رنگ‌های نئونی متحرک -->
 <div class="menu">
-  <a href="games.html" class="box games">🎮 Games</a>
+  <a href="games.html" class="box games">
+    <span>🎮 Games 🎮</span>
+    <div class="mini-game-icons">⚔️ 🔫 👑</div>
+  </a>
   <a href="#desc" class="box desc">📄 Description</a>
   <a href="#alerts" class="box alerts">🔔 Alerts</a>
   <a href="#settings" class="box settings">⚙️ Settings</a>
