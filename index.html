@@ -4,17 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- ========================================== -->
-<!-- تنظیمات فوق پیشرفته SEO (بهینه‌سازی برای گوگل) -->
-<!-- ========================================== -->
 <title>Cina Games | سینا گیمز - دانلود بازی های اندروید و PC</title>
 <meta name="description" content="سایت رسمی سینا گیمز (Cina Games). مرجع دانلود رایگان بهترین بازی‌های اندروید، PC، اجرای بازی wwe 2k15 winlator pc، بازی‌های مود شده و هوش مصنوعی اختصاصی.">
 <meta name="keywords" content="Cina Games, سینا گیمز, cina games, wwe 2k15 winlator pc, wwe 2k15 pc android, دانلود بازی های سینا گیمز, دانلود بازی مود شده, دانلود بازی اندروید, بازی های winlator, دیسکاس سینا گیمز, وبسایت سینا گیمز">
 <meta name="robots" content="index, follow">
-<link rel="canonical" href="https://farhad-cina.github.io/"> <!-- لینک سایتت در گیت‌هاب را اینجا تایید کردیم -->
-
-<!-- سئوی اشتراک‌گذاری در تلگرام و شبکه‌های اجتماعی (Open Graph) -->
-<meta property="og:title" content="Cina Games | وبسایت رسمی سینا گیمز">
+<link rel="canonical" href="https://farhad-cina.github.io/"> <meta property="og:title" content="Cina Games | وبسایت رسمی سینا گیمز">
 <meta property="og:description" content="دانلود جدیدترین بازی‌های اندروید و کامپیوتر از جمله wwe 2k15 winlator pc، به همراه چت‌روم گیمرها و هوش مصنوعی اختصاصی CINA AI.">
 <meta property="og:image" content="profile.jpg">
 <meta property="og:url" content="https://farhad-cina.github.io/">
@@ -356,6 +350,9 @@ body{
   <a href="contact.html">Contact</a>
   <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
   <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
+  
+  <a href="#authSection" id="authBtn" style="background: #00ff55; color: black; box-shadow: 0 0 10px #00ff55;">👤 ورود / ثبت‌نام</a>
+  <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; margin-right: 10px; font-size: 14px;"></span>
 </div>
 
 <div class="hero">
@@ -374,9 +371,24 @@ body{
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
 
-<!-- =================================================== -->
-<!-- باکس نظرات (بدون ریفرش شدن صفحه و ارسال مستقیم به جی‌میل) -->
-<!-- =================================================== -->
+<div id="authSection" class="container" style="margin: 40px auto; background: #11111a; padding: 30px; border-radius: 15px; border: 2px solid #00ff55; box-shadow: 0 0 15px rgba(0,255,85,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
+    <h3 id="authTitle" style="color: #00ff55; margin-bottom: 20px; text-align: center; font-family: sans-serif;">🔐 ورود به حساب کاربری</h3>
+    
+    <form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 15px;">
+        <input type="email" id="authEmail" placeholder="ایمیل شما (Email)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
+        
+        <input type="password" id="authPassword" placeholder="رمز عبور (Password)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
+        
+        <button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s;">ورود به اکانت</button>
+        
+        <p id="authToggleText" style="text-align: center; color: #ccc; font-size: 14px; cursor: pointer; margin-top: 10px;">
+            اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>
+        </p>
+        
+        <p id="authStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p>
+    </form>
+</div>
+
 <div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
     <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و پیشنهادات</h3>
     
@@ -387,7 +399,6 @@ body{
         
         <button type="submit" id="submitBtn" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button>
         
-        <!-- متن وضعیت ارسال موفقیت‌آمیز -->
         <p id="formStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p>
     </form>
 </div>
@@ -468,6 +479,40 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
         status.innerText = "❌ خطا در ارسال! دوباره تلاش کنید.";
         status.style.display = "block";
     });
+});
+
+// جاوااسکریپت اختصاصی برای دکمه سوئیچ بین لاگین و ثبت نام
+let isLoginMode = true;
+const authTitle = document.getElementById('authTitle');
+const authSubmitBtn = document.getElementById('authSubmitBtn');
+const authToggleText = document.getElementById('authToggleText');
+const authSection = document.getElementById('authSection');
+const authEmail = document.getElementById('authEmail');
+const authPassword = document.getElementById('authPassword');
+
+authToggleText.addEventListener('click', function() {
+    isLoginMode = !isLoginMode;
+    if (!isLoginMode) {
+        authTitle.innerText = "📝 ساخت حساب جدید";
+        authTitle.style.color = "#40E0D0";
+        authSubmitBtn.innerText = "ثبت‌نام در سینا گیمز";
+        authSubmitBtn.style.background = "#40E0D0";
+        authSection.style.borderColor = "#40E0D0";
+        authSection.style.boxShadow = "0 0 15px rgba(64,224,208,0.2)";
+        authEmail.style.borderColor = "#40E0D0";
+        authPassword.style.borderColor = "#40E0D0";
+        authToggleText.innerHTML = 'قبلاً ثبت‌نام کردی؟ <span style="color: #40E0D0; font-weight: bold;">وارد شو</span>';
+    } else {
+        authTitle.innerText = "🔐 ورود به حساب کاربری";
+        authTitle.style.color = "#00ff55";
+        authSubmitBtn.innerText = "ورود به اکانت";
+        authSubmitBtn.style.background = "#00ff55";
+        authSection.style.borderColor = "#00ff55";
+        authSection.style.boxShadow = "0 0 15px rgba(0,255,85,0.2)";
+        authEmail.style.borderColor = "#00ff55";
+        authPassword.style.borderColor = "#00ff55";
+        authToggleText.innerHTML = 'اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>';
+    }
 });
 </script>
 
