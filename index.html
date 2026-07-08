@@ -61,28 +61,28 @@ body{
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px;
+  padding: 15px 20px; /* کمتر کردن پدینگ برای جمع‌وجور شدن */
   box-sizing: border-box;
   width: 100%;
 }
 
-/* ===== PROFILE BOX ===== */
+/* ===== PROFILE BOX (کوچک‌تر شده) ===== */
 .profile-box{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:8px;
   background:#111;
-  padding:10px 16px;
-  border-radius:14px;
+  padding:6px 12px; /* کوچک‌تر کردن پدینگ پروفایل */
+  border-radius:10px;
   border:1px solid #40E0D0;
-  box-shadow:0 0 15px rgba(64,224,208,0.3);
+  box-shadow:0 0 10px rgba(64,224,208,0.2);
   text-decoration:none;
   color:white;
 }
 
 .profile-box img{
-  width:42px;
-  height:42px;
+  width:34px; /* کوچک کردن عکس پروفایل */
+  height:34px;
   border-radius:50%;
   border:2px solid #40E0D0;
 }
@@ -90,33 +90,33 @@ body{
 .profile-box h4{
   margin:0;
   color:#40E0D0;
-  font-size:15px;
+  font-size:13px; /* کوچک کردن متن */
 }
 
 .profile-box p{
   margin:0;
-  font-size:12px;
+  font-size:11px;
   color:#ccc;
 }
 
-/* ===== TOP AUTH BUTTON ===== */
+/* ===== TOP AUTH BUTTON (کوچک‌تر شده) ===== */
 .top-auth-btn {
   background: #00ff55; 
   color: black; 
   font-weight: bold;
   text-decoration: none;
-  padding: 12px 20px;
-  border-radius: 14px;
-  font-size: 14px;
-  box-shadow: 0 0 15px rgba(0, 255, 85, 0.4);
+  padding: 8px 14px; /* باریک و کوتاه‌تر شدن دکمه ورود بالایی */
+  border-radius: 10px;
+  font-size: 13px; /* فونت کمی کوچک‌تر */
+  box-shadow: 0 0 10px rgba(0, 255, 85, 0.3);
   transition: 0.3s;
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
 }
 .top-auth-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 0 25px #00ff55;
+  box-shadow: 0 0 20px #00ff55;
 }
 
 /* ===== SPLASH SCREEN ===== */
@@ -352,7 +352,7 @@ body{
   </div>
 </div>
 
-<!-- هدر جدید شامل پروفایل در راست و دکمه ورود در چپ -->
+<!-- هدر شامل پروفایل در راست و دکمه ورود در چپ -->
 <div class="top-header-bar">
   <!-- باکس پروفایل (راست) -->
   <a href="about-creator.html" class="profile-box">
@@ -366,7 +366,7 @@ body{
   <!-- دکمه هوشمند ورود / ثبت‌نام (چپ) -->
   <div>
     <a href="#authSection" id="authBtn" class="top-auth-btn">👤 ورود / ثبت‌نام</a>
-    <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; font-size: 13px; background: #111; padding: 10px 14px; border-radius: 14px; border: 1px solid #40E0D0;"></span>
+    <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; font-size: 13px; background: #111; padding: 8px 12px; border-radius: 10px; border: 1px solid #40E0D0;"></span>
   </div>
 </div>
 
@@ -420,7 +420,8 @@ body{
         
         <input type="password" id="authPassword" placeholder="رمز عبور (Password)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
         
-        <button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s;">ورود به اکانت</button>
+        <!-- دکمه ثبت نام کاملاً کوچک، شیک و سنتر شده -->
+        <button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s; width: auto; max-width: 180px; margin: 0 auto;">ورود به اکانت</button>
         
         <p id="authToggleText" style="text-align: center; color: #ccc; font-size: 14px; cursor: pointer; margin-top: 10px;">
             اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>
@@ -614,15 +615,15 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
     }
 });
 
-// چک کردن وضعیت لاگین کاربر به‌صورت لحظه‌ای
+// چک کردن وضعیت لاگین کاربر به‌صورت لحظه‌ای (ثبت آیکون آواتار هوشمند)
 auth.onAuthStateChanged((user) => {
     if (user) {
         authBtn.style.display = "none";
         authSection.style.display = "none"; 
         userWelcome.style.display = "inline-block";
-        // تکه اول ایمیل را قبل از علامت @ برای ظاهر زیباتر جدا می‌کنیم
         let userNameClean = user.email.split('@')[0];
-        userWelcome.innerText = "👤 کاربر: " + userNameClean;
+        // اضافه کردن آیکون پروفایل به زیبایی در کنار نام کاربر
+        userWelcome.innerHTML = "👤 کاربر: " + userNameClean;
     } else {
         authBtn.style.display = "inline-block";
         authSection.style.display = "block";
