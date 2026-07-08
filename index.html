@@ -17,7 +17,7 @@
 
 <meta property="og:title" content="Cina Games | وبسایت رسمی سینا گیمز">
 <meta property="og:description" content="دانلود جدیدترین بازی‌های اندروید و کامپیوتر از جمله wwe 2k15 winlator pc، به همراه چت‌روم گیمرها و هوش مصنوعی اختصاصی CINA AI.">
-<meta property="og:image" content="profile.jpg">
+<meta property="og:image" content="icon.png"> <!-- تغییر یافته به آیکون جدید -->
 <meta property="og:url" content="https://farhad-cina.github.io/">
 <meta property="og:type" content="website">
 
@@ -31,7 +31,7 @@ body{
   background:#0f0f0f;
   color:white;
   font-family:Arial,sans-serif;
-  padding-bottom:100px; /* اضافه کردن فضای خالی برای دکمه فیکس نصب پایین صفحه */
+  padding-bottom:100px; 
   opacity:0;
   animation: pageShow 1s ease-in forwards;
 }
@@ -41,7 +41,7 @@ body{
   to{opacity:1;}
 }
 
-/* ===== استایل اختصاصی و خفن برای تمام متن‌های CINA GAMES ===== */
+/* ===== استایل اختصاصی متن‌های CINA GAMES ===== */
 .gothic-cina-games {
   font-family: 'Old English Text MT', 'Georgia', serif;
   font-weight: bold;
@@ -56,7 +56,7 @@ body{
   letter-spacing: 2px;
 }
 
-/* ===== TOP BAR (Profile + Auth) ===== */
+/* ===== TOP BAR ===== */
 .top-header-bar {
   display: flex;
   justify-content: space-between;
@@ -298,7 +298,7 @@ body{
 .hero h2{ font-size: 26px; margin-bottom: 10px; }
 .hero p{ color: #ccc; font-size: 16px; }
 
-/* ===== 4-BOX GRID MENU (GAMING & NEON EDITED) ===== */
+/* ===== 4-BOX GRID MENU ===== */
 .menu{
   display:grid;
   grid-template-columns: repeat(2, 1fr);
@@ -332,7 +332,6 @@ body{
   transform: scale(1.06) translateY(-4px); 
 }
 
-/* باکس مخصوص بازی‌ها */
 .games{ 
   background: linear-gradient(135deg, #00ff66, #009933); 
   color: black !important; 
@@ -353,14 +352,12 @@ body{
   letter-spacing: 2px;
 }
 
-/* باکس توضیحات */
 .desc{ 
   background: linear-gradient(135deg, #0088ff, #0044cc); 
   box-shadow: 0 0 20px #0088ff;
 }
 .desc:hover { box-shadow: 0 0 35px #0088ff; }
 
-/* باکس هشدارها */
 .alerts{ 
   background: linear-gradient(135deg, #ffcc00, #cc9900); 
   color: black !important; 
@@ -368,7 +365,6 @@ body{
 }
 .alerts:hover { box-shadow: 0 0 35px #ffcc00; }
 
-/* باکس تنظیمات */
 .settings{ 
   background: linear-gradient(135deg, #ff3333, #b30000); 
   box-shadow: 0 0 20px #ff3333;
@@ -385,7 +381,7 @@ body{
 
 .section h2 { color: white; margin-bottom: 15px; }
 
-/* ===== باکس خفن دعوت به نصب اپلیکیشن (PWA) ===== */
+/* ===== PWA INSTALL BANNER ===== */
 #pwaInstallBanner {
   position: fixed;
   bottom: 15px;
@@ -563,9 +559,10 @@ body{
   <a href="about-creator.html" style="display:inline-block; padding:14px 35px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 16px; box-shadow:0 0 15px rgba(64,224,208,.4);">👤 About Creator</a>
 </div>
 
+<!-- بنر نصب اپلیکیشن هوشمند PWA با آیکون اختصاصی جدید -->
 <div id="pwaInstallBanner">
   <div class="pwa-text">
-    <img src="profile.jpg" alt="Logo">
+    <img src="icon.png" alt="Logo"> <!-- آیکون جدید شما -->
     <div class="pwa-info">
       <h5>Cina Games App</h5>
       <p>نصب نسخه سبک و سریع روی گوشی</p>
@@ -580,7 +577,6 @@ body{
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
-// ثبت اپلیکیشن در مرورگر دستگاه کاربر (Service Worker Registration)
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js')
@@ -589,7 +585,6 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-// اسکریپت فعال‌سازی هوشمند دکمه نصب اپلیکیشن
 let deferredPrompt;
 const installBanner = document.getElementById('pwaInstallBanner');
 const btnInstall = document.getElementById('pwaBtnInstall');
@@ -598,7 +593,6 @@ const btnClose = document.getElementById('pwaBtnClose');
 window.addEventListener('beforeinstallprompt', (e) => {
   e.preventDefault();
   deferredPrompt = e;
-  // نمایش بنر جذاب نصب بعد از بالا آمدن کامل سایت
   setTimeout(() => {
     installBanner.classList.add('show');
   }, 6000); 
@@ -621,7 +615,6 @@ btnClose.addEventListener('click', () => {
   installBanner.classList.remove('show');
 });
 
-// تنظیمات اتصال اختصاصی فایربیس سینا گیمز
 const firebaseConfig = {
   apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
   authDomain: "cina-games.firebaseapp.com",
@@ -635,7 +628,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
-// اسپلش اسکرین و صدا
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
@@ -650,7 +642,6 @@ setTimeout(function(){
   }
 },5000);
 
-// فرم نظرات ارسال مستقیم به جی‌میل
 document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
     var btn = document.getElementById('submitBtn');
@@ -691,7 +682,6 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
     });
 });
 
-// مدیریت سیستم ثبت‌نام و ورود فایربیس
 let isLoginMode = true;
 const authTitle = document.getElementById('authTitle');
 const authSubmitBtn = document.getElementById('authSubmitBtn');
