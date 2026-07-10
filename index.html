@@ -406,6 +406,7 @@ auth.onAuthStateChanged((user) => {
 
 <!-- کد Social Bar برای افزایش درآمد -->
 <script src="https://jonasfrozepyamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
+
 <!-- 🔴 شروع کد نمایش پیغام ضد تبلیغ بدون حذف هیچ کدی از قبل -->
 <div id="adblockNotice" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #111, #222); color: #fff; border: 2px solid #ff3333; padding: 15px 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(255,51,51,0.4); z-index: 100000; max-width: 320px; font-family: sans-serif; font-size: 14px; line-height: 1.6; display: none; direction: rtl; text-align: right;">
   <div style="font-weight: bold; color: #ff3333; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">⚠️ گیمر عزیز توجه کن!</div>
@@ -415,26 +416,35 @@ auth.onAuthStateChanged((user) => {
 
 <script>
 window.addEventListener('load', function() {
-  // یک تاخیر کوچک برای اینکه اول تبلیغات لود شوند، بعد بررسی انجام شود
   setTimeout(function() {
-    // بررسی اینکه آیا بنر تبلیغاتی گوگل لود شده یا مسدود شده است
-    var adFrame = document.querySelector('script[src*="invoke.js"]');
     var isAdBlocked = false;
 
-    // اگر اسکریپت تبلیغاتی کلاً لود نشده باشد یا بلاک شده باشد
-    if (!adFrame || adFrame.getBoundingClientRect().height === 0) {
-      isAdBlocked = true;
-    }
+    // یک المان کاذب تست می‌سازیم تا عملکرد فیلترشکن ضدتبلیغ را بسنجیم
+    var testAd = document.createElement('div');
+    testAd.innerHTML = '&nbsp;';
+    testAd.className = 'adsbox ads google-ads doubleclick-ad';
+    testAd.style.position = 'absolute';
+    testAd.style.top = '-999px';
+    testAd.style.left = '-999px';
+    document.body.appendChild(testAd);
 
-    // اگر مسدود بود، پیغام را نشان بده
-    if (isAdBlocked) {
-      document.getElementById('adblockNotice').style.display = 'block';
-    }
-  }, 4000); // ۴ ثانیه بعد از باز شدن سایت چک میکند
+    window.setTimeout(function() {
+      // اگر المان کاذب توسط فیلترشکن حذف یا مخفی شده باشد، ارتفاع آن 0 می‌شود
+      if (testAd.offsetHeight === 0) {
+        isAdBlocked = true;
+      }
+      testAd.remove();
+
+      // اگر مسدود بودن تایید شد، باکس اخطار باز می‌شود
+      if (isAdBlocked) {
+        document.getElementById('adblockNotice').style.display = 'block';
+      }
+    }, 100);
+
+  }, 4000); // چک کردن بعد از ۴ ثانیه لود کامل صفحه
 });
 </script>
 <!-- 🔴 پایان کد نمایش پیغام ضد تبلیغ -->
-
 
 </body>
 </html>
