@@ -3,8 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cina Games - Store</title>
-    <link rel="manifest" href="manifest.json">
+    <title>Cina Games Store | دانلود بازی اندروید و PC</title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -72,6 +71,7 @@
     </style>
   </head>
   <body>
+    <!-- NAVBAR -->
     <nav class="navbar">
       <div class="logo">🎮 Cina Games</div>
       <div class="links">
@@ -83,14 +83,17 @@
 
     <h1>🎮 Cina Games Store</h1>
 
+    <!-- بنر تبلیغاتی هوشمند میانی -->
     <div style="text-align:center; margin: 15px 0;">
-      <div id="ad-container-1"></div>
+      <div id="container-4d3a28c9044f42561d551d5f433b7481"></div>
     </div>
 
+    <!-- SEARCH BOX -->
     <div class="search-box">
       <input type="text" id="searchInput" placeholder="🔍 Search games..." />
     </div>
 
+    <!-- CATEGORIES -->
     <div class="categories">
       <button onclick="filterGames('all')">All</button>
       <button onclick="filterGames('action')">Action</button>
@@ -99,7 +102,9 @@
       <button onclick="filterGames('lite')" style="background: linear-gradient(90deg, #22c55e, #16a34a); color: white;">⚡ مخصوص گوشی ضعیف</button>
     </div>
 
+    <!-- MAIN GAMES CONTAINER -->
     <div class="container">
+      <!-- بازی ۱: AetherSX2 -->
       <div class="card lite sports">
           <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">🔥 Top Download</div>
           <img src="aethersx2.jpg" alt="AetherSX2 PS2 Emulator" />
@@ -115,6 +120,7 @@
           <a href="aethersx2.html" class="btn">📖 Open Page</a>
       </div>
 
+      <!-- بازی ۲: GTA V -->
       <div class="card openworld">
         <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">🔥 Top Download</div>
         <img src="gta.jpg" />
@@ -129,11 +135,15 @@
         <a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank">⬇ Download</a>
         <a href="gta-v.html" class="btn">Open Page</a>
       </div>
+      
+      <!-- اگر بازی‌های دیگری هم داشتی، تگ‌های <div class="card"> بعدی رو همین‌جا زیر هم اضافه کن -->
     </div>
 
+    <!-- SEARCH & FILTER JAVASCRIPT -->
     <script>
       const input = document.getElementById("searchInput");
-      const cards = document.querySelectorAll(".card");
+      const cards = document.querySelectorAll(".container .card");
+      
       input.addEventListener("keyup", function () {
         let value = this.value.toLowerCase();
         cards.forEach((card) => {
@@ -141,8 +151,8 @@
           card.style.display = title.includes(value) ? "flex" : "none";
         });
       });
+
       function filterGames(category) {
-        let cards = document.querySelectorAll(".card");
         cards.forEach((card) => {
           if (category === "all") {
             card.style.display = "flex";
@@ -153,9 +163,11 @@
       }
     </script>
 
+    <!-- دکمه‌های شناور شبکه‌های اجتماعی -->
     <a href="https://t.me/afghangamerx" target="_blank" class="fixed-btn" style="left:15px; background:#229ED9; color:white;">📲 Telegram</a>
     <a href="https://www.youtube.com/@Farhad_Cina" target="_blank" class="fixed-btn" style="right:15px; background:#FF0000; color:white;">▶️ YouTube</a>
 
+    <!-- کدهای تبلیغات هوشمند و پاپ‌آپ فعال شما در انتهای صفحه جهت جلوگیری از هرگونه تداخل -->
     <script src="https://pl30263055.effectivecpmnetwork.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js" async></script>
     <script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js" async></script>
   </body>
