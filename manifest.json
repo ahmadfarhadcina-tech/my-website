@@ -1,10 +1,10 @@
 {
   "name": "Cina Games Store",
   "short_name": "Cina Games",
-  "description": "بهترین مرجع دانلود بازی‌های اندروید و PC",
+  "description": "Best store for Android and PC games download",
   "start_url": "index.html",
   "display": "standalone",
-  "background_color": "#0f0f0f",
+  "background_color": "#0a0a0a",
   "theme_color": "#00ff66",
   "orientation": "portrait",
   "icons": [
