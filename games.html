@@ -3,10 +3,326 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>All Games | Cina Games Storeitle>
+  <title>All Games | Cina Games Store</title>
   <meta name="description" content="Browse all games in Cina Games Store. Download Android and PC games.">
   <link rel="icon" type="image/png" href="icon.png">
-  <link rel="stylesheet" href="css/store.css">
+  
+  <style>
+    /* استایل‌های پایه و بدنه */
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: radial-gradient(circle at top, #1a1a1a, #000);
+      color: white;
+      padding-top: 70px; /* برای فاصله گرفتن از ناف‌بار ثابت */
+    }
+
+    /* هدر و ناف‌بار */
+    .store-navbar {
+      background: rgba(20, 20, 20, 0.95);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 60px;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+    }
+
+    .store-navbar-inner {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+
+    .store-logo {
+      color: white;
+      font-weight: bold;
+      font-size: 22px;
+      text-decoration: none;
+    }
+
+    .store-search input {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 8px 15px;
+      border-radius: 20px;
+      color: white;
+      width: 200px;
+      outline: none;
+      text-align: right;
+    }
+
+    .store-nav-links a {
+      color: #ccc;
+      text-decoration: none;
+      margin-right: 20px;
+      font-size: 14px;
+      transition: 0.3s;
+    }
+
+    .store-nav-links a:hover, .store-nav-links a.active {
+      color: #00ff66;
+    }
+
+    .store-mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* چیدمان اصلی */
+    .store-section {
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 20px;
+    }
+
+    .store-layout {
+      display: flex;
+      gap: 20px;
+    }
+
+    /* سایدبار فیلترها */
+    .store-filters {
+      width: 250px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      padding: 20px;
+      height: fit-content;
+    }
+
+    .store-filters h3 {
+      margin-top: 0;
+      color: #00ff66;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding-bottom: 10px;
+    }
+
+    .store-filter-group {
+      margin-bottom: 20px;
+    }
+
+    .store-filter-group h4 {
+      margin: 0 0 10px 0;
+      color: #FFD700;
+      font-size: 14px;
+    }
+
+    .store-filter-option {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      cursor: pointer;
+    }
+
+    .store-filter-option input {
+      cursor: pointer;
+    }
+
+    /* نوار مرتب‌سازی */
+    .store-sort-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.02);
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 14px;
+      width: 870px;
+    }
+
+    .store-sort-select {
+      background: #222;
+      color: white;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 5px 10px;
+      border-radius: 6px;
+      outline: none;
+    }
+
+    /* گرید کارت‌ها */
+    .store-games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+      width: 900px;
+    }
+
+    /* استایل کارت بازی */
+    .store-game-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: 0.3s;
+    }
+
+    .store-game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 255, 102, 0.1);
+    }
+
+    .store-game-image {
+      position: relative;
+      width: 100%;
+      height: 160px;
+    }
+
+    .store-game-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .store-game-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #FFD700;
+      color: black;
+      font-size: 10px;
+      font-weight: bold;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+
+    .store-game-badge.top { background: #ff3333; color: white; }
+    .store-game-badge.new { background: #00ff66; color: black; }
+
+    .store-game-info {
+      padding: 15px;
+      flex-grow: 1;
+    }
+
+    .store-game-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: white;
+    }
+
+    .store-game-meta {
+      display: flex;
+      gap: 5px;
+      margin-bottom: 10px;
+    }
+
+    .store-game-tag {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .store-game-tag.offline { color: #00ff66; }
+    .store-game-tag.req-high { color: #ff3333; }
+
+    .store-game-rating {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .store-game-footer {
+      padding: 15px;
+      background: rgba(0, 0, 0, 0.2);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .store-game-downloads {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .store-game-action {
+      background: linear-gradient(90deg, #00ff66, #00cc55);
+      color: black;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 6px 15px;
+      border-radius: 6px;
+      font-size: 13px;
+      transition: 0.2s;
+    }
+
+    .store-game-action:hover {
+      opacity: 0.9;
+    }
+
+    /* فوتر */
+    .store-footer {
+      background: #111;
+      margin-top: 5px;
+      padding: 40px 20px 20px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .store-footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 30px;
+    }
+
+    .store-footer-col h4 {
+      color: #00ff66;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+
+    .store-footer-col a {
+      display: block;
+      color: #888;
+      text-decoration: none;
+      margin-bottom: 8px;
+      font-size: 14px;
+    }
+
+    .store-footer-col a:hover {
+      color: white;
+    }
+
+    .store-footer-bottom {
+      max-width: 1200px;
+      margin: 30px auto 0 auto;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      padding-top: 20px;
+      color: #555;
+      font-size: 13px;
+    }
+
+    /* واکنش‌گرایی برای موبایل */
+    @media (max-width: 768px) {
+      .store-layout { flex-direction: column; }
+      .store-filters { width: auto; }
+      .store-games-grid { width: 100%; grid-template-columns: 1fr; }
+      .store-sort-bar { width: auto; }
+      .store-nav-links { display: none; }
+      .store-mobile-menu-btn { display: block; }
+    }
+  </style>
 </head>
 <body>
 
@@ -114,13 +430,10 @@
         <div class="store-games-grid" id="gamesGrid">
           
           <!-- GTA V -->
-          <div class="store-game-card openworld pc req-high" data-rating="5" data-downloads="25000" data-size="14 گیگ" data-date="2026-01-15">
+          <div class="store-game-card openworld pc req-high">
             <div class="store-game-image">
               <img src="gta.jpg" alt="GTA V" loading="lazy">
               <span class="store-game-badge top">Top Download</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">GTA V</div>
@@ -141,13 +454,10 @@
           </div>
 
           <!-- WWE 2K15 -->
-          <div class="store-game-card sports pc req-high" data-rating="5" data-downloads="18000" data-size="16 گیگ" data-date="2026-02-01">
+          <div class="store-game-card sports pc req-high">
             <div class="store-game-image">
               <img src="wwe.jpg" alt="WWE 2K15" loading="lazy">
               <span class="store-game-badge">Popular</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">WWE 2K15</div>
@@ -168,13 +478,10 @@
           </div>
 
           <!-- God of War II -->
-          <div class="store-game-card action emulator req-high" data-rating="5" data-downloads="20000" data-size="6.5 گیگ" data-date="2026-03-10">
+          <div class="store-game-card action emulator req-high">
             <div class="store-game-image">
               <img src="god-of-war-2.jpg" alt="God of War II" loading="lazy">
               <span class="store-game-badge new">New</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">God of War II</div>
@@ -195,12 +502,9 @@
           </div>
 
           <!-- Far Cry 3 -->
-          <div class="store-game-card openworld pc req-high" data-rating="5" data-downloads="10000" data-size="7.5 گیگ" data-date="2026-01-20">
+          <div class="store-game-card openworld pc req-high">
             <div class="store-game-image">
               <img src="farcry3.jpg" alt="Far Cry 3" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">Far Cry 3 Lite</div>
@@ -221,12 +525,9 @@
           </div>
 
           <!-- WR3D 2K26 -->
-          <div class="store-game-card sports lite android req-low" data-rating="4.8" data-downloads="15000" data-size="400 مگ" data-date="2026-04-01">
+          <div class="store-game-card sports lite android req-low">
             <div class="store-game-image">
               <img src="wr3d2k26.jpg" alt="WR3D 2K26" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">WR3D 2K26 Mod</div>
@@ -247,13 +548,10 @@
           </div>
 
           <!-- Vector 2 -->
-          <div class="store-game-card action lite android req-med" data-rating="4.5" data-downloads="12000" data-size="95 مگ" data-date="2026-07-01">
+          <div class="store-game-card action lite android req-med">
             <div class="store-game-image">
               <img src="vector-2.jpg" alt="Vector 2" loading="lazy">
               <span class="store-game-badge new">New</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">Vector 2</div>
@@ -274,13 +572,10 @@
           </div>
 
           <!-- Resident Evil 3 -->
-          <div class="store-game-card action android req-high" data-rating="5" data-downloads="8000" data-size="30 مگ" data-date="2026-05-15">
+          <div class="store-game-card action android req-high">
             <div class="store-game-image">
               <img src="resident-evil-3-nemesis.jpg" alt="Resident Evil 3" loading="lazy">
               <span class="store-game-badge top">Top</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">Resident Evil 3</div>
@@ -301,13 +596,10 @@
           </div>
 
           <!-- WWE 2K25 -->
-          <div class="store-game-card sports android req-high" data-rating="5" data-downloads="5000" data-size="2.5 گیگ" data-date="2026-06-01">
+          <div class="store-game-card sports android req-high">
             <div class="store-game-image">
               <img src="wwe25.jpg" alt="WWE 2K25" loading="lazy">
               <span class="store-game-badge new">New</span>
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">WWE 2K25 Netflix</div>
@@ -328,12 +620,9 @@
           </div>
 
           <!-- AetherSX2 -->
-          <div class="store-game-card emulator android req-high" data-rating="5" data-downloads="20000" data-size="30 مگ" data-date="2026-01-01">
+          <div class="store-game-card emulator android req-high">
             <div class="store-game-image">
               <img src="aethersx2.jpg" alt="AetherSX2" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">AetherSX2 Emulator</div>
@@ -354,12 +643,9 @@
           </div>
 
           <!-- GTA IV -->
-          <div class="store-game-card openworld pc req-high" data-rating="5" data-downloads="9000" data-size="14 گیگ" data-date="2026-02-15">
+          <div class="store-game-card openworld pc req-high">
             <div class="store-game-image">
               <img src="gtaiv.jpg" alt="GTA IV" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">GTA IV</div>
@@ -380,12 +666,9 @@
           </div>
 
           <!-- Batman -->
-          <div class="store-game-card action android req-med" data-rating="4" data-downloads="7000" data-size="1.8 گیگ" data-date="2026-03-01">
+          <div class="store-game-card action android req-med">
             <div class="store-game-image">
               <img src="batman.jpg" alt="Batman" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">Batman: Dark Knight Rises</div>
@@ -406,12 +689,9 @@
           </div>
 
           <!-- Tekken 8 -->
-          <div class="store-game-card action android req-med" data-rating="4" data-downloads="6000" data-size="800 مگ" data-date="2026-04-15">
+          <div class="store-game-card action android req-med">
             <div class="store-game-image">
               <img src="tekken8.jpg" alt="Tekken 8" loading="lazy">
-              <div class="store-game-overlay">
-                <button class="store-game-quick-btn">Quick View</button>
-              </div>
             </div>
             <div class="store-game-info">
               <div class="store-game-title">Tekken 8 Mobile</div>
@@ -474,14 +754,5 @@
     </div>
   </footer>
 
-  <script src="js/store.js"></script>
-  <script>
-    // Sort functionality
-    document.getElementById('sortSelect').addEventListener('change', function() {
-      if (window.cinaStore) {
-        window.cinaStore.sortGames(this.value);
-      }
-    });
-  </script>
 </body>
 </html>
