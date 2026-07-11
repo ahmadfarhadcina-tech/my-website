@@ -1,11 +1,14 @@
-const cacheName = 'cina-games-v2'; // ورژن رو به v2 تغییر دادیم تا کش قبلی پاک بشه
+const cacheName = 'cina-games-store-v1';
 const assets = [
   './',
   './index.html',
-  './icon.png' // تغییر یافته از profile.jpg به آیکون جدید شما
+  './games.html',
+  './categories.html',
+  './css/store.css',
+  './js/store.js',
+  './icon.png'
 ];
 
-// مرحله نصب سرویس ورکر و کش کردن فایل‌ها
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(cacheName).then(cache => {
@@ -14,7 +17,6 @@ self.addEventListener('install', e => {
   );
 });
 
-// فعال‌سازی و پاک کردن کش‌های قدیمی برای اعمال آپدیت جدید
 self.addEventListener('activate', e => {
   e.waitUntil(
     caches.keys().then(keys => {
@@ -29,7 +31,6 @@ self.addEventListener('activate', e => {
   );
 });
 
-// لود کردن فایل‌ها از کش برای سرعت بیشتر (آفلاین)
 self.addEventListener('fetch', e => {
   e.respondWith(
     caches.match(e.request).then(cachedResponse => {
