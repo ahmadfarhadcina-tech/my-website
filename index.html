@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<!-- کد Popunder برای آنتی ادبلاک -->
 <script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
 
 <meta charset="UTF-8">
@@ -9,7 +8,6 @@
 <link rel="icon" type="image/png" href="icon.png">
 <title>Cina Games | داشبورد کاربری و امکانات</title>
 
-<!-- کتابخانه‌های فایربیس شامل Auth و Database -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
@@ -69,10 +67,8 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <p style="margin: 0; color: #00ff66; font-size: 14px;">مدیریت حساب، هوش مصنوعی و تنظیمات سایت</p>
 </div>
 
-<!-- وضعیت بارگذاری فایربیس (جلوگیری از باگ عدم نمایش ایمیل) -->
 <div id="authLoading">⏳ در حال همگام‌سازی اطلاعات حساب شما...</div>
 
-<!-- 🎖️ کارت وضعیت پروفایل و سطح ابری کاربر -->
 <div id="userProfileCard" class="user-profile-card">
   <div style="font-size: 14px; color: #aaa;">👤 حساب کاربری: <strong id="userEmailSpan" style="color: #fff;"></strong></div>
   <div style="margin-top: 10px; font-size: 16px;">سطح شما: <span id="userLevelTxt" style="color: #00ff66; font-weight: bold;">1</span></div>
@@ -80,25 +76,21 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <span id="userBadge" class="badge-level badge-iron">Iron Gamer</span>
 </div>
 
-<!-- 🔍 بخش جستجوی هوشمند متصل به دیتابیس بازی‌ها -->
 <div class="search-row-container">
   <input type="text" id="headerSearch" placeholder="🔍 جستجوی بازی‌ها..." oninput="liveSearch()" />
   <div id="searchResults" class="search-results"></div>
 </div>
 
-<!-- 🤖 دکمه هوش مصنوعی اختصاصی -->
 <div class="ai-button-container">
   <a href="ai.html" class="ai-big-link">🤖 ورود به CINA AI Chat</a>
 </div>
 
-<!-- 🔗 لینک‌های بخش‌های جانبی سایت -->
 <div class="navbar-top-links">
   <a class="characters-btn" href="characters.html">🎭 سیستم Characters</a>
   <a href="about.html">درباره ما (About)</a>
   <a href="contact.html">ارتباط با ما (Contact)</a>
 </div>
 
-<!-- 🔐 بخش ثبت‌نام و ورود فایربیس درون داشبورد -->
 <div id="authSection" class="section" style="border: 2px solid #00ff55; display: none;">
     <h3 id="authTitle" style="color: #00ff55; text-align: center; margin-top:0;">🔐 ورود به حساب کاربری</h3>
     <form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 12px;">
@@ -112,13 +104,11 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
     </form>
 </div>
 
-<!-- ⚙️ بخش تنظیمات و شخصی‌سازی -->
 <div id="settings" class="section">
   <h2>⚙️ تنظیمات داشبورد</h2>
   <p style="font-size: 14px; color: #ccc;">در این بخش به زودی گزینه‌های تغییر تم، ویرایش پروفایل و مدیریت نوتیفیکیشن‌ها اضافه خواهد شد.</p>
 </div>
 
-<!-- 💬 بخش نظرات -->
 <div class="section" style="border: 1px solid #40E0D0;">
     <h3 style="color: #40E0D0; margin-top:0; text-align: center;">💬 نظرات و پیشنهادات</h3>
     <form id="cinaCommentForm" style="display: flex; flex-direction: column; gap: 12px;">
@@ -133,7 +123,6 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator</a>
 </div>
 
-<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای -->
 <nav class="bottom-nav">
   <a href="home.html" class="nav-item">
     <span class="nav-icon">🏠</span>
@@ -199,7 +188,7 @@ function liveSearch() {
   if (filtered.length > 0) {
     resultsBox.innerHTML = "";
     filtered.forEach(game => {
-      // اضافه شدن ۰.۲ امتیاز برای کلیک روی بازی‌های سرچ شده
+      // استفاده از سیستم امتیازدهی یکپارچه شده سایت
       resultsBox.innerHTML += `
         <a href="${game.link}" class="search-item" onclick="if(typeof addXp === 'function') { addXp(0.2); }">
           <img src="${game.image}" onerror="this.src='icon.png'">
@@ -325,6 +314,15 @@ function addXp(amount) {
   });
 }
 
+// تابع اختصاصی افزایش امتیاز برای لینک‌های دانلود بازی‌ها (0.2 امتیاز)
+function addDownloadPoints() {
+  if (currentUserId) {
+    addXp(0.2);
+  } else {
+    console.log("کاربری وارد حساب نشده است. امتیازی برای دانلود ثبت نمی‌شود.");
+  }
+}
+
 // فعالیت زیاد دکمه‌های معمولی تفکیک شده با مقدار ناچیز ۰.۰۱ امتیاز
 document.addEventListener('click', function(e) {
   if (e.target.closest('a') || e.target.closest('button')) {
@@ -380,7 +378,6 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
 });
 </script>
 
-<!-- کد Social Bar برای افزایش درآمد -->
 <script src="https://jonasfrozepyamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
 
 </body>
