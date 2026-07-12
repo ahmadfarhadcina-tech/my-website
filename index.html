@@ -9,13 +9,25 @@
 <link rel="icon" type="image/png" href="icon.png">
 <title>Cina Games | داشبورد کاربری و امکانات</title>
 
+<!-- کتابخانه‌های فایربیس شامل Auth و Database -->
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-database-compat.js"></script>
 
 <style>
 body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-serif; padding-bottom: 100px; }
 .gothic-cina-games { font-family: 'Old English Text MT', 'Georgia', serif; font-weight: bold; color: #ffffff !important; text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, 0 0 15px #40E0D0; }
 .dashboard-header { background: #111; padding: 20px; text-align: center; border-bottom: 2px solid #00ff66; }
+
+/* 🎖️ استایل پروفایل و لول گیمر ابری */
+.user-profile-card { display: none; background: #151522; border: 1px solid #00ff66; padding: 15px; border-radius: 12px; max-width: 500px; margin: 15px auto; text-align: center; box-shadow: 0 0 15px rgba(0,255,102,0.2); }
+.badge-level { display: inline-block; padding: 5px 12px; border-radius: 20px; font-weight: bold; font-size: 12px; margin-top: 8px; text-transform: uppercase; }
+
+.badge-iron { background: #555; color: #fff; border: 1px solid #888; }
+.badge-bronze { background: #cd7f32; color: #fff; }
+.badge-silver { background: #c0c0c0; color: #000; }
+.badge-gold { background: #ffd700; color: #000; box-shadow: 0 0 10px #ffd700; }
+.badge-diamond { background: #b9f2ff; color: #000; box-shadow: 0 0 15px #b9f2ff; font-weight: 900; }
 
 /* 🔍 استایل باکس سرچ و نتایج هوشمند */
 .search-row-container { width: 90%; max-width: 500px; margin: 20px auto; position: relative; }
@@ -52,6 +64,14 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 <div class="dashboard-header">
   <h1 class="gothic-cina-games" style="margin: 0 0 5px 0; font-size: 32px;">داشبورد کاربری</h1>
   <p style="margin: 0; color: #00ff66; font-size: 14px;">مدیریت حساب، هوش مصنوعی و تنظیمات سایت</p>
+</div>
+
+<!-- 🎖️ کارت وضعیت پروفایل و سطح ابری کاربر -->
+<div id="userProfileCard" class="user-profile-card">
+  <div style="font-size: 14px; color: #aaa;">👤 حساب کاربری: <strong id="userEmailSpan" style="color: #fff;"></strong></div>
+  <div style="margin-top: 10px; font-size: 16px;">سطح شما: <span id="userLevelTxt" style="color: #00ff66; font-weight: bold;">1</span></div>
+  <div style="font-size: 12px; color: #aaa; margin-top: 4px;">امتیاز: <span id="userXpTxt" style="color: #40E0D0;">0</span> XP</div>
+  <span id="userBadge" class="badge-level badge-iron">Iron Gamer</span>
 </div>
 
 <!-- 🔍 بخش جستجوی هوشمند متصل به دیتابیس بازی‌ها -->
@@ -107,9 +127,9 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator</a>
 </div>
 
-<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای متصل به game.html -->
+<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای متصل به home.html و games.html -->
 <nav class="bottom-nav">
-  <a href="index.html" class="nav-item">
+  <a href="home.html" class="nav-item">
     <span class="nav-icon">🏠</span>
     <span>خانه</span>
   </a>
@@ -173,8 +193,9 @@ function liveSearch() {
   if (filtered.length > 0) {
     resultsBox.innerHTML = "";
     filtered.forEach(game => {
+      // استفاده از سیستم امتیازدهی ۵ امتیازی برای کلیک بر روی بازی مورد نظر
       resultsBox.innerHTML += `
-        <a href="${game.link}" class="search-item">
+        <a href="${game.link}" class="search-item" onclick="if(typeof addXp === 'function') { addXp(5); }">
           <img src="${game.image}" onerror="this.src='icon.png'">
           <div class="search-item-info">
             <h4>${game.title}</h4>
@@ -196,18 +217,120 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// اسکریپت فایربیس شما
+// اسکریپت فایربیس و سیستم دیتابیس ابری امتیاز
 const firebaseConfig = {
   apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
   authDomain: "cina-games.firebaseapp.com",
   projectId: "cina-games",
   storageBucket: "cina-games.firebasestorage.app",
   messagingSenderId: "449625451730",
-  appId: "1:449625451730:web:153b2aec57e6c42ec2510b"
+  appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
+  databaseURL: "https://cina-games-default-rtdb.firebaseio.com"
 };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
+const database = firebase.database();
 
+let currentUserId = null;
+let adsLoaded = false;
+
+// 🛡️ بررسی مسدود نبودن اسکریپت تبلیغات
+function checkAdsStatus() {
+  const scripts = document.getElementsByTagName('script');
+  for (let idx = 0; idx < scripts.length; idx++) {
+    if (scripts[idx].src && scripts[idx].src.includes('jonasfrozepyjamas.com')) {
+      adsLoaded = true;
+      break;
+    }
+  }
+  return adsLoaded;
+}
+
+// تغییر خودکار لول و مدال‌ها هر ۱۰ سطح یک‌بار
+function updateBadgeUI(level) {
+  const badge = document.getElementById('userBadge');
+  if (!badge) return;
+  badge.className = "badge-level";
+  
+  if (level <= 10) {
+    badge.innerText = "Iron Gamer ⚙️";
+    badge.classList.add("badge-iron");
+  } else if (level <= 20) {
+    badge.innerText = "Bronze Fighter 🥉";
+    badge.classList.add("badge-bronze");
+  } else if (level <= 30) {
+    badge.innerText = "Silver Pro 🥈";
+    badge.classList.add("badge-silver");
+  } else if (level <= 40) {
+    badge.innerText = "Gold Master 🥇";
+    badge.classList.add("badge-gold");
+  } else {
+    badge.innerText = "Ultimate Legend 💎";
+    badge.classList.add("badge-diamond");
+  }
+}
+
+// بررسی ورود کاربر و دریافت اطلاعات XP از دیتابیس ابری
+auth.onAuthStateChanged((user) => {
+  if (user) {
+    currentUserId = user.uid;
+    document.getElementById('authSection').style.display = "none";
+    document.getElementById('userProfileCard').style.display = "block";
+    document.getElementById('userEmailSpan').innerText = user.email;
+
+    database.ref('users/' + currentUserId).on('value', (snapshot) => {
+      const data = snapshot.val();
+      let xp = data && data.xp ? parseFloat(data.xp) : 0;
+      let level = data && data.level ? parseInt(data.level) : 1;
+
+      document.getElementById('userXpTxt').innerText = xp.toFixed(1);
+      document.getElementById('userLevelTxt').innerText = level;
+      updateBadgeUI(level);
+    });
+  } else {
+    document.getElementById('authSection').style.display = "block";
+    document.getElementById('userProfileCard').style.display = "none";
+  }
+});
+
+// 🏆 تابع امتیازدهی سخت‌گیرانه با سیستم آنتی‌ادبلاک
+function addXp(amount) {
+  if (!currentUserId) return;
+  
+  if (!checkAdsStatus()) {
+    alert("⚠️ سیستم ضد تقلب: برای دریافت XP، لطفاً افزونه ضد تبلیغ (Adblock) خود را غیرفعال کرده و صفحه را رفرش کنید.");
+    return;
+  }
+
+  const userRef = database.ref('users/' + currentUserId);
+  userRef.once('value').then((snapshot) => {
+    const data = snapshot.val();
+    let currentXp = data && data.xp ? parseFloat(data.xp) : 0;
+
+    let newXp = currentXp + amount;
+    let newLevel = Math.floor(newXp / 100) + 1;
+
+    userRef.set({
+      xp: newXp,
+      level: newLevel
+    });
+  });
+}
+
+// گوش دادن به کلیک‌ها روی دکمه‌های معمولی برای افزایش ۰.۴ امتیاز
+document.addEventListener('click', function(e) {
+  if (e.target.closest('a') || e.target.closest('button')) {
+    const clickTarget = e.target.closest('a');
+    
+    // اگر لینک کلیک شده مربوط به خروج یا دانلود نبود، امتیاز معمولی بده
+    if (clickTarget && (clickTarget.innerText.includes("دانلود") || clickTarget.className.includes("search-item"))) {
+      return; 
+    }
+    addXp(0.4);
+  }
+});
+
+// مدیریت ورود و ثبت‌نام
 let isLoginMode = true;
 const authTitle = document.getElementById('authTitle');
 const authSubmitBtn = document.getElementById('authSubmitBtn');
@@ -235,11 +358,14 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
     authStatus.innerText = "⏳ لطفا صبر کنید...";
     if (isLoginMode) {
         auth.signInWithEmailAndPassword(authEmail.value, authPassword.value)
-        .then(() => { authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!"; })
+        .then(() => { authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!"; addXp(0.4); })
         .catch(() => { authStatus.innerText = "❌ خطا در ورود!"; });
     } else {
         auth.createUserWithEmailAndPassword(authEmail.value, authPassword.value)
-        .then(() => { authStatus.innerText = "✅ حساب ساخته شد!"; })
+        .then((result) => { 
+            authStatus.innerText = "✅ حساب ساخته شد!"; 
+            database.ref('users/' + result.user.uid).set({ xp: 0, level: 1 });
+        })
         .catch(() => { authStatus.innerText = "❌ خطا در ثبت نام!"; });
     }
 });
