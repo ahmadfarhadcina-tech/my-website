@@ -29,6 +29,9 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 .badge-gold { background: #ffd700; color: #000; box-shadow: 0 0 10px #ffd700; }
 .badge-diamond { background: #b9f2ff; color: #000; box-shadow: 0 0 15px #b9f2ff; font-weight: 900; }
 
+/* لودینگ خودکار وضعیت اکانت */
+#authLoading { text-align: center; color: #00ff66; font-weight: bold; padding: 15px; font-size: 14px; }
+
 /* 🔍 استایل باکس سرچ و نتایج هوشمند */
 .search-row-container { width: 90%; max-width: 500px; margin: 20px auto; position: relative; }
 .search-row-container input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid rgba(0, 255, 102, 0.4); background: #1f1f2e; color: white; outline: none; box-sizing: border-box; text-align: right; font-size: 15px; }
@@ -66,6 +69,9 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <p style="margin: 0; color: #00ff66; font-size: 14px;">مدیریت حساب، هوش مصنوعی و تنظیمات سایت</p>
 </div>
 
+<!-- وضعیت بارگذاری فایربیس (جلوگیری از باگ عدم نمایش ایمیل) -->
+<div id="authLoading">⏳ در حال همگام‌سازی اطلاعات حساب شما...</div>
+
 <!-- 🎖️ کارت وضعیت پروفایل و سطح ابری کاربر -->
 <div id="userProfileCard" class="user-profile-card">
   <div style="font-size: 14px; color: #aaa;">👤 حساب کاربری: <strong id="userEmailSpan" style="color: #fff;"></strong></div>
@@ -93,7 +99,7 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 </div>
 
 <!-- 🔐 بخش ثبت‌نام و ورود فایربیس درون داشبورد -->
-<div id="authSection" class="section" style="border: 2px solid #00ff55;">
+<div id="authSection" class="section" style="border: 2px solid #00ff55; display: none;">
     <h3 id="authTitle" style="color: #00ff55; text-align: center; margin-top:0;">🔐 ورود به حساب کاربری</h3>
     <form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 12px;">
         <input type="email" id="authEmail" placeholder="ایمیل شما (Email)" required style="width: 100%; padding: 10px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box;">
@@ -127,7 +133,7 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator</a>
 </div>
 
-<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای متصل به home.html و games.html -->
+<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای -->
 <nav class="bottom-nav">
   <a href="home.html" class="nav-item">
     <span class="nav-icon">🏠</span>
@@ -193,9 +199,9 @@ function liveSearch() {
   if (filtered.length > 0) {
     resultsBox.innerHTML = "";
     filtered.forEach(game => {
-      // استفاده از سیستم امتیازدهی ۵ امتیازی برای کلیک بر روی بازی مورد نظر
+      // اضافه شدن ۰.۲ امتیاز برای کلیک روی بازی‌های سرچ شده
       resultsBox.innerHTML += `
-        <a href="${game.link}" class="search-item" onclick="if(typeof addXp === 'function') { addXp(5); }">
+        <a href="${game.link}" class="search-item" onclick="if(typeof addXp === 'function') { addXp(0.2); }">
           <img src="${game.image}" onerror="this.src='icon.png'">
           <div class="search-item-info">
             <h4>${game.title}</h4>
@@ -217,7 +223,7 @@ document.addEventListener('click', function(e) {
   }
 });
 
-// اسکریپت فایربیس و سیستم دیتابیس ابری امتیاز
+// اسکریپت فایربیس و سیستم ابری امتیاز
 const firebaseConfig = {
   apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
   authDomain: "cina-games.firebaseapp.com",
@@ -234,7 +240,7 @@ const database = firebase.database();
 let currentUserId = null;
 let adsLoaded = false;
 
-// 🛡️ بررسی مسدود نبودن اسکریپت تبلیغات
+// 🛡️ بررسی مسدود نبودن اسکریپت تبلیغات (ضد تقلب غلیظ)
 function checkAdsStatus() {
   const scripts = document.getElementsByTagName('script');
   for (let idx = 0; idx < scripts.length; idx++) {
@@ -246,7 +252,7 @@ function checkAdsStatus() {
   return adsLoaded;
 }
 
-// تغییر خودکار لول و مدال‌ها هر ۱۰ سطح یک‌بار
+// لول‌آپ هر ۱۰ سطح یک‌بار با استایل‌های اختصاصی
 function updateBadgeUI(level) {
   const badge = document.getElementById('userBadge');
   if (!badge) return;
@@ -270,8 +276,9 @@ function updateBadgeUI(level) {
   }
 }
 
-// بررسی ورود کاربر و دریافت اطلاعات XP از دیتابیس ابری
+// رفع باگ تغییر صفحه: لود خودکار و سریع وضعیت اکانت بدون نیاز به رفرش
 auth.onAuthStateChanged((user) => {
+  document.getElementById('authLoading').style.display = "none"; // مخفی کردن لودینگ پس از پاسخ فایربیس
   if (user) {
     currentUserId = user.uid;
     document.getElementById('authSection').style.display = "none";
@@ -283,7 +290,8 @@ auth.onAuthStateChanged((user) => {
       let xp = data && data.xp ? parseFloat(data.xp) : 0;
       let level = data && data.level ? parseInt(data.level) : 1;
 
-      document.getElementById('userXpTxt').innerText = xp.toFixed(1);
+      // نمایش با دو رقم اعشار به خاطر امتیازهای ریز ۰.۰۱
+      document.getElementById('userXpTxt').innerText = xp.toFixed(2);
       document.getElementById('userLevelTxt').innerText = level;
       updateBadgeUI(level);
     });
@@ -293,7 +301,7 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-// 🏆 تابع امتیازدهی سخت‌گیرانه با سیستم آنتی‌ادبلاک
+// 🏆 تابع امتیازدهی فوق‌العاده سخت‌گیرانه منوط به وجود تبلیغات
 function addXp(amount) {
   if (!currentUserId) return;
   
@@ -317,20 +325,21 @@ function addXp(amount) {
   });
 }
 
-// گوش دادن به کلیک‌ها روی دکمه‌های معمولی برای افزایش ۰.۴ امتیاز
+// فعالیت زیاد دکمه‌های معمولی تفکیک شده با مقدار ناچیز ۰.۰۱ امتیاز
 document.addEventListener('click', function(e) {
   if (e.target.closest('a') || e.target.closest('button')) {
     const clickTarget = e.target.closest('a');
     
-    // اگر لینک کلیک شده مربوط به خروج یا دانلود نبود، امتیاز معمولی بده
+    // اگر لینک کلیک شده دانلود یا کارت سرچ بود، متوقف شو (چون ۰.۲ می‌گیرند)
     if (clickTarget && (clickTarget.innerText.includes("دانلود") || clickTarget.className.includes("search-item"))) {
       return; 
     }
-    addXp(0.4);
+    // فعالیت‌های زیاد و معمولی فقط ۰.۰۱ امتیاز می‌دهند
+    addXp(0.01);
   }
 });
 
-// مدیریت ورود و ثبت‌نام
+// مدیریت فرم ثبت‌نام و ورود
 let isLoginMode = true;
 const authTitle = document.getElementById('authTitle');
 const authSubmitBtn = document.getElementById('authSubmitBtn');
@@ -348,7 +357,7 @@ authToggleText.addEventListener('click', function() {
     } else {
         authTitle.innerText = "🔐 ورود به حساب کاربری";
         authSubmitBtn.innerText = "ورود به اکانت";
-        authToggleText.innerHTML = 'اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>';
+        authToggleText.innerHTML = 'اکانت نداری? <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>';
     }
 });
 
@@ -358,7 +367,7 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
     authStatus.innerText = "⏳ لطفا صبر کنید...";
     if (isLoginMode) {
         auth.signInWithEmailAndPassword(authEmail.value, authPassword.value)
-        .then(() => { authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!"; addXp(0.4); })
+        .then(() => { authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!"; addXp(0.01); })
         .catch(() => { authStatus.innerText = "❌ خطا در ورود!"; });
     } else {
         auth.createUserWithEmailAndPassword(authEmail.value, authPassword.value)
