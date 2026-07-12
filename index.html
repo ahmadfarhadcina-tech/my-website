@@ -13,28 +13,38 @@
 <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
 
 <style>
-body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-serif; padding-bottom: 90px; }
+body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-serif; padding-bottom: 100px; }
 .gothic-cina-games { font-family: 'Old English Text MT', 'Georgia', serif; font-weight: bold; color: #ffffff !important; text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, 0 0 15px #40E0D0; }
 .dashboard-header { background: #111; padding: 20px; text-align: center; border-bottom: 2px solid #00ff66; }
 
+/* 🔍 استایل باکس سرچ و نتایج هوشمند */
 .search-row-container { width: 90%; max-width: 500px; margin: 20px auto; position: relative; }
-.search-row-container input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid rgba(0, 255, 102, 0.4); background: #1f1f2e; color: white; outline: none; box-sizing: border-box; text-align: right; }
+.search-row-container input { width: 100%; padding: 12px 20px; border-radius: 25px; border: 1px solid rgba(0, 255, 102, 0.4); background: #1f1f2e; color: white; outline: none; box-sizing: border-box; text-align: right; font-size: 15px; }
+.search-row-container input:focus { border-color: #00ff66; box-shadow: 0 0 10px rgba(0,255,102,0.5); }
+
+.search-results { position: absolute; top: 50px; left: 0; right: 0; background: #15151f; border: 1px solid rgba(0, 255, 102, 0.3); border-radius: 12px; max-height: 250px; overflow-y: auto; display: none; z-index: 9999; text-align: right; box-shadow: 0 5px 20px rgba(0,0,0,0.8); }
+.search-item { display: flex; align-items: center; padding: 10px; border-bottom: 1px solid #222; text-decoration: none; color: white; }
+.search-item:hover { background: #20202a; }
+.search-item img { width: 40px; height: 40px; object-fit: cover; border-radius: 6px; margin-left: 10px; }
+.search-item-info { flex-grow: 1; }
+.search-item-info h4 { margin: 0 0 4px 0; font-size: 13px; color: #fff; }
+.search-item-info span { font-size: 11px; color: #00ff66; }
 
 .ai-button-container { text-align: center; margin: 20px 0; }
 .ai-big-link { display: inline-flex; justify-content: center; align-items: center; width: 90%; max-width: 500px; height: 50px; background: #007bff; border-radius: 14px; color: white; font-weight: bold; text-decoration: none; box-shadow: 0 0 15px #007bff; }
 
-.navbar-top-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px padding: 0 10px; }
+.navbar-top-links { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin: 20px 0; padding: 0 10px; }
 .navbar-top-links a { color: white; text-decoration: none; padding: 8px 14px; background: #222; border-radius: 8px; font-size: 13px; font-weight: bold; }
 .characters-btn { background: #ff0055 !important; box-shadow: 0 0 12px #ff0055; }
 
 .section { padding: 25px 20px; max-width: 500px; margin: 15px auto; background: #151522; border-radius: 15px; box-sizing: border-box; }
 .section h2 { margin-top: 0; color: #40E0D0; }
 
-/* 📱 نوار ناوبری پایینی هماهنگ */
+/* 📱 نوار ناوبری پایینی ۴ دکمه‌ای هماهنگ شده */
 .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; height: 68px; background: rgba(15, 15, 20, 0.96); backdrop-filter: blur(12px); display: flex; justify-content: space-around; align-items: center; border-top: 1px solid rgba(64, 224, 208, 0.25); z-index: 9999; }
-.nav-item { color: #aaa; text-decoration: none; font-size: 12px; display: flex; flex-direction: column; align-items: center; font-weight: bold; transition: 0.2s; }
+.nav-item { color: #aaa; text-decoration: none; font-size: 11px; display: flex; flex-direction: column; align-items: center; font-weight: bold; transition: 0.2s; }
 .nav-item.active, .nav-item:hover { color: #00ff66; text-shadow: 0 0 8px rgba(0, 255, 102, 0.3); }
-.nav-icon { font-size: 22px; margin-bottom: 3px; }
+.nav-icon { font-size: 20px; margin-bottom: 2px; }
 </style>
 </head>
 <body>
@@ -44,9 +54,10 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <p style="margin: 0; color: #00ff66; font-size: 14px;">مدیریت حساب، هوش مصنوعی و تنظیمات سایت</p>
 </div>
 
-<!-- 🔍 بخش جستجو -->
+<!-- 🔍 بخش جستجوی هوشمند متصل به دیتابیس بازی‌ها -->
 <div class="search-row-container">
-  <input type="text" id="headerSearch" placeholder="🔍 جستجو در امکانات و بخش‌ها..." />
+  <input type="text" id="headerSearch" placeholder="🔍 جستجوی بازی‌ها..." oninput="liveSearch()" />
+  <div id="searchResults" class="search-results"></div>
 </div>
 
 <!-- 🤖 دکمه هوش مصنوعی اختصاصی -->
@@ -75,7 +86,7 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
     </form>
 </div>
 
-<!-- ⚙️ بخش تنظیمات و شخصی‌سازی افزوده شده -->
+<!-- ⚙️ بخش تنظیمات و شخصی‌سازی -->
 <div id="settings" class="section">
   <h2>⚙️ تنظیمات داشبورد</h2>
   <p style="font-size: 14px; color: #ccc;">در این بخش به زودی گزینه‌های تغییر تم، ویرایش پروفایل و مدیریت نوتیفیکیشن‌ها اضافه خواهد شد.</p>
@@ -93,14 +104,14 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 </div>
 
 <div style="text-align:center; margin: 20px 0;">
-  <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator (پروفایل سازنده)</a>
+  <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator</a>
 </div>
 
-<!-- 📱 نوار ناوبری پایینی هماهنگ -->
+<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای هوشمند -->
 <nav class="bottom-nav">
   <a href="course.html" class="nav-item">
     <span class="nav-icon">🏠</span>
-    <span>خانه (فروشگاه)</span>
+    <span>خانه</span>
   </a>
   <a href="course.html" class="nav-item">
     <span class="nav-icon">🎮</span>
@@ -108,11 +119,63 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   </a>
   <a href="index.html" class="nav-item active">
     <span class="nav-icon">📊</span>
-    <span>داشبورد (امکانات)</span>
+    <span>داشبورد</span>
+  </a>
+  <a href="index.html#settings" class="nav-item">
+    <span class="nav-icon">⚙️</span>
+    <span>تنظیمات</span>
   </a>
 </nav>
 
 <script>
+// 🔍 لیست کامل‌تر بازی‌ها و اتصال سرچ به صفحه‌ اختصاصی بازی‌ها
+const gamesList = [
+  { title: "WWE 2K15 Winlator PC", image: "wwe2k15.jpg", size: "مخصوص اندروید", link: "wwe2k15-page.html" },
+  { title: "GTA V (Winlator Edition)", image: "gta.jpg", size: "۱۴ گیگابایت", link: "gtav-page.html" },
+  { title: "AetherSX2 (PS2 Emulator)", image: "aethersx2.jpg", size: "۳۰ مگابایت", link: "aethersx2-page.html" },
+  { title: "God of War Ghost of Sparta", image: "gow.jpg", size: "۱.۲ گیگابایت", link: "gow-page.html" },
+  { title: "GTA San Andreas Modded", image: "gtasa.jpg", size: "۲ گیگابایت", link: "gtasa-page.html" },
+  { title: "WWE 2K24 PPSSPP Mod", image: "wwe2k24.jpg", size: "۸۵۰ مگابایت", link: "wwe2k24-page.html" }
+];
+
+function liveSearch() {
+  const query = document.getElementById('headerSearch').value.toLowerCase();
+  const resultsBox = document.getElementById('searchResults');
+  
+  if (query.trim() === "") {
+    resultsBox.style.display = "none";
+    return;
+  }
+
+  const filtered = gamesList.filter(game => game.title.toLowerCase().includes(query));
+
+  if (filtered.length > 0) {
+    resultsBox.innerHTML = "";
+    filtered.forEach(game => {
+      resultsBox.innerHTML += `
+        <a href="${game.link}" class="search-item">
+          <img src="${game.image}" onerror="this.src='icon.png'">
+          <div class="search-item-info">
+            <h4>${game.title}</h4>
+            <span>حجم: ${game.size}</span>
+          </div>
+        </a>
+      `;
+    });
+    resultsBox.style.display = "block";
+  } else {
+    resultsBox.innerHTML = "<div style='padding:10px; color:#aaa; font-size:12px; text-align:center;'>بازی مورد نظر پیدا نشد...</div>";
+    resultsBox.style.display = "block";
+  }
+}
+
+// بستن باکس سرچ با کلیک روی بیرون از آن
+document.addEventListener('click', function(e) {
+  if (!e.target.closest('.search-row-container')) {
+    document.getElementById('searchResults').style.display = "none";
+  }
+});
+
 // اسکریپت فایربیس
 const firebaseConfig = {
   apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
@@ -129,7 +192,6 @@ let isLoginMode = true;
 const authTitle = document.getElementById('authTitle');
 const authSubmitBtn = document.getElementById('authSubmitBtn');
 const authToggleText = document.getElementById('authToggleText');
-const authSection = document.getElementById('authSection');
 const authEmail = document.getElementById('authEmail');
 const authPassword = document.getElementById('authPassword');
 const authStatus = document.getElementById('authStatus');
