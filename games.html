@@ -908,5 +908,72 @@
 
     <!-- کد تبلیغات سوم شما -->
     <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
+      <!-- بخش اسکریپت‌ها که دقیقاً قبل از بسته شدن تگ body قرار می‌گیرد -->
+    <script>
+      // تنظیمات فایربیس - مقادیر خودتان را در اینجا جایگذاری کنید
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID"
+      };
+
+      // راه‌اندازی فایربیس
+      if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+      }
+      const database = firebase.database();
+
+      // تابع اصلی ثبت امتیاز XP
+      function addDownloadPoints() {
+        const user = firebase.auth().currentUser;
+        if (user) {
+          const userRef = database.ref('users/' + user.uid + '/xp');
+          userRef.transaction((currentXP) => {
+            return (currentXP || 0) + 0.2;
+          }).catch((error) => {
+            console.error("خطا در ثبت امتیاز:", error);
+          });
+        } else {
+          console.log("کاربر وارد نشده است.");
+        }
+      }
+
+      // سرچ بازی‌ها
+      const input = document.getElementById("searchInput");
+      const cards = document.querySelectorAll(".card");
+      input.addEventListener("keyup", function () {
+        let value = this.value.toLowerCase();
+        cards.forEach((card) => {
+          let title = card.querySelector("h3").innerText.toLowerCase();
+          card.style.display = title.includes(value) ? "flex" : "none";
+        });
+      });
+
+      // فیلتر کردن دسته‌بندی‌ها
+      function filterGames(category) {
+        let cards = document.querySelectorAll(".card");
+        cards.forEach((card) => {
+          if (category === "all") {
+            card.style.display = "flex";
+          } else {
+            card.style.display = card.classList.contains(category) ? "flex" : "none";
+          }
+        });
+      }
+    </script>
+
+    <!-- دکمه‌های شناور -->
+    <a href="https://t.me/afghangamerx" target="_blank" class="fixed-btn" style="left:15px; background:#229ED9; color:white;">📲 Telegram</a>
+    <a href="https://www.youtube.com/@Farhad_Cina" target="_blank" class="fixed-btn" style="right:15px; background:#FF0000; color:white;">▶️ YouTube</a>
+    
+    <!-- کد تبلیغات سوم -->
+    <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
+  </body>
+</html>
+
   </body>
 </html>
