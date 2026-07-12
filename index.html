@@ -128,14 +128,36 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 </nav>
 
 <script>
-// 🔍 لیست کامل‌تر بازی‌ها و اتصال سرچ به صفحه‌ اختصاصی بازی‌ها
+// 🔍 لیست کامل و دقیق صفحات و تصاویر واقعی مخزن شما
 const gamesList = [
-  { title: "WWE 2K15 Winlator PC", image: "wwe2k15.jpg", size: "مخصوص اندروید", link: "wwe2k15-page.html" },
-  { title: "GTA V (Winlator Edition)", image: "gta.jpg", size: "۱۴ گیگابایت", link: "gtav-page.html" },
-  { title: "AetherSX2 (PS2 Emulator)", image: "aethersx2.jpg", size: "۳۰ مگابایت", link: "aethersx2-page.html" },
-  { title: "God of War Ghost of Sparta", image: "gow.jpg", size: "۱.۲ گیگابایت", link: "gow-page.html" },
-  { title: "GTA San Andreas Modded", image: "gtasa.jpg", size: "۲ گیگابایت", link: "gtasa-page.html" },
-  { title: "WWE 2K24 PPSSPP Mod", image: "wwe2k24.jpg", size: "۸۵۰ مگابایت", link: "wwe2k24-page.html" }
+  { title: "AetherSX2 Emulator", image: "aethersx2.jpg", size: "مبدل PS2 اندروید", link: "aethersx2.html" },
+  { title: "Batman", image: "batman.jpg", size: "اکشن و ماجراجویی", link: "batman.html" },
+  { title: "Bully", image: "bully.jpg", size: "نسخه فشرده اندروید", link: "bully.html" },
+  { title: "Cina App", image: "cina-app.jpg", size: "اپلیکیشن اختصاصی سایت", link: "cina-app.html" },
+  { title: "Call of Duty Strike Team", image: "cod-strike-team.jpg", size: "دیتا کامل اندروید", link: "cod-strike-team.html" },
+  { title: "Dark Wallpaper", image: "dark-wallpaper.jpg", size: "والپیپر اختصاصی", link: "dark-wallpaper.html" },
+  { title: "DLS 19 (Dream League)", image: "dls19-100.jpg", size: "فوتبال محبوب اندروید", link: "dls19.html" },
+  { title: "Eden", image: "eden.jpg", size: "بازی جدید", link: "eden.html" },
+  { title: "eFootball", image: "efootball.jpg", size: "آخرین آپدیت فوتبال", link: "efootball.html" },
+  { title: "Far Cry 3", image: "farcry3.jpg", size: "نسخه فشرده پی‌سی", link: "farcry3.html" },
+  { title: "Fortnite", image: "fortnite.jpg", size: "آنلاین اندروید", link: "fortnite.html" },
+  { title: "God of War 2", image: "god-of-war-2.jpg", size: "دیتا کامل شبیه‌ساز", link: "god-of-war-2.html" },
+  { title: "GTA San Andreas", image: "gta-sa.jpg", size: "نسخه مود شده", link: "gta-sa.html" },
+  { title: "GTA IV", image: "gtaiv.jpg", size: "Winlator Edition", link: "gtaiv.html" },
+  { title: "MadOut2", image: "madout2.jpg", size: "جهان‌باز اندروید", link: "madout2.html" },
+  { title: "Minecraft", image: "minecraft.jpg", size: "آخرین نسخه اصلی", link: "minecraft.html" },
+  { title: "PUBG Mobile", image: "pubg.jpg", size: "بتل رویال اندروید", link: "pubg.html" },
+  { title: "Resident Evil 3", image: "pubg.jpg", size: "ترسناک بقا", link: "resident-evil-3.html" },
+  { title: "Spiderman 3", image: "spiderman3.jpg", size: "مرد عنکبوتی ۳", link: "spiderman3.html" },
+  { title: "Tekken 8", image: "tekken8.jpg", size: "مبارزه‌ای جدید", link: "tekken8.html" },
+  { title: "Undefeated", image: "undefeated.jpg", size: "ابرقهرمانی شبیه‌ساز", link: "undefeated.html" },
+  { title: "Vector 2", image: "vector-2.jpg", size: "پارکور و اکشن", link: "vector-2.html" },
+  { title: "Watch Dogs 2", image: "watchdogs.jpg", size: "نسخه کامل هک", link: "watch-dogs-2.html" },
+  { title: "Winlator Emulator", image: "winlator.jpg", size: "اجرای بازی PC روی گوشی", link: "winlator.html" },
+  { title: "WR3D 2K26", image: "wr3d2k26.jpg", size: "جدیدترین آپدیت کشتی کج", link: "wr3d2k26.html" },
+  { title: "WWE 2K15", image: "wwe.jpg", size: "فشرده ویژه شبیه‌ساز", link: "wwe-2k15.html" },
+  { title: "WWE 25", image: "wwe25.jpg", size: "نسخه کلاسیک قدیمی", link: "wwe25.html" },
+  { title: "WWE 2K18", image: "wwe2k18.jpg", size: "گرافیک بالا اندروید", link: "wwe2k18.html" }
 ];
 
 function liveSearch() {
@@ -157,7 +179,7 @@ function liveSearch() {
           <img src="${game.image}" onerror="this.src='icon.png'">
           <div class="search-item-info">
             <h4>${game.title}</h4>
-            <span>حجم: ${game.size}</span>
+            <span>${game.size}</span>
           </div>
         </a>
       `;
