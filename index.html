@@ -107,13 +107,13 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
   <a href="about-creator.html" style="display:inline-block; padding:10px 25px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 14px;">👤 About Creator</a>
 </div>
 
-<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای هوشمند -->
+<!-- 📱 نوار ناوبری پایینی ۴ دکمه‌ای متصل به game.html -->
 <nav class="bottom-nav">
-  <a href="course.html" class="nav-item">
+  <a href="index.html" class="nav-item">
     <span class="nav-icon">🏠</span>
     <span>خانه</span>
   </a>
-  <a href="course.html" class="nav-item">
+  <a href="game.html" class="nav-item">
     <span class="nav-icon">🎮</span>
     <span>گیم‌ها</span>
   </a>
@@ -128,7 +128,6 @@ body { margin: 0; background: #0f0f0f; color: white; font-family: Arial, sans-se
 </nav>
 
 <script>
-// 🔍 لیست کامل و دقیق صفحات و تصاویر واقعی مخزن شما
 const gamesList = [
   { title: "AetherSX2 Emulator", image: "aethersx2.jpg", size: "مبدل PS2 اندروید", link: "aethersx2.html" },
   { title: "Batman", image: "batman.jpg", size: "اکشن و ماجراجویی", link: "batman.html" },
@@ -191,14 +190,13 @@ function liveSearch() {
   }
 }
 
-// بستن باکس سرچ با کلیک روی بیرون از آن
 document.addEventListener('click', function(e) {
   if (!e.target.closest('.search-row-container')) {
     document.getElementById('searchResults').style.display = "none";
   }
 });
 
-// اسکریپت فایربیس
+// اسکریپت فایربیس شما
 const firebaseConfig = {
   apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
   authDomain: "cina-games.firebaseapp.com",
