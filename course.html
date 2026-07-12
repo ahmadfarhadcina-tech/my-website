@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cina Games | مشخصات بازی</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: #0f0f12;
+            color: #ffffff;
+            font-family: Arial, sans-serif;
+            padding-bottom: 90px;
+        }
+
+        /* 👑 هدر بالایی شامل منو و لوگو */
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: #16161a;
+            border-bottom: 1px solid #222;
+        }
+        .menu-toggle {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 3px;
+            background-color: #ff9f1c;
+            border-radius: 2px;
+        }
+        .app-logo {
+            font-size: 24px;
+            font-weight: bold;
+            font-family: 'Old English Text MT', Georgia, serif;
+            letter-spacing: 1px;
+        }
+        .app-logo span {
+            color: #ff9f1c;
+        }
+
+        /* 📱 کانتینر اصلی محتوا */
+        .main-container {
+            padding: 20px;
+            max-width: 500px;
+            margin: 0 auto;
+            box-sizing: border-box;
+        }
+
+        /* 🖼️ بنر اصلی کارت‌شکل (مشابه تصویر اول) */
+        .course-banner-card {
+            background: linear-gradient(135deg, #16161e, #0b0b0f);
+            border-radius: 20px;
+            border: 1px solid rgba(255, 159, 28, 0.2);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            margin-bottom: 25px;
+        }
+        .banner-badge {
+            color: #ff9f1c;
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        .banner-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin: 5px 0 15px 0;
+            color: #fff;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+        }
+        .banner-features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 15px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 12px;
+        }
+        .feature-item {
+            font-size: 11px;
+            color: #ccc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .feature-icon {
+            font-size: 16px;
+            color: #ff9f1c;
+        }
+
+        /* 📺 بخش ویدیو معرفی با خط نشانگر آبی */
+        .section-title-wrap {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .blue-bar {
+            width: 4px;
+            height: 22px;
+            background-color: #00b4d8;
+            border-radius: 2px;
+            margin-left: 10px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #00b4d8;
+            margin: 0;
+        }
+
+        /* 🎥 کادر ویدیو پلیر مدرن */
+        .video-container {
+            background-color: #1c1c24;
+            border-radius: 20px;
+            padding: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            margin-bottom: 25px;
+        }
+        video {
+            width: 100%;
+            border-radius: 14px;
+            display: block;
+            outline: none;
+            background-color: #000;
+        }
+
+        /* 📄 عنوان متنی پایین ویدیو */
+        .game-footer-title {
+            font-size: 20px;
+            font-weight: bold;
+            text-align: right;
+            margin-top: 15px;
+            color: #fff;
+            padding-right: 5px;
+        }
+
+        /* 📲 نوار ناوبری پایینی به سبک دقیق تصویر */
+        .app-bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 70px;
+            background-color: #111115;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #222;
+            z-index: 9999;
+        }
+        .nav-btn {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #a0a0ab;
+            text-decoration: none;
+            font-size: 12px;
+            height: 100%;
+            transition: 0.2s;
+            font-weight: bold;
+        }
+        .nav-btn i {
+            font-size: 20px;
+            margin-bottom: 4px;
+        }
+        /* دکمه فعال با پس‌زمینه نارنجی (مثل داشبورد در عکس) */
+        .nav-btn.active {
+            background-color: #ff9f1c;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-header">
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="app-logo">Cina <span>Games</span></div>
+    </div>
+
+    <div class="main-container">
+
+        <div class="course-banner-card">
+            <div class="banner-badge">💎 ویژه اندروید و PC</div>
+            <h2 class="banner-title">دوره اجرای بازی wwe 2k15<br>روی اندروید با Winlator</h2>
+            
+            <div class="banner-features">
+                <div class="feature-item">
+                    <span class="feature-icon">🛠️</span>
+                    <span>آموزش کامل ابزار</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🛡️</span>
+                    <span>تست شده و امن</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔥</span>
+                    <span>اجرای روان فایل</span>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🎓</span>
+                    <span>به همراه راهنما</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title-wrap">
+            <div class="blue-bar"></div>
+            <h3 class="section-title">ویدیو معرفی</h3>
+        </div>
+
+        <div class="video-container">
+            <video controls poster="wwe-poster.jpg">
+                <source src="intro-video.mp4" type="video/mp4">
+                مرورگر شما از پخش ویدیو پشتیبانی نمی‌کند.
+            </video>
+        </div>
+
+        <div class="game-footer-title">
+            دوره هک و امنیت کدآزاد پلاس (Cina Edition)
+        </div>
+
+    </div>
+
+    <nav class="app-bottom-nav">
+        <a href="index.html" class="nav-btn">
+            <i>📋</i>
+            <span>دوره ها</span>
+        </a>
+        <a href="#cart" class="nav-btn">
+            <i>🛒</i>
+            <span>سبد خرید</span>
+        </a>
+        <a href="index.html" class="nav-btn">
+            <i>🏠</i>
+            <span>خانه</span>
+        </a>
+        <a href="#dashboard" class="nav-btn active">
+            <i>👤</i>
+            <span>داشبرد</span>
+        </a>
+        <a href="#my-courses" class="nav-btn">
+            <i>🔖</i>
+            <span>دوره های من</span>
+        </a>
+    </nav>
+
+</body>
+</html>
