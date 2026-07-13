@@ -65,15 +65,14 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 .telegram{background:#0088cc!important;}.youtube{background:#ff0000!important;}
 .hero{padding: 50px 20px;background: #111;text-align: center;margin: 20px 0;}
 .hero h2{ font-size: 26px; margin-bottom: 10px; }.hero p{ color: #ccc; font-size: 16px; }
-.menu{display:grid;grid-template-columns: repeat(2, 1fr);gap: 20px;padding: 20px;width: 100%;max-width: 500px;margin: auto;box-sizing: border-box;}
-.box{height: 140px; border-radius: 25px; display: flex;flex-direction: column; justify-content: center;align-items: center;font-weight: bold;font-size: 20px;text-decoration: none;color: white;transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);position: relative;overflow: hidden;box-shadow: 0 6px 20px rgba(0,0,0,0.6);gap: 6px;}
-.box:hover{ transform: scale(1.06) translateY(-4px); }
-.games{ background: linear-gradient(135deg, #00ff66, #009933); color: black !important; box-shadow: 0 0 15px #00ff66, inset 0 0 10px rgba(0,0,0,0.15);animation: gamesGlow 2s infinite ease-in-out alternate;}
-@keyframes gamesGlow {0% { box-shadow: 0 0 15px #00ff66; }100% { box-shadow: 0 0 30px #00ff66, 0 0 10px #40E0D0; }}
-.mini-game-icons {font-size: 13px;opacity: 0.9;background: rgba(0, 0, 0, 0.12);padding: 3px 10px;border-radius: 20px;letter-spacing: 2px;}
-.desc{ background: linear-gradient(135deg, #0088ff, #0044cc); box-shadow: 0 0 20px #0088ff;}.desc:hover { box-shadow: 0 0 35px #0088ff; }
-.alerts{ background: linear-gradient(135deg, #ffcc00, #cc9900); color: black !important; box-shadow: 0 0 20px #ffcc00;}.alerts:hover { box-shadow: 0 0 35px #ffcc00; }
-.settings{ background: linear-gradient(135deg, #ff3333, #b30000); box-shadow: 0 0 20px #ff3333;}.settings:hover { box-shadow: 0 0 35px #ff3333; }
+
+/* 🔴 استایل جدید داک شناور فروشگاهی */
+.floating-dock {position: fixed;bottom: 20px;left: 50%;transform: translateX(-50%);display: flex;justify-content: space-around;align-items: center;background: rgba(20, 20, 20, 0.9);backdrop-filter: blur(15px);padding: 10px 20px;border-radius: 30px;border: 1px solid rgba(64, 224, 208, 0.3);box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 15px rgba(64, 224, 208, 0.2);width: 90%;max-width: 400px;z-index: 9999;}
+.dock-item {display: flex;flex-direction: column;align-items: center;color: white;text-decoration: none;font-size: 18px;transition: 0.3s;flex: 1;}
+.dock-item small {font-size: 10px;margin-top: 4px;color: #aaa;font-weight: bold;}
+.dock-item:hover {color: #40E0D0;transform: translateY(-3px);}
+.dock-item:hover small {color: #40E0D0;}
+
 .section{padding: 40px 20px;text-align: center;color: #ccc;font-size: 16px;}.section h2 { color: white; margin-bottom: 15px; }
 #pwaInstallBanner {position: fixed;bottom: 15px;left: 50%;transform: translateX(-50%) translateY(150px);width: 90%;max-width: 450px;background: linear-gradient(135deg, #11111e, #1a1a2e);border: 2px solid #00ff66;border-radius: 18px;padding: 15px 20px;box-shadow: 0 0 25px rgba(0, 255, 102, 0.3);display: flex;justify-content: space-between;align-items: center;z-index: 10000;box-sizing: border-box;transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
 #pwaInstallBanner.show {transform: translateX(-50%) translateY(0);}
@@ -113,7 +112,6 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 
 <h1 class="main-title-text gothic-cina-games">Cina Games</h1>
 
-<!-- جایگاه بنر تبلیغاتی -->
 <div style="text-align:center; margin: 20px 0;">
     <script type="text/javascript">
       atOptions = {
@@ -153,14 +151,12 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
   <p>Download Android & PC games...</p>
 </div>
 
-<div class="menu">
-  <a href="games.html" class="box games">
-    <span>🎮 Games 🎮</span>
-    <div class="mini-game-icons">⚔️ 🔫 👑</div>
-  </a>
-  <a href="#desc" class="box desc">📄 Description</a>
-  <a href="#alerts" class="box alerts">🔔 Alerts</a>
-  <a href="#settings" class="box settings">⚙️ Settings</a>
+<!-- 🔴 داک شناور فروشگاهی جدید جایگزین شده است -->
+<div class="floating-dock">
+    <a href="index.html" class="dock-item"><span>🏠</span><small>Home</small></a>
+    <a href="games.html" class="dock-item"><span>🎮</span><small>All Games</small></a>
+    <a href="dashboard.html" class="dock-item"><span>📊</span><small>Dashboard</small></a>
+    <a href="#settings" class="dock-item"><span>⚙️</span><small>Setting</small></a>
 </div>
 
 <div id="desc" class="section"><h2 class="gothic-cina-games" style="font-size:26px;">About Cina Games</h2></div>
@@ -404,10 +400,8 @@ auth.onAuthStateChanged((user) => {
 });
 </script>
 
-<!-- کد Social Bar برای افزایش درآمد -->
 <script src="https://jonasfrozepyamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
 
-<!-- 🔴 شروع کد نمایش پیغام ضد تبلیغ بدون حذف هیچ کدی از قبل -->
 <div id="adblockNotice" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #111, #222); color: #fff; border: 2px solid #ff3333; padding: 15px 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(255,51,51,0.4); z-index: 100000; max-width: 320px; font-family: sans-serif; font-size: 14px; line-height: 1.6; display: none; direction: rtl; text-align: right;">
   <div style="font-weight: bold; color: #ff3333; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">⚠️ گیمر عزیز توجه کن!</div>
   <p style="margin: 0 0 10px 0;">سیستم تشخیص داد که تبلیغات سایت مسدود شده است. برای حمایت از وبسایت سینا گیمز و لود شدن کامل امکانات، لطفاً ضدتبلیغ (AdBlocker) یا ویژگی ضدتبلیغِ فیلترشکن خود را خاموش کنید. ❤️</p>
@@ -418,8 +412,6 @@ auth.onAuthStateChanged((user) => {
 window.addEventListener('load', function() {
   setTimeout(function() {
     var isAdBlocked = false;
-
-    // یک المان کاذب تست می‌سازیم تا عملکرد فیلترشکن ضدتبلیغ را بسنجیم
     var testAd = document.createElement('div');
     testAd.innerHTML = '&nbsp;';
     testAd.className = 'adsbox ads google-ads doubleclick-ad';
@@ -429,22 +421,17 @@ window.addEventListener('load', function() {
     document.body.appendChild(testAd);
 
     window.setTimeout(function() {
-      // اگر المان کاذب توسط فیلترشکن حذف یا مخفی شده باشد، ارتفاع آن 0 می‌شود
       if (testAd.offsetHeight === 0) {
         isAdBlocked = true;
       }
       testAd.remove();
-
-      // اگر مسدود بودن تایید شد، باکس اخطار باز می‌شود
       if (isAdBlocked) {
         document.getElementById('adblockNotice').style.display = 'block';
       }
     }, 100);
-
-  }, 4000); // چک کردن بعد از ۴ ثانیه لود کامل صفحه
+  }, 4000);
 });
 </script>
-<!-- 🔴 پایان کد نمایش پیغام ضد تبلیغ -->
 
 </body>
 </html>
