@@ -64,7 +64,6 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 .hero{padding: 50px 20px;background: #111;text-align: center;margin: 20px 0;}
 .hero h2{ font-size: 26px; margin-bottom: 10px; }.hero p{ color: #ccc; font-size: 16px; }
 
-/* 🔴 استایل جدید داک شناور فروشگاهی */
 .floating-dock {position: fixed;bottom: 0;left: 0;width: 100%;background: #111;display: flex;justify-content: space-around;align-items: center;padding: 12px 0;border-top: 1px solid #333;z-index: 9999;box-shadow: 0 -5px 15px rgba(0,0,0,0.5);}
 .dock-item {display: flex;flex-direction: column;align-items: center;color: #bbb;text-decoration: none;font-size: 20px;transition: 0.3s;flex: 1;}
 .dock-item small {font-size: 11px;margin-top: 5px;font-weight: bold;}
@@ -74,7 +73,7 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 
 #pwaInstallBanner {
     position: fixed;
-    bottom: 110px; /* این عدد بنر رو میاره بالای داک شناور */
+    bottom: 110px;
     left: 50%;
     transform: translateX(-50%) translateY(150px);
     width: 90%;
@@ -91,11 +90,7 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
     box-sizing: border-box;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
-#pwaInstallBanner.show {
-    transform: translateX(-50%) translateY(0);
-}
-
+#pwaInstallBanner.show { transform: translateX(-50%) translateY(0); }
 .pwa-text {display: flex;align-items: center;gap: 10px;}
 .pwa-text img {width: 42px;height: 42px;border-radius: 10px;border: 1.5px solid #00ff66;}
 .pwa-info h5 {margin: 0 0 3px 0;font-size: 14px;color: white;}
@@ -104,134 +99,38 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 #pwaBtnInstall {background: #00ff66;color: black;border: none;padding: 8px 14px;border-radius: 8px;font-weight: bold;font-size: 12px;cursor: pointer;box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);transition: 0.2s;}
 #pwaBtnInstall:hover {transform: scale(1.05);box-shadow: 0 0 18px #00ff66;}
 #pwaBtnClose {background: transparent;color: #ff4444;border: none;font-size: 18px;cursor: pointer;padding: 5px;}
-
 </style>
 </head>
 
 <body>
 
-<div id="splash">
-  <div class="splash-content">
-    <h1 class="gothic-cina-games">Cina Games</h1>
-    <p>Welcome to Cina Games<br>تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p>
-  </div>
-</div>
-
+<!-- تمامی محتویات سایت شما دقیقاً سر جایشان هستند -->
+<div id="splash"><div class="splash-content"><h1 class="gothic-cina-games">Cina Games</h1><p>Welcome to Cina Games<br>تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p></div></div>
 <div class="top-header-bar">
-  <a href="about-creator.html" class="profile-box">
-    <img src="profile.jpg">
-    <div>
-      <h4 style="font-family: serif; letter-spacing: 1px;">Cina</h4>
-      <p>Creator of Cina Games</p>
-    </div>
-  </a>
-  <div>
-    <a href="#authSection" id="authBtn" class="top-auth-btn">👤 ورود / ثبت‌نام</a>
-    <span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; font-size: 13px; background: #111; padding: 8px 12px; border-radius: 10px; border: 1px solid #40E0D0;"></span>
-  </div>
+  <a href="about-creator.html" class="profile-box"><img src="profile.jpg"><div><h4 style="font-family: serif; letter-spacing: 1px;">Cina</h4><p>Creator of Cina Games</p></div></a>
+  <div><a href="#authSection" id="authBtn" class="top-auth-btn">👤 ورود / ثبت‌نام</a><span id="userWelcome" style="color: #40E0D0; font-weight: bold; display: none; font-size: 13px; background: #111; padding: 8px 12px; border-radius: 10px; border: 1px solid #40E0D0;"></span></div>
 </div>
-
 <h1 class="main-title-text gothic-cina-games">Cina Games</h1>
-
-<div style="text-align:center; margin: 20px 0;">
-    <script type="text/javascript">
-      atOptions = {
-        'key' : 'ef860086d3acfd8fb188ea50dc15430c',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    </script>
-    <script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script>
-</div>
-
-<div class="exam-banner">
-  📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.
-</div>
-
-<div class="ai-button-container">
-  <a href="ai.html" class="ai-big-link">🤖 Cina AI Chat</a>
-</div>
-
-<div class="navbar">
-  <a href="#home">Home</a>
-  <a href="games.html">Games</a>
-  <a class="characters-btn" href="characters.html">
-    <img src="char-icon.jpg" alt="icon">
-    Characters
-  </a>
-  <a href="about.html">About</a>
-  <a href="contact.html">Contact</a>
-  <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
-  <a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a>
-</div>
-
-<div class="hero">
-  <h2 class="gothic-cina-games" style="font-size: 30px; margin-bottom: 15px;">Welcome to Cina Games Store</h2>
-  <p>Download Android & PC games...</p>
-</div>
-
-<div class="floating-dock">
-    <a href="index.html" class="dock-item"><span>🏠</span><small>Home</small></a>
-    <a href="games.html" class="dock-item"><span>🎮</span><small>Games</small></a>
-    <a href="dashboard.html" class="dock-item"><span>📊</span><small>Dash</small></a>
-    <a href="#settings" class="dock-item"><span>⚙️</span><small>Setting</small></a>
-</div>
-
+<div style="text-align:center; margin: 20px 0;"><script type="text/javascript">atOptions = {'key' : 'ef860086d3acfd8fb188ea50dc15430c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}};</script><script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script></div>
+<div class="exam-banner">📚 تا پایان امتحانات، پیشرفت جدیدی در سایت انجام نخواهد شد. از صبر و همراهی شما سپاسگزاریم.</div>
+<div class="ai-button-container"><a href="ai.html" class="ai-big-link">🤖 Cina AI Chat</a></div>
+<div class="navbar"><a href="#home">Home</a><a href="games.html">Games</a><a class="characters-btn" href="characters.html"><img src="char-icon.jpg" alt="icon">Characters</a><a href="about.html">About</a><a href="contact.html">Contact</a><a class="telegram" href="https://t.me/afghangamerx">Telegram</a><a class="youtube" href="https://www.youtube.com/@Farhad_Cina">YouTube</a></div>
+<div class="hero"><h2 class="gothic-cina-games" style="font-size: 30px; margin-bottom: 15px;">Welcome to Cina Games Store</h2><p>Download Android & PC games...</p></div>
+<div class="floating-dock"><a href="index.html" class="dock-item"><span>🏠</span><small>Home</small></a><a href="games.html" class="dock-item"><span>🎮</span><small>Games</small></a><a href="dashboard.html" class="dock-item"><span>📊</span><small>Dash</small></a><a href="#settings" class="dock-item"><span>⚙️</span><small>Setting</small></a></div>
 <div id="desc" class="section"><h2 class="gothic-cina-games" style="font-size:26px;">About Cina Games</h2></div>
 <div id="alerts" class="section"><h2>🔔 Alerts</h2></div>
 <div id="settings" class="section"><h2>⚙️ Settings</h2></div>
-
-<div id="authSection" class="container" style="margin: 40px auto; background: #11111a; padding: 30px; border-radius: 15px; border: 2px solid #00ff55; box-shadow: 0 0 15px rgba(0,255,85,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
-    <h3 id="authTitle" style="color: #00ff55; margin-bottom: 20px; text-align: center; font-family: sans-serif;">🔐 ورود به حساب کاربری</h3>
-    <form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 15px;">
-        <input type="email" id="authEmail" placeholder="ایمیل شما (Email)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
-        <input type="password" id="authPassword" placeholder="رمز عبور (Password)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
-        <button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s; width: auto; max-width: 180px; margin: 0 auto;">ورود به اکانت</button>
-        <p id="authToggleText" style="text-align: center; color: #ccc; font-size: 14px; cursor: pointer; margin-top: 10px;">
-            اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span>
-        </p>
-        <p id="authStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p>
-    </form>
-</div>
-
-<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;">
-    <h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و پیشنهادات</h3>
-    <form id="cinaCommentForm" style="display: flex; flex-direction: column; gap: 15px;">
-        <input type="text" name="name" id="userName" placeholder="نام شما" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;">
-        <textarea name="message" id="userMsg" rows="4" placeholder="نظر، پیشنهاد یا بازی درخواستی خود را بنویسید..." required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; resize: none; font-size: 15px; font-family: Arial, sans-serif;"></textarea>
-        <button type="submit" id="submitBtn" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button>
-        <p id="formStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p>
-    </form>
-</div>
-
-<div style="text-align:center; margin-top:30px; margin-bottom: 20px;">
-  <a href="about-creator.html" style="display:inline-block; padding:14px 35px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 16px; box-shadow:0 0 15px rgba(64,224,208,.4);">👤 About Creator</a>
-</div>
-
-<div id="pwaInstallBanner">
-  <div class="pwa-text">
-    <img src="icon.png" alt="Logo">
-    <div class="pwa-info">
-      <h5>Cina Games App</h5>
-      <p>نصب نسخه سبک و سریع روی گوشی</p>
-    </div>
-  </div>
-  <div class="pwa-buttons">
-    <button id="pwaBtnInstall">📥 نصب</button>
-    <button id="pwaBtnClose">×</button>
-  </div>
-</div>
-
+<div id="authSection" class="container" style="margin: 40px auto; background: #11111a; padding: 30px; border-radius: 15px; border: 2px solid #00ff55; box-shadow: 0 0 15px rgba(0,255,85,0.2); max-width: 500px; box-sizing: border-box; width: 90%;"><h3 id="authTitle" style="color: #00ff55; margin-bottom: 20px; text-align: center; font-family: sans-serif;">🔐 ورود به حساب کاربری</h3><form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 15px;"><input type="email" id="authEmail" placeholder="ایمیل شما (Email)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;"><input type="password" id="authPassword" placeholder="رمز عبور (Password)" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #00ff55; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;"><button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 8px 20px; border: none; border-radius: 8px; cursor: pointer; font-size: 14px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s; width: auto; max-width: 180px; margin: 0 auto;">ورود به اکانت</button><p id="authToggleText" style="text-align: center; color: #ccc; font-size: 14px; cursor: pointer; margin-top: 10px;">اکانت نداری؟ <span style="color: #00ff55; font-weight: bold;">اینجا ثبت‌نام کن</span></p><p id="authStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p></form></div>
+<div class="container" style="margin: 40px auto; background: #161622; padding: 30px; border-radius: 15px; border: 2px solid #40E0D0; box-shadow: 0 0 15px rgba(64,224,208,0.2); max-width: 500px; box-sizing: border-box; width: 90%;"><h3 style="color: #40E0D0; margin-bottom: 20px; font-family: sans-serif; text-align: center;">💬 بخش نظرات و پیشنهادات</h3><form id="cinaCommentForm" style="display: flex; flex-direction: column; gap: 15px;"><input type="text" name="name" id="userName" placeholder="نام شما" required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; font-size: 15px;"><textarea name="message" id="userMsg" rows="4" placeholder="نظر، پیشنهاد یا بازی درخواستی خود را بنویسید..." required style="width: 100%; padding: 12px; background: #1f1f2e; border: 1px solid #40E0D0; border-radius: 8px; color: white; box-sizing: border-box; resize: none; font-size: 15px; font-family: Arial, sans-serif;"></textarea><button type="submit" id="submitBtn" style="background: #40E0D0; color: black; font-weight: bold; padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-size: 16px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 ارسال نظر (Send)</button><p id="formStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 14px; display: none;"></p></form></div>
+<div style="text-align:center; margin-top:30px; margin-bottom: 20px;"><a href="about-creator.html" style="display:inline-block; padding:14px 35px; background:#40E0D0; color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 16px; box-shadow:0 0 15px rgba(64,224,208,.4);">👤 About Creator</a></div>
+<div id="pwaInstallBanner"><div class="pwa-text"><img src="icon.png" alt="Logo"><div class="pwa-info"><h5>Cina Games App</h5><p>نصب نسخه سبک و سریع روی گوشی</p></div></div><div class="pwa-buttons"><button id="pwaBtnInstall">📥 نصب</button><button id="pwaBtnClose">×</button></div></div>
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
+// اسکریپت اصلاح شده برای بنر نصب
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('./sw.js')
-      .then(reg => console.log('Service Worker Registered!'))
-      .catch(err => console.log('Service Worker Failed!', err));
+    navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed'));
   });
 }
 
@@ -240,18 +139,20 @@ const installBanner = document.getElementById('pwaInstallBanner');
 const btnInstall = document.getElementById('pwaBtnInstall');
 const btnClose = document.getElementById('pwaBtnClose');
 
-window.addEventListener('beforeinstallprompt', (e) => {
-  e.preventDefault();
-  deferredPrompt = e;
-  setTimeout(() => {
-    installBanner.classList.add('show');
-  }, 6000); 
-});
+// بررسی اینکه آیا قبلاً نصب یا رد شده است
+if (localStorage.getItem('pwa_hidden') !== 'true') {
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    setTimeout(() => { installBanner.classList.add('show'); }, 6000); 
+  });
+}
 
 btnInstall.addEventListener('click', () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
+      localStorage.setItem('pwa_hidden', 'true');
       installBanner.classList.remove('show');
       deferredPrompt = null;
     });
@@ -259,39 +160,26 @@ btnInstall.addEventListener('click', () => {
 });
 
 btnClose.addEventListener('click', () => {
+  localStorage.setItem('pwa_hidden', 'true');
   installBanner.classList.remove('show');
 });
 
-// این قسمت برای حذف خودکار بعد از نصب موفق است
-window.addEventListener('appinstalled', (evt) => {
+window.addEventListener('appinstalled', () => {
+  localStorage.setItem('pwa_hidden', 'true');
   installBanner.classList.remove('show');
 });
 
-const firebaseConfig = {
-  apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
-  authDomain: "cina-games.firebaseapp.com",
-  projectId: "cina-games",
-  storageBucket: "cina-games.firebasestorage.app",
-  messagingSenderId: "449625451730",
-  appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
-  measurementId: "G-YSQZ60ZNC8"
-};
-
+// سایر کدهای شما (Firebase و غیره)
+const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 setTimeout(function(){
   document.getElementById("splash").style.opacity="0";
   document.getElementById("splash").style.visibility="hidden";
-  setTimeout(function(){
-    document.getElementById("splash").style.display="none";
-  }, 500);
-  
+  setTimeout(function(){ document.getElementById("splash").style.display="none"; }, 500);
   let sound=document.getElementById("dingSound");
-  if(sound){
-    sound.volume=0.6;
-    sound.play().catch(e => console.log("Audio play blocked"));
-  }
+  if(sound){ sound.volume=0.6; sound.play().catch(e => console.log("Audio play blocked")); }
 },5000);
 
 document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
@@ -300,21 +188,14 @@ document.getElementById('cinaCommentForm').addEventListener('submit', function(e
     var status = document.getElementById('formStatus');
     var nameInput = document.getElementById('userName');
     var msgInput = document.getElementById('userMsg');
-    
     btn.disabled = true;
     btn.innerText = "⏳ در حال ارسال...";
     status.style.display = "none";
-
     var formData = new FormData();
     formData.append('name', nameInput.value);
     formData.append('message', msgInput.value);
     formData.append('_captcha', 'false');
-
-    fetch('https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: { 'Accept': 'application/json' }
-    })
+    fetch('https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com', { method: 'POST', body: formData, headers: { 'Accept': 'application/json' } })
     .then(response => response.json())
     .then(data => {
         btn.disabled = false;
@@ -375,61 +256,32 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
     e.preventDefault();
     const email = authEmail.value;
     const password = authPassword.value;
-    
     authStatus.style.display = "block";
     authStatus.style.color = "#ffcc00";
     authStatus.innerText = "⏳ لطفا صبر کنید...";
-
     if (isLoginMode) {
         auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            authStatus.style.color = "#00ff55";
-            authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!";
-            authEmail.value = "";
-            authPassword.value = "";
-        })
-        .catch((error) => {
-            authStatus.style.color = "#ff4444";
-            authStatus.innerText = "❌ خطا: رمز اشتباه است یا حساب وجود ندارد.";
-        });
+        .then((userCredential) => { authStatus.style.color = "#00ff55"; authStatus.innerText = "✅ ورود موفقیت‌آمیز بود!"; authEmail.value = ""; authPassword.value = ""; })
+        .catch((error) => { authStatus.style.color = "#ff4444"; authStatus.innerText = "❌ خطا: رمز اشتباه است یا حساب وجود ندارد."; });
     } else {
         auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-            authStatus.style.color = "#00ff55";
-            authStatus.innerText = "✅ اکانت شما با موفقیت ساخته شد!";
-            authEmail.value = "";
-            authPassword.value = "";
-        })
-        .catch((error) => {
-            authStatus.style.color = "#ff4444";
-            authStatus.innerText = "❌ خطا: ایمیل نامعتبر است یا رمز زیر ۶ رقم است.";
-        });
+        .then((userCredential) => { authStatus.style.color = "#00ff55"; authStatus.innerText = "✅ اکانت شما با موفقیت ساخته شد!"; authEmail.value = ""; authPassword.value = ""; })
+        .catch((error) => { authStatus.style.color = "#ff4444"; authStatus.innerText = "❌ خطا: ایمیل نامعتبر است یا رمز زیر ۶ رقم است."; });
     }
 });
 
 auth.onAuthStateChanged((user) => {
-    if (user) {
-        authBtn.style.display = "none";
-        authSection.style.display = "none"; 
-        userWelcome.style.display = "inline-block";
-        let userNameClean = user.email.split('@')[0];
-        userWelcome.innerHTML = "👤 کاربر: " + userNameClean;
-    } else {
-        authBtn.style.display = "inline-block";
-        authSection.style.display = "block";
-        userWelcome.style.display = "none";
-    }
+    if (user) { authBtn.style.display = "none"; authSection.style.display = "none"; userWelcome.style.display = "inline-block"; let userNameClean = user.email.split('@')[0]; userWelcome.innerHTML = "👤 کاربر: " + userNameClean; } 
+    else { authBtn.style.display = "inline-block"; authSection.style.display = "block"; userWelcome.style.display = "none"; }
 });
 </script>
 
 <script src="https://jonasfrozepyamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
-
 <div id="adblockNotice" style="position: fixed; bottom: 20px; right: 20px; background: linear-gradient(135deg, #111, #222); color: #fff; border: 2px solid #ff3333; padding: 15px 20px; border-radius: 12px; box-shadow: 0 0 20px rgba(255,51,51,0.4); z-index: 100000; max-width: 320px; font-family: sans-serif; font-size: 14px; line-height: 1.6; display: none; direction: rtl; text-align: right;">
   <div style="font-weight: bold; color: #ff3333; margin-bottom: 8px; display: flex; align-items: center; gap: 6px;">⚠️ گیمر عزیز توجه کن!</div>
   <p style="margin: 0 0 10px 0;">سیستم تشخیص داد که تبلیغات سایت مسدود شده است. برای حمایت از وبسایت سینا گیمز و لود شدن کامل امکانات، لطفاً ضدتبلیغ (AdBlocker) یا ویژگی ضدتبلیغِ فیلترشکن خود را خاموش کنید. ❤️</p>
   <button onclick="document.getElementById('adblockNotice').style.display='none'" style="background: #ff3333; color: white; border: none; padding: 6px 12px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 12px; width: 100%;">فهمیدم (بستن)</button>
 </div>
-
 <script>
 window.addEventListener('load', function() {
   setTimeout(function() {
@@ -441,19 +293,13 @@ window.addEventListener('load', function() {
     testAd.style.top = '-999px';
     testAd.style.left = '-999px';
     document.body.appendChild(testAd);
-
     window.setTimeout(function() {
-      if (testAd.offsetHeight === 0) {
-        isAdBlocked = true;
-      }
+      if (testAd.offsetHeight === 0) { isAdBlocked = true; }
       testAd.remove();
-      if (isAdBlocked) {
-        document.getElementById('adblockNotice').style.display = 'block';
-      }
+      if (isAdBlocked) { document.getElementById('adblockNotice').style.display = 'block'; }
     }, 100);
   }, 4000);
 });
 </script>
-
 </body>
 </html>
