@@ -226,7 +226,7 @@ setTimeout(function(){
   setTimeout(function(){ document.getElementById("splash").style.display="none"; }, 500);
   let sound=document.getElementById("dingSound");
   if(sound){ sound.volume=0.6; sound.play().catch(e => console.log("Audio play blocked")); }
-},2000);
+},1000);
 
 document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
