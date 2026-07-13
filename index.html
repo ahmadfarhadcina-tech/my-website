@@ -64,10 +64,50 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 .hero{padding: 50px 20px;background: #111;text-align: center;margin: 20px 0;}
 .hero h2{ font-size: 26px; margin-bottom: 10px; }.hero p{ color: #ccc; font-size: 16px; }
 
-.floating-dock {position: fixed;bottom: 0;left: 0;width: 100%;background: #111;display: flex;justify-content: space-around;align-items: center;padding: 12px 0;border-top: 1px solid #333;z-index: 9999;box-shadow: 0 -5px 15px rgba(0,0,0,0.5);}
-.dock-item {display: flex;flex-direction: column;align-items: center;color: #bbb;text-decoration: none;font-size: 20px;transition: 0.3s;flex: 1;}
-.dock-item small {font-size: 11px;margin-top: 5px;font-weight: bold;}
-.dock-item:hover {color: #40E0D0;}
+/* داک مدرن و چسبیده به پایین */
+.floating-dock {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(15, 15, 25, 0.95); /* پس‌زمینه بسیار تیره و شیک */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 12px 0 20px 0; /* فاصله اضافی در پایین برای دکمه‌های آیفون/اندروید */
+    z-index: 9999;
+    border-top: 1px solid rgba(64, 224, 208, 0.4); /* یک خط نئونی نازک در بالای داک */
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
+}
+
+.dock-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #888;
+    text-decoration: none;
+    font-size: 22px;
+    transition: all 0.3s ease;
+    flex: 1;
+}
+
+.dock-item small {
+    font-size: 10px;
+    margin-top: 5px;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+/* افکت درخششِ مدرن وقتی روی دکمه می‌روی */
+.dock-item:hover, .dock-item:active {
+    color: #40E0D0; /* رنگ فیروزه‌ای نئونی */
+    text-shadow: 0 0 10px rgba(64, 224, 208, 0.8);
+}
+
+.dock-item:hover small {
+    transform: scale(1.1);
+}
+
 
 .section{padding: 40px 20px;text-align: center;color: #ccc;font-size: 16px;}.section h2 { color: white; margin-bottom: 15px; }
 
