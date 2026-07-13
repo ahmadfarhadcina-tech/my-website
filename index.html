@@ -71,8 +71,31 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 .dock-item:hover {color: #40E0D0;}
 
 .section{padding: 40px 20px;text-align: center;color: #ccc;font-size: 16px;}.section h2 { color: white; margin-bottom: 15px; }
-#pwaInstallBanner {position: fixed;bottom: 80px;left: 50%;transform: translateX(-50%) translateY(150px);width: 90%;max-width: 450px;background: linear-gradient(135deg, #11111e, #1a1a2e);border: 2px solid #00ff66;border-radius: 18px;padding: 15px 20px;box-shadow: 0 0 25px rgba(0, 255, 102, 0.3);display: flex;justify-content: space-between;align-items: center;z-index: 10000;box-sizing: border-box;transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);}
-#pwaInstallBanner.show {transform: translateX(-50%) translateY(0);}
+
+#pwaInstallBanner {
+    position: fixed;
+    bottom: 85px; /* این عدد بنر رو میاره بالای داک شناور */
+    left: 50%;
+    transform: translateX(-50%) translateY(150px);
+    width: 90%;
+    max-width: 450px;
+    background: linear-gradient(135deg, #11111e, #1a1a2e);
+    border: 2px solid #00ff66;
+    border-radius: 18px;
+    padding: 15px 20px;
+    box-shadow: 0 0 25px rgba(0, 255, 102, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10000;
+    box-sizing: border-box;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#pwaInstallBanner.show {
+    transform: translateX(-50%) translateY(0);
+}
+
 .pwa-text {display: flex;align-items: center;gap: 10px;}
 .pwa-text img {width: 42px;height: 42px;border-radius: 10px;border: 1.5px solid #00ff66;}
 .pwa-info h5 {margin: 0 0 3px 0;font-size: 14px;color: white;}
@@ -81,6 +104,7 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 #pwaBtnInstall {background: #00ff66;color: black;border: none;padding: 8px 14px;border-radius: 8px;font-weight: bold;font-size: 12px;cursor: pointer;box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);transition: 0.2s;}
 #pwaBtnInstall:hover {transform: scale(1.05);box-shadow: 0 0 18px #00ff66;}
 #pwaBtnClose {background: transparent;color: #ff4444;border: none;font-size: 18px;cursor: pointer;padding: 5px;}
+
 </style>
 </head>
 
