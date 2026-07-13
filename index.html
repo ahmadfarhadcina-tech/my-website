@@ -104,7 +104,6 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 
 <body>
 
-<!-- تمامی محتویات سایت شما دقیقاً سر جایشان هستند -->
 <div id="splash"><div class="splash-content"><h1 class="gothic-cina-games">Cina Games</h1><p>Welcome to Cina Games<br>تا پایان امتحانات پیشرفت جدیدی در سایت دیده نخواهد شد</p></div></div>
 <div class="top-header-bar">
   <a href="about-creator.html" class="profile-box"><img src="profile.jpg"><div><h4 style="font-family: serif; letter-spacing: 1px;">Cina</h4><p>Creator of Cina Games</p></div></a>
@@ -127,33 +126,38 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
-// اسکریپت اصلاح شده برای بنر نصب
+// ۱. سرویس ورکر
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed'));
   });
 }
 
+// ۲. منطق مدیریت بنر نصب
 let deferredPrompt;
 const installBanner = document.getElementById('pwaInstallBanner');
 const btnInstall = document.getElementById('pwaBtnInstall');
 const btnClose = document.getElementById('pwaBtnClose');
 
-// بررسی اینکه آیا قبلاً نصب یا رد شده است
-if (localStorage.getItem('pwa_hidden') !== 'true') {
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    setTimeout(() => { installBanner.classList.add('show'); }, 6000); 
-  });
+// اگر کاربر قبلاً بنر را بسته یا نصب کرده، از همان ابتدا مخفی‌اش کن
+if (localStorage.getItem('pwa_hidden') === 'true') {
+  installBanner.style.display = 'none';
 }
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  if (localStorage.getItem('pwa_hidden') !== 'true') {
+    setTimeout(() => { installBanner.classList.add('show'); }, 6000); 
+  }
+});
 
 btnInstall.addEventListener('click', () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
       localStorage.setItem('pwa_hidden', 'true');
-      installBanner.classList.remove('show');
+      installBanner.style.display = 'none';
       deferredPrompt = null;
     });
   }
@@ -161,15 +165,15 @@ btnInstall.addEventListener('click', () => {
 
 btnClose.addEventListener('click', () => {
   localStorage.setItem('pwa_hidden', 'true');
-  installBanner.classList.remove('show');
+  installBanner.style.display = 'none';
 });
 
 window.addEventListener('appinstalled', () => {
   localStorage.setItem('pwa_hidden', 'true');
-  installBanner.classList.remove('show');
+  installBanner.style.display = 'none';
 });
 
-// سایر کدهای شما (Firebase و غیره)
+// ۳. بقیه کدهای شما (Firebase و غیره)
 const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
