@@ -2,43 +2,58 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>پنل کاربری کامل | سینا گیمز</title>
+    <title>پنل کاربری سینا گیمز</title>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <style>
-        body { background: #050505; color: #fff; font-family: Tahoma; padding: 20px; }
-        .dashboard { max-width: 600px; margin: auto; background: #111; padding: 30px; border-radius: 20px; border: 1px solid #40E0D0; }
-        .avatar-box { text-align: center; }
-        img { width: 120px; height: 120px; border-radius: 50%; border: 3px solid #40E0D0; object-fit: cover; }
-        .section { margin-top: 20px; padding: 15px; background: #1a1a1a; border-radius: 10px; }
-        input, button { width: 100%; padding: 10px; margin: 5px 0; border-radius: 8px; border: none; }
-        button { background: #40E0D0; cursor: pointer; font-weight: bold; }
+        body { background: #050505; color: #fff; font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 20px; }
+        .dashboard { max-width: 900px; margin: auto; background: #111; padding: 40px; border-radius: 25px; border: 1px solid #40E0D0; box-shadow: 0 0 30px rgba(64, 224, 208, 0.1); }
+        .profile-header { display: flex; align-items: center; gap: 25px; margin-bottom: 40px; border-bottom: 1px solid #333; padding-bottom: 20px; }
+        .avatar-img { width: 120px; height: 120px; border-radius: 50%; border: 4px solid #40E0D0; object-fit: cover; }
+        .user-info h2 { margin: 0; color: #40E0D0; }
+        .user-info p { color: #888; margin: 5px 0 0 0; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .section { background: #1a1a1a; padding: 25px; border-radius: 20px; }
+        h3 { margin-top: 0; color: #40E0D0; }
+        input, button { width: 100%; padding: 12px; margin: 8px 0; border-radius: 10px; border: none; box-sizing: border-box; }
+        button { background: #40E0D0; color: #000; font-weight: bold; cursor: pointer; transition: 0.3s; }
+        button:hover { opacity: 0.9; transform: scale(1.01); }
+        .btn-danger { background: #ff4444; color: white; }
+        /* استایل نوار پیشرفت */
+        #progressContainer { width: 100%; background: #333; height: 10px; border-radius: 5px; margin: 10px 0; display: none; }
+        #progressBar { width: 0%; height: 100%; background: #40E0D0; border-radius: 5px; transition: 0.2s; }
     </style>
 </head>
 <body>
 
 <div class="dashboard">
-    <div class="avatar-box">
-        <img id="userImg" src="https://via.placeholder.com/120" alt="Avatar">
-        <h2 id="uName">در حال بارگذاری...</h2>
-        <input type="file" id="filePicker">
-        <button onclick="uploadAvatar()">آپلود عکس جدید</button>
+    <div class="profile-header">
+        <img id="userImg" src="https://via.placeholder.com/120" class="avatar-img" alt="Avatar">
+        <div class="user-info">
+            <h2 id="uName">در حال دریافت...</h2>
+            <p id="uEmail">در حال دریافت...</p>
+        </div>
     </div>
 
-    <div class="section">
-        <h3>ویرایش پروفایل</h3>
-        <input type="text" id="newName" placeholder="نام جدید">
-        <button onclick="updateName()">ذخیره نام</button>
+    <div class="grid">
+        <div class="section">
+            <h3>تنظیمات پروفایل</h3>
+            <input type="file" id="filePicker">
+            <div id="progressContainer"><div id="progressBar"></div></div>
+            <button onclick="uploadAvatar()">آپلود عکس جدید</button>
+            <input type="text" id="newName" placeholder="نام کاربری جدید...">
+            <button onclick="updateName()">تغییر نام</button>
+        </div>
+
+        <div class="section">
+            <h3>🎮 بازی‌های اخیر</h3>
+            <ul id="gameList" style="padding-right: 20px;"><li>در حال بارگذاری...</li></ul>
+        </div>
     </div>
 
-    <div class="section">
-        <h3>🎮 بازی‌های اخیر</h3>
-        <ul id="gameList"><li>هنوز بازی انجام نداده‌اید.</li></ul>
-    </div>
-
-    <button onclick="firebase.auth().signOut().then(() => window.location.href='index.html')" style="background:#ff4444; color:white;">خروج از حساب</button>
+    <button class="btn-danger" style="margin-top:20px;" onclick="firebase.auth().signOut().then(() => window.location.href='index.html')">خروج از حساب</button>
 </div>
 
 <script>
@@ -58,21 +73,19 @@
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
-            // دریافت اطلاعات کاربر
             db.collection("users").doc(user.uid).get().then(doc => {
                 if (doc.exists) {
                     const data = doc.data();
                     document.getElementById('uName').innerText = data.username;
+                    document.getElementById('uEmail').innerText = user.email;
                     if(data.avatarUrl) document.getElementById('userImg').src = data.avatarUrl;
                 }
             });
-            // دریافت بازی‌ها (فرض می‌کنیم در دیتابیس کلکشن games دارید)
             db.collection("games").where("uid", "==", user.uid).get().then(snapshot => {
                 const list = document.getElementById('gameList');
                 list.innerHTML = "";
-                snapshot.forEach(doc => {
-                    list.innerHTML += `<li>${doc.data().name}</li>`;
-                });
+                snapshot.forEach(doc => { list.innerHTML += `<li>${doc.data().name}</li>`; });
+                if (list.innerHTML === "") list.innerHTML = "<li>بازی انجام نشده است.</li>";
             });
         } else {
             window.location.href = "index.html";
@@ -82,22 +95,30 @@
     function updateName() {
         const newName = document.getElementById('newName').value;
         if(!newName) return;
-        db.collection("users").doc(firebase.auth().currentUser.uid).update({ username: newName });
-        document.getElementById('uName').innerText = newName;
-        alert("نام تغییر کرد!");
+        db.collection("users").doc(firebase.auth().currentUser.uid).update({ username: newName })
+            .then(() => { document.getElementById('uName').innerText = newName; alert("نام با موفقیت تغییر کرد!"); });
     }
 
     function uploadAvatar() {
         const file = document.getElementById('filePicker').files[0];
-        if(!file) return alert("فایل انتخاب کن!");
+        if(!file) return alert("لطفا عکس انتخاب کن!");
+        const progressBar = document.getElementById('progressBar');
+        const progressContainer = document.getElementById('progressContainer');
+        progressContainer.style.display = "block";
         const ref = storage.ref('avatars/' + firebase.auth().currentUser.uid);
-        ref.put(file).then(() => {
-            ref.getDownloadURL().then(url => {
-                db.collection("users").doc(firebase.auth().currentUser.uid).update({ avatarUrl: url });
-                document.getElementById('userImg').src = url;
-                alert("عکس آپلود شد!");
-            });
-        });
+        const uploadTask = ref.put(file);
+        uploadTask.on('state_changed', 
+            (snapshot) => { progressBar.style.width = (snapshot.bytesTransferred / snapshot.totalBytes) * 100 + "%"; },
+            (error) => { alert("خطا: " + error.message); },
+            () => {
+                uploadTask.snapshot.ref.getDownloadURL().then(url => {
+                    db.collection("users").doc(firebase.auth().currentUser.uid).update({ avatarUrl: url });
+                    document.getElementById('userImg').src = url;
+                    progressContainer.style.display = "none";
+                    alert("عکس آپلود شد!");
+                });
+            }
+        );
     }
 </script>
 </body>
