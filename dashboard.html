@@ -8,7 +8,6 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-storage-compat.js"></script>
     <style>
-        /* استایل‌ها */
         body { background: #050505; color: #fff; font-family: Tahoma; padding: 20px; }
         .dashboard { max-width: 900px; margin: auto; background: #111; padding: 40px; border-radius: 25px; border: 1px solid #40E0D0; }
         .profile-header { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
@@ -48,7 +47,6 @@
 </div>
 
 <script>
-    // کانفیگ تو
     const firebaseConfig = {
         apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
         authDomain: "cina-games.firebaseapp.com",
@@ -63,7 +61,6 @@
     const db = firebase.firestore();
     const storage = firebase.storage();
 
-    // اجرای خودکار هنگام ورود
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
             document.getElementById('uEmail').innerText = user.email || "بدون ایمیل";
@@ -72,9 +69,10 @@
                     const data = doc.data();
                     document.getElementById('uName').innerText = data.username || "بدون نام";
                     if(data.avatarUrl) document.getElementById('userImg').src = data.avatarUrl;
+                } else {
+                    document.getElementById('uName').innerText = "کاربر جدید";
                 }
             });
-            // لود بازی‌ها
             db.collection("games").where("uid", "==", user.uid).get().then(snapshot => {
                 const list = document.getElementById('gameList');
                 list.innerHTML = "";
@@ -83,25 +81,26 @@
         } else { window.location.href = "index.html"; }
     });
 
-    // توابع کنترلی
     function updateName() {
         const name = document.getElementById('newName').value;
         if(!name) return alert("نام را بنویس");
-        db.collection("users").doc(firebase.auth().currentUser.uid).update({ username: name })
-            .then(() => { document.getElementById('uName').innerText = name; alert("نام عوض شد!"); });
+        const uid = firebase.auth().currentUser.uid;
+        db.collection("users").doc(uid).set({ username: name }, { merge: true })
+            .then(() => { document.getElementById('uName').innerText = name; alert("نام با موفقیت ذخیره شد!"); });
     }
 
     function uploadAvatar() {
         const file = document.getElementById('filePicker').files[0];
         if(!file) return alert("عکس انتخاب کن");
+        const uid = firebase.auth().currentUser.uid;
         const bar = document.getElementById('progressBar');
         document.getElementById('progressContainer').style.display = "block";
-        const task = storage.ref('avatars/' + firebase.auth().currentUser.uid).put(file);
+        const task = storage.ref('avatars/' + uid).put(file);
         task.on('state_changed', 
             (s) => bar.style.width = (s.bytesTransferred/s.totalBytes)*100 + "%",
             (e) => alert("خطا: " + e.message),
             () => task.snapshot.ref.getDownloadURL().then(url => {
-                db.collection("users").doc(firebase.auth().currentUser.uid).update({ avatarUrl: url });
+                db.collection("users").doc(uid).set({ avatarUrl: url }, { merge: true });
                 document.getElementById('userImg').src = url;
                 alert("آپلود شد!");
                 document.getElementById('progressContainer').style.display = "none";
