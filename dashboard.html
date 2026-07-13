@@ -32,8 +32,9 @@
     <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 بازگشت به خانه</button>
     <button class="btn btn-logout" onclick="firebase.auth().signOut().then(() => window.location.href='index.html')">خروج از حساب</button>
 </div>
-    
-  <script>
+
+<script>
+    // تنظیمات فایربیس
     const firebaseConfig = {
         apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
         authDomain: "cina-games.firebaseapp.com",
@@ -60,11 +61,6 @@
             });
         } else {
             window.location.href = "index.html";
-        }
-    });
-</script>
-  
-    
         }
     });
 </script>
