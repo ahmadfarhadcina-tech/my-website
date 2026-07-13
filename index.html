@@ -74,7 +74,7 @@ body{margin:0;background:#0f0f0f;color:white;font-family:Arial,sans-serif;paddin
 
 #pwaInstallBanner {
     position: fixed;
-    bottom: 200px; /* این عدد بنر رو میاره بالای داک شناور */
+    bottom: 110px; /* این عدد بنر رو میاره بالای داک شناور */
     left: 50%;
     transform: translateX(-50%) translateY(150px);
     width: 90%;
@@ -252,9 +252,6 @@ btnInstall.addEventListener('click', () => {
   if (deferredPrompt) {
     deferredPrompt.prompt();
     deferredPrompt.userChoice.then((choiceResult) => {
-      if (choiceResult.outcome === 'accepted') {
-        console.log('User accepted the install prompt');
-      }
       installBanner.classList.remove('show');
       deferredPrompt = null;
     });
@@ -262,6 +259,11 @@ btnInstall.addEventListener('click', () => {
 });
 
 btnClose.addEventListener('click', () => {
+  installBanner.classList.remove('show');
+});
+
+// این قسمت برای حذف خودکار بعد از نصب موفق است
+window.addEventListener('appinstalled', (evt) => {
   installBanner.classList.remove('show');
 });
 
