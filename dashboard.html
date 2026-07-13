@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>پنل کاربری سینا گیمز | Cina Games</title>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <style>
+        body { background: #050505; color: white; font-family: 'Segoe UI', Tahoma, sans-serif; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; }
+        .panel { background: #111; padding: 30px; border-radius: 25px; border: 1px solid #40E0D0; width: 90%; max-width: 400px; text-align: center; box-shadow: 0 0 20px rgba(64,224,208,0.2); }
+        .avatar { width: 100px; height: 100px; border-radius: 50%; border: 3px solid #40E0D0; margin-bottom: 15px; background: #222; display: flex; align-items: center; justify-content: center; font-size: 40px; margin: 0 auto 15px; }
+        .stat-box { display: flex; justify-content: space-around; margin: 25px 0; background: #1a1a1a; padding: 15px; border-radius: 15px; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 12px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.3s; }
+        .btn-logout { background: #ff4444; color: white; }
+        .btn-home { background: #40E0D0; color: black; }
+        .btn:hover { opacity: 0.8; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+<div class="panel">
+    <div class="avatar">🎮</div>
+    <h2 id="uName" style="margin: 10px 0; color: #40E0D0;">در حال دریافت...</h2>
+    <p id="uEmail" style="color: #888; font-size: 14px;"></p>
+    
+    <div class="stat-box">
+        <div>سطح: <br><span id="uLevel" style="font-weight:bold; color:#00ff55; font-size: 18px;">1</span></div>
+        <div>امتیاز: <br><span id="uPoints" style="font-weight:bold; color:#ffdd00; font-size: 18px;">0</span></div>
+    </div>
+
+    <button class="btn btn-home" onclick="window.location.href='index.html'">🏠 بازگشت به خانه</button>
+    <button class="btn btn-logout" onclick="firebase.auth().signOut().then(() => window.location.href='index.html')">خروج از حساب</button>
+</div>
+
+<script>
+    // تنظیمات فایربیس (اطلاعات خودت را اینجا قرار بده)
+    const firebaseConfig = { 
+        apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", 
+        authDomain: "cina-games.firebaseapp.com", 
+        projectId: "cina-games", 
+        storageBucket: "cina-games.firebasestorage.app", 
+        messagingSenderId: "449625451730", 
+        appId: "1:449625451730:web:153b2aec57e6c42ec2510b", 
+        measurementId: "G-YSQZ60ZNC8" 
+    };
+    
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    document.getElementById('uName').innerText = data.username;
+                    document.getElementById('uEmail').innerText = user.email;
+                    document.getElementById('uLevel').innerText = data.level;
+                    document.getElementById('uPoints').innerText = data.points;
+                }
+            });
+        } else {
+            window.location.href = "index.html";
+        }
+    });
+</script>
+</body>
+</html>
