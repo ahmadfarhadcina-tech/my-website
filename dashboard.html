@@ -75,7 +75,6 @@
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
-    const storage = firebase.storage();
 
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -120,26 +119,7 @@
         alert("لطفا ابتدا وارد شوید");
     }
 }
-
-    
-    function uploadAvatar() {
-        const file = document.getElementById('filePicker').files[0];
-        if(!file) return alert("عکس انتخاب کن");
-        const uid = firebase.auth().currentUser.uid;
-        const bar = document.getElementById('progressBar');
-        document.getElementById('progressContainer').style.display = "block";
-        const task = storage.ref('avatars/' + uid).put(file);
-        task.on('state_changed', 
-            (s) => bar.style.width = (s.bytesTransferred/s.totalBytes)*100 + "%",
-            (e) => alert("خطا: " + e.message),
-            () => task.snapshot.ref.getDownloadURL().then(url => {
-                db.collection("users").doc(uid).set({ avatarUrl: url }, { merge: true });
-                document.getElementById('userImg').src = url;
-                alert("آپلود شد!");
-                document.getElementById('progressContainer').style.display = "none";
-            })
-        );
-    }
+ 
 </script>
 </body>
 </html>
