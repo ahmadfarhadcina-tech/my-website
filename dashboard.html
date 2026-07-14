@@ -105,6 +105,23 @@
             .then(() => { document.getElementById('uName').innerText = name; alert("نام با موفقیت ذخیره شد!"); });
     }
 
+  function saveSticker(stickerUrl) {
+    const user = firebase.auth().currentUser;
+    if (user) {
+        db.collection("users").doc(user.uid).set({ avatarUrl: stickerUrl }, { merge: true })
+        .then(() => {
+            alert("استیکر با موفقیت ذخیره شد!");
+            location.reload();
+        })
+        .catch((error) => {
+            alert("خطا: " + error.message);
+        });
+    } else {
+        alert("لطفا ابتدا وارد شوید");
+    }
+}
+
+    
     function uploadAvatar() {
         const file = document.getElementById('filePicker').files[0];
         if(!file) return alert("عکس انتخاب کن");
