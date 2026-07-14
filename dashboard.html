@@ -138,70 +138,31 @@ db.collection("users").doc(user.uid).get().then(doc => {
             });
         } else { window.location.href = "index.html"; }
     });
-<script>
-    const firebaseConfig = {
-        apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
-        authDomain: "cina-games.firebaseapp.com",
-        projectId: "cina-games",
-        storageBucket: "cina-games.firebasestorage.app",
-        messagingSenderId: "449625451730",
-        appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
-        measurementId: "G-YSQZ60ZNC8"
-    };
-
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-
-    firebase.auth().onAuthStateChanged(user => {
-        if (user) {
-            document.getElementById('uEmail').innerText = user.email || "بدون ایمیل";
-            
-            // دریافت تمام اطلاعات کاربر در یک مرحله
-            db.collection("users").doc(user.uid).get().then(doc => {
-                if (doc.exists) {
-                    const data = doc.data();
-                    document.getElementById('uName').innerText = data.username || "کاربر جدید";
-                    if(data.avatarUrl) document.getElementById('userImg').src = data.avatarUrl;
-                    
-                    // لود کردن بیو و لول
-                    if(data.bio) document.getElementById('userBio').value = data.bio;
-                    if(data.level) {
-                        document.getElementById('uLevel').innerText = data.level;
-                        document.getElementById('levelBar').style.width = (data.level * 10) + "%";
-                    }
-                }
-            });
-
-            db.collection("games").where("uid", "==", user.uid).get().then(snapshot => {
-                const list = document.getElementById('gameList');
-                list.innerHTML = "";
-                snapshot.forEach(doc => list.innerHTML += `<li>${doc.data().name}</li>`);
-            });
-        } else { 
-            window.location.href = "index.html"; 
-        }
-    });
-
-    function saveProfile() {
-        const bio = document.getElementById('userBio').value;
-        const uid = firebase.auth().currentUser.uid;
-        db.collection("users").doc(uid).set({ bio: bio }, { merge: true })
-        .then(() => alert("اطلاعات ذخیره شد!"));
-    }
 
     function updateName() {
         const name = document.getElementById('newName').value;
         if(!name) return alert("نام را بنویس");
         const uid = firebase.auth().currentUser.uid;
         db.collection("users").doc(uid).set({ username: name }, { merge: true })
-            .then(() => { document.getElementById('uName').innerText = name; alert("نام ذخیره شد!"); });
+            .then(() => { document.getElementById('uName').innerText = name; alert("نام با موفقیت ذخیره شد!"); });
     }
 
-    function saveSticker(stickerUrl) {
-        const uid = firebase.auth().currentUser.uid;
-        db.collection("users").doc(uid).set({ avatarUrl: stickerUrl }, { merge: true })
-        .then(() => location.reload());
+  function saveSticker(stickerUrl) {
+    const user = firebase.auth().currentUser;
+    if (user) {
+        db.collection("users").doc(user.uid).set({ avatarUrl: stickerUrl }, { merge: true })
+        .then(() => {
+            alert("استیکر با موفقیت ذخیره شد!");
+            location.reload();
+        })
+        .catch((error) => {
+            alert("خطا: " + error.message);
+        });
+    } else {
+        alert("لطفا ابتدا وارد شوید");
     }
+}
+ 
 </script>
 </body>
 </html>
