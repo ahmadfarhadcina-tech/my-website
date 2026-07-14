@@ -29,6 +29,21 @@
         </div>
     </div>
 
+<div style="background: #1a1a1a; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
+    <h3>اطلاعات تکمیلی</h3>
+    
+    <div style="margin-bottom: 15px;">
+        <p>سطح فعلی: <span id="uLevel" style="color: #FFD700; font-weight: bold;">1</span></p>
+        <div style="width: 100%; background: #333; height: 10px; border-radius: 5px;">
+            <div id="levelBar" style="width: 30%; height: 100%; background: #FFD700; border-radius: 5px;"></div>
+        </div>
+    </div>
+
+    <textarea id="userBio" placeholder="درباره خودت بنویس (بیوگرافی)..." style="width: 100%; height: 60px; padding: 10px; border-radius: 5px; border: none; background: #222; color: #fff; margin-bottom: 10px;"></textarea>
+    <button onclick="saveProfile()" style="background: #40E0D0; border: none; padding: 10px; cursor: pointer; border-radius: 5px;">ذخیره اطلاعات</button>
+</div>
+
+    
    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
     <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
         <h3>تنظیمات</h3>
@@ -63,6 +78,34 @@
  
 
 <script>
+
+   // ذخیره بیو و لول
+function saveProfile() {
+    const bio = document.getElementById('userBio').value;
+    const uid = firebase.auth().currentUser.uid;
+    
+    db.collection("users").doc(uid).set({ 
+        bio: bio 
+    }, { merge: true })
+    .then(() => {
+        alert("اطلاعات ذخیره شد!");
+    });
+}
+
+// لود کردن اطلاعات هنگام باز شدن صفحه (این رو داخل همون تابع onAuthStateChanged قبلی که داشتی اضافه کن)
+// داخل دیتابیس هم باید فیلدهای level و bio رو داشته باشی
+db.collection("users").doc(user.uid).get().then(doc => {
+    if (doc.exists) {
+        const data = doc.data();
+        if(data.bio) document.getElementById('userBio').value = data.bio;
+        if(data.level) {
+            document.getElementById('uLevel').innerText = data.level;
+            document.getElementById('levelBar').style.width = (data.level * 10) + "%"; // مثال: لول ۱ = ۱۰ درصد
+        }
+    }
+});
+ 
+    
     const firebaseConfig = {
         apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
         authDomain: "cina-games.firebaseapp.com",
