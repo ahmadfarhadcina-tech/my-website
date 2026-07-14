@@ -29,22 +29,38 @@
         </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-        <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
-            <h3>تنظیمات</h3>
-            <input type="file" id="filePicker">
-            <div id="progressContainer"><div id="progressBar"></div></div>
-            <button onclick="uploadAvatar()">آپلود عکس</button>
-            <input type="text" id="newName" placeholder="نام جدید">
-            <button onclick="updateName()">تغییر نام</button>
-        </div>
-        <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
-            <h3>بازی‌های اخیر</h3>
-            <ul id="gameList"><li>در حال لود شدن...</li></ul>
+   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+    <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
+        <h3>تنظیمات</h3>
+        <input type="text" id="newName" placeholder="نام جدید" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px;">
+        <button onclick="updateName()" style="width: 100%; padding: 10px; background: #40E0D0; border: none; border-radius: 5px; cursor: pointer;">تغییر نام</button>
+        
+        <h3 style="margin-top: 20px;">انتخاب استیکر گیمینگ</h3>
+        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+            <img src="https://img.icons8.com/color/96/controller.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/joystick.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/gaming-headset.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/sword.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/treasure-chest.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/dragon.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/fire-element.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/lightning-bolt.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/knight-helmet.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/shield.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/trophy.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/skull.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/ninja-head.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/space-shuttle.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            <img src="https://img.icons8.com/color/96/alien.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
         </div>
     </div>
-    <button onclick="firebase.auth().signOut().then(() => window.location.href='index.html')" style="background:#ff4444; color:white; margin-top:20px;">خروج</button>
+    
+    <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
+        <h3>بازی‌های اخیر</h3>
+        <ul id="gameList" style="list-style: none; padding: 0;"><li>در حال لود شدن...</li></ul>
+    </div>
 </div>
+ 
 
 <script>
     const firebaseConfig = {
