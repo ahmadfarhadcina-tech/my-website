@@ -69,7 +69,30 @@
     </div>
 </div>
 
-<script>
+<div style="background: #1a1a1a; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center; border: 1px solid #40E0D0;">
+    
+    <div style="margin-bottom: 20px; text-align: right;">
+        <h3 style="color: #40E0D0; text-align: center;">قوانین و مقررات</h3>
+        <ul style="color: #ccc; font-size: 0.9em; line-height: 1.8;">
+            <li>رعایت ادب و احترام در تمامی بخش‌های پنل الزامی است.</li>
+            <li>هرگونه تلاش برای نفوذ یا هکِ سیستم منجر به مسدودسازی دائم می‌شود.</li>
+            <li>مسئولیت حفظ امنیتِ حسابِ کاربری با خودِ کاربر است.</li>
+        </ul>
+    </div>
+
+    <div style="border-top: 1px solid #333; padding-top: 15px; margin-bottom: 20px;">
+        <h3 style="color: #fff; margin-bottom: 10px;">شبکه‌های اجتماعی ما</h3>
+        <a href="لینک_تلگرام" style="color: #40E0D0; margin: 0 10px; text-decoration: none;">تلگرام</a>
+        <a href="لینک_دیسکورد" style="color: #40E0D0; margin: 0 10px; text-decoration: none;">دیسکورد</a>
+    </div>
+
+    <button onclick="firebase.auth().signOut().then(() => window.location.href='index.html')" 
+            style="background: #ff4d4d; color: white; padding: 10px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+        خروج از حساب
+    </button>
+</div>
+
+    <script>
     const firebaseConfig = {
         apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
         authDomain: "cina-games.firebaseapp.com",
