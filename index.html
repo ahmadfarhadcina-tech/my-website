@@ -33,35 +33,6 @@
 
 <style>
 /* استایل‌ها همان استایل‌های قبلی شما هستند */
-
-.nav-buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.btn-modern {
-    background: #1a1a1a;
-    color: #40E0D0;
-    padding: 10px 20px;
-    border: 1px solid #40E0D0;
-    border-radius: 10px;
-    text-decoration: none;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    text-align: center;
-}
-
-.btn-modern:hover {
-    background: #40E0D0;
-    color: #000;
-    box-shadow: 0 0 15px #40E0D0;
-}
-
-  
   .card-wrapper { background: #111; border: 1px solid #333; border-radius: 20px; padding: 20px; margin: 15px auto; width: 90%; max-width: 500px; box-shadow: 0 4px 15px rgba(0,0,0,0.5); border-left: 4px solid #40E0D0; }
 body{margin:0;background:#050505;color:white;font-family:Arial,sans-serif;padding-bottom:100px;opacity:0;animation: pageShow 1s ease-in forwards;}
 @keyframes pageShow{from{opacity:0;}to{opacity:1;}}
@@ -213,7 +184,7 @@ setTimeout(function(){
   setTimeout(function(){ document.getElementById("splash").style.display="none"; }, 500);
   let sound=document.getElementById("dingSound");
   if(sound){ sound.volume=0.6; sound.play().catch(e => console.log("Audio play blocked")); }
-},3500);
+},1000);
 
 document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
     e.preventDefault(); 
