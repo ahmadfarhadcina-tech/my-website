@@ -20,21 +20,7 @@
 </head>
 <body>
 
-<div style="text-align: center; margin: 30px 0;">
-    <h3 style="color: #40E0D0; margin-bottom: 15px;">پیشنهاد ویژه سینا گیمز</h3>
-    
-    <a href="https://youtu.be/fUvDG99k04U?is=yxTXWP67nZGwR0K0" target="_blank">
-    <img src="cover.jpg" 
-         style="width: 80%; max-width: 600px; display: block; margin: 20px auto; border-radius: 15px; border: 3px solid #40E0D0;" 
-         alt="Cina Games Cover">
-    </a>
-    
-    
-    <p style="color: #aaa; margin-top: 10px; font-size: 0.9em;">برای مشاهده تنظیمات در یوتیوب کلیک کنید</p>
-</div>
-
-
-    <div class="dashboard">
+<div class="dashboard">
     <div class="profile-header">
         <img id="userImg" src="https://via.placeholder.com/100" class="avatar-img">
         <div>
@@ -43,45 +29,45 @@
         </div>
     </div>
 
-   <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-    <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
-        <h3>تنظیمات</h3>
-        <input type="text" id="newName" placeholder="نام جدید" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px;">
-        <button onclick="updateName()" style="width: 100%; padding: 10px; background: #40E0D0; border: none; border-radius: 5px; cursor: pointer;">تغییر نام</button>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px;">
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
+            <h3>تنظیمات</h3>
+            <input type="text" id="newName" placeholder="نام جدید" style="width: 100%; padding: 10px; border-radius: 5px; border: none; margin-bottom: 10px;">
+            <button onclick="updateName()" style="width: 100%; padding: 10px; background: #40E0D0; border: none; border-radius: 5px; cursor: pointer;">تغییر نام</button>
+            
+            <h3 style="margin-top: 20px;">انتخاب استیکر گیمینگ</h3>
+            <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
+                <img src="https://img.icons8.com/color/96/controller.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/joystick.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/gaming-headset.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/sword.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/treasure-chest.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/dragon.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/fire-element.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/lightning-bolt.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/knight-helmet.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+                <img src="https://img.icons8.com/color/96/shield.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+            </div>
+        </div>
         
-        <h3 style="margin-top: 20px;">انتخاب استیکر گیمینگ</h3>
-        <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 5px;">
-            <img src="https://img.icons8.com/color/96/controller.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/joystick.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/gaming-headset.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/sword.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/treasure-chest.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/dragon.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/fire-element.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/lightning-bolt.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/knight-helmet.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/shield.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/trophy.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/skull.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/ninja-head.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/space-shuttle.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
-            <img src="https://img.icons8.com/color/96/alien.png" onclick="saveSticker(this.src)" style="cursor:pointer; width:40px;">
+        <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
+            <h3>بیوگرافی من</h3>
+            <textarea id="userBio" placeholder="درباره خودت بنویس..." style="width: 100%; height: 60px; padding: 10px; border-radius: 5px; border: none; background: #222; color: #fff;"></textarea>
+            <button onclick="saveBio()" style="margin-top: 10px; background: #40E0D0; color: #000; font-weight: bold;">ذخیره بیو</button>
+            
+            <h3 style="margin-top: 20px;">بازی‌های اخیر</h3>
+            <ul id="gameList" style="list-style: none; padding: 0;"><li>در حال لود شدن...</li></ul>
         </div>
     </div>
-    
-  <div style="background: #1a1a1a; padding: 20px; border-radius: 15px; margin-bottom: 20px;">
-    <h3>بیوگرافی من</h3>
-    <textarea id="userBio" placeholder="درباره خودت بنویس..." style="width: 100%; height: 60px; padding: 10px; border-radius: 5px; border: none; background: #222; color: #fff;"></textarea>
-    <button onclick="saveBio()" style="margin-top: 10px; background: #40E0D0; color: #000; font-weight: bold;">ذخیره بیو</button>
-</div>
 
-       
-       <div style="background: #1a1a1a; padding: 20px; border-radius: 15px;">
-        <h3>بازی‌های اخیر</h3>
-        <ul id="gameList" style="list-style: none; padding: 0;"><li>در حال لود شدن...</li></ul>
+    <div style="background: #1a1a1a; padding: 20px; border-radius: 15px; text-align: center;">
+        <h3 style="color: #40E0D0; margin-bottom: 15px;">پیشنهاد ویژه سینا گیمز</h3>
+        <a href="https://youtu.be/fUvDG99k04U?is=yxTXWP67nZGwR0K0" target="_blank">
+            <img src="cover.jpg" style="width: 80%; max-width: 600px; border-radius: 15px; border: 3px solid #40E0D0;" alt="Cina Games Cover">
+        </a>
+        <p style="color: #aaa; margin-top: 10px; font-size: 0.9em;">برای مشاهده تنظیمات در یوتیوب کلیک کنید</p>
     </div>
 </div>
- 
 
 <script>
     const firebaseConfig = {
@@ -105,8 +91,6 @@
                     const data = doc.data();
                     document.getElementById('uName').innerText = data.username || "بدون نام";
                     if(data.avatarUrl) document.getElementById('userImg').src = data.avatarUrl;
-                } else {
-                    document.getElementById('uName').innerText = "کاربر جدید";
                 }
             });
             db.collection("games").where("uid", "==", user.uid).get().then(snapshot => {
@@ -117,21 +101,12 @@
         } else { window.location.href = "index.html"; }
     });
 
-   function saveBio() {
-    const bioText = document.getElementById('userBio').value;
-    const uid = firebase.auth().currentUser.uid;
-    
-    db.collection("users").doc(uid).set({ 
-        bio: bioText 
-    }, { merge: true })
-    .then(() => {
-        alert("بیوگرافی با موفقیت ذخیره شد!");
-    })
-    .catch((error) => {
-        alert("خطا: " + error.message);
-    });
-}
-
+    function saveBio() {
+        const bioText = document.getElementById('userBio').value;
+        const uid = firebase.auth().currentUser.uid;
+        db.collection("users").doc(uid).set({ bio: bioText }, { merge: true })
+        .then(() => alert("بیوگرافی با موفقیت ذخیره شد!"));
+    }
     
     function updateName() {
         const name = document.getElementById('newName').value;
@@ -141,22 +116,13 @@
             .then(() => { document.getElementById('uName').innerText = name; alert("نام با موفقیت ذخیره شد!"); });
     }
 
-  function saveSticker(stickerUrl) {
-    const user = firebase.auth().currentUser;
-    if (user) {
-        db.collection("users").doc(user.uid).set({ avatarUrl: stickerUrl }, { merge: true })
-        .then(() => {
-            alert("استیکر با موفقیت ذخیره شد!");
-            location.reload();
-        })
-        .catch((error) => {
-            alert("خطا: " + error.message);
-        });
-    } else {
-        alert("لطفا ابتدا وارد شوید");
+    function saveSticker(stickerUrl) {
+        const user = firebase.auth().currentUser;
+        if (user) {
+            db.collection("users").doc(user.uid).set({ avatarUrl: stickerUrl }, { merge: true })
+            .then(() => { alert("استیکر با موفقیت ذخیره شد!"); location.reload(); });
+        }
     }
-}
- 
 </script>
 </body>
 </html>
