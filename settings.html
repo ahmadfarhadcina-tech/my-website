@@ -2,23 +2,28 @@
 <html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <title>تنظیمات پیشرفته سینا گیمز</title>
+    <title>تنظیمات - Cina Games</title>
+    <!-- کتابخانه‌های فایربیس -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
     <style>
-        body { background: #050505; color: #fff; font-family: Tahoma; padding: 20px; }
-        .container { max-width: 600px; margin: auto; background: #111; padding: 25px; border-radius: 20px; border: 1px solid #40E0D0; }
-        .settings-group { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #333; }
+        body { background: #050505; color: #fff; font-family: Arial, sans-serif; padding: 20px; }
+        .container { max-width: 500px; margin: auto; background: #111; padding: 25px; border-radius: 20px; border: 1px solid #40E0D0; }
+        .settings-group { margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px; }
         .btn-color { width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; margin: 5px; }
-        select, input { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; margin-top: 10px; }
+        input, select { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; margin-top: 8px; }
         .btn-save { background: #40E0D0; color: #000; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; margin-top: 15px; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2 style="color: #40E0D0; text-align: center;">تنظیمات پیشرفته</h2>
+    <h2 style="color: #40E0D0; text-align: center;">⚙️ تنظیمات سینا گیمز</h2>
 
     <div class="settings-group">
-        <h3>شخصی‌سازی رنگ پنل</h3>
+        <h3>رنگ تم</h3>
         <button class="btn-color" style="background:#40E0D0;" onclick="saveTheme('#40E0D0')"></button>
         <button class="btn-color" style="background:#ff4d4d;" onclick="saveTheme('#ff4d4d')"></button>
         <button class="btn-color" style="background:#a855f7;" onclick="saveTheme('#a855f7')"></button>
@@ -35,35 +40,43 @@
 
     <div class="settings-group">
         <h3>آیدی در بازی</h3>
-        <input type="text" id="gameId" placeholder="آیدی خود را وارد کنید...">
+        <input type="text" id="gameId" placeholder="آیدی خود را اینجا بنویسید...">
     </div>
 
-    <div class="settings-group">
-        <label>
-            <input type="checkbox" id="compactMode"> فعال‌سازی حالت فشرده (Compact)
-        </label>
-    </div>
-
-    <button class="btn-save" onclick="saveAllSettings()">ذخیره همه تنظیمات</button>
-    
-    <button onclick="window.location.href='dashboard.html'" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer;">بازگشت به داشبورد</button>
+    <button class="btn-save" onclick="saveAllSettings()">ذخیره تنظیمات</button>
+    <button onclick="window.location.href='index.html'" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer;">بازگشت به خانه</button>
+    <p id="statusMsg" style="text-align:center; margin-top:10px;"></p>
 </div>
 
 <script>
+    // تنظیمات اختصاصی شما
+    const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    let selectedColor = '#40E0D0';
+
     function saveTheme(color) {
-        localStorage.setItem('themeColor', color);
-        document.body.style.borderTop = "5px solid " + color;
-        alert("رنگ تم انتخاب شد!");
+        selectedColor = color;
+        alert("رنگ انتخاب شد!");
     }
 
     function saveAllSettings() {
+        const user = auth.currentUser;
+        if (!user) { alert("لطفاً ابتدا وارد حساب خود شوید!"); return; }
+
         const status = document.getElementById('userStatus').value;
         const gameId = document.getElementById('gameId').value;
-        const compact = document.getElementById('compactMode').checked;
+        const msg = document.getElementById('statusMsg');
 
-        // اینجا کد ذخیره در فایربیس (Firebase) شما قرار می‌گیرد
-        console.log("Settings Saved:", { status, gameId, compact });
-        alert("تنظیمات با موفقیت ذخیره شد!");
+        db.collection("users").doc(user.uid).set({
+            themeColor: selectedColor,
+            status: status,
+            gameId: gameId
+        }, { merge: true })
+        .then(() => { msg.innerText = "✅ تنظیمات با موفقیت ذخیره شد!"; msg.style.color = "#00ff55"; })
+        .catch((error) => { msg.innerText = "❌ خطا: " + error.message; });
     }
 </script>
 
