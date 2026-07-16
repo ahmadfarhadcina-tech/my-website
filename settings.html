@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>تنظیمات پیشرفته سینا گیمز</title>
+    <style>
+        body { background: #050505; color: #fff; font-family: Tahoma; padding: 20px; }
+        .container { max-width: 600px; margin: auto; background: #111; padding: 25px; border-radius: 20px; border: 1px solid #40E0D0; }
+        .settings-group { margin-bottom: 30px; padding-bottom: 15px; border-bottom: 1px solid #333; }
+        .btn-color { width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; margin: 5px; }
+        select, input { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; margin-top: 10px; }
+        .btn-save { background: #40E0D0; color: #000; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; margin-top: 15px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2 style="color: #40E0D0; text-align: center;">تنظیمات پیشرفته</h2>
+
+    <div class="settings-group">
+        <h3>شخصی‌سازی رنگ پنل</h3>
+        <button class="btn-color" style="background:#40E0D0;" onclick="saveTheme('#40E0D0')"></button>
+        <button class="btn-color" style="background:#ff4d4d;" onclick="saveTheme('#ff4d4d')"></button>
+        <button class="btn-color" style="background:#a855f7;" onclick="saveTheme('#a855f7')"></button>
+    </div>
+
+    <div class="settings-group">
+        <h3>وضعیت گیمینگ</h3>
+        <select id="userStatus">
+            <option value="online">🟢 آنلاین</option>
+            <option value="busy">🔴 مشغول بازی</option>
+            <option value="offline">⚪ آفلاین</option>
+        </select>
+    </div>
+
+    <div class="settings-group">
+        <h3>آیدی در بازی</h3>
+        <input type="text" id="gameId" placeholder="آیدی خود را وارد کنید...">
+    </div>
+
+    <div class="settings-group">
+        <label>
+            <input type="checkbox" id="compactMode"> فعال‌سازی حالت فشرده (Compact)
+        </label>
+    </div>
+
+    <button class="btn-save" onclick="saveAllSettings()">ذخیره همه تنظیمات</button>
+    
+    <button onclick="window.location.href='dashboard.html'" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer;">بازگشت به داشبورد</button>
+</div>
+
+<script>
+    function saveTheme(color) {
+        localStorage.setItem('themeColor', color);
+        document.body.style.borderTop = "5px solid " + color;
+        alert("رنگ تم انتخاب شد!");
+    }
+
+    function saveAllSettings() {
+        const status = document.getElementById('userStatus').value;
+        const gameId = document.getElementById('gameId').value;
+        const compact = document.getElementById('compactMode').checked;
+
+        // اینجا کد ذخیره در فایربیس (Firebase) شما قرار می‌گیرد
+        console.log("Settings Saved:", { status, gameId, compact });
+        alert("تنظیمات با موفقیت ذخیره شد!");
+    }
+</script>
+
+</body>
+</html>
