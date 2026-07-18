@@ -32,37 +32,38 @@
 <meta property="og:type" content="website">
 
 <style>
-/* استایل جدید و اصلاح شده برای منو پایین */
+
+/* استایل آبی نورانی و چسبیده به پایین */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100%;
     height: 70px;
-    display: flex;
+    display: flex !important;
     justify-content: space-around;
     align-items: center;
-    background: #050505;
+    background: #050505; /* پس‌زمینه کاملاً مات */
     border-top: 2px solid #40E0D0;
+    box-shadow: 0 -5px 15px rgba(64, 224, 208, 0.3); /* افکت نور آبی به سمت بالا */
     z-index: 999999;
+    padding: 0;
+    margin: 0;
 }
 
 .bottom-nav a {
-    flex: 1;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
+    color: #40E0D0; /* رنگ آبی فیروزه‌ای */
     text-decoration: none;
-    font-size: 13px;
+    font-size: 14px;
+    font-weight: bold;
+    text-shadow: 0 0 8px #40E0D0; /* افکت نورانی روی نوشته‌ها */
     transition: 0.3s;
 }
 
-.bottom-nav a:hover, .bottom-nav a.active {
-    color: #40E0D0;
-    background: rgba(64, 224, 208, 0.1);
+.bottom-nav a.active {
+    color: #ffffff;
+    text-shadow: 0 0 15px #40E0D0, 0 0 25px #40E0D0; /* نورانی‌تر شدن هنگام انتخاب */
+    border-bottom: 2px solid #40E0D0;
 }
 
 /* استایل‌های قبلی */
