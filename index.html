@@ -164,17 +164,55 @@ body{margin:0;background:#050505;color:white;font-family:Arial,sans-serif;paddin
 <audio id="dingSound" src="ding.mp3"></audio>
 
 <script>
-// کدها همان هستند و فقط بخش Firebase اصلاح شده
-if ('serviceWorker' in navigator) { window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed')); }); }
+
+// ۱. ثبت سرویس‌ورکر
+if ('serviceWorker' in navigator) { 
+    window.addEventListener('load', () => { 
+        navigator.serviceWorker.register('./sw.js').catch(err => console.log('SW Failed')); 
+    }); 
+}
+
+// ۲. مدیریت دکمه نصب
 let deferredPrompt;
 const installBanner = document.getElementById('pwaInstallBanner');
 const btnInstall = document.getElementById('pwaBtnInstall');
 const btnClose = document.getElementById('pwaBtnClose');
-if (localStorage.getItem('pwa_hidden') === 'true') { installBanner.style.display = 'none'; }
-window.addEventListener('beforeinstallprompt', (e) => { e.preventDefault(); deferredPrompt = e; if (localStorage.getItem('pwa_hidden') !== 'true') { setTimeout(() => { installBanner.classList.add('show'); }, 6000); } });
-btnInstall.addEventListener('click', () => { if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then((choiceResult) => { localStorage.setItem('pwa_hidden', 'true'); installBanner.style.display = 'none'; deferredPrompt = null; }); } });
-btnClose.addEventListener('click', () => { localStorage.setItem('pwa_hidden', 'true'); installBanner.style.display = 'none'; });
-window.addEventListener('appinstalled', () => { localStorage.setItem('pwa_hidden', 'true'); installBanner.style.display = 'none'; });
+
+if (localStorage.getItem('pwa_hidden') === 'true') { 
+    installBanner.style.display = 'none'; 
+}
+
+window.addEventListener('beforeinstallprompt', (e) => { 
+    e.preventDefault(); 
+    deferredPrompt = e; 
+    // نمایش مستقیم بنر بدون تایمر
+    if (localStorage.getItem('pwa_hidden') !== 'true') { 
+        installBanner.classList.add('show'); 
+    } 
+});
+
+btnInstall.addEventListener('click', () => { 
+    if (deferredPrompt) { 
+        deferredPrompt.prompt(); 
+        deferredPrompt.userChoice.then((choiceResult) => { 
+            if (choiceResult.outcome === 'accepted') {
+                localStorage.setItem('pwa_hidden', 'true'); 
+                installBanner.style.display = 'none'; 
+            }
+            deferredPrompt = null; 
+        }); 
+    } 
+});
+
+btnClose.addEventListener('click', () => { 
+    localStorage.setItem('pwa_hidden', 'true'); 
+    installBanner.style.display = 'none'; 
+});
+
+window.addEventListener('appinstalled', () => { 
+    localStorage.setItem('pwa_hidden', 'true'); 
+    installBanner.style.display = 'none'; 
+});
 
 // مقداردهی اولیه Firebase
 const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
