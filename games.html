@@ -230,14 +230,49 @@
 
       .fixed-btn {
         position: fixed;
-        bottom: 15px;
+        bottom: 75px;
         padding: 10px 14px;
         border-radius: 10px;
         font-size: 13px;
         font-weight: bold;
         text-decoration: none;
         box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+        z-index: 999;
+      }
+
+      /* BOTTOM NAVIGATION BAR (مطابق عکس و سبک شما) */
+      .bottom-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(10px);
+        border-top: 1px solid #40E0D0;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        padding: 10px 0;
         z-index: 9999;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
+      }
+
+      .nav-item {
+        color: #40E0D0;
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: bold;
+        padding: 8px 18px;
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        border: 1px solid #40E0D0;
+        box-shadow: 0 0 10px rgba(64, 224, 208, 0.3);
+      }
+
+      .nav-item.active, .nav-item:hover {
+        background: #40E0D0;
+        color: #000;
+        box-shadow: 0 0 15px rgba(64, 224, 208, 0.6);
       }
     </style>
     
@@ -1067,6 +1102,14 @@
     <a href="https://www.youtube.com/@CinaGames-b4v" target="_blank" class="fixed-btn" style="right:15px; background:#FF0000; color:white;">
       ▶️ YouTube
     </a>
+
+    <!-- BOTTOM NAVIGATION BAR -->
+    <div class="bottom-nav">
+      <a href="index.html" class="nav-item">Home</a>
+      <a href="games.html" class="nav-item active">Games</a>
+      <a href="dashboard.html" class="nav-item">Dash</a>
+      <a href="setting.html" class="nav-item">Setting</a>
+    </div>
 
     <!-- Third Ad Script -->
     <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
