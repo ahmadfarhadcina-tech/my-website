@@ -8,6 +8,15 @@
 
 <script src="https://jonasfrozepyamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
 
+<script>
+    // اعمال فوری رنگ ذخیره شده از حافظه مرورگر در هنگام لود صفحه
+    const savedTheme = localStorage.getItem('cina_theme');
+    if (savedTheme) {
+        document.documentElement.style.setProperty('--accent-color', savedTheme);
+    }
+</script>
+
+    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
