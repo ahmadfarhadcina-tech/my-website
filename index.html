@@ -125,6 +125,60 @@ body{margin:0;background:#050505;color:white;font-family:Arial,sans-serif;paddin
 #pwaBtnInstall {background: #00ff66;color: black;border: none;padding: 8px 14px;border-radius: 8px;font-weight: bold;font-size: 12px;cursor: pointer;box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);transition: 0.2s;}
 #pwaBtnInstall:hover {transform: scale(1.05);box-shadow: 0 0 18px #00ff66;}
 #pwaBtnClose {background: transparent;color: #ff4444;border: none;font-size: 18px;cursor: pointer;padding: 5px;}
+
+/* استایل‌های بخش جستجوی خودکار بازی‌ها */
+.search-container {
+    position: relative;
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto 20px auto;
+    box-sizing: border-box;
+}
+#gameSearchInput {
+    width: 100%;
+    padding: 12px 15px;
+    border-radius: 12px;
+    border: 1px solid rgba(64, 224, 208, 0.4);
+    background: #1a1a24;
+    color: white;
+    outline: none;
+    font-size: 14px;
+    box-sizing: border-box;
+    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
+    transition: all 0.3s ease;
+}
+#gameSearchInput:focus {
+    border-color: #40E0D0;
+    box-shadow: 0 0 12px rgba(64, 224, 208, 0.3), inset 0 2px 5px rgba(0,0,0,0.5);
+}
+#searchResultsBox {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #15151c;
+    border: 1px solid rgba(64, 224, 208, 0.3);
+    border-radius: 0 0 12px 12px;
+    max-height: 220px;
+    overflow-y: auto;
+    display: none;
+    z-index: 1000;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+}
+#searchResultsBox a {
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: 14px;
+    transition: background 0.2s, color 0.2s;
+    text-align: right;
+}
+#searchResultsBox a:hover {
+    background-color: #40E0D0;
+    color: #000;
+}
 </style>
 </head>
 
@@ -139,6 +193,12 @@ body{margin:0;background:#050505;color:white;font-family:Arial,sans-serif;paddin
 <div class="card-wrapper">
     <h1 class="main-title-text gothic-cina-games" style="margin-top:0;">Cina Games</h1>
     
+    <!-- باکس جستجوی خودکار اضافه شده -->
+    <div class="search-container">
+        <input type="text" id="gameSearchInput" placeholder="🔍 جستجوی خودکار بازی‌ها (مثلاً WWE)..." autocomplete="off">
+        <div id="searchResultsBox"></div>
+    </div>
+
     <div style="text-align:center; margin: 15px 0;">
         <script type="text/javascript">
             atOptions = {'key' : 'ef860086d3acfd8fb188ea50dc15430c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}};
@@ -244,6 +304,68 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
 });
 
 auth.onAuthStateChanged((user) => { if (user) { authBtn.style.display = "none"; authSection.style.display = "none"; userWelcome.style.display = "inline-block"; userWelcome.innerHTML = "👤 " + user.email.split('@')[0]; } else { authBtn.style.display = "inline-block"; authSection.style.display = "block"; userWelcome.style.display = "none"; } });
+
+// ۳. اسکریپت جستجوی خودکار بازی‌ها از صفحه games.html
+const searchInput = document.getElementById('gameSearchInput');
+const searchResultsBox = document.getElementById('searchResultsBox');
+
+async function fetchAndSearchGames(query) {
+    if (query.trim() === '') {
+        searchResultsBox.style.display = 'none';
+        searchResultsBox.innerHTML = '';
+        return;
+    }
+
+    try {
+        let response = await fetch('games.html');
+        let htmlText = await response.text();
+        
+        let parser = new DOMParser();
+        let doc = parser.parseFromString(htmlText, 'text/html');
+
+        let gameCards = doc.querySelectorAll('.card');
+        let matches = [];
+
+        gameCards.forEach(card => {
+            let titleEl = card.querySelector('h3');
+            let pageLink = card.querySelector('a[href$=".html"]')?.getAttribute('href') || 'games.html';
+            
+            if (titleEl) {
+                let title = titleEl.textContent.trim();
+                if (title.toLowerCase().includes(query.toLowerCase())) {
+                    if (!matches.some(m => m.title === title)) {
+                        matches.push({ title: title, link: pageLink });
+                    }
+                }
+            }
+        });
+
+        if (matches.length > 0) {
+            let html = '';
+            matches.forEach(game => {
+                html += `<a href="${game.link}">🎮 ${game.title}</a>`;
+            });
+            searchResultsBox.innerHTML = html;
+            searchResultsBox.style.display = 'block';
+        } else {
+            searchResultsBox.innerHTML = '<div style="padding: 12px; color: #aaa; text-align: center; font-size: 13px;">بازی‌ای با این مشخصات یافت نشد</div>';
+            searchResultsBox.style.display = 'block';
+        }
+
+    } catch (error) {
+        console.error("خطا در بارگذاری لیست بازی‌ها:", error);
+    }
+}
+
+searchInput.addEventListener('input', function() {
+    fetchAndSearchGames(this.value);
+});
+
+document.addEventListener('click', function(e) {
+    if (!document.querySelector('.search-container').contains(e.target)) {
+        searchResultsBox.style.display = 'none';
+    }
+});
 </script>
 </body>
 </html>
