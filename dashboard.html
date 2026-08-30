@@ -7,6 +7,13 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+<script>
+    // اعمال تم ذخیره شده در مرورگر برای این صفحه
+    const savedTheme = localStorage.getItem('cina_theme') || '#40E0D0';
+    document.documentElement.style.setProperty('--accent-color', savedTheme);
+</script>
+
     
     <style>
       body {
