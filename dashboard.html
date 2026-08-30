@@ -67,9 +67,19 @@
         </a>
         <p style="color: #aaa; margin-top: 10px; font-size: 0.9em;">برای مشاهده تنظیمات در یوتیوب کلیک کنید</p>
     </div>
+
+    <!-- باکس حمایت مالی با استایل هماهنگ -->
+    <div style="background: #1a1a1a; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center; border: 1px solid #FFD700;">
+        <h3 style="color: #FFD700; margin-top: 0; margin-bottom: 10px;">💎 حمایت از سینا گیمز</h3>
+        <p style="color: #ccc; font-size: 0.95em; margin-bottom: 15px;">اگر دوست داری از توسعه بازی‌ها و سایت حمایت کنی، می‌توانی از طریق صفحه زیر اقدام کنی:</p>
+        <a href="donate.html" style="display:block; text-align:center; padding:12px; background:linear-gradient(90deg,#FFD700,#ffcc00); color:black; font-weight:bold; text-decoration:none; border-radius:10px; box-shadow:0 0 10px rgba(255,215,0,0.3);">
+            ورود به صفحه حمایت مالی
+        </a>
+    </div>
+
 </div>
 
-<div style="background: #1a1a1a; padding: 20px; border-radius: 15px; margin-top: 20px; text-align: center; border: 1px solid #40E0D0;">
+<div style="max-width: 900px; margin: 20px auto 0 auto; background: #111; padding: 20px; border-radius: 25px; text-align: center; border: 1px solid #40E0D0;">
     
     <div style="margin-bottom: 20px; text-align: right;">
         <h3 style="color: #40E0D0; text-align: center;">قوانین و مقررات</h3>
@@ -87,12 +97,12 @@
     </div>
 
     <button onclick="firebase.auth().signOut().then(() => window.location.href='index.html')" 
-            style="background: #ff4d4d; color: white; padding: 10px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">
+            style="background: #ff4d4d; color: white; padding: 10px 25px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: auto;">
         خروج از حساب
     </button>
 </div>
 
-    <script>
+<script>
     const firebaseConfig = {
         apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
         authDomain: "cina-games.firebaseapp.com",
@@ -146,17 +156,7 @@
             .then(() => { alert("استیکر با موفقیت ذخیره شد!"); location.reload(); });
         }
     }
-
 </script>
-
-<div class="box">
-  <h3 style="color: #FFD700; margin-top: 0;">حمایت از سایت</h3>
-  <p>اگر دوست داری از توسعه سینا گیمز حمایت کنی، می‌توانی از طریق صفحه زیر اقدام کنی:</p>
-  <a href="donate.html" style="display:block; text-align:center; padding:10px; background:linear-gradient(90deg,#FFD700,#ffcc00); color:black; font-weight:bold; text-decoration:none; border-radius:8px;">
-    ورود به صفحه حمایت مالی 💎
-  </a>
-</div>
-
 
 </body>
 </html>
