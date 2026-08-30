@@ -1,82 +1,284 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <title>تنظیمات - Cina Games</title>
-    <!-- کتابخانه‌های فایربیس -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Cina Games</title>
+    <!-- Firebase Libraries -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
     <style>
-        body { background: #050505; color: #fff; font-family: Arial, sans-serif; padding: 20px; }
-        .container { max-width: 500px; margin: auto; background: #111; padding: 25px; border-radius: 20px; border: 1px solid #40E0D0; }
-        .settings-group { margin-bottom: 25px; border-bottom: 1px solid #333; padding-bottom: 15px; }
-        .btn-color { width: 40px; height: 40px; border-radius: 50%; border: none; cursor: pointer; margin: 5px; }
-        input, select { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; box-sizing: border-box; margin-top: 8px; }
-        .btn-save { background: #40E0D0; color: #000; border: none; padding: 12px; border-radius: 8px; width: 100%; cursor: pointer; font-weight: bold; margin-top: 15px; }
+        :root { --accent-color: #40E0D0; }
+        * { box-sizing: border-box; }
+        body { 
+            background: #050505; 
+            color: #fff; 
+            font-family: Arial, sans-serif; 
+            margin: 0;
+            padding: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding-bottom: 70px; 
+        }
+        .container { 
+            width: 100%;
+            max-width: 900px; 
+            background: #111; 
+            padding: 40px; 
+            border-radius: 25px; 
+            border: 1px solid var(--accent-color); 
+            box-shadow: 0 0 25px rgba(64, 224, 208, 0.15); 
+        }
+        .settings-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 25px;
+        }
+        @media(max-width: 768px) {
+            .settings-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px; }
+        }
+        .settings-card {
+            background: #1a1a1a;
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid #333;
+        }
+        .settings-group { margin-bottom: 20px; }
+        .settings-group:last-child { margin-bottom: 0; }
+        .btn-color { width: 38px; height: 38px; border-radius: 50%; border: 2px solid transparent; cursor: pointer; margin: 4px; transition: transform 0.2s, border-color 0.2s; }
+        .btn-color:hover { transform: scale(1.1); border-color: #fff; }
+        input, select { width: 100%; padding: 12px; background: #222; color: #fff; border: 1px solid #444; border-radius: 8px; margin-top: 8px; font-size: 14px; }
+        input:focus, select:focus { outline: none; border-color: var(--accent-color); }
+        .toggle-row { display: flex; justify-content: space-between; align-items: center; margin-top: 12px; }
+        .switch { position: relative; display: inline-block; width: 48px; height: 24px; }
+        .switch input { opacity: 0; width: 0; height: 0; }
+        .slider { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; background-color: #333; transition: .3s; border-radius: 24px; }
+        .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
+        input:checked + .slider { background-color: var(--accent-color); }
+        input:checked + .slider:before { transform: translateX(24px); }
+        .btn-save { background: var(--accent-color); color: #000; border: none; padding: 14px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; transition: opacity 0.2s; margin-top: 10px; }
+        .btn-save:hover { opacity: 0.9; }
+        .btn-back { background: none; border: none; color: #888; width: 100%; margin-top: 15px; cursor: pointer; font-size: 14px; text-decoration: underline; }
+
+        /* Toast Notification Bar */
+        #toastBar {
+            position: fixed;
+            bottom: -60px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            border: 1px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            font-size: 14px;
+            font-weight: bold;
+            transition: bottom 0.3s ease-in-out;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        #toastBar.show {
+            bottom: 25px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h2 style="color: #40E0D0; text-align: center;">⚙️ تنظیمات سینا گیمز</h2>
+    <h2 style="color: var(--accent-color); text-align: center; margin-top: 0; margin-bottom: 25px;">⚙️ Cina Games Control Center</h2>
 
-    <div class="settings-group">
-        <h3>رنگ تم</h3>
-        <button class="btn-color" style="background:#40E0D0;" onclick="saveTheme('#40E0D0')"></button>
-        <button class="btn-color" style="background:#ff4d4d;" onclick="saveTheme('#ff4d4d')"></button>
-        <button class="btn-color" style="background:#a855f7;" onclick="saveTheme('#a855f7')"></button>
+    <div class="settings-grid">
+        <!-- Left Column: Appearance & Identity -->
+        <div class="settings-card">
+            <div class="settings-group">
+                <h3>Theme Accent</h3>
+                <p style="color: #888; font-size: 0.85em; margin-bottom: 8px;">Select layout highlight color.</p>
+                <div>
+                    <button class="btn-color" style="background:#40E0D0;" onclick="saveTheme('#40E0D0')"></button>
+                    <button class="btn-color" style="background:#ff4d4d;" onclick="saveTheme('#ff4d4d')"></button>
+                    <button class="btn-color" style="background:#a855f7;" onclick="saveTheme('#a855f7')"></button>
+                    <button class="btn-color" style="background:#FFD700;" onclick="saveTheme('#FFD700')"></button>
+                    <button class="btn-color" style="background:#00ff55;" onclick="saveTheme('#00ff55')"></button>
+                </div>
+            </div>
+
+            <div class="settings-group" style="margin-top: 20px;">
+                <h3>In-Game ID / GamerTag</h3>
+                <input type="text" id="gameId" placeholder="Enter your tag..." onblur="autoSaveField()">
+            </div>
+
+            <div class="settings-group" style="margin-top: 20px;">
+                <h3>Gaming Status</h3>
+                <select id="userStatus" onchange="autoSaveField()">
+                    <option value="online">🟢 Online</option>
+                    <option value="busy">🔴 In a Match / Busy</option>
+                    <option value="away">🟡 Away</option>
+                    <option value="offline">⚪ Offline</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Right Column: Preferences, Audio & Privacy -->
+        <div class="settings-card">
+            <div class="settings-group">
+                <h3>Audio & Effects</h3>
+                <div class="toggle-row">
+                    <span>Sound Effects (SFX)</span>
+                    <label class="switch">
+                        <input type="checkbox" id="sfxToggle" onchange="autoSaveField()" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row" style="margin-top: 15px;">
+                    <span>Background Music</span>
+                    <label class="switch">
+                        <input type="checkbox" id="bgmToggle" onchange="autoSaveField()">
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="settings-group" style="margin-top: 20px;">
+                <h3>Social & Privacy</h3>
+                <div class="toggle-row">
+                    <span>Friend Requests Notice</span>
+                    <label class="switch">
+                        <input type="checkbox" id="friendNotifToggle" onchange="autoSaveField()" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="toggle-row" style="margin-top: 15px;">
+                    <span>Profile Visibility</span>
+                    <label class="switch">
+                        <input type="checkbox" id="profilePublicToggle" onchange="autoSaveField()" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="settings-group">
-        <h3>وضعیت گیمینگ</h3>
-        <select id="userStatus">
-            <option value="online">🟢 آنلاین</option>
-            <option value="busy">🔴 مشغول بازی</option>
-            <option value="offline">⚪ آفلاین</option>
-        </select>
-    </div>
-
-    <div class="settings-group">
-        <h3>آیدی در بازی</h3>
-        <input type="text" id="gameId" placeholder="آیدی خود را اینجا بنویسید...">
-    </div>
-
-    <button class="btn-save" onclick="saveAllSettings()">ذخیره تنظیمات</button>
-    <button onclick="window.location.href='index.html'" style="background:none; border:none; color:#888; width:100%; margin-top:20px; cursor:pointer;">بازگشت به خانه</button>
-    <p id="statusMsg" style="text-align:center; margin-top:10px;"></p>
+    <button class="btn-save" onclick="saveAllSettings()">Save All Changes</button>
+    <button class="btn-back" onclick="window.location.href='dashboard.html'">Return to Dashboard</button>
 </div>
 
+<!-- Bottom Toast Notification Element -->
+<div id="toastBar">Applied Successfully</div>
+
 <script>
-    // تنظیمات اختصاصی شما
     const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     const auth = firebase.auth();
 
     let selectedColor = '#40E0D0';
+    let toastTimer;
+
+    function showToast(message, isError = false) {
+        const toast = document.getElementById('toastBar');
+        toast.innerText = message;
+        toast.style.borderColor = isError ? '#ff4d4d' : 'var(--accent-color)';
+        toast.classList.add('show');
+
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+
+    function applyTheme(color) {
+        selectedColor = color;
+        document.documentElement.style.setProperty('--accent-color', color);
+    }
 
     function saveTheme(color) {
-        selectedColor = color;
-        alert("رنگ انتخاب شد!");
+        applyTheme(color);
+        const user = auth.currentUser;
+        if (user) {
+            db.collection("users").doc(user.uid).set({ themeColor: color }, { merge: true })
+            .then(() => showToast("Applied Successfully"))
+            .catch(err => showToast("Error: " + err.message, true));
+        } else {
+            showToast("Applied Successfully (Sign in to save)");
+        }
     }
+
+    function autoSaveField() {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        const status = document.getElementById('userStatus').value;
+        const gameId = document.getElementById('gameId').value.trim();
+        const sfx = document.getElementById('sfxToggle').checked;
+        const bgm = document.getElementById('bgmToggle').checked;
+        const friendNotif = document.getElementById('friendNotifToggle').checked;
+        const profilePublic = document.getElementById('profilePublicToggle').checked;
+
+        db.collection("users").doc(user.uid).set({
+            status: status,
+            gameId: gameId,
+            sfx: sfx,
+            bgm: bgm,
+            friendNotif: friendNotif,
+            profilePublic: profilePublic,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+        }, { merge: true })
+        .then(() => showToast("Applied Successfully"))
+        .catch(error => showToast("Error: " + error.message, true));
+    }
+
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            db.collection("users").doc(user.uid).get().then(doc => {
+                if (doc.exists) {
+                    const data = doc.data();
+                    if (data.themeColor) applyTheme(data.themeColor);
+                    if (data.status) document.getElementById('userStatus').value = data.status;
+                    if (data.gameId) document.getElementById('gameId').value = data.gameId;
+                    if (data.sfx !== undefined) document.getElementById('sfxToggle').checked = data.sfx;
+                    if (data.bgm !== undefined) document.getElementById('bgmToggle').checked = data.bgm;
+                    if (data.friendNotif !== undefined) document.getElementById('friendNotifToggle').checked = data.friendNotif;
+                    if (data.profilePublic !== undefined) document.getElementById('profilePublicToggle').checked = data.profilePublic;
+                }
+            }).catch(err => console.error(err));
+        }
+    });
 
     function saveAllSettings() {
         const user = auth.currentUser;
-        if (!user) { alert("لطفاً ابتدا وارد حساب خود شوید!"); return; }
+        if (!user) { 
+            showToast("Please sign in first!", true); 
+            return; 
+        }
 
         const status = document.getElementById('userStatus').value;
-        const gameId = document.getElementById('gameId').value;
-        const msg = document.getElementById('statusMsg');
+        const gameId = document.getElementById('gameId').value.trim();
+        const sfx = document.getElementById('sfxToggle').checked;
+        const bgm = document.getElementById('bgmToggle').checked;
+        const friendNotif = document.getElementById('friendNotifToggle').checked;
+        const profilePublic = document.getElementById('profilePublicToggle').checked;
 
         db.collection("users").doc(user.uid).set({
             themeColor: selectedColor,
             status: status,
-            gameId: gameId
+            gameId: gameId,
+            sfx: sfx,
+            bgm: bgm,
+            friendNotif: friendNotif,
+            profilePublic: profilePublic,
+            updatedAt: firebase.firestore.FieldValue.serverTimestamp()
         }, { merge: true })
-        .then(() => { msg.innerText = "✅ تنظیمات با موفقیت ذخیره شد!"; msg.style.color = "#00ff55"; })
-        .catch((error) => { msg.innerText = "❌ خطا: " + error.message; });
+        .then(() => showToast("Applied Successfully"))
+        .catch(error => showToast("Error: " + error.message, true));
     }
 </script>
 
