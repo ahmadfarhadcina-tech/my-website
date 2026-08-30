@@ -31,7 +31,8 @@
             padding: 40px; 
             border-radius: 25px; 
             border: 1px solid var(--accent-color); 
-            box-shadow: 0 0 25px rgba(64, 224, 208, 0.15); 
+            box-shadow: 0 0 25px var(--accent-color); 
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         .settings-grid {
             display: grid;
@@ -62,7 +63,7 @@
         .slider:before { position: absolute; content: ""; height: 18px; width: 18px; left: 3px; bottom: 3px; background-color: white; transition: .3s; border-radius: 50%; }
         input:checked + .slider { background-color: var(--accent-color); }
         input:checked + .slider:before { transform: translateX(24px); }
-        .btn-save { background: var(--accent-color); color: #000; border: none; padding: 14px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; transition: opacity 0.2s; margin-top: 10px; }
+        .btn-save { background: var(--accent-color); color: #000; border: none; padding: 14px; border-radius: 10px; width: 100%; cursor: pointer; font-weight: bold; font-size: 16px; transition: opacity 0.2s, background 0.3s; margin-top: 10px; }
         .btn-save:hover { opacity: 0.9; }
         .btn-back { background: none; border: none; color: #888; width: 100%; margin-top: 15px; cursor: pointer; font-size: 14px; text-decoration: underline; }
 
@@ -94,7 +95,7 @@
 <body>
 
 <div class="container">
-    <h2 style="color: var(--accent-color); text-align: center; margin-top: 0; margin-bottom: 25px;">⚙️ Cina Games Control Center</h2>
+    <h2 style="color: var(--accent-color); text-align: center; margin-top: 0; margin-bottom: 25px; transition: color 0.3s;">⚙️ Cina Games Control Center</h2>
 
     <div class="settings-grid">
         <!-- Left Column: Appearance & Identity -->
@@ -176,11 +177,14 @@
 
 <script>
     const firebaseConfig = { apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI", authDomain: "cina-games.firebaseapp.com", projectId: "cina-games", storageBucket: "cina-games.firebasestorage.app", messagingSenderId: "449625451730", appId: "1:449625451730:web:153b2aec57e6c42ec2510b", measurementId: "G-YSQZ60ZNC8" };
-    firebase.initializeApp(firebaseConfig);
+    if (!firebase.apps.length) {
+        firebase.initializeApp(firebaseConfig);
+    }
     const db = firebase.firestore();
     const auth = firebase.auth();
 
-    let selectedColor = '#40E0D0';
+    let selectedColor = localStorage.getItem('cina_theme') || '#40E0D0';
+    applyTheme(selectedColor);
     let toastTimer;
 
     function showToast(message, isError = false) {
@@ -198,6 +202,7 @@
     function applyTheme(color) {
         selectedColor = color;
         document.documentElement.style.setProperty('--accent-color', color);
+        localStorage.setItem('cina_theme', color); // ذخیره در مرورگر برای دسترسی فوری سایر صفحات
     }
 
     function saveTheme(color) {
@@ -208,7 +213,7 @@
             .then(() => showToast("Applied Successfully"))
             .catch(err => showToast("Error: " + err.message, true));
         } else {
-            showToast("Applied Successfully (Sign in to save)");
+            showToast("Theme applied (Sign in to sync across devices)");
         }
     }
 
@@ -241,7 +246,9 @@
             db.collection("users").doc(user.uid).get().then(doc => {
                 if (doc.exists) {
                     const data = doc.data();
-                    if (data.themeColor) applyTheme(data.themeColor);
+                    if (data.themeColor) {
+                        applyTheme(data.themeColor);
+                    }
                     if (data.status) document.getElementById('userStatus').value = data.status;
                     if (data.gameId) document.getElementById('gameId').value = data.gameId;
                     if (data.sfx !== undefined) document.getElementById('sfxToggle').checked = data.sfx;
@@ -261,7 +268,7 @@
         }
 
         const status = document.getElementById('userStatus').value;
-        const gameId = document.getElementById('gameId').value.trim();
+        const gameId = document.getElementById('gameId').value.term ? document.getElementById('gameId').value.trim() : document.getElementById('gameId').value.trim();
         const sfx = document.getElementById('sfxToggle').checked;
         const bgm = document.getElementById('bgmToggle').checked;
         const friendNotif = document.getElementById('friendNotifToggle').checked;
