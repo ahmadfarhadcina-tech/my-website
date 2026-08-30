@@ -305,7 +305,7 @@ document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
 
 auth.onAuthStateChanged((user) => { if (user) { authBtn.style.display = "none"; authSection.style.display = "none"; userWelcome.style.display = "inline-block"; userWelcome.innerHTML = "👤 " + user.email.split('@')[0]; } else { authBtn.style.display = "inline-block"; authSection.style.display = "block"; userWelcome.style.display = "none"; } });
 
-// ۳. اسکریپت جستجوی خودکار بازی‌ها از صفحه games.html
+// ۳. اسکریپت جستجوی خودکار بازی‌ها با انتقال مستقیم به پیج شخصی (Open Page)
 const searchInput = document.getElementById('gameSearchInput');
 const searchResultsBox = document.getElementById('searchResultsBox');
 
@@ -328,13 +328,24 @@ async function fetchAndSearchGames(query) {
 
         gameCards.forEach(card => {
             let titleEl = card.querySelector('h3');
-            let pageLink = card.querySelector('a[href$=".html"]')?.getAttribute('href') || 'games.html';
+            
+            // استخراج لینک صفحه اختصاصی (Open Page) بازی و رد کردن لینک‌های عمومی یا دکمه‌های دانلود
+            let allLinks = card.querySelectorAll('a[href$=".html"]');
+            let personalPageLink = 'games.html';
+            
+            for (let link of allLinks) {
+                let href = link.getAttribute('href');
+                if (href && href !== 'games.html' && href !== 'index.html') {
+                    personalPageLink = href;
+                    break;
+                }
+            }
             
             if (titleEl) {
                 let title = titleEl.textContent.trim();
                 if (title.toLowerCase().includes(query.toLowerCase())) {
                     if (!matches.some(m => m.title === title)) {
-                        matches.push({ title: title, link: pageLink });
+                        matches.push({ title: title, link: personalPageLink });
                     }
                 }
             }
