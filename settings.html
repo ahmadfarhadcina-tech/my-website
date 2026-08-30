@@ -9,6 +9,12 @@
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
 
+    <script>
+        // اعمال فوری تم ذخیره شده در تمام صفحات پیش از بارگذاری کامل
+        const savedTheme = localStorage.getItem('cina_theme') || '#40E0D0';
+        document.documentElement.style.setProperty('--accent-color', savedTheme);
+    </script>
+
     <style>
         :root { --accent-color: #40E0D0; }
         * { box-sizing: border-box; }
@@ -22,7 +28,7 @@
             flex-direction: column;
             align-items: center;
             min-height: 100vh;
-            padding-bottom: 70px; 
+            padding-bottom: 90px; /* فضای کافی برای منوی پایین */
         }
         .container { 
             width: 100%;
@@ -67,6 +73,30 @@
         .btn-save:hover { opacity: 0.9; }
         .btn-back { background: none; border: none; color: #888; width: 100%; margin-top: 15px; cursor: pointer; font-size: 14px; text-decoration: underline; }
 
+        /* استایل منوی پایین صفحه */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: #111;
+            border-top: 1px solid #222;
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            z-index: 999;
+        }
+        .nav-item {
+            color: #888;
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .nav-item:hover, .nav-item.active {
+            color: var(--accent-color);
+        }
+
         /* Toast Notification Bar */
         #toastBar {
             position: fixed;
@@ -88,7 +118,7 @@
             gap: 10px;
         }
         #toastBar.show {
-            bottom: 25px;
+            bottom: 75px; /* کمی بالاتر قرار می‌گیرد تا روی منوی پایین نیفتد */
         }
     </style>
 </head>
@@ -172,6 +202,14 @@
     <button class="btn-back" onclick="window.location.href='dashboard.html'">Return to Dashboard</button>
 </div>
 
+<!-- منوی پایین صفحه -->
+<div class="bottom-nav">
+    <a href="index.html" class="nav-item">Home</a>
+    <a href="games.html" class="nav-item">Games</a>
+    <a href="dashboard.html" class="nav-item">Dash</a>
+    <a href="settings.html" class="nav-item active">Setting</a>
+</div>
+
 <!-- Bottom Toast Notification Element -->
 <div id="toastBar">Applied Successfully</div>
 
@@ -202,7 +240,7 @@
     function applyTheme(color) {
         selectedColor = color;
         document.documentElement.style.setProperty('--accent-color', color);
-        localStorage.setItem('cina_theme', color); // ذخیره در مرورگر برای دسترسی فوری سایر صفحات
+        localStorage.setItem('cina_theme', color);
     }
 
     function saveTheme(color) {
@@ -225,7 +263,7 @@
         const gameId = document.getElementById('gameId').value.trim();
         const sfx = document.getElementById('sfxToggle').checked;
         const bgm = document.getElementById('bgmToggle').checked;
-        const friendNotif = document.getElementById('friendNotifToggle').checked;
+        const friendNotif = document.getElementById('friendNotifToggle'].checked;
         const profilePublic = document.getElementById('profilePublicToggle').checked;
 
         db.collection("users").doc(user.uid).set({
@@ -268,7 +306,7 @@
         }
 
         const status = document.getElementById('userStatus').value;
-        const gameId = document.getElementById('gameId').value.term ? document.getElementById('gameId').value.trim() : document.getElementById('gameId').value.trim();
+        const gameId = document.getElementById('gameId').value.trim();
         const sfx = document.getElementById('sfxToggle').checked;
         const bgm = document.getElementById('bgmToggle').checked;
         const friendNotif = document.getElementById('friendNotifToggle').checked;
