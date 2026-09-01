@@ -428,5 +428,115 @@ document.addEventListener('click', function(e) {
     }
 });
 </script>
+
+<!-- CINER FEATURE -->
+<section class="ciner-card">
+    <img src="images/ciner.jpg" alt="Ciner">
+
+    <div class="ciner-info">
+        <span>UPCOMING GAME</span>
+        <h2>CINER</h2>
+        <p>Open-World Action Game</p>
+        <strong>COMING SOON • LATE 2027</strong>
+
+        <a href="#">LEARN MORE</a>
+    </div>
+</section>
+
+<style>
+.ciner-card {
+    max-width: 850px;
+    height: 260px;
+    margin: 35px auto;
+    display: flex;
+    overflow: hidden;
+    border-radius: 16px;
+    background: #111;
+    border: 1px solid #292929;
+    box-shadow: 0 8px 30px rgba(0,0,0,.35);
+}
+
+.ciner-card img {
+    width: 48%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ciner-info {
+    flex: 1;
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: white;
+}
+
+.ciner-info span {
+    font-size: 11px;
+    color: #aaa;
+    letter-spacing: 2px;
+}
+
+.ciner-info h2 {
+    margin: 5px 0;
+    font-size: 38px;
+    letter-spacing: 5px;
+}
+
+.ciner-info p {
+    margin: 0 0 10px;
+    color: #ccc;
+}
+
+.ciner-info strong {
+    font-size: 13px;
+    color: #b58cff;
+}
+
+.ciner-info a {
+    width: fit-content;
+    margin-top: 15px;
+    padding: 9px 16px;
+    border-radius: 7px;
+    background: #7c3aed;
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .ciner-card {
+        height: 190px;
+    }
+
+    .ciner-card img {
+        width: 42%;
+    }
+
+    .ciner-info {
+        padding: 15px;
+    }
+
+    .ciner-info h2 {
+        font-size: 27px;
+    }
+
+    .ciner-info p {
+        font-size: 12px;
+    }
+
+    .ciner-info strong {
+        font-size: 10px;
+    }
+
+    .ciner-info a {
+        margin-top: 8px;
+        padding: 7px 12px;
+        font-size: 10px;
+    }
+}
+</style>
+
 </body>
 </html>
