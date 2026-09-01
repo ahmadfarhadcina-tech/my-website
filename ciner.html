@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ciner | Cina Games</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #070707;
+            color: #fff;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* HERO */
+        .hero {
+            position: relative;
+            min-height: 90vh;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+
+        .hero img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(
+                    to top,
+                    #070707 3%,
+                    rgba(7,7,7,.85) 25%,
+                    rgba(7,7,7,.2) 65%,
+                    rgba(0,0,0,.35)
+                );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1100px;
+            width: 100%;
+            margin: auto;
+            padding: 60px 30px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid #8b5cf6;
+            border-radius: 30px;
+            color: #c4a7ff;
+            font-size: 12px;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(55px, 9vw, 110px);
+            letter-spacing: 12px;
+            line-height: .9;
+            font-weight: 900;
+        }
+
+        .subtitle {
+            margin-top: 15px;
+            font-size: 20px;
+            letter-spacing: 5px;
+            color: #c4a7ff;
+        }
+
+        .release {
+            margin-top: 25px;
+            font-size: 15px;
+            letter-spacing: 3px;
+            color: #ccc;
+        }
+
+        .release strong {
+            color: #fff;
+        }
+
+        /* MAIN */
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 70px 25px;
+        }
+
+        .section {
+            margin-bottom: 80px;
+        }
+
+        .section h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            letter-spacing: 3px;
+        }
+
+        .section h2::after {
+            content: "";
+            display: block;
+            width: 55px;
+            height: 3px;
+            background: #8b5cf6;
+            margin-top: 12px;
+        }
+
+        .description {
+            color: #bdbdbd;
+            font-size: 17px;
+            line-height: 1.9;
+            max-width: 850px;
+        }
+
+        /* GAME INFO */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 30px;
+        }
+
+        .info-box {
+            background: #101010;
+            border: 1px solid #222;
+            border-radius: 14px;
+            padding: 25px;
+            transition: .3s;
+        }
+
+        .info-box:hover {
+            transform: translateY(-5px);
+            border-color: #8b5cf6;
+        }
+
+        .info-box span {
+            display: block;
+            color: #888;
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-bottom: 8px;
+        }
+
+        .info-box strong {
+            font-size: 17px;
+        }
+
+        /* CHARACTERS */
+        .characters {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .character {
+            background: linear-gradient(145deg, #111, #090909);
+            border: 1px solid #222;
+            border-radius: 18px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .character::before {
+            content: "";
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: #8b5cf6;
+            filter: blur(80px);
+            opacity: .15;
+            right: -30px;
+            top: -30px;
+        }
+
+        .character h3 {
+            font-size: 27px;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+
+        .character p {
+            color: #aaa;
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        /* FOOTER CTA */
+        .cta {
+            text-align: center;
+            padding: 70px 20px;
+            background: #0d0d0d;
+            border-top: 1px solid #1c1c1c;
+        }
+
+        .cta h2 {
+            font-size: 35px;
+            margin-bottom: 12px;
+        }
+
+        .cta p {
+            color: #999;
+            margin-bottom: 25px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            padding: 13px 25px;
+            border-radius: 8px;
+            background: #8b5cf6;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139,92,246,.35);
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            .hero {
+                min-height: 75vh;
+            }
+
+            .hero-content {
+                padding: 35px 20px;
+            }
+
+            .hero h1 {
+                letter-spacing: 6px;
+            }
+
+            .subtitle {
+                font-size: 14px;
+                letter-spacing: 3px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .characters {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                margin-bottom: 55px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HERO -->
+    <section class="hero">
+
+        <!-- YOUR CINER IMAGE -->
+        <img src="images/ciner.jpg" alt="Ciner Game">
+
+        <div class="hero-content">
+
+            <span class="badge">UPCOMING GAME</span>
+
+            <h1>CINER</h1>
+
+            <div class="subtitle">
+                OPEN-WORLD ACTION
+            </div>
+
+            <div class="release">
+                COMING SOON — <strong>LATE 2027</strong>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="container">
+
+        <!-- ABOUT -->
+        <section class="section">
+
+            <h2>ABOUT CINER</h2>
+
+            <p class="description">
+                Ciner is an ambitious open-world action game created by
+                Cina Games. Set in a living world filled with danger,
+                conflict, crime and unexpected events, Ciner focuses on
+                freedom, exploration and a story-driven experience.
+
+                <br><br>
+
+                Players will step into a world where every decision can
+                lead to new situations. From intense missions and dangerous
+                encounters to exploring the streets and discovering hidden
+                places, the world of Ciner is designed to feel alive and
+                unpredictable.
+
+                <br><br>
+
+                Ciner is being developed as a long-term project with the
+                goal of creating a memorable open-world experience inspired
+                by the freedom and scale of modern action games.
+            </p>
+
+        </section>
+
+
+        <!-- GAME FEATURES -->
+        <section class="section">
+
+            <h2>THE GAME</h2>
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <span>GENRE</span>
+                    <strong>Open-World Action</strong>
+                </div>
+
+                <div class="info-box">
+                    <span>DEVELOPER</span>
+                    <strong>Cina Games</strong>
+                </div>
+
+                <div class="info-box">
+                    <span>RELEASE</span>
+                    <strong>Late 2027</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- STORY -->
+        <section class="section">
+
+            <h2>THE STORY</h2>
+
+            <p class="description">
+                Ciner tells a story of ambition, loyalty, danger and
+                survival in a world where power can change everything.
+
+                <br><br>
+
+                As the story unfolds, Ciner will face dangerous situations,
+                powerful enemies and difficult choices. His journey will
+                take him through different parts of the city and deeper
+                into a world where nothing is as simple as it first appears.
+
+                <br><br>
+
+                Along the way, important characters will become part of
+                Ciner's journey, each with their own motivations,
+                relationships and secrets.
+            </p>
+
+        </section>
+
+
+        <!-- CHARACTERS -->
+        <section class="section">
+
+            <h2>CHARACTERS</h2>
+
+            <div class="characters">
+
+                <div class="character">
+
+                    <h3>DARKS</h3>
+
+                    <p>
+                        Darks is one of the important characters in the
+                        world of Ciner. His role in the story brings new
+                        tension and unexpected events to Ciner's journey.
+                        His relationship with Ciner will become an
+                        important part of the story.
+                    </p>
+
+                </div>
+
+
+                <div class="character">
+
+                    <h3>RAVAN</h3>
+
+                    <p>
+                        Ravan is another key character who becomes connected
+                        to the events surrounding Ciner. His actions,
+                        personality and decisions will have an impact on
+                        the direction of the story.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+    <section class="cta">
+
+        <h2>CINER IS COMING</h2>
+
+        <p>
+            Get ready for a new open-world adventure.
+        </p>
+
+        <a href="index.html" class="back-btn">
+            BACK TO CINA GAMES
+        </a>
+
+    </section>
+
+</body>
+</html>
