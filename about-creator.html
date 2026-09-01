@@ -1,227 +1,1089 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About Creator - Cina Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>About Creator | Cina Games</title><style>
 
-<style>
+/* =========================
+   RESET
+========================= */
 
-/* ===== PAGE ===== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
-  color:white;
-
-  /* ورود آرام صفحه */
-  animation: pageFade 1.2s ease-in;
+    background:#070707;
+    color:#fff;
+    font-family:Arial,Helvetica,sans-serif;
+    overflow-x:hidden;
 }
 
-@keyframes pageFade{
-  from{opacity:0;}
-  to{opacity:1;}
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
 }
 
-/* ===== HEADER ===== */
-.header{
-  text-align:center;
-  padding:30px 10px;
-  background:#111;
-  border-bottom:2px solid #00ff99;
+.hero img{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    object-position:center;
+    transform:scale(1.02);
 }
 
-.header h1{
-  margin:0;
-  font-size:40px;
-  color:#00ff99;
+.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+
+    background:
+    linear-gradient(
+        to top,
+        #070707 2%,
+        rgba(7,7,7,.92) 22%,
+        rgba(7,7,7,.55) 48%,
+        rgba(0,0,0,.20) 75%,
+        rgba(0,0,0,.40)
+    );
 }
 
-/* ===== PROFILE ===== */
-.profile{
-  text-align:center;
-  padding:30px 20px;
+.hero-content{
+    position:relative;
+    z-index:2;
+
+    width:100%;
+    max-width:1100px;
+
+    margin:auto;
+
+    padding:70px 30px 60px;
 }
 
-/* عکس + نور + انیمیشن */
-.profile img{
-  width:150px;
-  height:150px;
-  border-radius:50%;
-  object-fit:cover;
+/* =========================
+   BADGE
+========================= */
 
-  border:4px solid #00ff99;
+.badge{
+    display:inline-block;
 
-  /* نور حرفه‌ای */
-  box-shadow:0 0 15px #00ff99,
-             0 0 30px #00ff99,
-             0 0 60px #00ff99;
+    padding:8px 16px;
 
-  /* ورود نرم */
-  animation: floatIn 1.2s ease-out, glowPulse 2s infinite;
+    border:1px solid #00ff99;
+    border-radius:30px;
+
+    color:#00ff99;
+
+    font-size:12px;
+    letter-spacing:3px;
+
+    margin-bottom:18px;
+
+    background:rgba(0,0,0,.25);
 }
 
-/* ورود از پایین */
-@keyframes floatIn{
-  from{
-    opacity:0;
-    transform:translateY(30px) scale(0.8);
-  }
-  to{
-    opacity:1;
-    transform:translateY(0) scale(1);
-  }
+/* =========================
+   HERO TITLE
+========================= */
+
+.hero h1{
+    font-size:clamp(50px,9vw,105px);
+
+    line-height:.9;
+
+    letter-spacing:8px;
+
+    font-weight:900;
+
+    text-shadow:
+        0 0 10px rgba(0,255,153,.25),
+        0 0 30px rgba(0,255,153,.15);
 }
 
-/* نور زنده */
-@keyframes glowPulse{
-  0%{
-    box-shadow:0 0 10px #00ff99,0 0 20px #00ff99;
-  }
-  50%{
-    box-shadow:0 0 25px #00ff99,0 0 50px #00ff99;
-  }
-  100%{
-    box-shadow:0 0 10px #00ff99,0 0 20px #00ff99;
-  }
+.subtitle{
+    margin-top:18px;
+
+    font-size:20px;
+
+    letter-spacing:5px;
+
+    color:#00ff99;
 }
 
-.profile h2{
-  margin-top:15px;
-  font-size:28px;
-  color:#fff;
+.location{
+    margin-top:18px;
+
+    color:#ccc;
+
+    font-size:15px;
+
+    letter-spacing:2px;
 }
 
-.profile p{
-  color:#ccc;
-  font-size:16px;
-  margin-top:5px;
+/* =========================
+   MAIN CONTAINER
+========================= */
+
+.container{
+    width:100%;
+    max-width:1050px;
+
+    margin:auto;
+
+    padding:75px 25px;
 }
 
-/* ===== INFO BOX ===== */
-.info{
-  max-width:600px;
-  margin:20px auto;
-  background:#111;
-  padding:20px;
-  border-radius:15px;
-  border-left:4px solid #00ff99;
+/* =========================
+   SECTION
+========================= */
+
+.section{
+    margin-bottom:80px;
 }
 
-.info h3{
-  color:#00ff99;
-  margin-bottom:10px;
+.section h2{
+    font-size:32px;
+
+    margin-bottom:22px;
+
+    letter-spacing:3px;
 }
 
-/* ===== LINKS ===== */
-.links{
-  text-align:center;
-  margin-top:20px;
+.section h2::after{
+    content:"";
+
+    display:block;
+
+    width:55px;
+    height:3px;
+
+    background:#00ff99;
+
+    margin-top:12px;
+
+    box-shadow:0 0 12px #00ff99;
 }
 
-.links a{
-  display:block;
-  margin:10px auto;
-  padding:15px;
-  width:80%;
-  max-width:400px;
-  background:#007bff;
-  color:white;
-  text-decoration:none;
-  font-size:22px;
-  border-radius:12px;
-  transition:0.3s;
+.description{
+    color:#bdbdbd;
+
+    font-size:17px;
+
+    line-height:1.9;
+
+    max-width:880px;
 }
 
-/* hover */
-.links a:hover{
-  transform:scale(1.05);
-  background:#0056b3;
+/* =========================
+   INFO GRID
+========================= */
+
+.info-grid{
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:30px;
 }
 
-/* TELEGRAM / YOUTUBE BIG */
+.info-box{
+    background:
+        linear-gradient(145deg,#111,#090909);
+
+    border:1px solid #222;
+
+    border-radius:16px;
+
+    padding:25px;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.info-box::before{
+    content:"";
+
+    position:absolute;
+
+    width:80px;
+    height:80px;
+
+    background:#00ff99;
+
+    filter:blur(65px);
+
+    opacity:.10;
+
+    right:-20px;
+    top:-20px;
+}
+
+.info-box:hover{
+    transform:translateY(-5px);
+
+    border-color:#00ff99;
+
+    box-shadow:0 10px 30px rgba(0,255,153,.08);
+}
+
+.info-box span{
+    display:block;
+
+    color:#888;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    margin-bottom:9px;
+}
+
+.info-box strong{
+    font-size:17px;
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects{
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin-top:30px;
+}
+
+.project{
+    background:
+        linear-gradient(145deg,#111,#080808);
+
+    border:1px solid #222;
+
+    border-radius:18px;
+
+    padding:28px;
+
+    transition:.3s;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.project::before{
+    content:"";
+
+    position:absolute;
+
+    width:130px;
+    height:130px;
+
+    background:#00ff99;
+
+    filter:blur(80px);
+
+    opacity:.08;
+
+    right:-40px;
+    top:-40px;
+}
+
+.project:hover{
+    transform:translateY(-6px);
+
+    border-color:#00ff99;
+
+    box-shadow:0 12px 35px rgba(0,255,153,.08);
+}
+
+.project h3{
+    font-size:25px;
+
+    letter-spacing:2px;
+
+    margin-bottom:12px;
+}
+
+.project p{
+    color:#aaa;
+
+    line-height:1.8;
+
+    font-size:15px;
+}
+
+.project .tag{
+    display:inline-block;
+
+    margin-top:18px;
+
+    padding:6px 11px;
+
+    border-radius:20px;
+
+    border:1px solid #333;
+
+    color:#00ff99;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills{
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:10px;
+
+    margin-top:25px;
+}
+
+.skill{
+    padding:10px 15px;
+
+    background:#111;
+
+    border:1px solid #292929;
+
+    border-radius:30px;
+
+    color:#ccc;
+
+    font-size:13px;
+
+    transition:.3s;
+}
+
+.skill:hover{
+    border-color:#00ff99;
+
+    color:#00ff99;
+
+    transform:translateY(-2px);
+}
+
+/* =========================
+   CINER FEATURE
+========================= */
+
+.ciner-box{
+    margin-top:30px;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #111,
+            #090909
+        );
+
+    border:1px solid #272727;
+
+    position:relative;
+
+    overflow:hidden;
+}
+
+.ciner-box::after{
+    content:"";
+
+    position:absolute;
+
+    width:180px;
+    height:180px;
+
+    right:-50px;
+    top:-60px;
+
+    background:#8b5cf6;
+
+    filter:blur(90px);
+
+    opacity:.12;
+}
+
+.ciner-box h3{
+    font-size:32px;
+
+    letter-spacing:5px;
+
+    margin-bottom:12px;
+}
+
+.ciner-box .ciner-subtitle{
+    color:#b58cff;
+
+    letter-spacing:3px;
+
+    font-size:13px;
+
+    margin-bottom:20px;
+}
+
+.ciner-box p{
+    color:#aaa;
+
+    line-height:1.9;
+
+    max-width:850px;
+}
+
+.ciner-button{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:12px 22px;
+
+    background:#8b5cf6;
+
+    color:white;
+
+    text-decoration:none;
+
+    border-radius:8px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.ciner-button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 30px rgba(139,92,246,.35);
+}
+
+/* =========================
+   GOAL
+========================= */
+
+.goal{
+    background:#0d0d0d;
+
+    border-left:4px solid #00ff99;
+
+    border-radius:12px;
+
+    padding:25px;
+
+    margin-top:25px;
+}
+
+.goal p{
+    color:#bbb;
+
+    line-height:1.9;
+
+    font-size:16px;
+}
+
+/* =========================
+   SOCIAL
+========================= */
+
+.social{
+    text-align:center;
+
+    padding:60px 20px;
+
+    background:#0d0d0d;
+
+    border-top:1px solid #1c1c1c;
+}
+
+.social h2{
+    font-size:32px;
+
+    margin-bottom:12px;
+}
+
+.social p{
+    color:#888;
+
+    margin-bottom:25px;
+}
+
+.social-links{
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:12px;
+}
+
+.social-links a{
+    display:inline-block;
+
+    padding:13px 24px;
+
+    border-radius:9px;
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.social-links a:hover{
+    transform:translateY(-3px);
+}
+
 .telegram{
-  background:#0088cc !important;
-  font-weight:bold;
-  font-size:24px;
+    background:#0088cc;
+
+    box-shadow:0 5px 20px rgba(0,136,204,.18);
 }
 
 .youtube{
-  background:#ff0000 !important;
-  font-weight:bold;
-  font-size:24px;
+    background:#ff0000;
+
+    box-shadow:0 5px 20px rgba(255,0,0,.18);
 }
 
-/* ===== FOOTER ===== */
+/* =========================
+   RESUME
+========================= */
+
+.resume{
+    text-align:center;
+
+    margin-top:40px;
+}
+
+.resume h3{
+    color:#00ffc8;
+
+    margin-bottom:12px;
+}
+
+.resume p{
+    color:#999;
+
+    margin-bottom:22px;
+}
+
+.resume-button{
+    display:inline-block;
+
+    padding:13px 25px;
+
+    border-radius:9px;
+
+    background:#00ffc8;
+
+    color:#000;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    box-shadow:0 0 15px rgba(0,255,200,.25);
+
+    transition:.3s;
+}
+
+.resume-button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:0 0 25px rgba(0,255,200,.5);
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back{
+    text-align:center;
+
+    padding:55px 20px;
+}
+
+.back-button{
+    display:inline-block;
+
+    padding:13px 25px;
+
+    border-radius:8px;
+
+    background:#00ff99;
+
+    color:#000;
+
+    text-decoration:none;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.back-button:hover{
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 30px rgba(0,255,153,.3);
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
-  text-align:center;
-  padding:20px;
-  color:#777;
-  margin-top:30px;
+    text-align:center;
+
+    padding:25px;
+
+    color:#666;
+
+    border-top:1px solid #151515;
+
+    font-size:13px;
 }
 
-</style>
-</head>
+/* =========================
+   MOBILE
+========================= */
 
-<body>
+@media(max-width:700px){
 
-<div class="header">
-  <h1>About Creator</h1>
+    .hero{
+        min-height:78vh;
+    }
+
+    .hero-content{
+        padding:40px 20px;
+    }
+
+    .hero h1{
+        font-size:clamp(48px,15vw,75px);
+
+        letter-spacing:5px;
+    }
+
+    .subtitle{
+        font-size:14px;
+
+        letter-spacing:3px;
+    }
+
+    .location{
+        font-size:12px;
+    }
+
+    .container{
+        padding:55px 20px;
+    }
+
+    .section{
+        margin-bottom:60px;
+    }
+
+    .section h2{
+        font-size:26px;
+    }
+
+    .description{
+        font-size:15px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .ciner-box{
+        padding:25px;
+    }
+
+    .ciner-box h3{
+        font-size:27px;
+    }
+
+    .social-links{
+        flex-direction:column;
+
+        max-width:400px;
+
+        margin:auto;
+    }
+
+    .social-links a{
+        width:100%;
+
+        box-sizing:border-box;
+    }
+}
+
+</style></head><body><!-- =========================
+     HERO
+========================= --><section class="hero"><!-- عکس خودت -->
+<img src="images/creator.jpg" alt="Farhad Cina - Creator of Cina Games">
+
+<div class="hero-content">
+
+    <span class="badge">
+        CREATOR OF CINA GAMES
+    </span>
+
+    <h1>
+        FARHAD CINA
+    </h1>
+
+    <div class="subtitle">
+        CREATOR • DEVELOPER • GAMER
+    </div>
+
+    <div class="location">
+        🇦🇫 Afghanistan
+    </div>
+
 </div>
 
-<div class="profile">
+</section><!-- =========================
+     MAIN
+========================= --><main class="container"><!-- ABOUT ME --><section class="section"><h2>
+    ABOUT ME
+</h2>
 
-  <!-- عکس خودت -->
-  <img src="your-image.jpg" alt="Creator Photo">
+<p class="description">
 
-  <h2>Cina Games Creator</h2>
-  <p>Afghanistan 🇦🇫</p>
-  <p>WWE Fan | Programmer | Football Lover</p>
+    My name is Farhad Cina, the creator and developer behind
+    Cina Games. I am passionate about game development,
+    programming, web development, 3D design, artificial
+    intelligence and digital content creation.
+
+    <br><br>
+
+    I started building my own projects because I wanted to
+    create something of my own instead of only playing games.
+    Over time, I began working on websites, game projects,
+    3D characters, AI tools and gaming content.
+
+    <br><br>
+
+    Cina Games is the platform where I bring many of these ideas
+    together and continue developing them step by step.
+
+</p>
+
+</section><!-- CREATOR INFO --><section class="section"><h2>
+    CREATOR
+</h2>
+
+<div class="info-grid">
+
+    <div class="info-box">
+        <span>NAME</span>
+        <strong>Farhad Cina</strong>
+    </div>
+
+    <div class="info-box">
+        <span>ROLE</span>
+        <strong>Creator & Developer</strong>
+    </div>
+
+    <div class="info-box">
+        <span>BRAND</span>
+        <strong>Cina Games</strong>
+    </div>
 
 </div>
 
-<div class="info">
-  <h3>👤 About Me</h3>
-  <p>
-    I am the creator of Cina Games website. and my name is Farhad Cina I love programming, WWE games,
-    football and building gaming-related websites. My goal is to make a
-    professional gaming platform for users.
-  </p>
+</section><!-- CINA GAMES --><section class="section"><h2>
+    CINA GAMES
+</h2>
+
+<p class="description">
+
+    Cina Games is my personal gaming brand and development
+    platform. The goal is to build a place where gamers can
+    discover games, projects, tools and original creations.
+
+    <br><br>
+
+    I am continuously working on improving the website,
+    creating new projects and developing ideas that can
+    eventually become larger gaming experiences.
+
+</p>
+
+</section><!-- PROJECTS --><section class="section"><h2>
+    MY PROJECTS
+</h2>
+
+<div class="projects">
+
+    <div class="project">
+
+        <h3>
+            🎮 CINA GAMES
+        </h3>
+
+        <p>
+            My gaming website and main digital platform,
+            created to share games, projects, gaming content
+            and future creations.
+        </p>
+
+        <span class="tag">
+            GAMING PLATFORM
+        </span>
+
+    </div>
+
+
+    <div class="project">
+
+        <h3>
+            🤖 CINA AI
+        </h3>
+
+        <p>
+            An AI project connected to the Cina Games ecosystem,
+            created to provide an intelligent chat experience
+            for users.
+        </p>
+
+        <span class="tag">
+            ARTIFICIAL INTELLIGENCE
+        </span>
+
+    </div>
+
+
+    <div class="project">
+
+        <h3>
+            🔥 CINER
+        </h3>
+
+        <p>
+            A long-term open-world action game project under
+            Cina Games, focused on exploration, missions,
+            characters and a story-driven world.
+        </p>
+
+        <span class="tag">
+            GAME DEVELOPMENT
+        </span>
+
+    </div>
+
+
+    <div class="project">
+
+        <h3>
+            🧩 3D PROJECTS
+        </h3>
+
+        <p>
+            I am also learning and working with 3D modeling,
+            Blender, character creation and the process of
+            preparing 3D assets for games.
+        </p>
+
+        <span class="tag">
+            3D DEVELOPMENT
+        </span>
+
+    </div>
+
 </div>
 
-<div class="info">
-  <h3>🔥 Skills & Interests</h3>
-  <p>✔ Web Development</p>
-  <p>✔ Gaming (WWE, Android Games)</p>
-  <p>✔ Football Lover</p>
-  <p>✔ YouTube Content Creator</p>
+</section><!-- SKILLS --><section class="section"><h2>
+    SKILLS & INTERESTS
+</h2>
+
+<div class="skills">
+
+    <span class="skill">HTML</span>
+
+    <span class="skill">CSS</span>
+
+    <span class="skill">JavaScript</span>
+
+    <span class="skill">Web Development</span>
+
+    <span class="skill">Game Development</span>
+
+    <span class="skill">Unity</span>
+
+    <span class="skill">Blender</span>
+
+    <span class="skill">3D Modeling</span>
+
+    <span class="skill">3D Characters</span>
+
+    <span class="skill">Firebase</span>
+
+    <span class="skill">AI Tools</span>
+
+    <span class="skill">YouTube</span>
+
+    <span class="skill">Gaming</span>
+
+    <span class="skill">Game Design</span>
+
 </div>
 
-<div class="links">
+</section><!-- CINER --><section class="section"><h2>
+    CINER
+</h2>
 
-  <a class="telegram" href="https://t.me/afghangamerx" target="_blank">
-    📲 Telegram Channel
-  </a>
+<div class="ciner-box">
 
-  <a class="youtube" href="https://www.youtube.com/@CinaGames-b4v" target="_blank">
-    ▶ YouTube Channel
-  </a>
+    <h3>
+        CINER
+    </h3>
+
+    <div class="ciner-subtitle">
+        OPEN-WORLD ACTION GAME
+    </div>
+
+    <p>
+
+        Ciner is one of the biggest projects I am developing
+        under the Cina Games brand.
+
+        <br><br>
+
+        It is planned as an open-world action game with a living
+        world, missions, characters, exploration and a larger
+        story-driven experience.
+
+        <br><br>
+
+        Ciner is a long-term project, and I want to continue
+        developing it step by step as my skills and resources
+        grow.
+
+    </p>
+
+    <a href="ciner.html" class="ciner-button">
+        EXPLORE CINER
+    </a>
 
 </div>
 
-<footer>
-  © 2026 Cina Games | All Rights Reserved
-</footer>
+</section><!-- GOALS --><section class="section"><h2>
+    MY GOAL
+</h2>
 
-<div class="resume-section" style="text-align: center; margin: 30px 0;">
-  <h3 style="color: #00ffc8; font-family: monospace; margin-bottom: 15px;">رزومه کاکا فرهاد</h3>
-  <p style="color: #ccc; margin-bottom: 20px;">برای مشاهده رزومه رسمی من روی دکمه زیر کلیک کنید:</p>
-  
-  <!-- دکمه باز کردن رزومه در تب جدید -->
-  <a href="my-resume.pdf" target="_blank" style="background: #00ffc8; color: #000; padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 0 10px rgba(0,255,200,0.5);">
-    مشاهده رزومه (my-resume) 📄
-  </a>
+<div class="goal">
+
+    <p>
+
+        My goal is to become a professional game developer and
+        digital creator and build original games and technology
+        that people around the world can enjoy.
+
+        <br><br>
+
+        I want Cina Games to grow from a personal project into
+        a real gaming brand with original games, creative tools,
+        AI projects and a strong community.
+
+    </p>
+
 </div>
 
-  
-</body>
+</section><!-- RESUME --><section class="resume"><h3>
+    📄 MY RESUME
+</h3>
+
+<p>
+    For more information about my skills, experience and projects,
+    you can view my resume.
+</p>
+
+<a
+    href="my-resume.pdf"
+    target="_blank"
+    class="resume-button"
+>
+    VIEW MY RESUME
+</a>
+
+</section></main><!-- =========================
+     SOCIAL
+========================= --><section class="social"><h2>
+    FOLLOW CINA GAMES
+</h2>
+
+<p>
+    Follow my work and future projects.
+</p>
+
+<div class="social-links">
+
+    <a
+        class="telegram"
+        href="https://t.me/afghangamerx"
+        target="_blank"
+    >
+        📲 Telegram Channel
+    </a>
+
+    <a
+        class="youtube"
+        href="https://www.youtube.com/@CinaGames-b4v"
+        target="_blank"
+    >
+        ▶ YouTube Channel
+    </a>
+
+</div>
+
+</section><!-- =========================
+     BACK
+========================= --><div class="back"><a
+    href="index.html"
+    class="back-button"
+>
+    ← BACK TO CINA GAMES
+</a>
+
+</div><!-- =========================
+     FOOTER
+========================= --><footer>© 2026 Cina Games | Created by Farhad Cina
+
+</footer></body>
 </html>
