@@ -1,94 +1,656 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>About - Cina Games</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Learn more about Cina Games - a modern gaming platform for Android and PC games, mods, tools, wallpapers and gaming content.">
+<meta name="keywords" content="Cina Games, Android Games, PC Games, Gaming, Mods, Wallpapers, Games">
+<meta name="author" content="Cina Games">
+
+<title>About Us - Cina Games</title>
 
 <style>
 
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
-  color:white;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#050505;
+    color:#fff;
+    overflow-x:hidden;
 }
 
-/* HEADER */
-.header{
-  text-align:center;
-  padding:50px 20px;
-  background:radial-gradient(circle,#1a1a1a,#000);
-  border-bottom:2px solid #00ff99;
+/* =========================
+   BACKGROUND
+========================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    background:
+        radial-gradient(circle at 20% 20%,rgba(0,255,153,.07),transparent 30%),
+        radial-gradient(circle at 80% 70%,rgba(0,255,153,.05),transparent 30%);
+    z-index:-1;
 }
 
-.header h1{
-  font-size:45px;
-  color:#00ff99;
-  margin:0;
-  text-shadow:0 0 10px #00ff99,0 0 20px #00ff99;
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar{
+    width:100%;
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,5,5,.88);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(0,255,153,.15);
 }
 
-.header p{
-  color:#ccc;
-  margin-top:10px;
-  font-size:18px;
+.nav-inner{
+    max-width:1150px;
+    margin:auto;
+    padding:18px 20px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
 }
 
-/* CARD */
-.card{
-  max-width:850px;
-  margin:30px auto;
-  background:#111;
-  padding:25px;
-  border-radius:15px;
-  border:1px solid #00ff99;
-  box-shadow:0 0 20px rgba(0,255,153,0.15);
+.logo{
+    text-decoration:none;
+    color:#00ff99;
+    font-size:24px;
+    font-weight:900;
+    letter-spacing:1px;
+    text-shadow:0 0 12px rgba(0,255,153,.5);
 }
 
-.card h2{
-  color:#00ff99;
-  margin-bottom:10px;
-  font-size:24px;
+.nav-links{
+    display:flex;
+    gap:25px;
+    list-style:none;
 }
 
-.card p{
-  color:#ccc;
-  line-height:1.9;
-  font-size:16px;
+.nav-links a{
+    text-decoration:none;
+    color:#aaa;
+    font-size:14px;
+    font-weight:bold;
+    transition:.3s;
 }
 
-/* HIGHLIGHT BOX */
-.highlight{
-  background:#0f0f0f;
-  padding:15px;
-  border-left:4px solid #00ff99;
-  margin-top:15px;
-  color:#ddd;
+.nav-links a:hover{
+    color:#00ff99;
 }
 
-/* BUTTON */
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:470px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:80px 20px;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(to bottom,rgba(0,0,0,.1),#050505),
+        radial-gradient(circle at center,#123629 0%,#080808 45%,#050505 75%);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:500px;
+    height:500px;
+    border:1px solid rgba(0,255,153,.12);
+    border-radius:50%;
+    box-shadow:
+        0 0 80px rgba(0,255,153,.05),
+        inset 0 0 80px rgba(0,255,153,.03);
+}
+
+.hero-content{
+    max-width:850px;
+    position:relative;
+    z-index:2;
+}
+
+.hero-badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid rgba(0,255,153,.4);
+    border-radius:30px;
+    background:rgba(0,255,153,.06);
+    color:#00ff99;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:22px;
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,76px);
+    font-weight:900;
+    line-height:1;
+    margin-bottom:22px;
+    letter-spacing:-2px;
+}
+
+.hero h1 span{
+    color:#00ff99;
+    text-shadow:
+        0 0 10px rgba(0,255,153,.7),
+        0 0 35px rgba(0,255,153,.25);
+}
+
+.hero p{
+    max-width:700px;
+    margin:auto;
+    color:#aaa;
+    font-size:18px;
+    line-height:1.8;
+}
+
+/* =========================
+   MAIN
+========================= */
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:70px 20px;
+}
+
+/* =========================
+   SECTION TITLE
+========================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title .mini{
+    color:#00ff99;
+    font-size:12px;
+    font-weight:bold;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    margin-bottom:10px;
+}
+
+.section-title h2{
+    font-size:36px;
+    margin-bottom:12px;
+}
+
+.section-title p{
+    color:#777;
+    max-width:650px;
+    margin:auto;
+    line-height:1.7;
+}
+
+/* =========================
+   ABOUT INTRO
+========================= */
+
+.about-box{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:25px;
+}
+
+.glass-card{
+    background:linear-gradient(145deg,#111,#0b0b0b);
+    border:1px solid #1d1d1d;
+    border-radius:20px;
+    padding:30px;
+    transition:.3s;
+    box-shadow:0 10px 40px rgba(0,0,0,.3);
+}
+
+.glass-card:hover{
+    transform:translateY(-5px);
+    border-color:rgba(0,255,153,.35);
+    box-shadow:0 15px 50px rgba(0,255,153,.06);
+}
+
+.glass-card h3{
+    font-size:23px;
+    margin-bottom:16px;
+    color:#fff;
+}
+
+.glass-card p{
+    color:#999;
+    line-height:1.9;
+    font-size:15px;
+}
+
+.green{
+    color:#00ff99;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:25px;
+}
+
+.stat{
+    text-align:center;
+    padding:25px 15px;
+    background:#0d0d0d;
+    border:1px solid #1c1c1c;
+    border-radius:16px;
+}
+
+.stat strong{
+    display:block;
+    font-size:30px;
+    color:#00ff99;
+    margin-bottom:8px;
+}
+
+.stat span{
+    color:#777;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+}
+
+/* =========================
+   FEATURES
+========================= */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.feature{
+    background:#0d0d0d;
+    border:1px solid #1c1c1c;
+    border-radius:18px;
+    padding:28px;
+    position:relative;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.feature::after{
+    content:"";
+    position:absolute;
+    width:100px;
+    height:100px;
+    right:-40px;
+    bottom:-40px;
+    background:#00ff99;
+    opacity:.04;
+    border-radius:50%;
+}
+
+.feature:hover{
+    transform:translateY(-6px);
+    border-color:rgba(0,255,153,.4);
+}
+
+.feature-icon{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:14px;
+    background:rgba(0,255,153,.08);
+    border:1px solid rgba(0,255,153,.2);
+    font-size:25px;
+    margin-bottom:20px;
+}
+
+.feature h3{
+    margin-bottom:12px;
+    font-size:19px;
+}
+
+.feature p{
+    color:#888;
+    font-size:14px;
+    line-height:1.8;
+}
+
+/* =========================
+   MISSION
+========================= */
+
+.mission{
+    margin-top:70px;
+    padding:50px 30px;
+    border-radius:25px;
+    text-align:center;
+    background:
+        linear-gradient(135deg,rgba(0,255,153,.08),rgba(0,0,0,.4)),
+        #0b0b0b;
+    border:1px solid rgba(0,255,153,.2);
+    box-shadow:0 0 50px rgba(0,255,153,.04);
+}
+
+.mission h2{
+    font-size:32px;
+    margin-bottom:18px;
+}
+
+.mission p{
+    max-width:750px;
+    margin:auto;
+    color:#999;
+    line-height:1.9;
+}
+
+/* =========================
+   VALUES
+========================= */
+
+.values{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+.value{
+    display:flex;
+    gap:18px;
+    padding:25px;
+    border-radius:17px;
+    background:#0d0d0d;
+    border:1px solid #1b1b1b;
+}
+
+.value-number{
+    min-width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#00ff99;
+    color:#000;
+    font-weight:900;
+}
+
+.value h3{
+    margin-bottom:8px;
+}
+
+.value p{
+    color:#888;
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* =========================
+   JOURNEY
+========================= */
+
+.timeline{
+    position:relative;
+    max-width:800px;
+    margin:auto;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:20px;
+    top:0;
+    bottom:0;
+    width:2px;
+    background:linear-gradient(#00ff99,transparent);
+}
+
+.timeline-item{
+    position:relative;
+    padding-left:60px;
+    margin-bottom:35px;
+}
+
+.timeline-dot{
+    position:absolute;
+    left:11px;
+    top:4px;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:#00ff99;
+    box-shadow:0 0 15px rgba(0,255,153,.7);
+}
+
+.timeline-item h3{
+    margin-bottom:7px;
+}
+
+.timeline-item span{
+    color:#00ff99;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.timeline-item p{
+    color:#888;
+    margin-top:10px;
+    line-height:1.8;
+}
+
+/* =========================
+   CTA
+========================= */
+
+.cta{
+    margin-top:80px;
+    padding:60px 25px;
+    text-align:center;
+    border-radius:25px;
+    background:
+        radial-gradient(circle at center,rgba(0,255,153,.12),transparent 65%),
+        #0a0a0a;
+    border:1px solid #202020;
+}
+
+.cta h2{
+    font-size:34px;
+    margin-bottom:15px;
+}
+
+.cta p{
+    color:#888;
+    margin-bottom:28px;
+}
+
 .btn{
-  display:inline-block;
-  margin-top:15px;
-  padding:12px 25px;
-  background:#00ff99;
-  color:black;
-  font-weight:bold;
-  border-radius:10px;
-  text-decoration:none;
-  transition:0.2s;
+    display:inline-block;
+    padding:14px 28px;
+    border-radius:10px;
+    background:#00ff99;
+    color:#000;
+    text-decoration:none;
+    font-weight:900;
+    transition:.3s;
+    box-shadow:0 0 20px rgba(0,255,153,.15);
 }
 
 .btn:hover{
-  transform:scale(1.05);
+    transform:translateY(-3px) scale(1.03);
+    box-shadow:0 0 30px rgba(0,255,153,.3);
 }
 
-/* FOOTER */
+.btn.secondary{
+    background:transparent;
+    color:#00ff99;
+    border:1px solid #00ff99;
+    margin-left:10px;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
 footer{
-  text-align:center;
-  padding:25px;
-  color:#666;
-  margin-top:50px;
+    margin-top:70px;
+    padding:45px 20px;
+    text-align:center;
+    border-top:1px solid #171717;
+    background:#030303;
+}
+
+.footer-logo{
+    color:#00ff99;
+    font-size:25px;
+    font-weight:900;
+    margin-bottom:12px;
+}
+
+footer p{
+    color:#555;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.footer-links{
+    margin:20px 0;
+}
+
+.footer-links a{
+    color:#777;
+    text-decoration:none;
+    margin:0 10px;
+    font-size:13px;
+}
+
+.footer-links a:hover{
+    color:#00ff99;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:800px){
+
+    .nav-links{
+        gap:12px;
+    }
+
+    .nav-links a{
+        font-size:12px;
+    }
+
+    .about-box{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .values{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        min-height:420px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+}
+
+@media(max-width:500px){
+
+    .nav-inner{
+        padding:15px;
+    }
+
+    .logo{
+        font-size:20px;
+    }
+
+    .nav-links{
+        gap:8px;
+    }
+
+    .nav-links a{
+        font-size:10px;
+    }
+
+    .container{
+        padding:55px 15px;
+    }
+
+    .section-title h2{
+        font-size:28px;
+    }
+
+    .glass-card{
+        padding:23px;
+    }
+
+    .stats{
+        gap:10px;
+    }
+
+    .stat{
+        padding:20px 10px;
+    }
+
+    .stat strong{
+        font-size:25px;
+    }
+
+    .mission{
+        padding:35px 20px;
+    }
+
+    .cta{
+        padding:40px 18px;
+    }
+
+    .cta h2{
+        font-size:27px;
+    }
+
+    .btn{
+        width:100%;
+        margin:5px 0 !important;
+    }
+
 }
 
 </style>
@@ -96,56 +658,524 @@ footer{
 
 <body>
 
-<div class="header">
-  <h1>🎮 About Cina Games</h1>
-  <p>Your Ultimate Gaming Store for Android & PC Games</p>
-</div>
+<!-- =========================
+     NAVBAR
+========================= -->
 
-<div class="card">
-  <h2>📌 What is Cina Games?</h2>
-  <p>
-    Cina Games is a modern gaming website where you can download Android games,
-    PC games, wallpapers, mods, tools and latest updates in one place.
-    We designed this platform to be fast, simple and mobile-friendly.
-  </p>
+<nav class="navbar">
 
-  <div class="highlight">
-    ⭐ هدف ما این است که بهترین بازی‌ها را با سرعت بالا و بدون پیچیدگی در اختیار شما قرار دهیم.
-  </div>
-</div>
+    <div class="nav-inner">
 
-<div class="card">
-  <h2>🚀 Our Mission</h2>
-  <p>
-    Our mission is to bring latest and popular games to users in Afghanistan and around the world.
-    We focus on clean design, easy access, and smooth experience like a real gaming store.
-  </p>
+        <a href="index.html" class="logo">
+            🎮 CINA GAMES
+        </a>
 
-  <p>
-    We are always working to improve the website, add new games, and provide better downloads
-    for gamers who love mobile and PC gaming.
-  </p>
-</div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="games.html">GAMES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+        </ul>
 
-<div class="card">
-  <h2>🎯 Why Choose Us?</h2>
-  <p>
-    ✔ Fast downloads<br>
-    ✔ Simple design<br>
-    ✔ No complicated steps<br>
-    ✔ Daily updates coming soon<br>
-    ✔ Gaming focused platform
-  </p>
+    </div>
 
-  <div class="highlight">
-    💡 ما تلاش می‌کنیم یک تجربه مثل Play Store مخصوص بازی‌ها برای شما بسازیم.
-  </div>
+</nav>
 
-  <a class="btn" href="index.html">🏠 Back to Home</a>
-</div>
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            WELCOME TO CINA GAMES
+        </div>
+
+        <h1>
+            ABOUT <span>CINA GAMES</span>
+        </h1>
+
+        <p>
+            A gaming platform built for gamers who love Android games,
+            PC games, mods, tools, wallpapers and everything gaming.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     ABOUT
+========================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <div class="mini">WHO WE ARE</div>
+
+        <h2>More Than Just A Gaming Website</h2>
+
+        <p>
+            Cina Games is being built with one simple idea:
+            make gaming content easier to discover, access and enjoy.
+        </p>
+
+    </div>
+
+
+    <div class="about-box">
+
+        <div class="glass-card">
+
+            <h3>🎮 What is <span class="green">Cina Games?</span></h3>
+
+            <p>
+                Cina Games is a modern gaming platform focused on bringing
+                games and gaming content together in one place.
+                Our platform is designed for gamers who want a simple,
+                fast and clean experience.
+            </p>
+
+            <br>
+
+            <p>
+                From Android and PC games to mods, tools, wallpapers,
+                gaming news and upcoming projects, our goal is to create
+                a place where gamers can easily find what they are looking for.
+            </p>
+
+        </div>
+
+
+        <div class="glass-card">
+
+            <h3>⚡ Built For Gamers</h3>
+
+            <p>
+                We believe a gaming website should not feel complicated.
+                That's why Cina Games focuses on a clean interface,
+                easy navigation, mobile-friendly design and useful content.
+            </p>
+
+            <br>
+
+            <p>
+                We are continuously improving the platform and adding
+                new features for the gaming community.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- STATS -->
+
+    <div class="stats">
+
+        <div class="stat">
+            <strong>🎮</strong>
+            <span>Gaming Focused</span>
+        </div>
+
+        <div class="stat">
+            <strong>📱</strong>
+            <span>Android Ready</span>
+        </div>
+
+        <div class="stat">
+            <strong>💻</strong>
+            <span>PC Gaming</span>
+        </div>
+
+        <div class="stat">
+            <strong>🚀</strong>
+            <span>Growing Platform</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FEATURES
+========================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <div class="mini">WHAT WE OFFER</div>
+
+        <h2>Everything Gaming</h2>
+
+        <p>
+            Cina Games is designed to become more than a simple game
+            download website.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">📱</div>
+
+            <h3>Android Games</h3>
+
+            <p>
+                Discover Android games and mobile gaming content
+                designed for players who enjoy gaming on their phones.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">💻</div>
+
+            <h3>PC Games</h3>
+
+            <p>
+                Explore PC gaming content, games, tools and projects
+                for desktop gamers.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🛠️</div>
+
+            <h3>Mods & Tools</h3>
+
+            <p>
+                Gaming mods, useful tools and resources that can
+                improve your gaming experience.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🖼️</div>
+
+            <h3>Wallpapers</h3>
+
+            <p>
+                Gaming wallpapers and visual content for gamers
+                who want to customize their devices.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🔥</div>
+
+            <h3>Gaming Projects</h3>
+
+            <p>
+                Follow original gaming projects created under the
+                Cina Games name.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">🌐</div>
+
+            <h3>Gaming Community</h3>
+
+            <p>
+                A platform created with gamers in mind, with the goal
+                of growing into a larger gaming community.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     MISSION
+========================= -->
+
+<section class="container">
+
+    <div class="mission">
+
+        <h2>🚀 Our Mission</h2>
+
+        <p>
+            Our mission is to build a modern gaming platform where
+            players can discover games, explore gaming content and
+            follow new projects without unnecessary complexity.
+            We want Cina Games to become a recognizable name for
+            gamers in Afghanistan and around the world.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VALUES
+========================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <div class="mini">OUR VALUES</div>
+
+        <h2>What We Believe In</h2>
+
+        <p>
+            These principles guide the way we build and improve Cina Games.
+        </p>
+
+    </div>
+
+
+    <div class="values">
+
+        <div class="value">
+
+            <div class="value-number">01</div>
+
+            <div>
+
+                <h3>⚡ Simplicity</h3>
+
+                <p>
+                    Gaming should be easy to access.
+                    We focus on simple navigation and a clean experience.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="value">
+
+            <div class="value-number">02</div>
+
+            <div>
+
+                <h3>🎯 Quality</h3>
+
+                <p>
+                    We want the platform to look professional
+                    and provide useful gaming content.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="value">
+
+            <div class="value-number">03</div>
+
+            <div>
+
+                <h3>🚀 Innovation</h3>
+
+                <p>
+                    We are always looking for new ideas,
+                    features and ways to improve the gaming experience.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="value">
+
+            <div class="value-number">04</div>
+
+            <div>
+
+                <h3>🌍 Community</h3>
+
+                <p>
+                    Cina Games is built for gamers and aims to grow
+                    together with its community.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     JOURNEY
+========================= -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <div class="mini">THE JOURNEY</div>
+
+        <h2>The Future of Cina Games</h2>
+
+        <p>
+            Cina Games is an ongoing project. This is only the beginning.
+        </p>
+
+    </div>
+
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span>PHASE 01</span>
+
+            <h3>🌱 The Beginning</h3>
+
+            <p>
+                Cina Games started as an idea to create a gaming-focused
+                platform with a clean and simple design.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span>PHASE 02</span>
+
+            <h3>🎮 Growing The Platform</h3>
+
+            <p>
+                More gaming pages, content, tools and features are being
+                developed to make the website more useful for gamers.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span>PHASE 03</span>
+
+            <h3>🔥 Original Projects</h3>
+
+            <p>
+                Cina Games is also working toward creating and presenting
+                original gaming projects, including the upcoming
+                Ciner project.
+            </p>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-dot"></div>
+
+            <span>FUTURE</span>
+
+            <h3>🌍 A Bigger Gaming Platform</h3>
+
+            <p>
+                The long-term vision is to grow Cina Games into a complete
+                gaming platform with games, projects, community features
+                and much more.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CTA
+========================= -->
+
+<section class="container">
+
+    <div class="cta">
+
+        <h2>Ready To Explore?</h2>
+
+        <p>
+            Discover what Cina Games has to offer.
+        </p>
+
+        <a href="index.html" class="btn">
+            🏠 Back To Home
+        </a>
+
+        <a href="games.html" class="btn secondary">
+            🎮 Explore Games
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
-© 2026 Cina Games | All Rights Reserved
+
+    <div class="footer-logo">
+        🎮 CINA GAMES
+    </div>
+
+    <p>
+        Gaming. Creativity. Innovation.
+    </p>
+
+    <div class="footer-links">
+
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="about.html">About</a>
+
+    </div>
+
+    <p>
+        © 2026 Cina Games. All Rights Reserved.
+    </p>
+
 </footer>
 
 </body>
