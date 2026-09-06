@@ -2,3902 +2,2064 @@
 <html lang="en" dir="ltr">
 <head>
 
-  <!-- =========================================================
-       CINA GAMES — GAMES STORE
-       ========================================================= -->
-
-  <script src="https://pl30263055.effectivecpmnetwork.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
-
-  <!-- Second Ad Script -->
-  <script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
-
-  <script>
-    const savedTheme = localStorage.getItem('cina_theme');
-
-    if (savedTheme) {
-      document.documentElement.style.setProperty('--accent-color', savedTheme);
-    }
-  </script>
-
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Cina Games - Download Android & PC Games Free</title>
-
-  <style>
-
-    :root {
-      --accent-color: #00ff99;
-      --bg-main: #050505;
-      --card-bg: rgba(255,255,255,0.055);
-      --text-main: #ffffff;
-      --text-soft: #999;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background: #000;
-    }
-
-    body {
-      font-family: Arial, sans-serif;
-      color: white;
-      margin: 0;
-      padding-bottom: 100px;
-
-      background:
-        radial-gradient(
-          circle at 50% -10%,
-          rgba(0,255,153,.15),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 0% 40%,
-          rgba(0,150,255,.06),
-          transparent 30%
-        ),
-        radial-gradient(
-          circle at 100% 70%,
-          rgba(150,0,255,.07),
-          transparent 30%
-        ),
-        linear-gradient(
-          135deg,
-          #0b0b0b,
-          #030303,
-          #000
-        );
-
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-
-      background-image:
-        linear-gradient(
-          rgba(0,255,153,.025) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(0,255,153,.025) 1px,
-          transparent 1px
-        );
-
-      background-size: 45px 45px;
-
-      mask-image:
-        linear-gradient(
-          to bottom,
-          black,
-          transparent 90%
-        );
-    }
-
-    body::after {
-      content: "";
-      position: fixed;
-
-      width: 300px;
-      height: 300px;
-
-      border-radius: 50%;
-
-      top: 10%;
-      left: 50%;
-
-      transform: translateX(-50%);
-
-      background:
-        rgba(0,255,153,.035);
-
-      filter: blur(100px);
-
-      pointer-events: none;
-
-      z-index: -1;
-    }
-
-    /* =========================================================
-       NAVBAR
-       ========================================================= */
-
-    .navbar {
-
-      display: flex;
-
-      justify-content: space-between;
-      align-items: center;
-
-      background:
-        rgba(5,8,8,.82);
-
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-
-      padding: 13px 16px;
-
-      position: sticky;
-      top: 0;
-
-      border-bottom:
-        1px solid rgba(0,255,153,.22);
-
-      z-index: 1000;
-
-      box-shadow:
-        0 10px 35px rgba(0,0,0,.5);
-    }
-
-    .logo {
-
-      color: white;
-
-      font-weight: 900;
-
-      font-size: 17px;
-
-      text-shadow:
-        0 0 8px rgba(0,255,153,.8),
-        0 0 20px rgba(0,255,153,.3);
-
-      letter-spacing: .3px;
-    }
-
-    .links a {
-
-      color: white;
-
-      text-decoration: none;
-
-      margin-right: 10px;
-
-      font-size: 13px;
-
-      position: relative;
-
-      transition: .3s;
-    }
-
-    .links a:hover {
-      color: var(--accent-color);
-    }
-
-    .links a::after {
-
-      content: "";
-
-      position: absolute;
-
-      left: 50%;
-      bottom: -6px;
-
-      width: 0;
-      height: 2px;
-
-      background:
-        var(--accent-color);
-
-      transform:
-        translateX(-50%);
-
-      box-shadow:
-        0 0 8px var(--accent-color);
-
-      transition: .3s;
-    }
-
-    .links a:hover::after {
-      width: 70%;
-    }
-
-    /* =========================================================
-       TITLE
-       ========================================================= */
-
-    h1 {
-
-      text-align: center;
-
-      padding:
-        30px 10px 5px;
-
-      color: white;
-
-      font-size:
-        clamp(30px,7vw,48px);
-
-      font-weight: 900;
-
-      text-shadow:
-        0 0 8px rgba(0,255,153,.9),
-        0 0 25px rgba(0,255,153,.35);
-
-      margin: 0;
-    }
-
-    h1::after {
-
-      content:
-        "THE NEXT LEVEL OF GAMING";
-
-      display: block;
-
-      margin-top: 8px;
-
-      color: #666;
-
-      font-size: 9px;
-
-      letter-spacing: 4px;
-
-      text-shadow: none;
-    }
-
-    /* =========================================================
-       AD
-       ========================================================= */
-
-    .top-ad {
-
-      text-align: center;
-
-      margin:
-        18px 0;
-    }
-
-    /* =========================================================
-       FEATURED
-       ========================================================= */
-
-    .featured-label {
-
-      text-align: center;
-
-      margin:
-        10px 0;
-    }
-
-    .featured-label span {
-
-      display: inline-block;
-
-      background:
-        linear-gradient(
-          135deg,
-          #ffd700,
-          #ffad00
-        );
-
-      color: #000;
-
-      padding:
-        5px 10px;
-
-      border-radius: 7px;
-
-      font-weight: 900;
-
-      font-size: 11px;
-
-      box-shadow:
-        0 0 18px
-        rgba(255,215,0,.25);
-    }
-
-    .new-games {
-
-      text-align: center;
-
-      color:
-        var(--accent-color);
-
-      font-size: 12px;
-
-      margin-bottom: 14px;
-
-      letter-spacing: 1px;
-    }
-
-    /* =========================================================
-       SEARCH
-       ========================================================= */
-
-    .search-box {
-
-      position: relative;
-
-      text-align: center;
-
-      margin:
-        22px auto 14px;
-
-      max-width: 650px;
-
-      padding:
-        0 15px;
-    }
-
-    .search-box::before {
-
-      content:
-        "GAME SEARCH";
-
-      display: block;
-
-      text-align: left;
-
-      margin:
-        0 0 7px 4px;
-
-      color: #666;
-
-      font-size: 8px;
-
-      font-weight: bold;
-
-      letter-spacing: 3px;
-    }
-
-    .search-box input {
-
-      padding:
-        0 18px;
-
-      width: 100%;
-
-      height: 48px;
-
-      border-radius: 14px;
-
-      border:
-        1px solid
-        rgba(0,255,153,.18);
-
-      outline: none;
-
-      background:
-        rgba(255,255,255,.055);
-
-      color: white;
-
-      box-shadow:
-        0 0 20px
-        rgba(0,255,153,.04);
-
-      transition: .3s;
-
-      font-size: 13px;
-    }
-
-    .search-box input::placeholder {
-      color: #777;
-    }
-
-    .search-box input:focus {
-
-      border-color:
-        rgba(0,255,153,.65);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(0,255,153,.05),
-
-        0 0 25px
-        rgba(0,255,153,.12);
-    }
-
-    /* =========================================================
-       CATEGORIES
-       ========================================================= */
-
-    .categories {
-
-      text-align: center;
-
-      margin:
-        12px auto 20px;
-
-      padding:
-        0 8px;
-
-      max-width: 950px;
-    }
-
-    .categories button {
-
-      padding:
-        8px 14px;
-
-      margin: 3px;
-
-      border:
-        none;
-
-      border-radius:
-        999px;
-
-      background:
-        linear-gradient(
-          135deg,
-          #00ff99,
-          #00bd78
-        );
-
-      color:
-        #000;
-
-      font-weight:
-        bold;
-
-      font-size:
-        11px;
-
-      cursor:
-        pointer;
-
-      transition:
-        .25s;
-
-      box-shadow:
-        0 4px 15px
-        rgba(0,0,0,.3);
-    }
-
-    .categories button:hover {
-
-      transform:
-        translateY(-2px)
-        scale(1.03);
-
-      box-shadow:
-        0 7px 20px
-        rgba(0,255,153,.2);
-    }
-
-    /* =========================================================
-       GAME CONTAINER
-       ========================================================= */
-
-    .container {
-
-      display:
-        grid;
-
-      grid-template-columns:
-        repeat(2,1fr);
-
-      gap:
-        12px;
-
-      padding:
-        10px;
-
-      max-width:
-        1280px;
-
-      margin:
-        0 auto;
-    }
-
-    /* =========================================================
-       GAME CARD
-       ========================================================= */
-
-    .card {
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-
-      background:
-        linear-gradient(
-          145deg,
-          rgba(255,255,255,.075),
-          rgba(255,255,255,.025)
-        );
-
-      backdrop-filter:
-        blur(14px);
-
-      -webkit-backdrop-filter:
-        blur(14px);
-
-      border:
-        1px solid
-        rgba(255,255,255,.08);
-
-      border-radius:
-        16px;
-
-      display:
-        flex;
-
-      flex-direction:
-        column;
-
-      box-shadow:
-        0 10px 30px
-        rgba(0,0,0,.3);
-
-      transition:
-        transform .35s,
-        border-color .35s,
-        box-shadow .35s;
-
-      animation:
-        cardReveal .6s ease both;
-    }
-
-    .card:hover {
-
-      transform:
-        translateY(-7px);
-
-      border-color:
-        rgba(0,255,153,.45);
-
-      box-shadow:
-        0 18px 45px
-        rgba(0,0,0,.5),
-
-        0 0 25px
-        rgba(0,255,153,.08);
-    }
-
-    .card img {
-
-      width: 100%;
-
-      height: 125px;
-
-      object-fit: cover;
-
-      display: block;
-
-      transition:
-        transform .5s,
-        filter .35s;
-    }
-
-    .card:hover img {
-
-      transform:
-        scale(1.05);
-
-      filter:
-        brightness(1.08)
-        saturate(1.1);
-    }
-
-    /* =========================================================
-       CARD TITLE
-       ========================================================= */
-
-    .card h3 {
-
-      margin:
-        10px 9px 4px;
-
-      font-size:
-        13px;
-
-      font-weight:
-        900;
-
-      white-space:
-        nowrap;
-
-      overflow:
-        hidden;
-
-      text-overflow:
-        ellipsis;
-
-      color:
-        #fff;
-    }
-
-    .card h3::before {
-
-      content: "";
-
-      display:
-        inline-block;
-
-      width:
-        3px;
-
-      height:
-        13px;
-
-      margin-right:
-        6px;
-
-      vertical-align:
-        -2px;
-
-      border-radius:
-        5px;
-
-      background:
-        var(--accent-color);
-
-      box-shadow:
-        0 0 8px
-        rgba(0,255,153,.5);
-    }
-
-    /* =========================================================
-       RATING
-       ========================================================= */
-
-    .rating {
-
-      margin:
-        0 9px 5px;
-
-      font-size:
-        10px;
-
-      color:
-        #aaa;
-    }
-
-    /* =========================================================
-       INFO
-       ========================================================= */
-
-    .info-row {
-
-      margin:
-        0 9px 8px;
-
-      display:
-        flex;
-
-      gap:
-        4px;
-
-      flex-wrap:
-        wrap;
-    }
-
-    .game-status,
-    .game-size,
-    .req-tag {
-
-      display:
-        inline-block;
-
-      padding:
-        4px 6px;
-
-      border-radius:
-        6px;
-
-      font-size:
-        8px;
-
-      font-weight:
-        bold;
-
-      text-align:
-        center;
-
-      border:
-        1px solid
-        rgba(255,255,255,.08);
-    }
-
-    .status-offline {
-
-      background:
-        rgba(0,255,153,.13);
-
-      color:
-        #00ff99;
-    }
-
-    .status-online {
-
-      background:
-        rgba(0,204,255,.13);
-
-      color:
-        #00ccff;
-    }
-
-    .game-size {
-
-      background:
-        rgba(255,255,255,.07);
-
-      color:
-        #ccc;
-    }
-
-    .req-low {
-
-      background:
-        rgba(34,197,94,.14);
-
-      color:
-        #4ade80;
-    }
-
-    .req-med,
-    .req-medium {
-
-      background:
-        rgba(234,179,8,.14);
-
-      color:
-        #facc15;
-    }
-
-    .req-high {
-
-      background:
-        rgba(239,68,68,.14);
-
-      color:
-        #ff6b6b;
-    }
-
-    /* =========================================================
-       DESCRIPTION
-       ========================================================= */
-
-    .card p {
-
-      font-size:
-        10px;
-
-      color:
-        #999;
-
-      margin:
-        0 9px 10px;
-
-      line-height:
-        1.5;
-
-      display:
-        -webkit-box;
-
-      -webkit-line-clamp:
-        2;
-
-      -webkit-box-orient:
-        vertical;
-
-      overflow:
-        hidden;
-
-      flex-grow:
-        1;
-    }
-
-    /* =========================================================
-       BUTTONS
-       ========================================================= */
-
-    .btn,
-    .btn-yt {
-
-      display:
-        flex;
-
-      align-items:
-        center;
-
-      justify-content:
-        center;
-
-      margin:
-        4px 7px;
-
-      min-height:
-        32px;
-
-      padding:
-        6px 4px;
-
-      color:
-        #000;
-
-      text-decoration:
-        none;
-
-      border-radius:
-        9px;
-
-      font-weight:
-        bold;
-
-      font-size:
-        10px;
-
-      text-align:
-        center;
-
-      transition:
-        .25s;
-
-      position:
-        relative;
-
-      overflow:
-        hidden;
-    }
-
-    .btn {
-
-      background:
-        linear-gradient(
-          135deg,
-          #00ff99,
-          #00c878
-        );
-
-      box-shadow:
-        0 5px 15px
-        rgba(0,255,153,.1);
-    }
-
-    .btn-yt {
-
-      background:
-        linear-gradient(
-          135deg,
-          #ff3838,
-          #b90000
-        );
-
-      color:
-        white;
-
-      box-shadow:
-        0 5px 15px
-        rgba(255,0,0,.1);
-    }
-
-    .btn:hover,
-    .btn-yt:hover {
-
-      transform:
-        translateY(-2px);
-
-      filter:
-        brightness(1.08);
-    }
-
-    .card .btn:last-child,
-    .card .btn-yt:last-child {
-
-      margin-bottom:
-        9px;
-    }
-
-    /* =========================================================
-       FIXED BUTTONS
-       ========================================================= */
-
-    .fixed-btn {
-
-      position:
-        fixed;
-
-      bottom:
-        76px;
-
-      padding:
-        10px 14px;
-
-      border-radius:
-        10px;
-
-      font-size:
-        12px;
-
-      font-weight:
-        bold;
-
-      text-decoration:
-        none;
-
-      box-shadow:
-        0 5px 20px
-        rgba(0,0,0,.5);
-
-      z-index:
-        999;
-
-      transition:
-        .3s;
-    }
-
-    .fixed-btn:hover {
-
-      transform:
-        translateY(-3px);
-
-      filter:
-        brightness(1.1);
-    }
-
-    /* =========================================================
-       BOTTOM NAVIGATION
-       ========================================================= */
-
-    .bottom-nav {
-
-      position:
-        fixed;
-
-      bottom:
-        0;
-
-      left:
-        0;
-
-      width:
-        100%;
-
-      background:
-        rgba(5,8,8,.95);
-
-      backdrop-filter:
-        blur(20px);
-
-      -webkit-backdrop-filter:
-        blur(20px);
-
-      border-top:
-        1px solid
-        rgba(64,224,208,.35);
-
-      display:
-        flex;
-
-      justify-content:
-        space-around;
-
-      align-items:
-        center;
-
-      padding:
-        10px 0;
-
-      z-index:
-        9999;
-
-      box-shadow:
-        0 -8px 30px
-        rgba(0,0,0,.7);
-    }
-
-    .nav-item {
-
-      color:
-        #40E0D0;
-
-      text-decoration:
-        none;
-
-      font-size:
-        11px;
-
-      font-weight:
-        bold;
-
-      padding:
-        8px 14px;
-
-      border-radius:
-        20px;
-
-      transition:
-        .3s;
-
-      border:
-        1px solid
-        rgba(64,224,208,.3);
-
-      background:
-        rgba(64,224,208,.02);
-    }
-
-    .nav-item.active,
-    .nav-item:hover {
-
-      background:
-        #40E0D0;
-
-      color:
-        #000;
-
-      box-shadow:
-        0 0 18px
-        rgba(64,224,208,.4);
-
-      transform:
-        translateY(-2px);
-    }
-
-    /* =========================================================
-       BADGES
-       ========================================================= */
-
-    .game-badge {
-
-      margin:
-        8px 8px 0;
-
-      padding:
-        5px 7px;
-
-      border-radius:
-        6px;
-
-      background:
-        rgba(255,215,0,.13);
-
-      color:
-        #ffd700;
-
-      border:
-        1px solid
-        rgba(255,215,0,.15);
-
-      font-size:
-        8px;
-
-      font-weight:
-        bold;
-
-      text-align:
-        center;
-    }
-
-    .game-badge.new {
-
-      background:
-        rgba(0,255,153,.12);
-
-      color:
-        #00ff99;
-
-      border-color:
-        rgba(0,255,153,.18);
-    }
-
-    /* =========================================================
-       ANIMATION
-       ========================================================= */
-
-    @keyframes cardReveal {
-
-      from {
-
-        opacity:
-          0;
-
-        transform:
-          translateY(18px);
-      }
-
-      to {
-
-        opacity:
-          1;
-
-        transform:
-          translateY(0);
-      }
-    }
-
-    .card:nth-child(2) {
-      animation-delay: .03s;
-    }
-
-    .card:nth-child(3) {
-      animation-delay: .06s;
-    }
-
-    .card:nth-child(4) {
-      animation-delay: .09s;
-    }
-
-    .card:nth-child(5) {
-      animation-delay: .12s;
-    }
-
-    .card:nth-child(6) {
-      animation-delay: .15s;
-    }
-
-    .card:nth-child(7) {
-      animation-delay: .18s;
-    }
-
-    .card:nth-child(8) {
-      animation-delay: .21s;
-    }
-
-    /* =========================================================
-       SCROLLBAR
-       ========================================================= */
-
-    ::-webkit-scrollbar {
-      width: 7px;
-    }
-
-    ::-webkit-scrollbar-track {
-      background: #030303;
-    }
-
-    ::-webkit-scrollbar-thumb {
-
-      background:
-        linear-gradient(
-          #00ff99,
-          #008f68
-        );
-
-      border-radius:
-        10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-      background: #00ff99;
-    }
-
-    ::selection {
-
-      background:
-        rgba(0,255,153,.25);
-
-      color:
-        white;
-    }
-
-    /* =========================================================
-       DESKTOP
-       ========================================================= */
-
-    @media (min-width:768px) {
-
-      .container {
-
-        grid-template-columns:
-          repeat(
-            auto-fill,
-            minmax(245px,1fr)
-          );
-
-        gap:
-          18px;
-
-        padding:
-          20px;
-      }
-
-      .card img {
-        height:
-          170px;
-      }
-
-      .card h3 {
-        font-size:
-          15px;
-      }
-
-      .card p {
-        font-size:
-          11px;
-      }
-    }
-
-    @media (min-width:1200px) {
-
-      .container {
-
-        grid-template-columns:
-          repeat(
-            auto-fill,
-            minmax(270px,1fr)
-          );
-
-        gap:
-          20px;
-      }
-
-      .card img {
-        height:
-          185px;
-      }
-    }
-
-    /* =========================================================
-       MOBILE
-       ========================================================= */
-
-    @media (max-width:767px) {
-
-      .navbar {
-        padding:
-          11px 12px;
-      }
-
-      .logo {
-        font-size:
-          14px;
-      }
-
-      .links a {
-
-        font-size:
-          10px;
-
-        margin-right:
-          6px;
-      }
-
-      h1 {
-        font-size:
-          30px;
-      }
-
-      h1::after {
-
-        font-size:
-          7px;
-
-        letter-spacing:
-          2.5px;
-      }
-
-      .container {
-
-        grid-template-columns:
-          repeat(2,minmax(0,1fr));
-
-        gap:
-          9px;
-
-        padding:
-          9px;
-      }
-
-      .card {
-
-        border-radius:
-          13px;
-      }
-
-      .card img {
-
-        height:
-          120px;
-      }
-
-      .card h3 {
-
-        font-size:
-          11px;
-
-        margin:
-          9px 7px 4px;
-      }
-
-      .card p {
-
-        font-size:
-          9px;
-
-        margin:
-          0 7px 9px;
-      }
-
-      .rating {
-
-        font-size:
-          8px;
-
-        margin-left:
-          7px;
-
-        margin-right:
-          7px;
-      }
-
-      .info-row {
-
-        margin-left:
-          7px;
-
-        margin-right:
-          7px;
-
-        gap:
-          3px;
-      }
-
-      .game-status,
-      .game-size,
-      .req-tag {
-
-        font-size:
-          7px;
-
-        padding:
-          3px 5px;
-      }
-
-      .btn,
-      .btn-yt {
-
-        font-size:
-          8px;
-
-        min-height:
-          29px;
-
-        margin:
-          4px 5px;
-      }
-
-      .fixed-btn {
-
-        bottom:
-          72px;
-
-        padding:
-          8px 10px;
-
-        font-size:
-          10px;
-      }
-
-      .nav-item {
-
-        font-size:
-          9px;
-
-        padding:
-          7px 10px;
-      }
-    }
-
-  </style>
-
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+<script src="https://pl30263055.effectivecpmnetwork.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
+
+<script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
+
+<script>
+const savedTheme = localStorage.getItem('cina_theme');
+if(savedTheme){
+  document.documentElement.style.setProperty('--accent-color',savedTheme);
+}
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cina Games - Download Android & PC Games Free</title>
+
+<style>
+
+:root{
+  --accent-color:#00ff99;
+  --cyan:#40E0D0;
+  --purple:#8A2BE2;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,sans-serif;
+  color:white;
+  margin:0;
+  min-height:100vh;
+  background:
+    radial-gradient(circle at 15% 0%,rgba(0,255,153,.12),transparent 28%),
+    radial-gradient(circle at 90% 8%,rgba(138,43,226,.14),transparent 30%),
+    linear-gradient(135deg,#050507,#0b0c12,#020203);
+  padding-bottom:90px;
+}
+
+/* ================= NAVBAR ================= */
+
+.navbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(5,5,8,.92);
+  backdrop-filter:blur(15px);
+  -webkit-backdrop-filter:blur(15px);
+  padding:14px 18px;
+  position:sticky;
+  top:0;
+  border-bottom:1px solid rgba(0,255,153,.22);
+  z-index:1000;
+  box-shadow:0 8px 30px rgba(0,0,0,.35);
+}
+
+.logo{
+  color:#00ff99;
+  font-weight:900;
+  font-size:17px;
+  text-shadow:0 0 14px rgba(0,255,153,.5);
+}
+
+.links{
+  display:flex;
+  gap:5px;
+}
+
+.links a{
+  color:#ddd;
+  text-decoration:none;
+  font-size:13px;
+  font-weight:bold;
+  padding:7px 9px;
+  border-radius:8px;
+  transition:.25s;
+}
+
+.links a:hover{
+  color:#00ff99;
+  background:rgba(0,255,153,.08);
+}
+
+/* ================= TITLE ================= */
+
+h1{
+  text-align:center;
+  padding:28px 10px 7px;
+  margin:0;
+  color:white;
+  font-size:30px;
+  font-weight:900;
+  text-shadow:
+    0 0 10px rgba(0,255,153,.5),
+    0 0 30px rgba(0,255,153,.15);
+}
+
+h1::after{
+  content:"";
+  display:block;
+  width:75px;
+  height:3px;
+  margin:11px auto 0;
+  border-radius:20px;
+  background:linear-gradient(90deg,#00ff99,#40E0D0,#8A2BE2);
+  box-shadow:0 0 14px rgba(0,255,153,.6);
+}
+
+/* ================= FEATURE ================= */
+
+.feature-label{
+  text-align:center;
+  margin:10px 5px 4px;
+}
+
+.feature-label span{
+  display:inline-block;
+  background:linear-gradient(135deg,#FFD700,#ff9f00);
+  color:#080808;
+  padding:6px 12px;
+  border-radius:20px;
+  font-weight:900;
+  font-size:11px;
+  box-shadow:0 0 18px rgba(255,215,0,.18);
+}
+
+.weekly{
+  text-align:center;
+  color:#00ff99;
+  font-size:12px;
+  margin:7px 0 15px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box{
+  text-align:center;
+  margin:15px;
+}
+
+.search-box input{
+  padding:13px 17px;
+  width:92%;
+  max-width:540px;
+  border-radius:15px;
+  border:1px solid rgba(0,255,153,.25);
+  outline:none;
+  background:rgba(17,18,24,.95);
+  color:white;
+  font-size:14px;
+  box-shadow:0 8px 25px rgba(0,0,0,.35);
+  transition:.25s;
+}
+
+.search-box input::placeholder{
+  color:#777;
+}
+
+.search-box input:focus{
+  border-color:#00ff99;
+  box-shadow:
+    0 0 0 3px rgba(0,255,153,.08),
+    0 0 25px rgba(0,255,153,.18);
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+  text-align:center;
+  margin:8px auto 18px;
+  padding:0 8px;
+  max-width:1100px;
+}
+
+.categories button{
+  padding:8px 13px;
+  margin:4px 2px;
+  border:1px solid rgba(0,255,153,.22);
+  border-radius:10px;
+  background:linear-gradient(135deg,#00ff99,#00bd76);
+  color:#03130d;
+  font-weight:900;
+  font-size:11px;
+  cursor:pointer;
+  transition:.25s;
+}
+
+.categories button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,255,153,.2);
+}
+
+/* ================= CARD GRID ================= */
+
+.container{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:14px;
+  padding:10px;
+  max-width:1400px;
+  margin:auto;
+}
+
+@media(min-width:650px){
+  .container{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:17px;
+    padding:18px;
+  }
+}
+
+@media(min-width:1000px){
+  .container{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:20px;
+    padding:22px;
+  }
+}
+
+/* ================= GAME CARD ================= */
+
+.card{
+  position:relative;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),
+    #0c0d12;
+  border:1px solid rgba(255,255,255,.09);
+  border-radius:18px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  min-width:0;
+  box-shadow:
+    0 12px 30px rgba(0,0,0,.4),
+    inset 0 1px 0 rgba(255,255,255,.03);
+  transition:.3s ease;
+}
+
+.card::after{
+  content:"";
+  position:absolute;
+  width:100px;
+  height:100px;
+  right:-50px;
+  top:-50px;
+  border-radius:50%;
+  background:#00ff99;
+  opacity:.06;
+  filter:blur(8px);
+  pointer-events:none;
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(0,255,153,.55);
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.55),
+    0 0 28px rgba(0,255,153,.08);
+}
+
+/* ================= GAME IMAGE ================= */
+
+.card img{
+  width:100%;
+  height:145px;
+  object-fit:cover;
+  display:block;
+  background:#07080b;
+  transition:.45s ease;
+}
+
+.card:hover img{
+  transform:scale(1.045);
+  filter:saturate(1.12) contrast(1.05);
+}
+
+@media(max-width:649px){
+  .card img{
+    height:125px;
+  }
+}
+
+@media(min-width:1000px){
+  .card img{
+    height:175px;
+  }
+}
+
+/* ================= CARD TITLE ================= */
+
+.card h3{
+  margin:12px 11px 5px;
+  font-size:14px;
+  line-height:1.3;
+  font-weight:900;
+  color:white;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* ================= RATING ================= */
+
+.rating{
+  margin:0 11px 8px;
+  font-size:10px;
+  color:#aaa;
+  min-height:15px;
+}
+
+/* ================= INFO ================= */
+
+.info-row{
+  margin:0 10px 9px;
+  display:flex;
+  gap:5px;
+  flex-wrap:wrap;
+}
+
+.game-status,
+.game-size,
+.req-tag{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:4px 6px;
+  border-radius:6px;
+  font-size:8px;
+  font-weight:900;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+.status-offline{
+  background:rgba(0,255,153,.13);
+  color:#00ff99;
+}
+
+.status-online{
+  background:rgba(0,204,255,.13);
+  color:#00ccff;
+}
+
+.game-size{
+  background:rgba(255,255,255,.07);
+  color:#ddd;
+}
+
+.req-low{
+  background:rgba(34,197,94,.14);
+  color:#4ade80;
+}
+
+.req-med,
+.req-medium{
+  background:rgba(234,179,8,.14);
+  color:#facc15;
+}
+
+.req-high{
+  background:rgba(239,68,68,.14);
+  color:#f87171;
+}
+
+/* ================= DESCRIPTION ================= */
+
+.card p{
+  font-size:10.5px;
+  color:#a9adb7;
+  margin:0 11px 11px;
+  line-height:1.55;
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  flex-grow:1;
+}
+
+/* ================= BUTTONS ================= */
+
+.btn{
+  display:block;
+  margin:4px 9px;
+  padding:9px 5px;
+  background:linear-gradient(135deg,#00ff99,#00c978);
+  color:#03120c;
+  text-decoration:none;
+  border-radius:9px;
+  font-weight:900;
+  font-size:10px;
+  text-align:center;
+  border:1px solid rgba(0,255,153,.2);
+  transition:.25s;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(0,255,153,.18);
+}
+
+.btn-yt{
+  display:block;
+  margin:4px 9px;
+  padding:9px 5px;
+  background:linear-gradient(135deg,#ff3b3b,#b90000);
+  color:white;
+  text-decoration:none;
+  border-radius:9px;
+  font-weight:900;
+  font-size:10px;
+  text-align:center;
+  transition:.25s;
+}
+
+.btn-yt:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px rgba(255,0,0,.2);
+}
+
+.card .btn:last-child,
+.card .btn-yt:last-child{
+  margin-bottom:11px;
+}
+
+/* ================= FLOATING BUTTONS ================= */
+
+.fixed-btn{
+  position:fixed;
+  bottom:75px;
+  padding:10px 14px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:bold;
+  text-decoration:none;
+  box-shadow:0 5px 18px rgba(0,0,0,.45);
+  z-index:999;
+  transition:.25s;
+}
+
+.fixed-btn:hover{
+  transform:translateY(-3px);
+}
+
+@media(max-width:500px){
+  .fixed-btn{
+    font-size:11px;
+    padding:9px 11px;
+  }
+}
+
+/* =========================================================
+   BOTTOM NAVIGATION
+   ORIGINAL SIZE AND STYLE
+   ========================================================= */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  width:100%;
+  background:rgba(10,10,10,.95);
+  backdrop-filter:blur(10px);
+  border-top:1px solid #40E0D0;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  padding:10px 0;
+  z-index:9999;
+  box-shadow:0 -5px 20px rgba(0,0,0,.8);
+}
+
+.nav-item{
+  color:#40E0D0;
+  text-decoration:none;
+  font-size:15px;
+  font-weight:bold;
+  padding:8px 18px;
+  border-radius:20px;
+  transition:all .3s ease;
+  border:1px solid #40E0D0;
+  box-shadow:0 0 10px rgba(64,224,208,.3);
+}
+
+.nav-item.active,
+.nav-item:hover{
+  background:#40E0D0;
+  color:#000;
+  box-shadow:0 0 15px rgba(64,224,208,.6);
+}
+
+/* ================= SCROLLBAR ================= */
+
+::-webkit-scrollbar{
+  width:7px;
+}
+
+::-webkit-scrollbar-track{
+  background:#050507;
+}
+
+::-webkit-scrollbar-thumb{
+  background:linear-gradient(#00ff99,#40E0D0);
+  border-radius:20px;
+}
+
+::selection{
+  background:#00ff99;
+  color:#000;
+}
+
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
 
 </head>
 
 <body>
 
-  <!-- =========================================================
-       NAVBAR
-       ========================================================= -->
+<!-- NAVBAR -->
 
-  <nav class="navbar">
+<nav class="navbar">
 
-    <div class="logo">
-      🎮 Cina Games
-    </div>
+<div class="logo">
+🎮 Cina Games
+</div>
 
-    <div class="links">
+<div class="links">
+<a href="index.html">Home</a>
+<a href="games.html">Games</a>
+<a href="contact.html">Contact</a>
+</div>
 
-      <a href="index.html">
-        Home
-      </a>
+</nav>
 
-      <a href="games.html">
-        Games
-      </a>
 
-      <a href="contact.html">
-        Contact
-      </a>
+<h1>🎮 Cina Games Store</h1>
 
-    </div>
 
-  </nav>
+<!-- AD -->
 
-  <!-- =========================================================
-       TITLE
-       ========================================================= -->
+<div style="text-align:center;margin:15px 0;">
 
-  <h1>
-    🎮 Cina Games Store
-  </h1>
+<script>
 
-  <!-- =========================================================
-       AD
-       ========================================================= -->
+atOptions={
+'key':'ef860086d3acfd8fb188ea50dc15430c',
+'format':'iframe',
+'height':250,
+'width':300,
+'params':{}
+};
 
-  <div class="top-ad">
+</script>
 
-    <script>
-      atOptions = {
-        'key' : 'ef860086d3acfd8fb188ea50dc15430c',
-        'format' : 'iframe',
-        'height' : 250,
-        'width' : 300,
-        'params' : {}
-      };
-    </script>
+<script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script>
 
-    <script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script>
+</div>
 
-  </div>
 
-  <!-- =========================================================
-       FEATURED
-       ========================================================= -->
+<div class="feature-label">
+<span>🔥 Featured Section</span>
+</div>
 
-  <div class="featured-label">
+<div class="weekly">
+⭐ New games added every week
+</div>
 
-    <span>
-      🔥 Featured Section
-    </span>
 
-  </div>
+<!-- SEARCH -->
 
-  <div class="new-games">
+<div class="search-box">
 
-    ⭐ New games added every week
+<input
+type="text"
+id="searchInput"
+placeholder="🔍 Search games..."
+/>
 
-  </div>
+</div>
 
-  <!-- =========================================================
-       SEARCH
-       ========================================================= -->
 
-  <div class="search-box">
+<!-- CATEGORIES -->
 
-    <input
-      type="text"
-      id="searchInput"
-      placeholder="🔍 Search games..."
-    />
+<div class="categories">
 
-  </div>
+<button onclick="filterGames('all')">
+All
+</button>
 
-  <!-- =========================================================
-       CATEGORIES
-       ========================================================= -->
+<button onclick="filterGames('action')">
+Action
+</button>
 
-  <div class="categories">
+<button onclick="filterGames('openworld')">
+Open World
+</button>
 
-    <button onclick="filterGames('all')">
-      All
-    </button>
+<button onclick="filterGames('sports')">
+Sports
+</button>
 
-    <button onclick="filterGames('action')">
-      Action
-    </button>
-
-    <button onclick="filterGames('openworld')">
-      Open World
-    </button>
-
-    <button onclick="filterGames('sports')">
-      Sports
-    </button>
-
-    <button
-      onclick="filterGames('lite')"
-      style="
-        background:
-        linear-gradient(
-          90deg,
-          #22c55e,
-          #16a34a
-        );
-        color:white;
-      "
-    >
-      ⚡ For Low-End Phones
-    </button>
+<button
+onclick="filterGames('lite')"
+style="background:linear-gradient(90deg,#22c55e,#16a34a);color:white;"
+>
+⚡ For Low-End Phones
+</button>
 
-  </div>
-
-  <!-- =========================================================
-       GAME GRID
-       ========================================================= -->
-
-  <div class="container">
+</div>
 
-    <!-- =======================================================
-         1. GTA SAN ANDREAS REMASTERED
-         ======================================================= -->
 
-    <div class="card action openworld">
+<!-- =====================================================
+     GAME CARDS
+     ===================================================== -->
 
-      <img
-        src="images/gta-sa-remastered.jpg"
-        alt="GTA San Andreas Remastered"
-      >
-
-      <div class="game-badge">
-        🔥 Advanced Open World Game
-      </div>
-
-      <h3>
-        GTA San Andreas Remastered
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.8/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
-
-        <span class="game-size">
-          💾 5 GB
-        </span>
-
-        <span class="req-tag req-medium">
-          🟡 Medium Phone
-        </span>
-
-      </div>
-
-      <p>
-        Enhanced graphics and classic GTA San Andreas gameplay experience.
-      </p>
-
-      <a
-        href="gta-sa-remastered.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="container">
 
-      <a
-        href="https://apkaward.com/gta-sa-remastered-graphics-for-gta-v"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
 
-    </div>
-
+<!-- GTA SAN ANDREAS REMASTERED -->
 
-    <!-- =======================================================
-         2. DARK STREET 2
-         ======================================================= -->
+<div class="card action">
 
-    <div class="card action openworld lite">
+<div style="background:#8A2BE2;color:white;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🌆 Advanced Open World Game
+</div>
 
-      <img
-        src="images/dark-street-2.jpg"
-        alt="Dark Street 2"
-      >
-
-      <div class="game-badge new">
-        🆕 New Open World Game
-      </div>
-
-      <h3>
-        Dark Street 2
-      </h3>
-
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
-
-      <div class="info-row">
+<img src="gta-sa-remastered.jpg" alt="GTA San Andreas Remastered">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<h3>GTA San Andreas Remastered</h3>
 
-        <span class="game-size">
-          💾 30 MB
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.8/5)
+</div>
 
-        <span class="req-tag req-low">
-          🟢 Low-End Phones
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 5 GB</span>
+<span class="req-tag req-medium">🟡 Medium Phone</span>
+</div>
 
-      </div>
-
-      <p>
-        A compact open-world action game from Cina Games.
-      </p>
-
-      <a
-        href="dark-street-2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<p>
+GTA San Andreas Remastered is an enhanced and updated version of the famous open world game, offering an amazing experience on Android with better graphics, stunning environment, vehicles, diverse missions, and a massive open world.
+Medium-level phone recommended for smooth gameplay.
+</p>
 
-      <a
-        href="https://www.mediafire.com/file/dezuthzmm3znicg/Dark_Streets_2_1.0.apk/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download APK
-      </a>
+<a class="btn" href="https://apkaward.com/gta-sa-remastered-graphics-for-gta-v" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    </div>
+<a href="gta-sa-remastered.html" class="btn">
+📖 Open Page
+</a>
 
+</div>
 
-    <!-- =======================================================
-         3. PROTOTYPE 1
-         ======================================================= -->
 
-    <div class="card action">
+<!-- DARK STREET 2 -->
 
-      <img
-        src="images/prototype-1.jpg"
-        alt="Prototype 1"
-      >
+<div class="card action">
 
-      <div class="game-badge">
-        🏆 Most Downloaded
-      </div>
-
-      <h3>
-        Prototype 1
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.9/5
-      </div>
+<div style="background:#8A2BE2;color:white;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🌆 New Open World Game
+</div>
 
-      <div class="info-row">
+<img src="dark-street-2.jpg" alt="Dark Street 2">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<h3>Dark Street 2</h3>
 
-        <span class="game-size">
-          💾 5 GB
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5.0/5)
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 30 MB</span>
+<span class="req-tag req-high">🟢 Low-End Phones</span>
+</div>
 
-      </div>
+<p>
+Dark Street 2 is an open world action game featuring neon graphics designed in a Vice City style. Conquer the city nights with super sports cars, exciting missions, police chases, street races, and a massive open world.
+</p>
 
-      <p>
-        Powerful action gameplay with incredible abilities and destruction.
-      </p>
+<a class="btn" href="https://www.mediafire.com/file/dezuthzmm3znicg/Dark_Streets_2_1.0.apk/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <a
-        href="prototype-1.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a href="dark-street-2.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="YOUR_DOWNLOAD_LINK"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+</div>
 
-    </div>
 
+<!-- PROTOTYPE 1 -->
 
-    <!-- =======================================================
-         4. PROTOTYPE 2
-         ======================================================= -->
+<div class="card action">
 
-    <div class="card action">
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <img
-        src="images/prototype-2.jpg"
-        alt="Prototype 2"
-      >
-
-      <h3>
-        Prototype 2
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.8/5
-      </div>
+<img src="prototype-1.jpg" alt="Prototype 1">
 
-      <div class="info-row">
+<h3>Prototype 1</h3>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.9/5)
+</div>
 
-        <span class="game-size">
-          💾 7 GB
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 5 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<p>
+Prototype 1 special version for Winlator Android. Move freely across New York City with special powers as Alex Mercer, run up buildings, climb walls, and engage in thrilling combat against enemies.
+</p>
 
-      </div>
+<a class="btn" href="YOUR_DOWNLOAD_LINK" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <p>
-        Massive action experience with powerful combat abilities.
-      </p>
+<a href="prototype-1.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="prototype-2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+</div>
 
-      <a
-        href="https://www.p30day.ir/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
 
-    </div>
+<!-- PROTOTYPE 2 -->
 
+<div class="card action">
 
-    <!-- =======================================================
-         5. ASSASSIN'S CREED III
-         ======================================================= -->
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    <div class="card action">
+<img src="prototype-2.jpg" alt="Prototype 2">
 
-      <img
-        src="images/assassins-creed-3.jpg"
-        alt="Assassin's Creed III"
-      >
+<h3>Prototype 2</h3>
 
-      <h3>
-        Assassin's Creed III
-      </h3>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.8/5)
+</div>
 
-      <div class="rating">
-        ⭐ 4.8/5
-      </div>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 7 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      <div class="info-row">
+<p>
+Prototype 2 special version for Winlator Android. Fight to get revenge on Alex Mercer as James Heller in New York City. Featuring new powers and stunning graphics.
+</p>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<a class="btn" href="https://www.p30day.ir/%D8%A8%D8%A7%D8%B2%DB%8C-prototype-2-pc-14829.html" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="game-size">
-          💾 7.5 GB
-        </span>
+<a href="prototype-2.html" class="btn">
+📖 Open Page
+</a>
 
-        <span class="req-tag req-high">
-          🔴 Winlator Emulator
-        </span>
+</div>
 
-      </div>
 
-      <p>
-        Assassin action adventure with an open-world experience.
-      </p>
+<!-- ASSASSIN'S CREED III -->
 
-      <a
-        href="assassins-creed-3.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="card action">
 
-      <a
-        href="https://datanodes.to/download"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    </div>
+<img src="assassins-creed-3.jpg" alt="Assassin's Creed III">
 
+<h3>Assassin's Creed III</h3>
 
-    <!-- =======================================================
-         6. VECTOR 2
-         ======================================================= -->
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.8/5)
+</div>
 
-    <div class="card action">
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 7.5 GB</span>
+<span class="req-tag req-high">🔴 Winlator Emulator</span>
+</div>
 
-      <img
-        src="images/vector-2.jpg"
-        alt="Vector 2"
-      >
+<p>
+The epic and legendary game Assassin's Creed III is now ready for offline play on Android using the Winlator emulator. Step into the American Revolution era as Connor Kenway.
+</p>
 
-      <h3>
-        Vector 2
-      </h3>
+<a class="btn" href="https://datanodes.to/download" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <div class="rating">
-        ⭐ 4.5/5
-      </div>
+<a href="assassins-creed-3.html" class="btn">
+📖 Open Page
+</a>
 
-      <div class="info-row">
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
 
-        <span class="game-size">
-          💾 95 MB
-        </span>
+<!-- VECTOR 2 -->
 
-        <span class="req-tag req-med">
-          🟡 Medium Phones
-        </span>
+<div class="card action">
 
-      </div>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <p>
-        Fast parkour action game with stylish movement and combat.
-      </p>
+<img src="vector-2.jpg" alt="Vector 2">
 
-      <a
-        href="vector-2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<h3>Vector 2</h3>
 
-      <a
-        href="https://vector-2.en.uptodown.com/android/download"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.5/5)
+</div>
 
-    </div>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 95 MB</span>
+<span class="req-tag req-medium">🟡 Medium Phones</span>
+</div>
 
+<p>
+A thrilling and captivating parkour game set in a cyberpunk and dark world. Escape advanced laboratories and deadly traps with spectacular moves and runs.
+</p>
 
-    <!-- =======================================================
-         7. RESIDENT EVIL 3
-         ======================================================= -->
+<a class="btn" href="https://vector-2.en.uptodown.com/android/download" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    <div class="card action">
+<a href="vector-2.html" class="btn">
+📖 Open Page
+</a>
 
-      <img
-        src="images/resident-evil-3-nemesis.jpg"
-        alt="Resident Evil 3 Nemesis"
-      >
+</div>
 
-      <h3>
-        Resident Evil 3
-      </h3>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<!-- RESIDENT EVIL 3 -->
 
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="card action">
 
-        <span class="game-size">
-          💾 30 MB
-        </span>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<img src="resident-evil-3-nemesis.jpg" alt="Resident Evil 3 Nemesis">
 
-      </div>
+<h3>Resident Evil 3 (Resident Evil 3 Nemesis)</h3>
 
-      <p>
-        Classic survival horror action with Nemesis.
-      </p>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <a
-        href="resident-evil-3.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (Android)</span>
+<span class="game-size">💾 30 MB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      <a
-        href="https://winlator.me/game/resident-evil-3-old/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<p>
+Resident Evil 3 Nemesis is an incredible survival horror game with realistic storyline elements, around 2.5 GB built for the Winlator emulator.
+</p>
 
-    </div>
+<a class="btn" href="https://winlator.me/game/resident-evil-3-old/" target="_blank" onclick="addDownloadPoints()">
+⬇ Direct Game Download
+</a>
 
+<a href="resident-evil-3.html" class="btn">
+📖 Open Page
+</a>
 
-    <!-- =======================================================
-         8. RED DEAD REDEMPTION
-         ======================================================= -->
+</div>
 
-    <div class="card openworld">
 
-      <img
-        src="images/rdr1.jpg"
-        alt="Red Dead Redemption 1"
-      >
+<!-- RDR1 -->
 
-      <h3>
-        Red Dead Redemption 1 Android
-      </h3>
+<div class="card openworld">
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <div class="info-row">
+<img src="rdr1.jpg" alt="Red Dead Redemption 1 Android">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<h3>Red Dead Redemption 1 Android</h3>
 
-        <span class="game-size">
-          💾 7.5 GB
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 7.5 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      </div>
+<p>
+Experience the masterpiece Red Dead Redemption 1 on Android! Featuring beautiful graphics, an open world, exciting missions, and great gameplay.
+</p>
 
-      <p>
-        Open-world western adventure with a massive world.
-      </p>
+<a class="btn" href="https://apkvision.org/games/action/red-dead-redemption-28496/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <a
-        href="rdr1.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a href="rdr1.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="https://apkvision.org/games/action/red-dead-redemption-28496/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<a class="btn-yt" href="https://youtu.be/" target="_blank">
+🎥 Installation Guide on Android
+</a>
 
-      <a
-        href="https://youtu.be/"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
+</div>
 
-    </div>
 
+<!-- AETHERSX2 -->
 
-    <!-- =======================================================
-         9. AETHERSX2
-         ======================================================= -->
+<div class="card lite sports">
 
-    <div class="card lite sports">
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <img
-        src="images/aethersx2.jpg"
-        alt="AetherSX2"
-      >
+<img src="aethersx2.jpg" alt="AetherSX2 PS2 Emulator">
 
-      <h3>
-        AetherSX2 (PS2 Emulator)
-      </h3>
+<h3>AetherSX2 (PS2 Emulator)</h3>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <div class="info-row">
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (Android)</span>
+<span class="game-size">💾 30 MB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE ANDROID
-        </span>
+<p>
+AetherSX2 is a PlayStation 2 emulator for Android. Run nostalgic games such as God of War, GTA, and classic wrestling games with controller support.
+</p>
 
-        <span class="game-size">
-          💾 30 MB
-        </span>
+<a class="btn" href="https://www.mediafire.com/file/97x1poxpq30gi3h/aethersx2-v1-5-4248.apk/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Direct Emulator Download
+</a>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<a href="aethersx2.html" class="btn">
+📖 Open Page
+</a>
 
-      </div>
+</div>
 
-      <p>
-        Play PlayStation 2 games on Android with AetherSX2.
-      </p>
 
-      <a
-        href="aethersx2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<!-- WR3D -->
 
-      <a
-        href="https://www.mediafire.com/file/97x1poxpq30gi3h/aethersx2-v1-5-4248.apk/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div class="card lite sports">
 
-    </div>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
+<img src="wr3d2k26.jpg" alt="WR3D 2K26">
 
-    <!-- =======================================================
-         10. WR3D 2K26
-         ======================================================= -->
+<h3>WR3D 2K26 (Mod Edition)</h3>
 
-    <div class="card lite sports">
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (4.8/5)
+</div>
 
-      <img
-        src="images/wr3d2k26.jpg"
-        alt="WR3D 2K26"
-      >
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (Android)</span>
+<span class="game-size">💾 400 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      <div class="game-badge new">
-        🆕 Mod Edition
-      </div>
+<p>
+One of the most fun and popular Android wrestling mods, now prepared in its special 2026 edition with updated rosters, outfits, rings, arenas and legends.
+</p>
 
-      <h3>
-        WR3D 2K26 (Mod Edition)
-      </h3>
+<a class="btn" href="https://www.apkfiles.com/apk-620814/wr3d-26-v4-by-federation-online" target="_blank" onclick="addDownloadPoints()">
+⬇ Download WR3D 2K26 Game
+</a>
 
-      <div class="rating">
-        ⭐ 4.8/5
-      </div>
+<a href="wr3d2k26.html" class="btn">
+📖 Open Page
+</a>
 
-      <div class="info-row">
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE ANDROID
-        </span>
 
-        <span class="game-size">
-          💾 400 MB
-        </span>
-
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
-
-      </div>
-
-      <p>
-        WWE wrestling experience optimized for Android devices.
-      </p>
-
-      <a
-        href="wr3d2k26.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
-
-      <a
-        href="https://www.apkfiles.com/apk-620814/wr3d-26-v4-by-federation-online"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
-
-    </div>
-
+<!-- WWE 2K18 -->
 
-    <!-- =======================================================
-         11. WWE 2K18
-         ======================================================= -->
+<div class="card sports">
 
-    <div class="card sports">
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <img
-        src="images/wwe2k18.jpg"
-        alt="WWE 2K18"
-      >
+<img src="wwe2k18.jpg" alt="WWE 2K18">
 
-      <h3>
-        WWE 2K18 (Switch Edition)
-      </h3>
+<h3>WWE 2K18 (Switch Edition)</h3>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <div class="info-row">
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (Android Emulator)</span>
+<span class="game-size">💾 22 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE EMULATOR
-        </span>
+<p>
+Nintendo Switch's WWE 2K18 wrestling game ready to run on Android using an emulator. The package contains the original game, update and DLC files.
+</p>
 
-        <span class="game-size">
-          💾 22 GB
-        </span>
-
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
-
-      </div>
-
-      <p>
-        WWE wrestling game with a huge roster and console-style gameplay.
-      </p>
-
-      <a
-        href="wwe2k18.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
-
-      <a
-        href="https://drive.usercontent.google.com/download?id=161L98L5jl5WL-Mgecj6YiV7L5RpAJPpT&export=download&authuser=0"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download 1
-      </a>
-
-      <a
-        href="https://filecrypt.cc/Container/3AC12701A3.html"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download 2
-      </a>
-
-      <a
-        href="https://drive.google.com/file/d/1S5g3WHwclBn1Cd7PSvds3GUAmIkvJQyZ/view"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download 3
-      </a>
-
-      <a
-        href="https://youtu.be/IjI_-PFuyWc?si=DOmVheEE-etO7Gf8"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
-
-    </div>
-
+<a class="btn" href="https://drive.usercontent.google.com/download?id=161L98L5jl5WL-Mgecj6YiV7L5RpAJPpT&export=download&authuser=0" target="_blank" onclick="addDownloadPoints()">
+⬇ Download Original File
+</a>
 
-    <!-- =======================================================
-         12. FAR CRY 3
-         ======================================================= -->
+<a class="btn" href="https://filecrypt.cc/Container/3AC12701A3.html" target="_blank" onclick="addDownloadPoints()">
+⬇ Download Game Update
+</a>
 
-    <div class="card openworld">
+<a class="btn" href="https://drive.google.com/file/d/1S5g3WHwclBn1Cd7PSvds3GUAmIkvJQyZ/view" target="_blank" onclick="addDownloadPoints()">
+⬇ Download DLC File
+</a>
 
-      <img
-        src="images/farcry3.jpg"
-        alt="Far Cry 3"
-      >
-
-      <h3>
-        Far Cry 3 (Lite Mod)
-      </h3>
-
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE PC & WINLATOR
-        </span>
-
-        <span class="game-size">
-          💾 7.5 GB
-        </span>
-
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
-
-      </div>
-
-      <p>
-        Open-world action adventure with exploration and combat.
-      </p>
-
-      <a
-        href="farcry3.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
-
-      <a
-        href="https://winlator.me/game/f/far-cry-3/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
-
-      <a
-        href="https://youtu.be/DUXXzBLScGM?si=d1Liialz_4JIKOyB"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
-
-    </div>
-
-
-    <!-- =======================================================
-         13. GTA IV
-         ======================================================= -->
-
-    <div class="card openworld">
+<a href="wwe2k18.html" class="btn">
+📖 Open Page
+</a>
 
-      <img
-        src="images/gtaiv.jpg"
-        alt="GTA IV"
-      >
-
-      <h3>
-        GTA IV
-      </h3>
-
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
-
-        <span class="game-size">
-          💾 14 GB
-        </span>
-
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
-
-      </div>
-
-      <p>
-        Liberty City open-world crime action experience.
-      </p>
-
-      <a
-        href="gtaiv.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
-
-      <a
-        href="https://www.apunkagames.net/2026/01/grand-theft-auto-iv-the-complete-edition-game-e7.html"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
-
-      <a
-        href="https://youtu.be/ojMSnPuD6R4?si=kDSQ5RpxGmEQoXi2"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
-
-    </div>
-
-
-    <!-- =======================================================
-         14. BATMAN
-         ======================================================= -->
-
-    <div class="card action">
-
-      <img
-        src="images/batman.jpg"
-        alt="Batman The Dark Knight Rises"
-      >
-
-      <h3>
-        Batman: The Dark Knight Rises
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
-
-        <span class="game-size">
-          💾 1.8 GB
-        </span>
-
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
-
-      </div>
-
-      <p>
-        Become Batman and fight criminals across Gotham City.
-      </p>
-
-      <a
-        href="batman.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
-
-      <a
-        href="https://apkaward.com/the-dark-knight-rises"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
-
-      <a
-        href="https://youtu.be/6Bhs9i8FOEE?si=Zg-XXUPX7Y5-pHUg"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
-
-    </div>
-
-
-    <!-- =======================================================
-         15. TEKKEN 8
-         ======================================================= -->
-
-    <div class="card action">
-
-      <img
-        src="images/tekken8.jpg"
-        alt="Tekken 8 Mobile"
-      >
-
-      <h3>
-        Tekken 8 Mobile
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
-
-        <span class="game-size">
-          💾 800 MB
-        </span>
-
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
-
-      </div>
-
-      <p>
-        Fighting game experience with intense battles.
-      </p>
-
-      <a
-        href="tekken8.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn-yt" href="https://youtu.be/IjI_-PFuyWc?si=DOmVheEE-etO7Gf8" target="_blank">
+🎥 WWE 2K18 Gameplay Guide
+</a>
 
-      <a
-        href="https://tekken-8-1.latestmodapks.com/download/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
-
-    </div>
+</div>
 
 
-    <!-- =======================================================
-         16. MADOUT2
-         ======================================================= -->
-
-    <div class="card openworld">
-
-      <img
-        src="images/madout2.jpg"
-        alt="MadOut2"
-      >
-
-      <h3>
-        MadOut2 BigCityOnline
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
-
-      <div class="info-row">
-
-        <span class="game-status status-online">
-          ONLINE
-        </span>
-
-        <span class="game-size">
-          💾 1.2 GB
-        </span>
-
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
-
-      </div>
-
-      <p>
-        Open-world driving, action and multiplayer gameplay.
-      </p>
+<!-- FAR CRY 3 -->
 
-      <a
-        href="madout2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="card openworld">
 
-      <a
-        href="https://play.google.com/store/apps/details?id=com.MadOut.BIG"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ▶️ Google Play
-      </a>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    </div>
+<img src="farcry3.jpg" alt="Far Cry 3">
 
+<h3>Far Cry 3 (Lite Mod)</h3>
 
-    <!-- =======================================================
-         17. GOD OF WAR II
-         ======================================================= -->
-
-    <div class="card action">
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <img
-        src="images/god-of-war-2.jpg"
-        alt="God of War II"
-      >
-
-      <h3>
-        God of War II
-      </h3>
-
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
-
-      <div class="info-row">
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (PC & Winlator)</span>
+<span class="game-size">💾 7.5 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<p>
+An extraordinary lite and optimized version of Far Cry 3 for smooth running on Android via Winlator and PC.
+</p>
 
-        <span class="game-size">
-          💾 6.5 GB
-        </span>
+<a class="btn" href="https://winlator.me/game/f/far-cry-3/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<a href="farcry3.html" class="btn">
+📖 Open Page
+</a>
 
-      </div>
-
-      <p>
-        Legendary action adventure featuring Kratos.
-      </p>
-
-      <a
-        href="god-of-war-2.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn-yt" href="https://youtu.be/DUXXzBLScGM?si=d1Liialz_4JIKOyB" target="_blank">
+🎥 7.5 GB Running Guide
+</a>
 
-      <a
-        href="https://romsfun.com/roms/playstation-2/god-of-war-ii.html"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+</div>
 
-    </div>
 
+<!-- GTA IV -->
 
-    <!-- =======================================================
-         18. CALL OF DUTY
-         ======================================================= -->
+<div class="card openworld">
 
-    <div class="card action">
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <img
-        src="images/cod-strike-team.jpg"
-        alt="Call of Duty Strike Team"
-      >
+<img src="gtaiv.jpg" alt="GTA IV">
 
-      <h3>
-        Call of Duty: Strike Team
-      </h3>
-
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
-
-      <div class="info-row">
+<h3>GTA IV</h3>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-        <span class="game-size">
-          💾 1 GB
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 14 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<p>
+One of Rockstar's greatest open world games with superior graphics and an unforgettable city.
+</p>
 
-      </div>
+<a class="btn" href="https://www.apunkagames.net/2026/01/grand-theft-auto-iv-the-complete-edition-game-e7.html" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <p>
-        Call of Duty tactical shooter experience for Android.
-      </p>
+<a href="gtaiv.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="cod-strike-team.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn-yt" href="https://youtu.be/ojMSnPuD6R4?si=kDSQ5RpxGmEQoXi2" target="_blank">
+🎥 Android Installation Guide
+</a>
 
-      <a
-        href="https://apkaward.com/call-of-duty-strike-team-fix-android-10"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+</div>
 
-    </div>
 
+<!-- BATMAN -->
 
-    <!-- =======================================================
-         19. CINA GAMES APK
-         ======================================================= -->
+<div class="card action">
 
-    <div class="card lite action">
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <img
-        src="images/cina-app.jpg"
-        alt="Cina Games APK"
-      >
+<img src="batman.jpg" alt="Batman">
 
-      <div class="game-badge new">
-        ⭐ Official App
-      </div>
-
-      <h3>
-        Cina Games APK
-      </h3>
+<h3>Batman: The Dark Knight Rises</h3>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <div class="info-row">
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 1.8 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-        <span class="game-status status-online">
-          ONLINE
-        </span>
+<p>
+Action and adventure game inspired by Batman. Enter Gotham City, fight enemies and complete exciting missions.
+</p>
 
-        <span class="game-size">
-          💾 15 MB
-        </span>
+<a class="btn" href="https://apkaward.com/the-dark-knight-rises" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
+<a href="batman.html" class="btn">
+📖 Open Page
+</a>
 
-      </div>
+<a class="btn-yt" href="https://youtu.be/6Bhs9i8FOEE?si=Zg-XXUPX7Y5-pHUg" target="_blank">
+🎥 Installation Guide
+</a>
 
-      <p>
-        Official Cina Games application for Android users.
-      </p>
+</div>
 
-      <a
-        href="cina-app.html"
-        class="btn"
-      >
-        📖 Open App Page
-      </a>
 
-      <a
-        href="https://www.mediafire.com/file/ihagxbiw448ssz2/CinaGames.apk/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download APK
-      </a>
+<!-- TEKKEN 8 -->
 
-    </div>
+<div class="card action">
 
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    <!-- =======================================================
-         20. PUBG
-         ======================================================= -->
+<img src="tekken8.jpg" alt="Tekken 8">
 
-    <div class="card action">
+<h3>Tekken 8 Mobile</h3>
 
-      <img
-        src="images/pubg.jpg"
-        alt="PUBG Mobile"
-      >
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <h3>
-        PUBG Mobile
-      </h3>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 800 MB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
+<p>
+Tekken 8 mobile version featuring amazing graphics, exciting battles and famous characters.
+</p>
 
-      <div class="info-row">
+<a class="btn" href="https://tekken-8-1.latestmodapks.com/download/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="game-status status-online">
-          ONLINE
-        </span>
+<a href="tekken8.html" class="btn">
+📖 Open Page
+</a>
 
-        <span class="game-size">
-          💾 2 GB
-        </span>
+</div>
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
 
-      </div>
+<!-- MADOUT2 -->
 
-      <p>
-        Battle royale shooter with competitive multiplayer gameplay.
-      </p>
+<div class="card openworld">
 
-      <a
-        href="pubg.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<img src="madout2.jpg" alt="MadOut2">
 
-      <a
-        href="https://play.google.com/store/apps/details?id=com.tencent.ig"
-        target="_blank"
-        class="btn"
-      >
-        ▶️ Google Play
-      </a>
+<h3>MadOut2 BigCityOnline</h3>
 
-    </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
+<div class="info-row">
+<span class="game-status status-online">🔵 Online</span>
+<span class="game-size">💾 1.2 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-    <!-- =======================================================
-         21. BULLY
-         ======================================================= -->
+<p>
+Open world game with vehicles, missions and online mode. If you like GTA-style games, MadOut2 is a great choice.
+</p>
 
-    <div class="card openworld">
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.MadOut.BIG" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <img
-        src="images/bully.jpg"
-        alt="Bully Anniversary Edition"
-      >
+<a href="madout2.html" class="btn">
+📖 Open Page
+</a>
 
-      <h3>
-        Bully Anniversary Edition
-      </h3>
+</div>
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
 
-      <div class="info-row">
+<!-- GOD OF WAR II -->
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="card action">
 
-        <span class="game-size">
-          💾 2.5 GB
-        </span>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<img src="god-of-war-2.jpg" alt="God of War II">
 
-      </div>
+<h3>God of War II</h3>
 
-      <p>
-        Open-world school adventure from Rockstar Games.
-      </p>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <a
-        href="bully.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 6.5 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      <a
-        href="https://apkvision.org/games/action/bullyanniversaryeditionsapk-54560/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<p>
+Legendary PS2 game featuring Kratos in Greek mythology and his revenge against Zeus.
+</p>
 
-    </div>
+<a class="btn" href="https://romsfun.com/roms/playstation-2/god-of-war-ii.html" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
+<a href="god-of-war-2.html" class="btn">
+📖 Open Page
+</a>
 
-    <!-- =======================================================
-         22. DARK PERSON WALLPAPER
-         ======================================================= -->
+</div>
 
-    <div class="card lite action">
 
-      <img
-        src="images/dark-wallpaper.jpg"
-        alt="Dark Person Wallpaper"
-      >
+<!-- CALL OF DUTY -->
 
-      <h3>
-        Dark Person Wallpaper
-      </h3>
+<div class="card action">
 
-      <div class="rating">
-        ⭐ 3.0/5
-      </div>
+<img src="cod-strike-team.jpg" alt="Call of Duty Strike Team">
 
-      <div class="info-row">
+<h3>Call of Duty: Strike Team</h3>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-        <span class="game-size">
-          💾 25 MB
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 1 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
+<p>
+Call of Duty: Strike Team is an action and shooting game with offline story mode for Android.
+</p>
 
-      </div>
+<a class="btn" href="https://apkaward.com/call-of-duty-strike-team-fix-android-10" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <p>
-        Dark themed wallpaper collection for Android devices.
-      </p>
+<a href="cod-strike-team.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="dark-wallpaper.html"
-        class="btn"
-      >
-        📖 Open Page
-      </a>
+</div>
 
-      <a
-        href="https://www.mediafire.com/file/456vkzxxtq61bgy/Dark_Person_Wallpaper_1.0.apk/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
 
-    </div>
+<!-- CINA GAMES APK -->
 
+<div class="card lite action">
 
-    <!-- =======================================================
-         23. WWE 2K25
-         ======================================================= -->
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    <div class="card sports">
+<img src="cina-app.jpg" alt="Cina Games APK">
 
-      <img
-        src="images/wwe25.jpg"
-        alt="WWE 2K25 Netflix Edition"
-      >
+<h3>Cina Games APK (Official App)</h3>
 
-      <h3>
-        WWE 2K25 Netflix Edition
-      </h3>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<div class="info-row">
+<span class="game-status status-online">🔵 Online</span>
+<span class="game-size">💾 15 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      <div class="info-row">
+<p>
+Independent APK version of the Cina Games website for quick access to games, updates and site sections.
+</p>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<a class="btn" href="https://www.mediafire.com/file/ihagxbiw448ssz2/CinaGames.apk/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Download App APK
+</a>
 
-        <span class="game-size">
-          💾 2.5 GB
-        </span>
+<a href="cina-app.html" class="btn">
+📖 Open Page
+</a>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+</div>
 
-      </div>
 
-      <p>
-        Modern WWE experience with console-style wrestling action.
-      </p>
+<!-- PUBG -->
 
-      <a
-        href="wwe25.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="card action">
 
-      <a
-        href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    </div>
+<img src="pubg.jpg" alt="PUBG Mobile">
 
+<h3>PUBG Mobile</h3>
 
-    <!-- =======================================================
-         24. GTA SAN ANDREAS
-         ======================================================= -->
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-    <div class="card openworld">
+<div class="info-row">
+<span class="game-status status-online">🔵 Online</span>
+<span class="game-size">💾 2 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-      <img
-        src="images/gta-sa.jpg"
-        alt="GTA San Andreas"
-      >
+<p>
+PUBG Mobile is a popular battle royale game where you compete against other players.
+</p>
 
-      <h3>
-        GTA San Andreas
-      </h3>
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.tencent.ig" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<a href="pubg.html" class="btn">
+📖 Open Page
+</a>
 
-      <div class="info-row">
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
 
-        <span class="game-size">
-          💾 2.4 GB
-        </span>
+<!-- BULLY -->
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<div class="card openworld">
 
-      </div>
+<img src="bully.jpg" alt="Bully Anniversary Edition">
 
-      <p>
-        One of the most legendary open-world games of all time.
-      </p>
+<h3>Bully Anniversary Edition</h3>
 
-      <a
-        href="gta-sa.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <a
-        href="https://an1.com/file_6639-dw.html"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 2.5 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-    </div>
+<p>
+Rockstar's classic open world game where you play the role of a student completing various missions.
+</p>
 
+<a class="btn" href="https://apkvision.org/games/action/bullyanniversaryeditionsapk-54560/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    <!-- =======================================================
-         25. EDEN EMULATOR
-         ======================================================= -->
+<a href="bully.html" class="btn">
+📖 Open Page
+</a>
 
-    <div class="card lite action">
+</div>
 
-      <img
-        src="images/eden.jpg"
-        alt="Eden Golden Emulator"
-      >
 
-      <h3>
-        Eden Golden Emulator
-      </h3>
+<!-- DARK WALLPAPER -->
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
+<div class="card lite action">
 
-      <div class="info-row">
+<img src="dark-wallpaper.jpg" alt="Dark Person Wallpaper">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<h3>Dark Person Wallpaper</h3>
 
-        <span class="game-size">
-          💾 45 MB
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐</span><span style="color:#555;">★★</span> (3/5)
+</div>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 25 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      </div>
+<p>
+Collection of dark and high-quality wallpapers featuring action styling, Joker themes and mystery.
+</p>
 
-      <p>
-        Android emulator designed for gaming and compatibility.
-      </p>
+<a class="btn" href="https://www.mediafire.com/file/456vkzxxtq61bgy/Dark_Person_Wallpaper_1.0.apk/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <a
-        href="eden.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a href="dark-wallpaper.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+</div>
 
-      <a
-        href="https://www.youtube.com/@Farhad_Cina"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ YouTube
-      </a>
 
-    </div>
+<!-- WWE 2K25 -->
 
+<div class="card sports">
 
-    <!-- =======================================================
-         26. WINLATOR
-         ======================================================= -->
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    <div class="card lite action">
+<img src="wwe25.jpg" alt="WWE 2K25">
 
-      <img
-        src="images/winlator.jpg"
-        alt="Winlator"
-      >
+<h3>WWE 2K25 Netflix Edition</h3>
 
-      <div class="game-badge new">
-        ⚡ Gaming Emulator
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <h3>
-        Winlator
-      </h3>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 2.5 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<p>
+Professional wrestling game with high graphics inspired by WWE 2K25 Netflix Edition.
+</p>
 
-      <div class="info-row">
+<a class="btn" href="https://www.apkmirror.com/apk/netflix-inc/wwe-2k25-netflix-edition/wwe-2k25-netflix-edition-0-1411-0-release/wwe-2k25-netflix-edition-0-1411-0-android-apk-download/#google_vignette" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<a href="wwe25.html" class="btn">
+Open Page
+</a>
 
-        <span class="game-size">
-          💾 75 MB
-        </span>
+</div>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
 
-      </div>
+<!-- GTA SA -->
 
-      <p>
-        Run Windows games on compatible Android devices.
-      </p>
+<div class="card openworld">
 
-      <a
-        href="winlator.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <a
-        href="https://winlator.com/download-winlator/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<img src="gta-sa.jpg" alt="GTA San Andreas">
 
-      <a
-        href="https://youtu.be/fUvDG99k04U?si=PzrZRPmbIETpsJ4c"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
+<h3>GTA San Andreas</h3>
 
-    </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 2.4 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-    <!-- =======================================================
-         27. AMAZING SPIDER-MAN 3
-         ======================================================= -->
+<p>
+Rockstar's famous open world masterpiece. If you haven't played it yet, you need to experience it.
+</p>
 
-    <div class="card action">
+<a class="btn" href="https://an1.com/file_6639-dw.html" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <img
-        src="images/spiderman3.jpg"
-        alt="Amazing Spider-Man 3"
-      >
+<a href="gta-sa.html" class="btn">
+📖 Open Page
+</a>
 
-      <h3>
-        Amazing Spider-Man 3
-      </h3>
+</div>
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
 
-      <div class="info-row">
+<!-- EDEN -->
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="card lite action">
 
-        <span class="game-size">
-          💾 1.2 GB
-        </span>
+<img src="eden.jpg" alt="Eden Golden Emulator">
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<h3>Eden Golden Emulator</h3>
 
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <p>
-        Spider-Man action adventure with web-slinging gameplay.
-      </p>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 45 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      <a
-        href="spiderman3.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<p>
+Console game emulator designed for Switch games, including games such as WWE 2K18 and RDR 1.
+</p>
 
-      <a
-        href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<a class="btn" href="https://www.mediafire.com/file/ss5l5rerrzfffzj/Eden_50d1e27.apk/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    </div>
+<a href="eden.html" class="btn">
+📖 Open Page
+</a>
 
+<a class="btn-yt" href="https://www.youtube.com/@Farhad_Cina" target="_blank">
+🎥 Emulator User Guide
+</a>
 
-    <!-- =======================================================
-         28. WWE 2K15
-         ======================================================= -->
+</div>
 
-    <div class="card sports">
 
-      <img
-        src="images/wwe.jpg"
-        alt="WWE 2K15"
-      >
+<!-- WINLATOR -->
 
-      <h3>
-        WWE 2K15
-      </h3>
+<div class="card lite action">
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<img src="winlator.jpg" alt="Winlator">
 
-      <div class="info-row">
+<h3>Winlator</h3>
 
-        <span class="game-status status-offline">
-          OFFLINE PC & WINLATOR
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-        <span class="game-size">
-          💾 16 GB
-        </span>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 75 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<p>
+Run PC games on Android using Winlator.
+</p>
 
-      </div>
+<a class="btn" href="https://winlator.com/download-winlator/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <p>
-        WWE console experience playable through compatible emulation.
-      </p>
+<a href="winlator.html" class="btn">
+📖 Open Page
+</a>
 
-      <a
-        href="wwe-2k15.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn-yt" href="https://youtu.be/fUvDG99k04U?si=PzrZRPmbIETpsJ4c" target="_blank">
+🎥 Winlator Settings Guide
+</a>
 
-      <a
-        href="https://winlator.me/game/wwe-2k15/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+</div>
 
-      <a
-        href="https://youtu.be/fO7qQJddBHo?si=eZBTbqmnXu3djrBI"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
 
-    </div>
+<!-- SPIDER-MAN -->
 
+<div class="card action">
 
-    <!-- =======================================================
-         29. GTA V
-         ======================================================= -->
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-    <div class="card openworld">
+<img src="spiderman3.jpg" alt="Amazing Spider-Man 3">
 
-      <img
-        src="images/gta.jpg"
-        alt="GTA V"
-      >
+<h3>Amazing Spider-Man 3</h3>
 
-      <div class="game-badge">
-        🔥 AAA Open World
-      </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <h3>
-        GTA V
-      </h3>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 1.2 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<p>
+Spider-Man action game specially tailored for Spider-Man fans with open world gameplay.
+</p>
 
-      <div class="info-row">
+<a class="btn" href="https://guide-the-amazing-spider-man-3.en.softonic.com/android/download" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-        <span class="game-status status-offline">
-          OFFLINE PC & WINLATOR
-        </span>
+<a href="spiderman3.html" class="btn">
+📖 Open Page
+</a>
 
-        <span class="game-size">
-          💾 14 GB
-        </span>
+</div>
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
 
-      </div>
+<!-- WWE 2K15 -->
 
-      <p>
-        Massive open-world crime action experience.
-      </p>
+<div class="card sports">
 
-      <a
-        href="gta-v.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥🤯 Most Downloaded
+</div>
 
-      <a
-        href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<img src="wwe.jpg" alt="WWE 2K15">
 
-      <a
-        href="https://youtu.be/UqhADFFvxSo?si=SkRr9knIHmCTYbWb"
-        target="_blank"
-        class="btn-yt"
-      >
-        ▶️ Video Guide
-      </a>
+<h3>WWE 2K15</h3>
 
-    </div>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (PC & Winlator)</span>
+<span class="game-size">💾 16 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-    <!-- =======================================================
-         30. WATCH DOGS
-         ======================================================= -->
+<p>
+A famous wrestling game playable on Android through Winlator and on PC.
+</p>
 
-    <div class="card action">
+<a class="btn" href="https://winlator.me/game/wwe-2k15/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <img
-        src="images/watchdogs.jpg"
-        alt="Watch Dogs"
-      >
+<a href="wwe-2k15.html" class="btn">
+Open Page
+</a>
 
-      <h3>
-        Watch Dogs
-      </h3>
+<a class="btn-yt" href="https://youtu.be/fO7qQJddBHo?si=eZBTbqmnXu3djrBI" target="_blank">
+🎥 Android Installation Guide
+</a>
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
+</div>
 
-      <div class="info-row">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<!-- GTA V -->
 
-        <span class="game-size">
-          💾 26 GB
-        </span>
+<div class="card openworld">
 
-        <span class="req-tag req-high">
-          🔴 High-End
-        </span>
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      </div>
+<img src="gta.jpg" alt="GTA V">
 
-      <p>
-        Open-world hacking and action experience.
-      </p>
+<h3>GTA V</h3>
 
-      <a
-        href="watch-dogs-2.html"
-        class="btn"
-      >
-        📖 Open Watch Dogs 2 Page
-      </a>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-      <a
-        href="https://winlator.me/game/w/watch-dogs-2/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline (PC & Winlator)</span>
+<span class="game-size">💾 14 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-    </div>
+<p>
+Cina's most favorite world-class open world game. This 14 GB version is available for Android and laptops.
+</p>
 
+<a class="btn" href="https://apkvision.org/games/action/gta-5-grand-theft-auto-v-apk-48457/download/v0.8.1-apk/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    <!-- =======================================================
-         31. EFOOTBALL
-         ======================================================= -->
+<a href="gta-v.html" class="btn">
+Open Page
+</a>
 
-    <div class="card sports">
+<a class="btn-yt" href="https://youtu.be/UqhADFFvxSo?si=SkRr9knIHmCTYbWb" target="_blank">
+🎥 14 GB Running Guide
+</a>
 
-      <img
-        src="images/efootball.jpg"
-        alt="eFootball"
-      >
+</div>
 
-      <h3>
-        eFootball
-      </h3>
 
-      <div class="rating">
-        ⭐ 5.0/5
-      </div>
+<!-- WATCH DOGS -->
 
-      <div class="info-row">
+<div class="card action">
 
-        <span class="game-status status-online">
-          ONLINE
-        </span>
+<img src="watchdogs.jpg" alt="Watch Dogs">
 
-        <span class="game-size">
-          💾 2.8 GB
-        </span>
+<h3>Watch Dogs</h3>
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      </div>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 26 GB</span>
+<span class="req-tag req-high">🔴 High-End Phones</span>
+</div>
 
-      <p>
-        Football simulation with online competitive gameplay.
-      </p>
+<p>
+Hacking and action game set in a mysterious open world.
+</p>
 
-      <a
-        href="efootball.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn" href="https://winlator.me/game/w/watch-dogs-2/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <a
-        href="https://play.google.com/store/apps/details?id=jp.konami.pesam"
-        target="_blank"
-        class="btn"
-      >
-        ▶️ Google Play
-      </a>
+<a href="watch-dogs-2.html" class="btn">
+🎮 Open Watch Dogs 2 Page
+</a>
 
-    </div>
+</div>
 
 
-    <!-- =======================================================
-         32. MINECRAFT
-         ======================================================= -->
+<!-- EFOOTBALL -->
 
-    <div class="card lite openworld">
+<div class="card sports">
 
-      <img
-        src="images/minecraft.jpg"
-        alt="Minecraft"
-      >
+<div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
+🔥 Most Downloaded
+</div>
 
-      <h3>
-        Minecraft
-      </h3>
+<img src="efootball.jpg" alt="eFootball">
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
+<h3>eFootball</h3>
 
-      <div class="info-row">
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐⭐</span> (5/5)
+</div>
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<div class="info-row">
+<span class="game-status status-online">🔵 Online</span>
+<span class="game-size">💾 2.8 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
-        <span class="game-size">
-          💾 1 GB
-        </span>
+<p>
+Professional football game for Android.
+</p>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
+<a class="btn" href="https://play.google.com/store/apps/details?id=jp.konami.pesam" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      </div>
+<a href="efootball.html" class="btn">
+📖 Open Page
+</a>
 
-      <p>
-        Build, explore and survive in an infinite block world.
-      </p>
+</div>
 
-      <a
-        href="minecraft.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
 
-      <a
-        href="https://minecraft.techylist.com/"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<!-- MINECRAFT -->
 
-    </div>
+<div class="card lite openworld">
 
+<img src="minecraft.jpg" alt="Minecraft">
 
-    <!-- =======================================================
-         33. FORTNITE
-         ======================================================= -->
+<h3>Minecraft</h3>
 
-    <div class="card action">
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-      <img
-        src="images/fortnite.jpg"
-        alt="Fortnite"
-      >
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 1 GB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      <h3>
-        Fortnite
-      </h3>
+<p>
+Building and survival game.
+</p>
 
-      <div class="rating">
-        ⭐ 4.0/5
-      </div>
+<a class="btn" href="https://minecraft.techylist.com/" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <div class="info-row">
+<a href="minecraft.html" class="btn">
+📖 Open Page
+</a>
 
-        <span class="game-status status-online">
-          ONLINE
-        </span>
+</div>
 
-        <span class="game-size">
-          💾 3 GB
-        </span>
 
-        <span class="req-tag req-med">
-          🟡 Medium
-        </span>
+<!-- FORTNITE -->
 
-      </div>
+<div class="card action">
 
-      <p>
-        Battle royale action with building and multiplayer combat.
-      </p>
+<img src="fortnite.jpg" alt="Fortnite">
 
-      <a
-        href="fortnite.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<h3>Fortnite</h3>
 
-      <a
-        href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite"
-        target="_blank"
-        class="btn"
-      >
-        ▶️ Google Play
-      </a>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐⭐</span><span style="color:#555;">★</span> (4/5)
+</div>
 
-    </div>
+<div class="info-row">
+<span class="game-status status-online">🔵 Online</span>
+<span class="game-size">💾 3 GB</span>
+<span class="req-tag req-med">🟡 Medium Phones</span>
+</div>
 
+<p>
+Battle Royale.
+</p>
 
-    <!-- =======================================================
-         34. UNDEFEATED HERO
-         ======================================================= -->
+<a class="btn" href="https://play.google.com/store/apps/details?id=com.epicgames.fortnite" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-    <div class="card lite action">
+<a href="fortnite.html" class="btn">
+📖 Open Page
+</a>
 
-      <img
-        src="images/undefeated.jpg"
-        alt="Undefeated Hero Mod"
-      >
+</div>
 
-      <h3>
-        Undefeated Hero Mod
-      </h3>
 
-      <div class="rating">
-        ⭐ 3.0/5
-      </div>
+<!-- UNDEFEATED HERO -->
 
-      <div class="info-row">
+<div class="card lite action">
 
-        <span class="game-status status-offline">
-          OFFLINE
-        </span>
+<img src="undefeated.jpg" alt="Undefeated Hero Mod">
 
-        <span class="game-size">
-          💾 150 MB
-        </span>
+<h3>Undefeated Hero Mod</h3>
 
-        <span class="req-tag req-low">
-          🟢 Low-End
-        </span>
+<div class="rating">
+Rating: <span style="color:#FFD700;">⭐⭐⭐</span><span style="color:#555;">★★</span> (3/5)
+</div>
 
-      </div>
+<div class="info-row">
+<span class="game-status status-offline">🟢 Offline</span>
+<span class="game-size">💾 150 MB</span>
+<span class="req-tag req-low">🟢 Low-End Phones</span>
+</div>
 
-      <p>
-        Lightweight superhero action game with a modified experience.
-      </p>
+<p>
+Powerful mod of the Undefeated game.
+</p>
 
-      <a
-        href="undefeated.html"
-        class="btn"
-      >
-        📖 Open Game Page
-      </a>
+<a class="btn" href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file" target="_blank" onclick="addDownloadPoints()">
+⬇ Download
+</a>
 
-      <a
-        href="https://www.mediafire.com/file/4jl8yfsh1hml1lm/undefeated-hero-v1-0-mod.zip/file"
-        target="_blank"
-        class="btn"
-        onclick="addDownloadPoints()"
-      >
-        ⬇️ Download
-      </a>
+<a href="undefeated.html" class="btn">
+📖 Open Page
+</a>
 
-    </div>
+</div>
 
-  </div>
 
+</div>
 
-  <!-- =========================================================
-       SEARCH + FILTER + FIREBASE
-       ========================================================= -->
 
-  <script>
+<!-- =====================================================
+     FIREBASE + SEARCH + FILTER
+     ===================================================== -->
 
-    const firebaseConfig = {
+<script>
 
-      apiKey:
-        "YOUR_API_KEY",
+const firebaseConfig={
+  apiKey:"YOUR_API_KEY",
+  authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
+  databaseURL:"https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+  projectId:"YOUR_PROJECT_ID",
+  storageBucket:"YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId:"YOUR_SENDER_ID",
+  appId:"YOUR_APP_ID"
+};
 
-      authDomain:
-        "YOUR_PROJECT_ID.firebaseapp.com",
+if(!firebase.apps.length){
+  firebase.initializeApp(firebaseConfig);
+}
 
-      databaseURL:
-        "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+const database=firebase.database();
 
-      projectId:
-        "YOUR_PROJECT_ID",
 
-      storageBucket:
-        "YOUR_PROJECT_ID.appspot.com",
+function addDownloadPoints(){
 
-      messagingSenderId:
-        "YOUR_SENDER_ID",
+  const user=firebase.auth().currentUser;
 
-      appId:
-        "YOUR_APP_ID"
+  if(user){
 
-    };
+    const userRef=
+      database.ref('users/'+user.uid+'/xp');
 
+    userRef.transaction((currentXP)=>{
 
-    if (!firebase.apps.length) {
+      return(currentXP||0)+0.2;
 
-      firebase.initializeApp(
-        firebaseConfig
+    }).catch((error)=>{
+
+      console.log(
+        "Firebase error:",
+        error.message
       );
 
-    }
+    });
 
+  }else{
 
-    const database =
-      firebase.database();
-
-
-    /* =========================================================
-       DOWNLOAD XP
-       ========================================================= */
-
-    function addDownloadPoints() {
-
-      const user =
-        firebase.auth().currentUser;
-
-      if (user) {
-
-        const userRef =
-          database.ref(
-            'users/' +
-            user.uid +
-            '/xp'
-          );
-
-        userRef.transaction(
-          (currentXP) => {
-
-            return (
-              (currentXP || 0)
-              + 0.2
-            );
-
-          }
-        ).catch(
-          (error) => {
-
-            console.log(
-              "Firebase error:",
-              error.message
-            );
-
-          }
-        );
-
-      } else {
-
-        console.log(
-          "User not logged in, points not added."
-        );
-
-      }
-
-    }
-
-
-    /* =========================================================
-       SEARCH
-       ========================================================= */
-
-    const input =
-      document.getElementById(
-        "searchInput"
-      );
-
-
-    const cards =
-      document.querySelectorAll(
-        ".card"
-      );
-
-
-    input.addEventListener(
-      "keyup",
-      function () {
-
-        let value =
-          this.value
-          .toLowerCase()
-          .trim();
-
-
-        cards.forEach(
-          (card) => {
-
-            let title =
-              card
-              .querySelector("h3")
-              .innerText
-              .toLowerCase();
-
-
-            card.style.display =
-              title.includes(value)
-              ? "flex"
-              : "none";
-
-          }
-        );
-
-      }
+    console.log(
+      "User not logged in, points not added."
     );
 
+  }
 
-    /* =========================================================
-       FILTER
-       ========================================================= */
-
-    function filterGames(category) {
-
-      let cards =
-        document.querySelectorAll(
-          ".card"
-        );
+}
 
 
-      cards.forEach(
-        (card) => {
+/* SEARCH */
 
-          if (
-            category === "all"
-          ) {
+const input=
+  document.getElementById("searchInput");
 
-            card.style.display =
-              "flex";
+const cards=
+  document.querySelectorAll(".card");
 
-          } else {
 
-            card.style.display =
-              card.classList.contains(
-                category
-              )
-                ? "flex"
-                : "none";
+input.addEventListener("keyup",function(){
 
-          }
+  let value=
+    this.value.toLowerCase();
 
-        }
-      );
+  cards.forEach((card)=>{
+
+    let title=
+      card.querySelector("h3")
+      .innerText
+      .toLowerCase();
+
+    card.style.display=
+      title.includes(value)
+      ?"flex"
+      :"none";
+
+  });
+
+});
+
+
+/* FILTER */
+
+function filterGames(category){
+
+  let cards=
+    document.querySelectorAll(".card");
+
+  cards.forEach((card)=>{
+
+    if(category==="all"){
+
+      card.style.display="flex";
+
+    }else{
+
+      card.style.display=
+        card.classList.contains(category)
+        ?"flex"
+        :"none";
 
     }
 
-  </script>
+  });
+
+}
+
+</script>
 
 
-  <!-- =========================================================
-       TELEGRAM
-       ========================================================= -->
+<!-- TELEGRAM -->
 
-  <a
-    href="https://t.me/afghangamerx"
-    target="_blank"
-    class="fixed-btn"
-    style="
-      left:15px;
-      background:#229ED9;
-      color:white;
-    "
-  >
-    📲 Telegram
-  </a>
+<a
+href="https://t.me/afghangamerx"
+target="_blank"
+class="fixed-btn"
+style="left:15px;background:#229ED9;color:white;"
+>
+📲 Telegram
+</a>
 
 
-  <!-- =========================================================
-       YOUTUBE
-       ========================================================= -->
+<!-- YOUTUBE -->
 
-  <a
-    href="https://www.youtube.com/@CinaGames-b4v"
-    target="_blank"
-    class="fixed-btn"
-    style="
-      right:15px;
-      background:#FF0000;
-      color:white;
-    "
-  >
-    ▶️ YouTube
-  </a>
+<a
+href="https://www.youtube.com/@CinaGames-b4v"
+target="_blank"
+class="fixed-btn"
+style="right:15px;background:#FF0000;color:white;"
+>
+▶️ YouTube
+</a>
 
 
-  <!-- =========================================================
-       BOTTOM NAVIGATION
-       ========================================================= -->
+<!-- =====================================================
+     BOTTOM NAVIGATION
+     ===================================================== -->
 
-  <div class="bottom-nav">
+<div class="bottom-nav">
 
-    <a
-      href="index.html"
-      class="nav-item"
-    >
-      Home
-    </a>
+<a href="index.html" class="nav-item">
+Home
+</a>
 
-    <a
-      href="games.html"
-      class="nav-item active"
-    >
-      Games
-    </a>
+<a href="games.html" class="nav-item active">
+Games
+</a>
 
-    <a
-      href="dashboard.html"
-      class="nav-item"
-    >
-      Dash
-    </a>
+<a href="dashboard.html" class="nav-item">
+Dash
+</a>
 
-    <a
-      href="settings.html"
-      class="nav-item"
-    >
-      Setting
-    </a>
+<a href="settings.html" class="nav-item">
+Setting
+</a>
 
-  </div>
+</div>
 
 
-  <!-- =========================================================
-       THIRD AD SCRIPT
-       ========================================================= -->
+<!-- THIRD AD -->
 
-  <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
-
+<script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
 
 </body>
 </html>
