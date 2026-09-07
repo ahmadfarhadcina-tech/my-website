@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assassin's Creed IV: Black Flag - Winlator</title>
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:
+        radial-gradient(circle at top,#18242d 0%,#080b0e 45%,#030405 100%);
+    color:white;
+}
+
+.container{
+    max-width:1100px;
+    margin:auto;
+    padding:25px;
+}
+
+/* HERO */
+
+.hero{
+    position:relative;
+    min-height:430px;
+    border-radius:20px;
+    overflow:hidden;
+    display:flex;
+    align-items:flex-end;
+    padding:35px;
+    background:
+        linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,.15)),
+        url("ac4.jpg") center/cover;
+    box-shadow:0 15px 50px rgba(0,0,0,.7);
+}
+
+.hero-content{
+    max-width:700px;
+}
+
+.badge{
+    display:inline-block;
+    background:#FFD700;
+    color:#000;
+    padding:7px 13px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.hero h1{
+    font-size:42px;
+    margin:5px 0;
+    text-shadow:0 4px 15px black;
+}
+
+.hero p{
+    color:#ddd;
+    line-height:1.6;
+    font-size:15px;
+}
+
+/* BUTTONS */
+
+.buttons{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    margin-top:20px;
+}
+
+.btn{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:10px;
+    font-weight:bold;
+    color:#000;
+    background:#FFD700;
+    transition:.25s;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 8px 25px rgba(255,215,0,.3);
+}
+
+.btn-dark{
+    display:inline-block;
+    text-decoration:none;
+    padding:13px 22px;
+    border-radius:10px;
+    font-weight:bold;
+    color:white;
+    background:#15191d;
+    border:1px solid #333;
+}
+
+/* CONTENT */
+
+.section{
+    margin-top:25px;
+    background:rgba(15,18,21,.92);
+    border:1px solid #292d31;
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 35px rgba(0,0,0,.35);
+}
+
+.section h2{
+    margin-top:0;
+    color:#FFD700;
+    font-size:23px;
+}
+
+.section p{
+    color:#c9c9c9;
+    line-height:1.8;
+}
+
+/* INFO */
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    gap:15px;
+}
+
+.info-box{
+    background:#0b0e11;
+    border:1px solid #292d31;
+    border-radius:14px;
+    padding:18px;
+}
+
+.info-box span{
+    display:block;
+    color:#888;
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.info-box strong{
+    font-size:15px;
+}
+
+/* REQUIREMENTS */
+
+.requirements{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.req{
+    background:#0b0e11;
+    border-radius:14px;
+    padding:20px;
+    border-left:4px solid #FFD700;
+}
+
+.req h3{
+    margin-top:0;
+    color:#FFD700;
+}
+
+.req ul{
+    padding-left:20px;
+    color:#ccc;
+    line-height:1.9;
+}
+
+/* WARNING */
+
+.warning{
+    background:rgba(255,193,7,.08);
+    border:1px solid #765f00;
+    color:#ddd;
+    padding:18px;
+    border-radius:12px;
+    line-height:1.7;
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    color:#777;
+    padding:35px 10px;
+    font-size:13px;
+}
+
+@media(max-width:700px){
+
+    .container{
+        padding:14px;
+    }
+
+    .hero{
+        min-height:500px;
+        padding:22px;
+    }
+
+    .hero h1{
+        font-size:30px;
+    }
+
+    .requirements{
+        grid-template-columns:1fr;
+    }
+
+    .btn,
+    .btn-dark{
+        width:100%;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- HERO -->
+
+<section class="hero">
+
+<div class="hero-content">
+
+<div class="badge">
+🏴‍☠️ HEAVY GAME • WINLATOR
+</div>
+
+<h1>Assassin's Creed IV: Black Flag</h1>
+
+<p>
+Experience the legendary pirate adventure of Assassin's Creed IV:
+Black Flag on Android through Winlator.
+Explore the Caribbean, sail across the open world and become the legendary pirate assassin.
+</p>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://gofile.io/d/Bh42OA"
+target="_blank"
+onclick="addDownloadPoints()">
+⬇ Download Game
+</a>
+
+<a class="btn-dark" href="#requirements">
+⚙ Requirements
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- GAME INFO -->
+
+<section class="section">
+
+<h2>🎮 Game Information</h2>
+
+<div class="info-grid">
+
+<div class="info-box">
+<span>GAME</span>
+<strong>Assassin's Creed IV: Black Flag</strong>
+</div>
+
+<div class="info-box">
+<span>PLATFORM</span>
+<strong>PC / Winlator Android</strong>
+</div>
+
+<div class="info-box">
+<span>MODE</span>
+<strong>🟢 Offline</strong>
+</div>
+
+<div class="info-box">
+<span>GENRE</span>
+<strong>Action • Open World • Adventure</strong>
+</div>
+
+<div class="info-box">
+<span>REQUIREMENT</span>
+<strong>🔴 High-End Phones</strong>
+</div>
+
+<div class="info-box">
+<span>STORAGE</span>
+<strong>💾 23 GB+</strong>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ABOUT -->
+
+<section class="section">
+
+<h2>🏴‍☠️ About The Game</h2>
+
+<p>
+Assassin's Creed IV: Black Flag takes you into the golden age of piracy.
+Play as Edward Kenway, explore a huge open world, discover islands,
+fight enemies and experience intense naval battles.
+</p>
+
+<p>
+This version is intended for users who want to run the PC game on Android
+using the Winlator emulator. Because the game is demanding, a powerful
+Android phone is recommended for a better experience.
+</p>
+
+</section>
+
+
+<!-- REQUIREMENTS -->
+
+<section class="section" id="requirements">
+
+<h2>📱 Winlator Requirements</h2>
+
+<div class="requirements">
+
+<div class="req">
+
+<h3>🔴 Recommended</h3>
+
+<ul>
+<li>High-End Android Phone</li>
+<li>Powerful Snapdragon CPU</li>
+<li>8 GB RAM or more</li>
+<li>At least 30 GB free storage</li>
+<li>Updated Winlator version</li>
+<li>Performance-focused configuration</li>
+</ul>
+
+</div>
+
+<div class="req">
+
+<h3>⚠️ Important</h3>
+
+<ul>
+<li>Performance depends on your device</li>
+<li>FPS may vary between phones</li>
+<li>Use a cooler for long sessions</li>
+<li>Close background applications</li>
+<li>Keep enough free storage</li>
+<li>Different Winlator settings may be required</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- DOWNLOAD -->
+
+<section class="section">
+
+<h2>⬇ Download</h2>
+
+<div class="warning">
+⚠️ Make sure you have enough free storage before downloading.
+For the best experience, use a high-end Android phone and configure
+Winlator according to your device.
+</div>
+
+<div class="buttons">
+
+<a class="btn"
+href="https://gofile.io/d/Bh42OA"
+target="_blank"
+onclick="addDownloadPoints()">
+⬇ Download Assassin's Creed IV
+</a>
+
+</div>
+
+</section>
+
+
+<!-- RUNNING GUIDE -->
+
+<section class="section">
+
+<h2>🎥 Running Guide</h2>
+
+<p>
+Need help setting up Assassin's Creed IV: Black Flag on Winlator?
+Add your YouTube running guide here.
+</p>
+
+<a class="btn-dark" href="#" target="_blank">
+▶ Watch Running Guide
+</a>
+
+</section>
+
+
+<footer>
+© 2026 Cina Games • Assassin's Creed IV: Black Flag
+</footer>
+
+</div>
+
+<script>
+function addDownloadPoints(){
+    console.log("Download clicked");
+}
+</script>
+
+</body>
+</html>
