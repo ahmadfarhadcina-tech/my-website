@@ -541,7 +541,6 @@ if ('serviceWorker' in navigator) {
 
 /* =========================================================
    PWA INSTALL CARD
-   فقط این قسمت مربوط به پیشنهاد نصب است
    ========================================================= */
 
 let deferredPrompt = null;
@@ -550,8 +549,6 @@ const installBanner = document.getElementById('pwaInstallBanner');
 const btnInstall = document.getElementById('pwaBtnInstall');
 const btnClose = document.getElementById('pwaBtnClose');
 
-
-// تشخیص اینکه برنامه قبلاً به‌صورت PWA نصب شده
 function isPWAInstalled() {
     return (
         window.matchMedia('(display-mode: standalone)').matches ||
@@ -559,129 +556,95 @@ function isPWAInstalled() {
     );
 }
 
-
-// نمایش کارت نصب
-function showInstallBanner() {
-    if (!installBanner) return;
-
-    if (!isPWAInstalled()) {
-        installBanner.style.display = 'flex';
-
-        setTimeout(() => {
-            installBanner.classList.add('show');
-        }, 100);
-    }
-}
-
-
-// مخفی کردن کارت
 function hideInstallBanner() {
     if (!installBanner) return;
 
     installBanner.classList.remove('show');
-
-    setTimeout(() => {
-        installBanner.style.display = 'none';
-    }, 500);
-}
-
-
-// اگر قبلاً نصب شده، کارت نشان داده نشود
-if (isPWAInstalled()) {
     installBanner.style.display = 'none';
-} else {
+}
 
-    /*
-       کارت بعد از 2.5 ثانیه نمایش داده می‌شود.
-       این باعث می‌شود حتی اگر beforeinstallprompt
-       کمی دیر ارسال شود، خود کارت در سایت دیده شود.
-    */
-    setTimeout(() => {
-        showInstallBanner();
-    }, 2500);
+function showInstallBanner() {
+    if (!installBanner) return;
+
+    if (isPWAInstalled()) {
+        hideInstallBanner();
+        return;
+    }
+
+    installBanner.style.display = 'flex';
+
+    requestAnimationFrame(() => {
+        installBanner.classList.add('show');
+    });
 }
 
 
-// دریافت درخواست واقعی نصب از مرورگر
-window.addEventListener('beforeinstallprompt', (e) => {
+/*
+   مهم:
+   کارت فقط زمانی نمایش داده می‌شود که PWA نصب نشده باشد.
+   دیگر setTimeout برای نمایش اجباری کارت وجود ندارد.
+*/
+if (isPWAInstalled()) {
+    hideInstallBanner();
+}
 
+window.addEventListener('beforeinstallprompt', (e) => {
     e.preventDefault();
 
     deferredPrompt = e;
 
-    // نمایش کارت
-    showInstallBanner();
-
-    console.log('PWA install prompt is ready.');
+    if (!isPWAInstalled()) {
+        showInstallBanner();
+    }
 });
 
 
-// دکمه Install
 btnInstall.addEventListener('click', async () => {
 
-    // اگر مرورگر درخواست نصب واقعی را آماده کرده باشد
-    if (deferredPrompt) {
-
-        try {
-
-            deferredPrompt.prompt();
-
-            const choiceResult = await deferredPrompt.userChoice;
-
-            if (choiceResult.outcome === 'accepted') {
-                console.log('Cina Games PWA installed.');
-
-                hideInstallBanner();
-            } else {
-                console.log('PWA installation dismissed.');
-            }
-
-        } catch (error) {
-            console.log('Install error:', error);
-        }
-
-        deferredPrompt = null;
-
+    if (isPWAInstalled()) {
+        hideInstallBanner();
         return;
     }
 
+    if (!deferredPrompt) {
+        return;
+    }
 
-    /*
-       اگر beforeinstallprompt در این مرورگر موجود نباشد،
-       کارت همچنان نمایش داده می‌شود اما نصب خودکار
-       از طریق JavaScript ممکن نیست.
-    */
+    try {
+        deferredPrompt.prompt();
 
-    btnInstall.innerText = '📱 Install from Browser';
+        const choiceResult = await deferredPrompt.userChoice;
 
-    setTimeout(() => {
-        btnInstall.innerText = '📥 Install';
-    }, 3000);
+        if (choiceResult.outcome === 'accepted') {
+            hideInstallBanner();
+        }
 
+    } catch (error) {
+        console.log('PWA install error:', error);
+    }
+
+    deferredPrompt = null;
 });
 
 
-// بستن کارت
 btnClose.addEventListener('click', () => {
     hideInstallBanner();
 });
 
 
-// وقتی PWA واقعاً نصب شد
 window.addEventListener('appinstalled', () => {
-
-    console.log('Cina Games installed successfully.');
-
     deferredPrompt = null;
-
     hideInstallBanner();
 });
 
 
-// اگر کاربر بعداً حالت نصب‌شده را فعال کرد
-window.addEventListener('load', () => {
+/*
+   اگر کاربر داخل PWA است، هنگام برگشت به صفحه
+   دوباره بررسی می‌شود تا کارت هرگز نمایش داده نشود.
+*/
+document.addEventListener('visibilitychange', () => {
 
-    if (isPWAInstalled()) {
+    if (document.visibilityState === 'visible' && isPWAInstalled()) {
         hideInstallBanner();
     }
 
