@@ -1,1085 +1,1424 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<!-- اضافه کردن کتابخانه فایراستور (بسیار مهم) -->
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<script src="https://jonasfrozepyamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
+    <title>Cina Games | Android, PC & Winlator Games</title>
 
-<script>
-    // اعمال فوری رنگ ذخیره شده از حافظه مرورگر در هنگام لود صفحه
-    const savedTheme = localStorage.getItem('cina_theme');
-    if (savedTheme) {
-        document.documentElement.style.setProperty('--accent-color', savedTheme);
+    <meta name="description" content="Cina Games is a gaming platform for Android, PC and Winlator games, gaming tools, Ciner game updates and the Cina AI assistant.">
+    <meta name="keywords" content="Cina Games, Android games, PC games, Winlator games, WWE 2K15 Winlator, Ciner game, Cina AI">
+    <meta name="author" content="Cina Games">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://ahmadfarhadcina-tech.github.io/my-website/">
+
+    <meta property="og:title" content="Cina Games | Android, PC & Winlator Games">
+    <meta property="og:description" content="Explore Android, PC and Winlator games, gaming tools and the upcoming CINER project.">
+    <meta property="og:image" content="https://ahmadfarhadcina-tech.github.io/my-website/icon.png">
+    <meta property="og:url" content="https://ahmadfarhadcina-tech.github.io/my-website/">
+    <meta property="og:type" content="website">
+
+    <meta name="theme-color" content="#07111f">
+
+    <link rel="icon" type="image/png" href="icon.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Firebase -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
+    <!-- تبلیغات فعلی سایتت؛ حذف نشده است -->
+    <script src="https://jonasfrozepyamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
+
+    <script>
+        const savedTheme = localStorage.getItem("cina_theme");
+        if (savedTheme) {
+            document.documentElement.style.setProperty("--accent", savedTheme);
+        }
+    </script>
+
+    <!-- Structured Data برای شناخت بهتر سایت توسط گوگل -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Cina Games",
+        "url": "https://ahmadfarhadcina-tech.github.io/my-website/",
+        "description": "Android, PC and Winlator gaming platform created by Cina Games.",
+        "publisher": {
+            "@type": "Organization",
+            "name": "Cina Games"
+        },
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://ahmadfarhadcina-tech.github.io/my-website/games.html?search={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }
     }
-</script>
+    </script>
 
-    
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        :root {
+            --accent: #40e0d0;
+            --blue: #238cff;
+            --purple: #9b5cff;
+            --green: #00ff66;
+            --pink: #ff3d81;
+            --gold: #ffd447;
+            --bg: #050913;
+            --panel: rgba(13, 23, 40, .86);
+            --panel-light: rgba(24, 39, 64, .72);
+            --border: rgba(255,255,255,.10);
+            --text: #f5f9ff;
+            --muted: #9caec5;
+            --radius: 22px;
+        }
 
-<link rel="icon" type="image/png" href="icon.png">
-<link rel="shortcut icon" type="image/png" href="icon.png">
+        * {
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#00ff66">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black">
+        body {
+            margin: 0;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 10% 0%, rgba(35,140,255,.18), transparent 28%),
+                radial-gradient(circle at 90% 15%, rgba(155,92,255,.16), transparent 25%),
+                linear-gradient(180deg, #050913 0%, #07111f 48%, #03060c 100%);
+            font-family: Arial, Helvetica, sans-serif;
+            padding-bottom: 100px;
+            overflow-x: hidden;
+        }
 
-<title>Cina Games | Android & PC Games Download</title>
-<meta name="description" content="Official website of Cina Games. Ultimate hub for free Android, PC games, WWE 2K15 Winlator PC setup, modded games, and dedicated AI.">
-<meta name="keywords" content="Cina Games, cina games, wwe 2k15 winlator pc, wwe 2k15 pc android, cina games download, modded android games, winlator games, cina games community">
-<meta name="robots" content="index, follow">
-<link rel="canonical" href="https://ahmadfarhadcina-tech.github.io/my-website/"> 
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            opacity: .12;
+            background-image:
+                linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+            background-size: 42px 42px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+        }
 
-<meta property="og:title" content="Cina Games | Official Website">
-<meta property="og:description" content="Download latest Android and PC games including WWE 2K15 Winlator PC, gamers chatroom, and custom CINA AI.">
-<meta property="og:image" content="https://ahmadfarhadcina-tech.github.io/my-website/icon.png">
-<meta property="og:url" content="https://ahmadfarhadcina-tech.github.io/my-website/">
-<meta property="og:type" content="website">
+        a {
+            color: inherit;
+        }
 
-<style>
-:root { --accent-color: #40E0D0; }
+        button,
+        input,
+        textarea {
+            font: inherit;
+        }
 
-/* منوی پایین صفحه با استایل گیمینگ نئونی و ۴ دکمه استاندارد */
-.bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(10px);
-    border-top: 1px solid var(--accent-color);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    padding: 10px 0;
-    z-index: 999999;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.8);
-    margin: 0;
-}
+        .container {
+            width: min(1120px, 92%);
+            margin: auto;
+            position: relative;
+            z-index: 1;
+        }
 
-.bottom-nav .nav-item {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: bold;
-    padding: 8px 18px;
-    border-radius: 20px;
-    transition: all 0.3s ease;
-    border: 1px solid var(--accent-color);
-    box-shadow: 0 0 10px rgba(64, 224, 208, 0.3);
-}
+        .topbar {
+            padding: 18px 0;
+            position: relative;
+            z-index: 20;
+        }
 
-.bottom-nav .nav-item.active, .bottom-nav .nav-item:hover {
-    background: var(--accent-color);
-    color: #000;
-    box-shadow: 0 0 15px var(--accent-color);
-    transform: translateY(-2px);
-}
+        .topbar-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+        }
 
-/* استایل‌های بهبودیافته و مدرن بخش‌های صفحه (کارت‌های خوشگل و مرتب) */
-.card-wrapper { 
-    background: linear-gradient(145deg, #121218, #0d0d12); 
-    border: 1px solid rgba(255, 255, 255, 0.08); 
-    border-radius: 24px; 
-    padding: 24px; 
-    margin: 20px auto; 
-    width: 90%; 
-    max-width: 520px; 
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6); 
-    border-left: 5px solid var(--accent-color); 
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.card-wrapper:hover {
-    box-shadow: 0 12px 35px rgba(0,0,0,0.8), 0 0 15px rgba(64,224,208,0.1);
-}
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
 
-body{margin:0;background:#050505;color:white;font-family:Arial,sans-serif;padding-bottom:110px;opacity:0;animation: pageShow 1s ease-in forwards;}
-@keyframes pageShow{from{opacity:0;}to{opacity:1;}}
+        .brand img {
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 22px rgba(64,224,208,.4);
+        }
 
-.gothic-cina-games {font-family: 'Old English Text MT', 'Georgia', serif;font-weight: bold;color: #ffffff !important;text-shadow: -3px -3px 0 #000, 3px -3px 0 #000,-3px 3px 0 #000, 3px 3px 0 #000,0 0 15px var(--accent-color),0 0 30px #008b8b;letter-spacing: 2px;}
+        .brand strong {
+            display: block;
+            font-size: 20px;
+            letter-spacing: 1px;
+        }
 
-.top-header-bar {display: flex;justify-content: space-between;align-items: center;padding: 15px 20px; box-sizing: border-box;width: 100%; max-width: 600px; margin: 0 auto;}
-.profile-box{display:flex;align-items:center;gap:10px;background:#111;padding:8px 14px; border-radius:14px;border:1px solid var(--accent-color);box-shadow:0 0 12px rgba(64,224,208,0.25);text-decoration:none;color:white;transition: 0.3s;}
-.profile-box:hover {transform: scale(1.02);box-shadow:0 0 18px rgba(64,224,208,0.4);}
-.profile-box img{width:38px; height:38px;border-radius:50%;border:2px solid var(--accent-color);object-fit: cover;}
-.profile-box h4{margin:0;color:var(--accent-color);font-size:14px; }
-.profile-box p{margin:0;font-size:11px;color:#aaa;}
+        .brand small {
+            display: block;
+            color: var(--muted);
+            margin-top: 3px;
+            font-size: 11px;
+        }
 
-.top-auth-btn {background: #00ff55; color: black; font-weight: bold;text-decoration: none;padding: 10px 16px; border-radius: 12px;font-size: 13px; box-shadow: 0 0 12px rgba(0, 255, 85, 0.3);transition: 0.3s;display: inline-flex;align-items:center;gap: 6px;}
-.top-auth-btn:hover {transform: scale(1.05);box-shadow: 0 0 22px #00ff55;}
+        .profile-link {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            background: rgba(255,255,255,.05);
+            text-decoration: none;
+            transition: .25s;
+        }
 
-#splash{position:fixed;top:0;left:0;width:100%;height:100%;background:radial-gradient(circle,#1a1a1a,#000);display:flex;justify-content:center;align-items:center;flex-direction:column;z-index:99999;animation: fadeSplash 5s forwards;}
-.splash-content {text-align: center;padding: 20px;}
-#splash h1{margin:0 0 25px 0;font-size:48px; opacity:0;animation: logoPulse 2.5s infinite ease-in-out alternate, showText 1s forwards;animation-delay: 0.5s;text-align:center;}
-#splash p{margin:0;font-size:15px; color:white;text-align:center;line-height: 1.6;opacity:0;animation:showText 1s forwards;animation-delay:1.5s;}
-@keyframes showText{ from{opacity:0;} to{opacity:1;} }
-@keyframes logoPulse {0% { transform: scale(0.95); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 15px var(--accent-color); }100% { transform: scale(1.03); text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000, 0 0 35px #00ffff, 0 0 10px #00ffff; }}
-@keyframes fadeSplash{0%{opacity:1;}85%{opacity:1;}100%{opacity:0;visibility:hidden;pointer-events:none;}}
+        .profile-link:hover {
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
 
-.main-title-text {font-size: 34px;text-align: center;margin: 10px 0 20px 0;}
-.ai-button-container {text-align: center; margin: 20px 0;padding: 0;}
-.ai-big-link {display: inline-flex;justify-content: center;align-items: center;width: 100%;max-width: 100%;height: 54px;background: linear-gradient(135deg, #007bff, #0056b3);border-radius: 14px;color: white;font-weight: bold;font-size: 18px;text-decoration: none;box-shadow: 0 0 15px rgba(0, 123, 255, 0.4);transition: 0.3s;animation: aiPulse 1.8s infinite ease-in-out alternate;}
-@keyframes aiPulse {0% { transform: scale(1); box-shadow: 0 0 12px rgba(0, 123, 255, 0.6); }100% { transform: scale(1.03); box-shadow: 0 0 25px #007bff, 0 0 10px var(--accent-color); border: 1px solid var(--accent-color); }}
-.ai-big-link:hover { background: #0069d9; }
+        .profile-link img {
+            width: 34px;
+            height: 34px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+        }
 
-.navbar{display:flex;justify-content:center;align-items:center;gap:8px;padding:12px;background:rgba(20, 20, 28, 0.8);border-radius: 16px;position:relative;top:0;flex-wrap: wrap;z-index: 999;border: 1px solid rgba(64, 224, 208, 0.2);margin-top: 15px;}
-.navbar a{color:white;text-decoration:none;padding:9px 14px;background:#1a1a24;border-radius:10px;font-weight: bold;font-size: 13px;transition: 0.2s; border: 1px solid rgba(255,255,255,0.05);}
-.navbar a:hover { background: #007bff; border-color: #007bff; }
+        .profile-link span {
+            color: var(--muted);
+            font-size: 11px;
+        }
 
-.characters-btn { background: #ff0055 !important; border-color: #ff0055 !important; color: white !important; box-shadow: 0 0 12px rgba(255, 0, 85, 0.4);animation: btnPulse 1.5s infinite ease-in-out alternate;display: inline-flex !important;align-items: center;gap: 8px;padding: 6px 14px !important;}
-.characters-btn img {width: 24px;height: 24px;border-radius: 50%;border: 1.5px solid white;object-fit: cover;}
-.characters-btn:hover { background: #ff3377 !important; box-shadow: 0 0 20px #ff3377;}
-@keyframes btnPulse {0% { transform: scale(1); box-shadow: 0 0 10px #ff0055; }100% { transform: scale(1.03); box-shadow: 0 0 18px #ff0055; }}
+        .hero {
+            min-height: 480px;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            align-items: center;
+            gap: 35px;
+            padding: 55px 0 40px;
+        }
 
-.telegram{background:rgba(0, 136, 204, 0.2) !important; border-color: #0088cc !important; color: #33ccff !important;}.youtube{background:rgba(255, 0, 0, 0.2) !important; border-color: #ff0000 !important; color: #ff6666 !important;}
+        .eyebrow {
+            color: var(--accent);
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
 
-.hero{text-align: center;}
-.hero h2{ font-size: 26px; margin-bottom: 8px; }.hero p{ color: #bbb; font-size: 15px; margin: 0; }
+        .hero h1 {
+            margin: 15px 0;
+            font-size: clamp(42px, 7vw, 82px);
+            line-height: .98;
+            letter-spacing: -3px;
+            background: linear-gradient(110deg, #fff, var(--accent), #72aaff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 35px rgba(64,224,208,.20);
+        }
 
-#pwaInstallBanner { 
-    position: fixed; 
-    bottom: 200px; 
-    left: 50%; 
-    transform: translateX(-50%) translateY(150px); 
-    width: 90%; 
-    max-width: 450px; 
-    background: linear-gradient(135deg, #11111e, #1a1a2e); 
-    border: 2px solid #00ff66; 
-    border-radius: 18px; 
-    padding: 15px 20px; 
-    box-shadow: 0 0 25px rgba(0, 255, 102, 0.3); 
-    display: flex; 
-    justify-content: space-between; 
-    align-items: center; 
-    z-index: 1000000; 
-    box-sizing: border-box; 
-    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-}
+        .hero h1 span {
+            display: block;
+            font-size: .43em;
+            letter-spacing: 4px;
+            color: var(--muted);
+            -webkit-text-fill-color: var(--muted);
+            margin-top: 16px;
+        }
 
-#pwaInstallBanner.show { 
-    transform: translateX(-50%) translateY(0); 
-}
+        .hero-description {
+            max-width: 640px;
+            color: var(--muted);
+            line-height: 1.8;
+            font-size: 16px;
+        }
 
-.pwa-text {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 25px;
+        }
 
-.pwa-text img {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    border: 1.5px solid #00ff66;
-}
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 47px;
+            padding: 0 19px;
+            border-radius: 13px;
+            border: 1px solid transparent;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            transition: .25s;
+        }
 
-.pwa-info h5 {
-    margin: 0 0 3px 0;
-    font-size: 14px;
-    color: white;
-}
+        .btn:hover {
+            transform: translateY(-3px);
+        }
 
-.pwa-info p {
-    margin: 0;
-    font-size: 11px;
-    color: #aaa;
-}
+        .btn-primary {
+            color: #00110a;
+            background: linear-gradient(135deg, var(--green), var(--accent));
+            box-shadow: 0 0 25px rgba(0,255,102,.24);
+        }
 
-.pwa-buttons {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-}
+        .btn-secondary {
+            color: white;
+            border-color: rgba(64,224,208,.5);
+            background: rgba(64,224,208,.08);
+        }
 
-#pwaBtnInstall {
-    background: #00ff66;
-    color: black;
-    border: none;
-    padding: 8px 14px;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 12px;
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
-    transition: 0.2s;
-}
+        .hero-visual {
+            min-height: 350px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
 
-#pwaBtnInstall:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 18px #00ff66;
-}
+        .hero-orb {
+            width: min(360px, 75vw);
+            aspect-ratio: 1;
+            border-radius: 50%;
+            background:
+                linear-gradient(145deg, rgba(64,224,208,.20), rgba(35,140,255,.05)),
+                url("icon.png") center/cover;
+            border: 1px solid rgba(64,224,208,.7);
+            box-shadow:
+                0 0 35px rgba(64,224,208,.42),
+                inset 0 0 40px rgba(35,140,255,.35);
+            animation: float 5s ease-in-out infinite;
+        }
 
-#pwaBtnClose {
-    background: transparent;
-    color: #ff4444;
-    border: none;
-    font-size: 18px;
-    cursor: pointer;
-    padding: 5px;
-}
-    
-.search-container {
-    position: relative;
-    width: 100%;
-    margin: 0 auto 15px auto;
-    box-sizing: border-box;
-}
+        .floating-badge {
+            position: absolute;
+            padding: 12px 15px;
+            border: 1px solid var(--border);
+            background: rgba(5,9,19,.86);
+            border-radius: 14px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.4);
+            font-size: 12px;
+            font-weight: bold;
+        }
 
-#gameSearchInput {
-    width: 100%;
-    padding: 14px 18px;
-    border-radius: 14px;
-    border: 1px solid rgba(64, 224, 208, 0.4);
-    background: #15151c;
-    color: white;
-    outline: none;
-    font-size: 15px;
-    box-sizing: border-box;
-    box-shadow: inset 0 2px 5px rgba(0,0,0,0.5);
-    transition: all 0.3s ease;
-}
+        .badge-one {
+            top: 12%;
+            right: 3%;
+            color: var(--green);
+        }
 
-#gameSearchInput:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 15px rgba(64, 224, 208, 0.3), inset 0 2px 5px rgba(0,0,0,0.5);
-}
+        .badge-two {
+            bottom: 12%;
+            left: 0;
+            color: var(--gold);
+        }
 
-#searchResultsBox {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    background: #15151c;
-    border: 1px solid rgba(64, 224, 208, 0.3);
-    border-radius: 0 0 14px 14px;
-    max-height: 220px;
-    overflow-y: auto;
-    display: none;
-    z-index: 1000;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.7);
-}
+        @keyframes float {
+            0%,100% { transform: translateY(0) rotate(0); }
+            50% { transform: translateY(-14px) rotate(2deg); }
+        }
 
-#searchResultsBox a {
-    display: block;
-    padding: 12px 18px;
-    color: #fff;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: 14px;
-    transition: background 0.2s, color 0.2s;
-    text-align: left;
-}
+        .section {
+            margin: 28px 0;
+        }
 
-#searchResultsBox a:hover {
-    background-color: var(--accent-color);
-    color: #000;
-}
-</style>
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 15px;
+            margin-bottom: 17px;
+        }
+
+        .section-heading h2 {
+            margin: 0;
+            font-size: clamp(22px, 4vw, 32px);
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            margin: 0;
+            font-size: 13px;
+        }
+
+        .panel {
+            background: linear-gradient(145deg, rgba(20,35,58,.9), rgba(7,14,27,.9));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: 0 20px 55px rgba(0,0,0,.25);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .stat {
+            padding: 18px;
+            border-radius: 17px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--border);
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 25px;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .ciner-card {
+            display: grid;
+            grid-template-columns: .9fr 1.1fr;
+            min-height: 300px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            border: 1px solid rgba(155,92,255,.45);
+            background: linear-gradient(120deg, rgba(67,31,111,.55), rgba(9,14,28,.9));
+            box-shadow: 0 0 35px rgba(155,92,255,.14);
+        }
+
+        .ciner-card img {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+        }
+
+        .ciner-content {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .ciner-content .eyebrow {
+            color: #c4a4ff;
+        }
+
+        .ciner-content h2 {
+            margin: 10px 0;
+            font-size: clamp(35px, 6vw, 63px);
+            letter-spacing: 6px;
+        }
+
+        .ciner-content p {
+            color: #c8c3d7;
+            line-height: 1.7;
+            margin: 0 0 12px;
+        }
+
+        .release {
+            color: #c29aff;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .search-box {
+            position: relative;
+            margin-top: 16px;
+        }
+
+        .search-box input {
+            width: 100%;
+            height: 55px;
+            padding: 0 18px;
+            border-radius: 15px;
+            color: white;
+            outline: none;
+            border: 1px solid rgba(64,224,208,.4);
+            background: rgba(0,0,0,.28);
+        }
+
+        .search-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 20px rgba(64,224,208,.2);
+        }
+
+        #searchResultsBox {
+            display: none;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 62px;
+            max-height: 260px;
+            overflow-y: auto;
+            z-index: 30;
+            border: 1px solid var(--accent);
+            border-radius: 14px;
+            background: #0c1729;
+            box-shadow: 0 16px 30px rgba(0,0,0,.6);
+        }
+
+        #searchResultsBox a {
+            display: block;
+            padding: 13px 16px;
+            color: white;
+            text-decoration: none;
+            border-bottom: 1px solid var(--border);
+        }
+
+        #searchResultsBox a:hover {
+            background: var(--accent);
+            color: #00110a;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .feature-card {
+            padding: 22px;
+            border-radius: 19px;
+            background: rgba(255,255,255,.045);
+            border: 1px solid var(--border);
+            transition: .25s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+            background: rgba(64,224,208,.08);
+        }
+
+        .feature-icon {
+            display: grid;
+            place-items: center;
+            width: 48px;
+            height: 48px;
+            border-radius: 15px;
+            font-size: 25px;
+            background: rgba(64,224,208,.12);
+            margin-bottom: 15px;
+        }
+
+        .feature-card h3 {
+            margin: 0 0 8px;
+            font-size: 17px;
+        }
+
+        .feature-card p {
+            margin: 0;
+            color: var(--muted);
+            line-height: 1.6;
+            font-size: 13px;
+        }
+
+        .feature-card a {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .ad-box {
+            min-height: 90px;
+            display: grid;
+            place-items: center;
+            margin: 22px 0;
+            overflow: hidden;
+            border: 1px dashed rgba(255,255,255,.18);
+            border-radius: 16px;
+            color: #71829b;
+            font-size: 11px;
+        }
+
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-card h2 {
+            margin-top: 0;
+            font-size: 21px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 13px;
+            color: white;
+            outline: none;
+            resize: vertical;
+            border-radius: 12px;
+            border: 1px solid rgba(64,224,208,.32);
+            background: rgba(0,0,0,.26);
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .status {
+            display: none;
+            margin: 12px 0 0;
+            text-align: center;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .support {
+            text-align: center;
+            border-color: rgba(255,212,71,.35);
+            background: linear-gradient(145deg, rgba(102,77,9,.25), rgba(12,22,37,.9));
+        }
+
+        .support h2 {
+            color: var(--gold);
+            margin-top: 0;
+        }
+
+        .support p {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .main-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 9px;
+            margin: 25px 0;
+        }
+
+        .main-nav a {
+            padding: 10px 14px;
+            color: #dceaff;
+            text-decoration: none;
+            background: rgba(255,255,255,.06);
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            font-size: 13px;
+            transition: .2s;
+        }
+
+        .main-nav a:hover {
+            color: #00110a;
+            background: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .bottom-nav {
+            position: fixed;
+            z-index: 100;
+            left: 50%;
+            bottom: 15px;
+            transform: translateX(-50%);
+            width: min(620px, 92%);
+            display: flex;
+            justify-content: space-around;
+            gap: 6px;
+            padding: 9px;
+            border: 1px solid rgba(64,224,208,.4);
+            border-radius: 20px;
+            background: rgba(5,12,23,.88);
+            backdrop-filter: blur(18px);
+            box-shadow: 0 10px 35px rgba(0,0,0,.6);
+        }
+
+        .bottom-nav a {
+            flex: 1;
+            text-align: center;
+            padding: 10px 6px;
+            color: var(--muted);
+            text-decoration: none;
+            border-radius: 13px;
+            font-size: 12px;
+            font-weight: bold;
+            transition: .2s;
+        }
+
+        .bottom-nav a:hover,
+        .bottom-nav a.active {
+            color: #00110a;
+            background: var(--accent);
+        }
+
+        footer {
+            text-align: center;
+            color: #71829b;
+            font-size: 12px;
+            padding: 35px 0 130px;
+        }
+
+        #splash {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            background:
+                radial-gradient(circle at center, rgba(35,140,255,.22), transparent 35%),
+                #03060c;
+            transition: opacity .6s, visibility .6s;
+        }
+
+        .splash-logo {
+            text-align: center;
+            animation: splashPulse 1.7s ease-in-out infinite alternate;
+        }
+
+        .splash-logo img {
+            width: 88px;
+            height: 88px;
+            object-fit: cover;
+            border-radius: 27px;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 35px rgba(64,224,208,.5);
+        }
+
+        .splash-logo h1 {
+            margin: 18px 0 6px;
+            font-size: 33px;
+        }
+
+        .splash-logo p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        @keyframes splashPulse {
+            from { transform: scale(.96); }
+            to { transform: scale(1.04); }
+        }
+
+        #pwaInstallBanner {
+            display: none;
+            position: fixed;
+            z-index: 200;
+            left: 50%;
+            bottom: 100px;
+            transform: translateX(-50%);
+            width: min(440px, 90%);
+            padding: 15px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border: 1px solid var(--green);
+            border-radius: 17px;
+            background: #0b1728;
+            box-shadow: 0 0 25px rgba(0,255,102,.25);
+        }
+
+        .pwa-info strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .pwa-info small {
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        .pwa-actions {
+            display: flex;
+            gap: 7px;
+        }
+
+        .pwa-actions button {
+            border: 0;
+            cursor: pointer;
+            border-radius: 9px;
+            padding: 8px 11px;
+            font-weight: bold;
+        }
+
+        #pwaBtnInstall {
+            background: var(--green);
+            color: #00110a;
+        }
+
+        #pwaBtnClose {
+            background: transparent;
+            color: #ff668e;
+            font-size: 20px;
+        }
+
+        @media (max-width: 760px) {
+            .hero,
+            .ciner-card,
+            .two-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 25px;
+                text-align: center;
+            }
+
+            .hero-description {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                min-height: 280px;
+            }
+
+            .ciner-card img {
+                min-height: 210px;
+                max-height: 250px;
+            }
+
+            .feature-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .ciner-content {
+                padding: 23px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .topbar-inner {
+                align-items: flex-start;
+            }
+
+            .profile-link div {
+                display: none;
+            }
+
+            .feature-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .panel {
+                padding: 18px;
+            }
+
+            .bottom-nav a {
+                font-size: 10px;
+            }
+
+            .hero h1 {
+                letter-spacing: -2px;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-<div id="splash"><div class="splash-content"><h1 class="gothic-cina-games">Cina Games</h1><p>Welcome to Cina Games<br></p></div></div>
-
-<div class="top-header-bar">
-  <a href="about-creator.html" class="profile-box">
-    <img src="profile.jpg">
-    <div>
-      <h4 style="font-family: serif; letter-spacing: 1px;">Cina</h4>
-      <p>Creator of Cina Games</p>
-    </div>
-  </a>
-
-  <div>
-    <a href="#authSection" id="authBtn" class="top-auth-btn">👤 Login / Register</a>
-    <span id="userWelcome" style="color: var(--accent-color); font-weight: bold; display: none; font-size: 13px; background: #111; padding: 8px 12px; border-radius: 10px; border: 1px solid var(--accent-color);"></span>
-  </div>
-</div>
-
-<div class="card-wrapper">
-
-    <h1 class="main-title-text gothic-cina-games">Cina Games</h1>
-
-<!-- CINER FEATURE -->
-<section class="ciner-card">
-    <img src="ciner.jpg" alt="Ciner">
-
-    <div class="ciner-info">
-        <span>UPCOMING GAME</span>
-        <h2>CINER</h2>
-        <p>Open-World Action Game</p>
-        <strong>COMING SOON • LATE 2027</strong>
-
-        <a href="ciner.html">LEARN MORE</a>
-    </div>
-</section>
-
-<style>
-.ciner-card {
-    max-width: 850px;
-    height: 260px;
-    margin: 35px auto;
-    display: flex;
-    overflow: hidden;
-    border-radius: 16px;
-    background: #111;
-    border: 1px solid #292929;
-    box-shadow: 0 8px 30px rgba(0,0,0,.35);
-}
-
-.ciner-card img {
-    width: 48%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.ciner-info {
-    flex: 1;
-    padding: 28px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    color: white;
-}
-
-.ciner-info span {
-    font-size: 11px;
-    color: #aaa;
-    letter-spacing: 2px;
-}
-
-.ciner-info h2 {
-    margin: 5px 0;
-    font-size: 38px;
-    letter-spacing: 5px;
-}
-
-.ciner-info p {
-    margin: 0 0 10px;
-    color: #ccc;
-}
-
-.ciner-info strong {
-    font-size: 13px;
-    color: #b58cff;
-}
-
-.ciner-info a {
-    width: fit-content;
-    margin-top: 15px;
-    padding: 9px 16px;
-    border-radius: 7px;
-    background: #7c3aed;
-    color: white;
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: bold;
-}
-
-@media (max-width: 600px) {
-    .ciner-card {
-        height: 190px;
-    }
-
-    .ciner-card img {
-        width: 42%;
-    }
-
-    .ciner-info {
-        padding: 15px;
-    }
-
-    .ciner-info h2 {
-        font-size: 27px;
-    }
-
-    .ciner-info p {
-        font-size: 12px;
-    }
-
-    .ciner-info strong {
-        font-size: 10px;
-    }
-
-    .ciner-info a {
-        margin-top: 8px;
-        padding: 7px 12px;
-        font-size: 10px;
-    }
-}
-</style>
-    
-    <div class="search-container">
-        <input type="text" id="gameSearchInput" placeholder="🔍 Auto search games (e.g., WWE)..." autocomplete="off">
-        <div id="searchResultsBox"></div>
-    </div>
-
-    <div style="text-align:center; margin: 15px 0;">
-        <script type="text/javascript">
-            atOptions = {'key' : 'ef860086d3acfd8fb188ea50dc15430c','format' : 'iframe','height' : 250,'width' : 300,'params' : {}};
-        </script>
-    </div>
-
-    <div class="ai-button-container">
-        <a href="ai.html" class="ai-big-link">🤖 Cina AI Chat</a>
-    </div>
-
-    <div style="background: rgba(26, 26, 30, 0.6); padding: 18px; border-radius: 16px; margin: 15px 0 0 0; text-align: center; border: 1px solid rgba(255, 215, 0, 0.4);">
-        <h3 style="color: #FFD700; margin-top: 0; margin-bottom: 8px; font-size: 17px;">💎 Support Cina Games</h3>
-        <p style="color: #ccc; font-size: 13px; margin-bottom: 14px; line-height: 1.5;">If you'd like to support the development of games and tools, you can proceed via the link below:</p>
-        <a href="donate.html" style="display:block; text-align:center; padding:12px; background:linear-gradient(90deg,#FFD700,#ffcc00); color:black; font-weight:bold; text-decoration:none; border-radius:12px; box-shadow:0 0 12px rgba(255,215,0,0.3); font-size: 14px; transition: 0.2s;">
-            Go to Donation Page
-        </a>
-    </div>
-
-    <div class="navbar">
-        <a href="#home">Home</a>
-        <a href="games.html">Games</a>
-        <a class="characters-btn" href="characters.html"><img src="char-icon.jpg" alt="icon">Characters</a>
-        <a href="about.html">About</a>
-        <a href="contact.html">Contact</a>
-        <a class="telegram" href="https://t.me/afghangamerx">Telegram</a>
-        <a class="youtube" href="https://www.youtube.com/@CinaGames-b4v">YouTube</a>
-    </div>
-</div>
-
-<div class="card-wrapper hero">
-    <h2 class="gothic-cina-games" style="font-size: 26px; margin-bottom: 8px;">Welcome to Cina Games Store</h2>
-    <p>Download Android & PC games...</p>
-</div>
-
-<!-- منوی پایین صفحه با ۴ دکمه استاندارد و هماهنگ -->
-<nav class="bottom-nav">
-    <a href="index.html" class="nav-item active">Home</a>
-    <a href="games.html" class="nav-item">Games</a>
-    <a href="dashboard.html" class="nav-item">Dash</a>
-    <a href="settings.html" class="nav-item">Setting</a>
-</nav>
-
-<div class="card-wrapper" id="desc">
-    <h2 class="gothic-cina-games" style="font-size:22px; margin:0;">About Cina Games</h2>
-</div>
-
-<div class="card-wrapper" id="alerts">
-    <h2 style="font-size: 20px; margin: 0;">🔔 Alerts</h2>
-</div>
-
-<div class="card-wrapper" id="settings">
-    <h2 style="font-size: 20px; margin: 0;">⚙️ Settings</h2>
-</div>
-
-<div id="authSection" class="card-wrapper">
-    <h3 id="authTitle" style="color: #00ff55; margin-top: 0; margin-bottom: 15px; text-align: center; font-family: sans-serif; font-size: 18px;">🔐 User Account Login</h3>
-
-    <form id="cinaAuthForm" style="display: flex; flex-direction: column; gap: 12px;">
-        <input type="email" id="authEmail" placeholder="Your Email" required style="width: 100%; padding: 12px; background: #15151c; border: 1px solid #00ff55; border-radius: 10px; color: white; box-sizing: border-box; font-size: 14px; outline: none;">
-
-        <input type="password" id="authPassword" placeholder="Password" required style="width: 100%; padding: 12px; background: #15151c; border: 1px solid #00ff55; border-radius: 10px; color: white; box-sizing: border-box; font-size: 14px; outline: none;">
-
-        <button type="submit" id="authSubmitBtn" style="background: #00ff55; color: black; font-weight: bold; padding: 12px 20px; border: none; border-radius: 10px; cursor: pointer; font-size: 14px; box-shadow: 0 0 10px rgba(0,255,85,0.4); transition: 0.2s; width: 100%; margin-top: 5px;">Login to Account</button>
-
-        <p id="authToggleText" style="text-align: center; color: #ccc; font-size: 13px; cursor: pointer; margin-top: 8px;">Don't have an account? <span style="color: #00ff55; font-weight: bold;">Register here</span></p>
-
-        <p id="authStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 13px; display: none;"></p>
-    </form>
-</div>
-
-<div class="card-wrapper">
-    <h3 style="color: var(--accent-color); margin-top: 0; margin-bottom: 15px; font-family: sans-serif; text-align: center; font-size: 18px;">💬 Comments & Feedback</h3>
-
-    <form id="cinaCommentForm" style="display: flex; flex-direction: column; gap: 12px;">
-        <input type="text" name="name" id="userName" placeholder="Your Name" required style="width: 100%; padding: 12px; background: #15151c; border: 1px solid var(--accent-color); border-radius: 10px; color: white; box-sizing: border-box; font-size: 14px; outline: none;">
-
-        <textarea name="message" id="userMsg" rows="3" placeholder="Write your review, suggestion, or game request..." required style="width: 100%; padding: 12px; background: #15151c; border: 1px solid var(--accent-color); border-radius: 10px; color: white; box-sizing: border-box; resize: none; font-size: 14px; font-family: Arial, sans-serif; outline: none;"></textarea>
-
-        <button type="submit" id="submitBtn" style="background: var(--accent-color); color: black; font-weight: bold; padding: 12px; border: none; border-radius: 10px; cursor: pointer; font-size: 15px; box-shadow: 0 0 10px rgba(64,224,208,0.4); transition: 0.2s;">🚀 Send Feedback</button>
-
-        <p id="formStatus" style="text-align: center; margin: 5px 0 0 0; font-weight: bold; font-size: 13px; display: none;"></p>
-    </form>
-</div>
-
-<div style="text-align:center; margin: 25px 0;">
-    <a href="about-creator.html" style="display:inline-block; padding:12px 30px; background:var(--accent-color); color:black; text-decoration:none; border-radius:50px; font-weight:bold; font-size: 15px; box-shadow:0 0 15px rgba(64,224,208,.4); transition: 0.3s;">👤 About Creator</a>
-</div>
-
-<!-- PWA INSTALL CARD -->
-<div id="pwaInstallBanner">
-    <div class="pwa-text">
-        <img src="icon.png" alt="Logo">
-        <div class="pwa-info">
-            <h5>Cina Games App</h5>
-            <p>Install lightweight & fast app</p>
+    <!-- Splash -->
+    <div id="splash">
+        <div class="splash-logo">
+            <img src="icon.png" alt="Cina Games logo">
+            <h1>Cina Games</h1>
+            <p>Play. Discover. Create.</p>
         </div>
     </div>
 
-    <div class="pwa-buttons">
-        <button id="pwaBtnInstall">📥 Install</button>
-        <button id="pwaBtnClose">×</button>
+    <header class="topbar">
+        <div class="container topbar-inner">
+            <a class="brand" href="index.html">
+                <img src="icon.png" alt="Cina Games logo">
+                <div>
+                    <strong>CINA GAMES</strong>
+                    <small>Android • PC • Winlator</small>
+                </div>
+            </a>
+
+            <a class="profile-link" href="about-creator.html">
+                <img src="profile.jpg" alt="Cina Games creator">
+                <div>
+                    <b>Cina</b><br>
+                    <span>Creator of Cina Games</span>
+                </div>
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div>
+                <div class="eyebrow">Welcome to the official gaming hub</div>
+
+                <h1>
+                    Cina Games
+                    <span>YOUR NEXT GAMING ADVENTURE STARTS HERE</span>
+                </h1>
+
+                <p class="hero-description">
+                    Discover Android games, PC games, Winlator projects, gaming tools,
+                    upcoming releases and the latest creations from Cina Games.
+                </p>
+
+                <div class="hero-buttons">
+                    <a class="btn btn-primary" href="games.html">🎮 Explore Games</a>
+                    <a class="btn btn-secondary" href="ai.html">🤖 Open Cina AI</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-orb"></div>
+                <div class="floating-badge badge-one">⚡ Gaming Platform</div>
+                <div class="floating-badge badge-two">🎮 Android & PC</div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="section">
+            <div class="panel stats-grid">
+                <div class="stat">
+                    <strong>01</strong>
+                    <span>Gaming Community</span>
+                </div>
+                <div class="stat">
+                    <strong>PC</strong>
+                    <span>Windows & Winlator</span>
+                </div>
+                <div class="stat">
+                    <strong>AI</strong>
+                    <span>Cina AI Assistant</span>
+                </div>
+                <div class="stat">
+                    <strong>∞</strong>
+                    <span>Future Projects</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- CINER -->
+        <section class="section" id="ciner">
+            <div class="section-heading">
+                <div>
+                    <h2>Featured Project</h2>
+                    <p>Something special is coming to the Cina Games universe.</p>
+                </div>
+            </div>
+
+            <article class="ciner-card">
+                <img src="ciner.jpg" alt="CINER open world action game">
+                <div class="ciner-content">
+                    <div class="eyebrow">Upcoming game</div>
+                    <h2>CINER</h2>
+                    <p>
+                        An upcoming open-world action game project from Cina Games.
+                        Follow the project and discover what is coming next.
+                    </p>
+                    <div class="release">COMING SOON • LATE 2027</div>
+                    <div style="margin-top:20px;">
+                        <a class="btn btn-primary" href="ciner.html">Learn More</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <!-- Search -->
+        <section class="section panel" id="games-search">
+            <div class="section-heading">
+                <div>
+                    <h2>Find Your Game</h2>
+                    <p>Search through the games available on Cina Games.</p>
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input
+                    type="search"
+                    id="gameSearchInput"
+                    placeholder="🔍 Search games, for example WWE..."
+                    autocomplete="off"
+                    aria-label="Search games">
+                <div id="searchResultsBox"></div>
+            </div>
+        </section>
+
+        <!-- Advertisement -->
+        <div class="ad-box">
+            <script type="text/javascript">
+                atOptions = {
+                    "key": "ef860086d3acfd8fb188ea50dc15430c",
+                    "format": "iframe",
+                    "height": 250,
+                    "width": 300,
+                    "params": {}
+                };
+            </script>
+        </div>
+
+        <!-- Features -->
+        <section class="section">
+            <div class="section-heading">
+                <div>
+                    <h2>Explore Cina Games</h2>
+                    <p>Everything you need in one gaming platform.</p>
+                </div>
+            </div>
+
+            <div class="feature-grid">
+                <article class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Games Library</h3>
+                    <p>Explore Android, PC and Winlator game pages with useful information.</p>
+                    <a href="games.html">View Games →</a>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>Cina AI</h3>
+                    <p>Use the dedicated Cina AI page for gaming questions and assistance.</p>
+                    <a href="ai.html">Open AI →</a>
+                </article>
+
+                <article class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Characters</h3>
+                    <p>Meet the characters and explore the creative world of Cina Games.</p>
+                    <a href="characters.html">Meet Characters →</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Navigation -->
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="games.html">Games</a>
+            <a href="characters.html">Characters</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Contact</a>
+            <a href="https://t.me/afghangamerx" target="_blank" rel="noopener">Telegram</a>
+            <a href="https://www.youtube.com/@CinaGames-b4v" target="_blank" rel="noopener">YouTube</a>
+        </nav>
+
+        <!-- About SEO content -->
+        <section class="section panel" id="about-cina-games">
+            <div class="section-heading">
+                <div>
+                    <h2>About Cina Games</h2>
+                    <p>Gaming, creativity and technology in one place.</p>
+                </div>
+            </div>
+
+            <p style="color:var(--muted);line-height:1.9;margin:0;">
+                Cina Games is an independent gaming platform created for gamers who enjoy
+                Android games, PC games, Winlator projects and gaming tools. The platform
+                also shares updates about the upcoming CINER game, the Cina AI assistant
+                and future creative projects.
+            </p>
+        </section>
+
+        <!-- Support -->
+        <section class="section panel support">
+            <h2>💎 Support Cina Games</h2>
+            <p>
+                Your support helps Cina Games continue developing games, tools and new
+                gaming experiences.
+            </p>
+            <a class="btn btn-primary" href="donate.html">Support the Project</a>
+        </section>
+
+        <!-- Auth and feedback -->
+        <section class="section two-columns">
+
+            <div class="panel form-card" id="authSection">
+                <h2 id="authTitle">🔐 User Account Login</h2>
+
+                <form id="cinaAuthForm">
+                    <div class="form-group">
+                        <input type="email" id="authEmail" placeholder="Your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="password" id="authPassword" placeholder="Your password" required>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%;" type="submit" id="authSubmitBtn">
+                        Login to Account
+                    </button>
+
+                    <p
+                        id="authToggleText"
+                        style="color:var(--muted);text-align:center;font-size:13px;cursor:pointer;">
+                        Don't have an account?
+                        <b style="color:var(--accent);">Register here</b>
+                    </p>
+
+                    <p class="status" id="authStatus"></p>
+                </form>
+            </div>
+
+            <div class="panel form-card">
+                <h2>💬 Comments & Feedback</h2>
+
+                <form id="cinaCommentForm">
+                    <div class="form-group">
+                        <input type="text" id="userName" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <textarea id="userMsg" rows="5" placeholder="Write your suggestion or game request..." required></textarea>
+                    </div>
+
+                    <button class="btn btn-primary" style="width:100%;" type="submit" id="submitBtn">
+                        🚀 Send Feedback
+                    </button>
+
+                    <p class="status" id="formStatus"></p>
+                </form>
+            </div>
+
+        </section>
+
+        <div style="text-align:center;margin:28px 0;">
+            <a class="btn btn-secondary" href="about-creator.html">👤 About Creator</a>
+        </div>
+
+    </main>
+
+    <footer>
+        <p>© 2026 Cina Games. All rights reserved.</p>
+        <p>Built with passion for gamers.</p>
+    </footer>
+
+    <!-- Bottom navigation -->
+    <nav class="bottom-nav" aria-label="Mobile navigation">
+        <a class="active" href="index.html">⌂<br>Home</a>
+        <a href="games.html">🎮<br>Games</a>
+        <a href="dashboard.html">📊<br>Dash</a>
+        <a href="settings.html">⚙<br>Settings</a>
+    </nav>
+
+    <!-- PWA banner -->
+    <div id="pwaInstallBanner">
+        <div class="pwa-info">
+            <strong>📲 Install Cina Games</strong>
+            <small>Use the site as a lightweight app.</small>
+        </div>
+
+        <div class="pwa-actions">
+            <button id="pwaBtnInstall">Install</button>
+            <button id="pwaBtnClose">×</button>
+        </div>
     </div>
-</div>
 
-<audio id="dingSound" src="ding.mp3"></audio>
+    <audio id="dingSound" src="ding.mp3"></audio>
 
-<script>
+    <script>
+        /* -----------------------------
+           Service Worker / PWA
+        ----------------------------- */
 
-/* =========================================================
-   SERVICE WORKER
-   ========================================================= */
-
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('./sw.js')
-            .catch(err => console.log('SW Failed'));
-    });
-}
-
-
-/* =========================================================
-   PWA INSTALL CARD
-   ========================================================= */
-
-let deferredPrompt = null;
-
-const installBanner = document.getElementById('pwaInstallBanner');
-const btnInstall = document.getElementById('pwaBtnInstall');
-const btnClose = document.getElementById('pwaBtnClose');
-
-function isPWAInstalled() {
-    return (
-        window.matchMedia('(display-mode: standalone)').matches ||
-        window.navigator.standalone === true
-    );
-}
-
-function hideInstallBanner() {
-    if (!installBanner) return;
-
-    installBanner.classList.remove('show');
-    installBanner.style.display = 'none';
-}
-
-function showInstallBanner() {
-    if (!installBanner) return;
-
-    if (isPWAInstalled()) {
-        hideInstallBanner();
-        return;
-    }
-
-    installBanner.style.display = 'flex';
-
-    requestAnimationFrame(() => {
-        installBanner.classList.add('show');
-    });
-}
-
-
-/*
-   مهم:
-   کارت فقط زمانی نمایش داده می‌شود که PWA نصب نشده باشد.
-   دیگر setTimeout برای نمایش اجباری کارت وجود ندارد.
-*/
-if (isPWAInstalled()) {
-    hideInstallBanner();
-}
-
-window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-
-    deferredPrompt = e;
-
-    if (!isPWAInstalled()) {
-        showInstallBanner();
-    }
-});
-
-
-btnInstall.addEventListener('click', async () => {
-
-    if (isPWAInstalled()) {
-        hideInstallBanner();
-        return;
-    }
-
-    if (!deferredPrompt) {
-        return;
-    }
-
-    try {
-        deferredPrompt.prompt();
-
-        const choiceResult = await deferredPrompt.userChoice;
-
-        if (choiceResult.outcome === 'accepted') {
-            hideInstallBanner();
-        }
-
-    } catch (error) {
-        console.log('PWA install error:', error);
-    }
-
-    deferredPrompt = null;
-});
-
-
-btnClose.addEventListener('click', () => {
-    hideInstallBanner();
-});
-
-
-window.addEventListener('appinstalled', () => {
-    deferredPrompt = null;
-    hideInstallBanner();
-});
-
-
-/*
-   اگر کاربر داخل PWA است، هنگام برگشت به صفحه
-   دوباره بررسی می‌شود تا کارت هرگز نمایش داده نشود.
-*/
-document.addEventListener('visibilitychange', () => {
-
-    if (document.visibilityState === 'visible' && isPWAInstalled()) {
-        hideInstallBanner();
-    }
-
-});
-
-
-/* =========================================================
-   FIREBASE
-   ========================================================= */
-
-const firebaseConfig = {
-    apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
-    authDomain: "cina-games.firebaseapp.com",
-    projectId: "cina-games",
-    storageBucket: "cina-games.firebasestorage.app",
-    messagingSenderId: "449625451730",
-    appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
-    measurementId: "G-YSQZ60ZNC8"
-};
-
-firebase.initializeApp(firebaseConfig);
-
-const auth = firebase.auth();
-const db = firebase.firestore();
-
-
-/* =========================================================
-   SPLASH
-   ========================================================= */
-
-setTimeout(function(){
-
-    document.getElementById("splash").style.opacity="0";
-
-    document.getElementById("splash").style.visibility="hidden";
-
-    setTimeout(function(){
-        document.getElementById("splash").style.display="none";
-    }, 500);
-
-    let sound=document.getElementById("dingSound");
-
-    if(sound){
-        sound.volume=0.6;
-        sound.play().catch(e => console.log("Audio play blocked"));
-    }
-
-},100);
-
-
-/* =========================================================
-   COMMENTS
-   ========================================================= */
-
-document.getElementById('cinaCommentForm').addEventListener('submit', function(e) {
-
-    e.preventDefault(); 
-
-    var btn = document.getElementById('submitBtn');
-    var status = document.getElementById('formStatus');
-    var nameInput = document.getElementById('userName');
-    var msgInput = document.getElementById('userMsg');
-
-    btn.disabled = true;
-    btn.innerText = "⏳ Sending...";
-    status.style.display = "none";
-
-    var formData = new FormData();
-
-    formData.append('name', nameInput.value);
-    formData.append('message', msgInput.value);
-    formData.append('_captcha', 'false');
-
-    fetch('https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com', {
-        method: 'POST',
-        body: formData,
-        headers: {
-            'Accept': 'application/json'
-        }
-    })
-
-    .then(response => response.json())
-
-    .then(data => {
-
-        btn.disabled = false;
-        btn.innerText = "🚀 Send Feedback";
-
-        status.style.color = "#00ff55";
-        status.innerText = "✅ Message sent successfully!";
-        status.style.display = "block";
-
-        nameInput.value = "";
-        msgInput.value = "";
-
-    })
-
-    .catch(error => {
-
-        btn.disabled = false;
-        btn.innerText = "🚀 Send Feedback";
-
-        status.style.color = "#ff4444";
-        status.innerText = "❌ Error sending! Please try again.";
-        status.style.display = "block";
-
-    });
-
-});
-
-
-/* =========================================================
-   AUTH
-   ========================================================= */
-
-let isLoginMode = true;
-
-const authTitle = document.getElementById('authTitle'),
-      authSubmitBtn = document.getElementById('authSubmitBtn'),
-      authToggleText = document.getElementById('authToggleText'),
-      authSection = document.getElementById('authSection'),
-      authEmail = document.getElementById('authEmail'),
-      authPassword = document.getElementById('authPassword'),
-      authStatus = document.getElementById('authStatus'),
-      authBtn = document.getElementById('authBtn'),
-      userWelcome = document.getElementById('userWelcome');
-
-
-authToggleText.addEventListener('click', function() {
-
-    isLoginMode = !isLoginMode;
-
-    authStatus.style.display = "none";
-
-    if (!isLoginMode) {
-
-        authTitle.innerText = "📝 Create New Account";
-
-        authTitle.style.color = "var(--accent-color)";
-
-        authSubmitBtn.innerText = "Register to Cina Games";
-
-        authSubmitBtn.style.background = "var(--accent-color)";
-
-        authSection.style.borderColor = "var(--accent-color)";
-
-        authSection.style.boxShadow = "0 0 15px rgba(64,224,208,0.2)";
-
-        authEmail.style.borderColor = "var(--accent-color)";
-
-        authPassword.style.borderColor = "var(--accent-color)";
-
-        authToggleText.innerHTML =
-        'Already registered? <span style="color: var(--accent-color); font-weight: bold;">Login here</span>';
-
-    }
-
-    else {
-
-        authTitle.innerText = "🔐 User Account Login";
-
-        authTitle.style.color = "#00ff55";
-
-        authSubmitBtn.innerText = "Login to Account";
-
-        authSubmitBtn.style.background = "#00ff55";
-
-        authSection.style.borderColor = "#00ff55";
-
-        authSection.style.boxShadow = "0 0 15px rgba(0,255,85,0.2)";
-
-        authEmail.style.borderColor = "#00ff55";
-
-        authPassword.style.borderColor = "#00ff55";
-
-        authToggleText.innerHTML =
-        'Don\'t have an account? <span style="color: #00ff55; font-weight: bold;">Register here</span>';
-
-    }
-
-});
-
-
-document.getElementById('cinaAuthForm').addEventListener('submit', function(e) {
-
-    e.preventDefault();
-
-    const email = authEmail.value;
-    const password = authPassword.value;
-
-    authStatus.style.display = "block";
-    authStatus.style.color = "#ffcc00";
-    authStatus.innerText = "⏳ Please wait...";
-
-    if (isLoginMode) {
-
-        auth.signInWithEmailAndPassword(email, password)
-
-        .then(() => {
-
-            authStatus.style.color = "#00ff55";
-            authStatus.innerText = "✅ Login successful!";
-
-            authEmail.value = "";
-            authPassword.value = "";
-
-        })
-
-        .catch(() => {
-
-            authStatus.style.color = "#ff4444";
-            authStatus.innerText = "❌ Error: Incorrect credentials.";
-
-        });
-
-    }
-
-    else {
-
-        auth.createUserWithEmailAndPassword(email, password)
-
-        .then((userCredential) => {
-
-            db.collection("users").doc(userCredential.user.uid).set({
-                email: email,
-                joinedAt: new Date()
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", () => {
+                navigator.serviceWorker.register("./sw.js").catch(() => {});
             });
+        }
 
-            authStatus.style.color = "#00ff55";
-            authStatus.innerText = "✅ Account created successfully!";
+        let deferredPrompt = null;
+        const pwaBanner = document.getElementById("pwaInstallBanner");
+        const pwaInstall = document.getElementById("pwaBtnInstall");
+        const pwaClose = document.getElementById("pwaBtnClose");
 
-            authEmail.value = "";
-            authPassword.value = "";
+        function isPWAInstalled() {
+            return window.matchMedia("(display-mode: standalone)").matches ||
+                   window.navigator.standalone === true;
+        }
 
-        })
+        window.addEventListener("beforeinstallprompt", event => {
+            event.preventDefault();
+            deferredPrompt = event;
 
-        .catch(() => {
-
-            authStatus.style.color = "#ff4444";
-            authStatus.innerText = "❌ Registration error.";
-
+            if (!isPWAInstalled()) {
+                pwaBanner.style.display = "flex";
+            }
         });
 
-    }
+        pwaInstall.addEventListener("click", async () => {
+            if (!deferredPrompt) return;
 
-});
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
 
+            deferredPrompt = null;
+            pwaBanner.style.display = "none";
+        });
 
-auth.onAuthStateChanged((user) => {
+        pwaClose.addEventListener("click", () => {
+            pwaBanner.style.display = "none";
+        });
 
-    if (user) {
+        window.addEventListener("appinstalled", () => {
+            pwaBanner.style.display = "none";
+            deferredPrompt = null;
+        });
 
-        authBtn.style.display = "none";
-        authSection.style.display = "none";
+        /* -----------------------------
+           Splash Screen
+        ----------------------------- */
 
-        userWelcome.style.display = "inline-block";
+        window.addEventListener("load", () => {
+            setTimeout(() => {
+                const splash = document.getElementById("splash");
+                splash.style.opacity = "0";
+                splash.style.visibility = "hidden";
 
-        userWelcome.innerHTML =
-        "👤 " + user.email.split('@')[0];
+                setTimeout(() => {
+                    splash.style.display = "none";
+                }, 650);
 
-    }
+                const sound = document.getElementById("dingSound");
+                if (sound) {
+                    sound.volume = .45;
+                    sound.play().catch(() => {});
+                }
+            }, 1200);
+        });
 
-    else {
+        /* -----------------------------
+           Firebase
+        ----------------------------- */
 
-        authBtn.style.display = "inline-block";
+        const firebaseConfig = {
+            apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
+            authDomain: "cina-games.firebaseapp.com",
+            projectId: "cina-games",
+            storageBucket: "cina-games.firebasestorage.app",
+            messagingSenderId: "449625451730",
+            appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
+            measurementId: "G-YSQZ60ZNC8"
+        };
 
-        authSection.style.display = "block";
+        firebase.initializeApp(firebaseConfig);
 
-        userWelcome.style.display = "none";
+        const auth = firebase.auth();
+        const db = firebase.firestore();
 
-    }
+        let isLoginMode = true;
 
-});
+        const authForm = document.getElementById("cinaAuthForm");
+        const authTitle = document.getElementById("authTitle");
+        const authEmail = document.getElementById("authEmail");
+        const authPassword = document.getElementById("authPassword");
+        const authSubmitBtn = document.getElementById("authSubmitBtn");
+        const authToggleText = document.getElementById("authToggleText");
+        const authStatus = document.getElementById("authStatus");
+        const authSection = document.getElementById("authSection");
 
+        function showAuthStatus(message, color) {
+            authStatus.textContent = message;
+            authStatus.style.color = color;
+            authStatus.style.display = "block";
+        }
 
-/* =========================================================
-   GAME SEARCH
-   ========================================================= */
+        authToggleText.addEventListener("click", () => {
+            isLoginMode = !isLoginMode;
+            authStatus.style.display = "none";
 
-const searchInput = document.getElementById('gameSearchInput');
-const searchResultsBox = document.getElementById('searchResultsBox');
+            if (isLoginMode) {
+                authTitle.textContent = "🔐 User Account Login";
+                authSubmitBtn.textContent = "Login to Account";
+                authToggleText.innerHTML =
+                    "Don't have an account? <b style='color:var(--accent)'>Register here</b>";
+            } else {
+                authTitle.textContent = "📝 Create New Account";
+                authSubmitBtn.textContent = "Register to Cina Games";
+                authToggleText.innerHTML =
+                    "Already registered? <b style='color:var(--accent)'>Login here</b>";
+            }
+        });
 
+        authForm.addEventListener("submit", async event => {
+            event.preventDefault();
 
-async function fetchAndSearchGames(query) {
+            const email = authEmail.value.trim();
+            const password = authPassword.value;
 
-    if (query.trim() === '') {
+            showAuthStatus("⏳ Please wait...", "#ffd447");
 
-        searchResultsBox.style.display = 'none';
-        searchResultsBox.innerHTML = '';
+            try {
+                if (isLoginMode) {
+                    await auth.signInWithEmailAndPassword(email, password);
+                    showAuthStatus("✅ Login successful!", "#00ff66");
+                } else {
+                    const result = await auth.createUserWithEmailAndPassword(email, password);
 
-        return;
-    }
+                    await db.collection("users").doc(result.user.uid).set({
+                        email: email,
+                        joinedAt: new Date()
+                    });
 
-    try {
-
-        let response = await fetch('games.html');
-
-        let htmlText = await response.text();
-
-        let parser = new DOMParser();
-
-        let doc = parser.parseFromString(
-            htmlText,
-            'text/html'
-        );
-
-        let gameCards = doc.querySelectorAll('.card');
-
-        let matches = [];
-
-
-        gameCards.forEach(card => {
-
-            let titleEl = card.querySelector('h3');
-
-            let allLinks =
-            card.querySelectorAll('a[href$=".html"]');
-
-            let personalPageLink = 'games.html';
-
-
-            for (let link of allLinks) {
-
-                let href = link.getAttribute('href');
-
-                if (
-                    href &&
-                    href !== 'games.html' &&
-                    href !== 'index.html'
-                ) {
-
-                    personalPageLink = href;
-
-                    break;
+                    showAuthStatus("✅ Account created successfully!", "#00ff66");
                 }
 
+                authEmail.value = "";
+                authPassword.value = "";
+            } catch (error) {
+                showAuthStatus(
+                    isLoginMode
+                        ? "❌ Incorrect email or password."
+                        : "❌ Registration error. Please try again.",
+                    "#ff527d"
+                );
             }
+        });
 
+        auth.onAuthStateChanged(user => {
+            if (user) {
+                authSection.style.display = "none";
+            } else {
+                authSection.style.display = "block";
+            }
+        });
 
-            if (titleEl) {
+        /* -----------------------------
+           Feedback Form
+        ----------------------------- */
 
-                let title =
-                titleEl.textContent.trim();
+        document.getElementById("cinaCommentForm").addEventListener("submit", async event => {
+            event.preventDefault();
 
+            const button = document.getElementById("submitBtn");
+            const status = document.getElementById("formStatus");
+            const name = document.getElementById("userName");
+            const message = document.getElementById("userMsg");
 
-                if (
-                    title
-                    .toLowerCase()
-                    .includes(query.toLowerCase())
-                ) {
+            button.disabled = true;
+            button.textContent = "⏳ Sending...";
+            status.style.display = "none";
 
-                    if (
-                        !matches.some(
-                            m => m.title === title
-                        )
-                    ) {
+            const formData = new FormData();
+            formData.append("name", name.value.trim());
+            formData.append("message", message.value.trim());
+            formData.append("_captcha", "false");
 
-                        matches.push({
-                            title: title,
-                            link: personalPageLink
-                        });
-
+            try {
+                const response = await fetch(
+                    "https://formsubmit.co/ajax/ahmadfarhadcina@gmail.com",
+                    {
+                        method: "POST",
+                        body: formData,
+                        headers: {
+                            "Accept": "application/json"
+                        }
                     }
+                );
 
-                }
+                if (!response.ok) throw new Error("Request failed");
 
+                status.textContent = "✅ Message sent successfully!";
+                status.style.color = "#00ff66";
+                status.style.display = "block";
+
+                name.value = "";
+                message.value = "";
+            } catch (error) {
+                status.textContent = "❌ Error sending message. Please try again.";
+                status.style.color = "#ff527d";
+                status.style.display = "block";
             }
 
+            button.disabled = false;
+            button.textContent = "🚀 Send Feedback";
         });
 
+        /* -----------------------------
+           Games Search
+        ----------------------------- */
 
-        if (matches.length > 0) {
+        const searchInput = document.getElementById("gameSearchInput");
+        const searchResultsBox = document.getElementById("searchResultsBox");
 
-            let html = '';
+        async function searchGames(query) {
+            query = query.trim().toLowerCase();
 
-            matches.forEach(game => {
+            if (!query) {
+                searchResultsBox.style.display = "none";
+                searchResultsBox.innerHTML = "";
+                return;
+            }
 
-                html +=
-                `<a href="${game.link}">🎮 ${game.title}</a>`;
+            try {
+                const response = await fetch("games.html");
+                const html = await response.text();
+                const documentParser = new DOMParser();
+                const gamesDocument = documentParser.parseFromString(html, "text/html");
 
-            });
+                const cards = gamesDocument.querySelectorAll(".card, .game-card, article");
+                const results = [];
 
-            searchResultsBox.html = html;
+                cards.forEach(card => {
+                    const title = card.querySelector("h1, h2, h3, h4");
+                    if (!title) return;
 
-            searchResultsBox.innerHTML = html;
+                    const gameTitle = title.textContent.trim();
 
-            searchResultsBox.style.display = 'block';
+                    if (gameTitle.toLowerCase().includes(query)) {
+                        let link = card.querySelector("a[href]");
+                        link = link ? link.getAttribute("href") : "games.html";
 
+                        if (!results.some(item => item.title === gameTitle)) {
+                            results.push({
+                                title: gameTitle,
+                                link: link
+                            });
+                        }
+                    }
+                });
+
+                if (!results.length) {
+                    searchResultsBox.innerHTML =
+                        "<div style='padding:15px;color:#9caec5;text-align:center'>No games found</div>";
+                } else {
+                    searchResultsBox.innerHTML = results.map(game => {
+                        return `<a href="${game.link}">🎮 ${game.title}</a>`;
+                    }).join("");
+                }
+
+                searchResultsBox.style.display = "block";
+            } catch (error) {
+                searchResultsBox.innerHTML =
+                    "<div style='padding:15px;color:#ff527d;text-align:center'>Unable to load games.</div>";
+                searchResultsBox.style.display = "block";
+            }
         }
 
-        else {
+        searchInput.addEventListener("input", event => {
+            searchGames(event.target.value);
+        });
 
-            searchResultsBox.innerHTML =
-            '<div style="padding: 12px; color: #aaa; text-align: center; font-size: 13px;">No games found</div>';
+        document.addEventListener("click", event => {
+            const searchBox = document.querySelector(".search-box");
 
-            searchResultsBox.style.display = 'block';
-
-        }
-
-    }
-
-    catch (error) {
-
-        console.error(
-            "Error loading games list:",
-            error
-        );
-
-    }
-
-}
-
-
-searchInput.addEventListener('input', function() {
-
-    fetchAndSearchGames(this.value);
-
-});
-
-
-document.addEventListener('click', function(e) {
-
-    if (
-        !document
-        .querySelector('.search-container')
-        .contains(e.target)
-    ) {
-
-        searchResultsBox.style.display = 'none';
-
-    }
-
-});
-
-</script>
-
+            if (!searchBox.contains(event.target)) {
+                searchResultsBox.style.display = "none";
+            }
+        });
+    </script>
 </body>
 </html>
