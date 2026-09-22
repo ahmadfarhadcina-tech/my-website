@@ -3,7 +3,6 @@
 <head>
 
 <script src="https://pl30263055.effectivecpmnetwork.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
-
 <script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
 
 <script>
@@ -15,25 +14,22 @@ if(savedTheme){
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Cina Games - Download Android & PC Games Free</title>
 
 <style>
-
 :root{
   --accent-color:#00ff99;
   --cyan:#40E0D0;
   --purple:#8A2BE2;
+  --bg:#050913;
+  --bg-2:#081426;
+  --panel:rgba(13,24,42,.9);
+  --muted:#9caec5;
+  --border:rgba(255,255,255,.12);
 }
 
-*{
-  box-sizing:border-box;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
+*{ box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
 body{
   font-family:Arial,sans-serif;
   color:white;
@@ -42,480 +38,542 @@ body{
   background:
     radial-gradient(circle at 15% 0%,rgba(0,255,153,.12),transparent 28%),
     radial-gradient(circle at 90% 8%,rgba(138,43,226,.14),transparent 30%),
-    linear-gradient(135deg,#050507,#0b0c12,#020203);
-  padding-bottom:90px;
+    linear-gradient(180deg,#050507,#0b0c12,#020203);
+  padding-bottom:120px;
+  overflow-x:hidden;
 }
 
-/* ================= NAVBAR ================= */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  pointer-events:none;
+  opacity:.12;
+  background-image:
+    linear-gradient(rgba(255,255,255,.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.05) 1px, transparent 1px);
+  background-size:42px 42px;
+}
 
-.navbar{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:rgba(5,5,8,.92);
-  backdrop-filter:blur(15px);
-  -webkit-backdrop-filter:blur(15px);
-  padding:14px 18px;
+a{ color:inherit; }
+button,input{ font:inherit; }
+
+/* TOP HEADER */
+.shop-header{
   position:sticky;
   top:0;
-  border-bottom:1px solid rgba(0,255,153,.22);
   z-index:1000;
-  box-shadow:0 8px 30px rgba(0,0,0,.35);
+  border-bottom:1px solid rgba(64,224,208,.35);
+  background:rgba(5,12,23,.88);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 10px 35px rgba(0,0,0,.35);
 }
-
-.logo{
-  color:#00ff99;
-  font-weight:900;
-  font-size:17px;
-  text-shadow:0 0 14px rgba(0,255,153,.5);
-}
-
-.links{
+.header-inner{
+  width:min(1200px,94%);
+  min-height:70px;
+  margin:auto;
   display:flex;
-  gap:5px;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.brand{
+  display:flex;
+  align-items:center;
+  gap:11px;
+  color:white;
+  text-decoration:none;
+}
+.brand img{
+  width:45px;
+  height:45px;
+  object-fit:cover;
+  border-radius:14px;
+  border:2px solid var(--cyan);
+  box-shadow:0 0 20px rgba(64,224,208,.35);
+}
+.brand strong{
+  display:block;
+  font-size:19px;
+  letter-spacing:1px;
+}
+.brand small{
+  display:block;
+  margin-top:3px;
+  color:var(--muted);
+  font-size:10px;
+}
+.header-links{
+  display:flex;
+  gap:7px;
+}
+.header-links a{
+  padding:9px 13px;
+  border:1px solid transparent;
+  border-radius:11px;
+  color:#d8e5f5;
+  text-decoration:none;
+  font-size:12px;
+  font-weight:bold;
+  transition:.25s;
+}
+.header-links a:hover,
+.header-links a.active{
+  color:#00110a;
+  border-color:var(--cyan);
+  background:var(--cyan);
+  box-shadow:0 0 16px rgba(64,224,208,.35);
 }
 
-.links a{
-  color:#ddd;
+/* HERO */
+.shop-container{
+  width:min(1200px,94%);
+  margin:auto;
+}
+.shop-hero{
+  position:relative;
+  min-height:320px;
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  align-items:center;
+  gap:25px;
+  margin:28px 0 22px;
+  padding:36px;
+  overflow:hidden;
+  border:1px solid rgba(64,224,208,.3);
+  border-radius:27px;
+  background:
+    linear-gradient(120deg, rgba(7,31,45,.96), rgba(24,14,54,.9)),
+    radial-gradient(circle at right, rgba(0,255,153,.18), transparent 45%);
+  box-shadow:0 20px 55px rgba(0,0,0,.4);
+}
+.shop-hero::after{
+  content:"CINA";
+  position:absolute;
+  right:-20px;
+  bottom:-50px;
+  color:rgba(64,224,208,.06);
+  font-size:170px;
+  font-weight:900;
+  letter-spacing:12px;
+  pointer-events:none;
+}
+.hero-label{
+  color:var(--cyan);
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:3px;
+  text-transform:uppercase;
+}
+.shop-hero h1{
+  margin:13px 0;
+  padding:0;
+  text-align:left;
+  color:#fff;
+  font-size:clamp(35px,6vw,66px);
+  line-height:1;
+  text-shadow:0 0 25px rgba(0,255,153,.3);
+}
+.shop-hero p{
+  max-width:650px;
+  margin:0;
+  color:var(--muted);
+  line-height:1.8;
+  font-size:15px;
+}
+.hero-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:22px;
+}
+.hero-button{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:45px;
+  padding:0 18px;
+  border-radius:12px;
   text-decoration:none;
   font-size:13px;
   font-weight:bold;
-  padding:7px 9px;
-  border-radius:8px;
   transition:.25s;
 }
+.hero-button:hover{ transform:translateY(-3px); }
+.hero-button.primary{
+  color:#00110a;
+  background:linear-gradient(135deg,#00ff66,#40e0d0);
+  box-shadow:0 0 23px rgba(0,255,102,.25);
+}
+.hero-button.secondary{
+  color:#fff;
+  border:1px solid rgba(64,224,208,.5);
+  background:rgba(64,224,208,.09);
+}
+.hero-art{
+  min-height:230px;
+  display:grid;
+  place-items:center;
+  position:relative;
+}
+.hero-art::before{
+  content:"🎮";
+  display:grid;
+  place-items:center;
+  width:185px;
+  height:185px;
+  border:1px solid var(--cyan);
+  border-radius:50%;
+  background:radial-gradient(circle, rgba(64,224,208,.28), rgba(35,140,255,.07));
+  box-shadow:0 0 25px rgba(64,224,208,.5), inset 0 0 35px rgba(35,140,255,.35);
+  font-size:75px;
+  animation:heroFloat 4s ease-in-out infinite;
+}
+.hero-badge{
+  position:absolute;
+  padding:10px 13px;
+  border:1px solid var(--border);
+  border-radius:12px;
+  background:rgba(5,12,23,.88);
+  color:var(--gold);
+  font-size:11px;
+  font-weight:bold;
+}
+.hero-badge.one{ top:8%; right:4%; }
+.hero-badge.two{ bottom:8%; left:3%; color:var(--green); }
 
-.links a:hover{
-  color:#00ff99;
-  background:rgba(0,255,153,.08);
+@keyframes heroFloat{
+  0%,100%{ transform:translateY(0) rotate(0); }
+  50%{ transform:translateY(-12px) rotate(3deg); }
 }
 
-/* ================= TITLE ================= */
-
-h1{
-  text-align:center;
-  padding:28px 10px 7px;
-  margin:0;
-  color:white;
-  font-size:30px;
-  font-weight:900;
-  text-shadow:
-    0 0 10px rgba(0,255,153,.5),
-    0 0 30px rgba(0,255,153,.15);
+/* shop info */
+.shop-info{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin:20px 0;
 }
-
-h1::after{
-  content:"";
+.info-box{
+  padding:17px;
+  border:1px solid var(--border);
+  border-radius:17px;
+  background:rgba(255,255,255,.045);
+}
+.info-box strong{
   display:block;
-  width:75px;
-  height:3px;
-  margin:11px auto 0;
-  border-radius:20px;
-  background:linear-gradient(90deg,#00ff99,#40E0D0,#8A2BE2);
-  box-shadow:0 0 14px rgba(0,255,153,.6);
+  margin-bottom:5px;
+  color:var(--cyan);
+  font-size:23px;
 }
-
-/* ================= FEATURE ================= */
-
-.feature-label{
-  text-align:center;
-  margin:10px 5px 4px;
-}
-
-.feature-label span{
-  display:inline-block;
-  background:linear-gradient(135deg,#FFD700,#ff9f00);
-  color:#080808;
-  padding:6px 12px;
-  border-radius:20px;
-  font-weight:900;
+.info-box span{
+  color:var(--muted);
   font-size:11px;
-  box-shadow:0 0 18px rgba(255,215,0,.18);
 }
 
-.weekly{
-  text-align:center;
-  color:#00ff99;
+/* sections */
+.section-title{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:15px;
+  margin:30px 0 15px;
+}
+.section-title h2{
+  margin:0;
+  font-size:27px;
+}
+.section-title p{
+  margin:0;
+  color:var(--muted);
   font-size:12px;
-  margin:7px 0 15px;
 }
 
-/* ================= SEARCH ================= */
+/* ad */
+.ad-wrapper{
+  min-height:90px;
+  display:grid;
+  place-items:center;
+  margin:20px 0;
+  overflow:hidden;
+  border:1px dashed rgba(255,255,255,.17);
+  border-radius:18px;
+  color:#74859e;
+  font-size:10px;
+}
 
+/* search */
+.search-panel{
+  padding:19px;
+  border:1px solid var(--border);
+  border-radius:20px;
+  background:linear-gradient(145deg, rgba(20,38,61,.85), rgba(7,14,27,.92));
+}
 .search-box{
-  text-align:center;
-  margin:15px;
+  position:relative;
+  margin:0;
+  text-align:left;
 }
-
 .search-box input{
-  padding:13px 17px;
-  width:92%;
-  max-width:540px;
-  border-radius:15px;
-  border:1px solid rgba(0,255,153,.25);
+  width:100%;
+  height:55px;
+  padding:0 18px;
   outline:none;
-  background:rgba(17,18,24,.95);
-  color:white;
-  font-size:14px;
-  box-shadow:0 8px 25px rgba(0,0,0,.35);
-  transition:.25s;
+  border:1px solid rgba(64,224,208,.4);
+  border-radius:14px;
+  color:#fff;
+  background:rgba(0,0,0,.3);
+  box-shadow:inset 0 2px 8px rgba(0,0,0,.3);
 }
-
-.search-box input::placeholder{
-  color:#777;
-}
-
 .search-box input:focus{
-  border-color:#00ff99;
-  box-shadow:
-    0 0 0 3px rgba(0,255,153,.08),
-    0 0 25px rgba(0,255,153,.18);
+  border-color:var(--cyan);
+  box-shadow:0 0 20px rgba(64,224,208,.22);
 }
 
-/* ================= CATEGORIES ================= */
-
+/* categories */
 .categories{
-  text-align:center;
-  margin:8px auto 18px;
-  padding:0 8px;
-  max-width:1100px;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:8px;
+  margin:16px 0 20px;
 }
-
 .categories button{
-  padding:8px 13px;
-  margin:4px 2px;
-  border:1px solid rgba(0,255,153,.22);
-  border-radius:10px;
-  background:linear-gradient(135deg,#00ff99,#00bd76);
-  color:#03130d;
-  font-weight:900;
-  font-size:11px;
+  padding:10px 15px;
   cursor:pointer;
+  border:1px solid rgba(64,224,208,.38);
+  border-radius:12px;
+  color:#d9fdf7;
+  background:rgba(64,224,208,.09);
+  font-size:12px;
+  font-weight:bold;
   transition:.25s;
 }
-
-.categories button:hover{
+.categories button:hover,
+.categories button.active{
+  color:#00110a;
+  border-color:var(--cyan);
+  background:var(--cyan);
+  box-shadow:0 0 17px rgba(64,224,208,.3);
   transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,255,153,.2);
 }
-
-/* ================= CARD GRID ================= */
 
 .container{
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:14px;
-  padding:10px;
-  max-width:1400px;
-  margin:auto;
+  gap:17px;
+  max-width:none;
+  padding:0;
+  margin:0;
 }
-
-@media(min-width:650px){
-  .container{
-    grid-template-columns:repeat(3,minmax(0,1fr));
-    gap:17px;
-    padding:18px;
-  }
-}
-
-@media(min-width:1000px){
-  .container{
-    grid-template-columns:repeat(4,minmax(0,1fr));
-    gap:20px;
-    padding:22px;
-  }
-}
-
-/* ================= GAME CARD ================= */
-
 .card{
   position:relative;
-  background:
-    linear-gradient(145deg,rgba(255,255,255,.075),rgba(255,255,255,.025)),
-    #0c0d12;
-  border:1px solid rgba(255,255,255,.09);
-  border-radius:18px;
+  min-width:0;
   overflow:hidden;
   display:flex;
   flex-direction:column;
-  min-width:0;
-  box-shadow:
-    0 12px 30px rgba(0,0,0,.4),
-    inset 0 1px 0 rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:21px;
+  background:linear-gradient(145deg, rgba(255,255,255,.08), rgba(255,255,255,.025)), #0b111d;
+  box-shadow:0 14px 35px rgba(0,0,0,.4);
   transition:.3s ease;
 }
-
-.card::after{
-  content:"";
-  position:absolute;
-  width:100px;
-  height:100px;
-  right:-50px;
-  top:-50px;
-  border-radius:50%;
-  background:#00ff99;
-  opacity:.06;
-  filter:blur(8px);
-  pointer-events:none;
-}
-
 .card:hover{
-  transform:translateY(-7px);
-  border-color:rgba(0,255,153,.55);
-  box-shadow:
-    0 20px 45px rgba(0,0,0,.55),
-    0 0 28px rgba(0,255,153,.08);
+  transform:translateY(-8px);
+  border-color:rgba(64,224,208,.75);
+  box-shadow:0 22px 45px rgba(0,0,0,.55), 0 0 25px rgba(64,224,208,.16);
 }
-
-/* ================= GAME IMAGE ================= */
-
 .card img{
   width:100%;
-  height:145px;
-  object-fit:cover;
+  height:185px;
   display:block;
-  background:#07080b;
+  object-fit:cover;
   transition:.45s ease;
 }
-
 .card:hover img{
-  transform:scale(1.045);
-  filter:saturate(1.12) contrast(1.05);
+  transform:scale(1.06);
+  filter:saturate(1.18) contrast(1.06);
 }
-
-@media(max-width:649px){
-  .card img{
-    height:125px;
-  }
-}
-
-@media(min-width:1000px){
-  .card img{
-    height:175px;
-  }
-}
-
-/* ================= CARD TITLE ================= */
-
 .card h3{
-  margin:12px 11px 5px;
-  font-size:14px;
-  line-height:1.3;
-  font-weight:900;
-  color:white;
-  white-space:nowrap;
+  min-height:38px;
+  margin:14px 14px 5px;
   overflow:hidden;
-  text-overflow:ellipsis;
+  color:#fff;
+  font-size:15px;
+  line-height:1.35;
 }
-
-/* ================= RATING ================= */
-
-.rating{
-  margin:0 11px 8px;
-  font-size:10px;
-  color:#aaa;
-  min-height:15px;
-}
-
-/* ================= INFO ================= */
-
-.info-row{
-  margin:0 10px 9px;
-  display:flex;
-  gap:5px;
-  flex-wrap:wrap;
-}
-
-.game-status,
-.game-size,
-.req-tag{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:4px 6px;
-  border-radius:6px;
-  font-size:8px;
-  font-weight:900;
-  border:1px solid rgba(255,255,255,.08);
-}
-
-.status-offline{
-  background:rgba(0,255,153,.13);
-  color:#00ff99;
-}
-
-.status-online{
-  background:rgba(0,204,255,.13);
-  color:#00ccff;
-}
-
-.game-size{
-  background:rgba(255,255,255,.07);
-  color:#ddd;
-}
-
-.req-low{
-  background:rgba(34,197,94,.14);
-  color:#4ade80;
-}
-
-.req-med,
-.req-medium{
-  background:rgba(234,179,8,.14);
-  color:#facc15;
-}
-
-.req-high{
-  background:rgba(239,68,68,.14);
-  color:#f87171;
-}
-
-/* ================= DESCRIPTION ================= */
-
 .card p{
-  font-size:10.5px;
-  color:#a9adb7;
-  margin:0 11px 11px;
-  line-height:1.55;
-  display:-webkit-box;
-  -webkit-line-clamp:3;
-  -webkit-box-orient:vertical;
-  overflow:hidden;
-  flex-grow:1;
+  min-height:58px;
+  margin:0 14px 13px;
+  color:#aebbd0;
+  font-size:11px;
+  line-height:1.65;
 }
+.rating{
+  min-height:18px;
+  margin:0 14px 9px;
+  color:#aebbd0;
+  font-size:11px;
+}
+.info-row{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin:0 14px 10px;
+}
+.game-status,.game-size,.req-tag{
+  padding:5px 7px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:7px;
+  font-size:9px;
+  font-weight:bold;
+}
+.status-offline{ color:#00ff66; background:rgba(0,255,102,.1); }
+.status-online{ color:#48baff; background:rgba(35,140,255,.13); }
+.game-size{ color:#dce5f0; background:rgba(255,255,255,.07); }
+.req-low{ color:#4ade80; background:rgba(34,197,94,.13); }
+.req-med,.req-medium{ color:#facc15; background:rgba(234,179,8,.14); }
+.req-high{ color:#ff718c; background:rgba(239,68,68,.14); }
 
-/* ================= BUTTONS ================= */
-
+.btn,.btn-yt{
+  display:block;
+  margin:4px 12px;
+  padding:11px 8px;
+  border-radius:11px;
+  text-align:center;
+  text-decoration:none;
+  font-size:11px;
+  font-weight:bold;
+  transition:.25s;
+}
 .btn{
-  display:block;
-  margin:4px 9px;
-  padding:9px 5px;
-  background:linear-gradient(135deg,#00ff99,#00c978);
-  color:#03120c;
-  text-decoration:none;
-  border-radius:9px;
-  font-weight:900;
-  font-size:10px;
-  text-align:center;
-  border:1px solid rgba(0,255,153,.2);
-  transition:.25s;
+  color:#00110a;
+  border:1px solid rgba(0,255,102,.3);
+  background:linear-gradient(135deg,#00ff66,#40e0d0);
 }
-
-.btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(0,255,153,.18);
-}
-
 .btn-yt{
-  display:block;
-  margin:4px 9px;
-  padding:9px 5px;
-  background:linear-gradient(135deg,#ff3b3b,#b90000);
-  color:white;
-  text-decoration:none;
-  border-radius:9px;
-  font-weight:900;
-  font-size:10px;
-  text-align:center;
-  transition:.25s;
+  color:#fff;
+  background:linear-gradient(135deg,#ff365f,#bd002b);
+}
+.btn:hover,.btn-yt:hover{
+  transform:translateY(-3px);
+  box-shadow:0 9px 22px rgba(0,0,0,.35);
 }
 
-.btn-yt:hover{
-  transform:translateY(-2px);
-  box-shadow:0 8px 20px rgba(255,0,0,.2);
-}
-
-.card .btn:last-child,
-.card .btn-yt:last-child{
-  margin-bottom:11px;
-}
-
-/* ================= FLOATING BUTTONS ================= */
-
+/* floating buttons */
 .fixed-btn{
   position:fixed;
-  bottom:75px;
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:bold;
+  bottom:92px;
+  z-index:900;
+  padding:10px 13px;
+  border-radius:12px;
   text-decoration:none;
-  box-shadow:0 5px 18px rgba(0,0,0,.45);
-  z-index:999;
+  font-size:12px;
+  font-weight:bold;
+  box-shadow:0 7px 22px rgba(0,0,0,.45);
   transition:.25s;
 }
+.fixed-btn:hover{ transform:translateY(-4px); }
 
-.fixed-btn:hover{
-  transform:translateY(-3px);
-}
-
-@media(max-width:500px){
-  .fixed-btn{
-    font-size:11px;
-    padding:9px 11px;
-  }
-}
-
-/* =========================================================
-   BOTTOM NAVIGATION
-   ORIGINAL SIZE AND STYLE
-   ========================================================= */
-
+/* bottom nav exact style same as index */
 .bottom-nav{
   position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  background:rgba(10,10,10,.95);
-  backdrop-filter:blur(10px);
-  border-top:1px solid #40E0D0;
-  display:flex;
-  justify-content:space-around;
-  align-items:center;
-  padding:10px 0;
   z-index:9999;
-  box-shadow:0 -5px 20px rgba(0,0,0,.8);
+  left:50%;
+  bottom:14px;
+  width:min(620px,92%);
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  gap:6px;
+  padding:9px;
+  border:1px solid rgba(64,224,208,.55);
+  border-radius:20px;
+  background:rgba(5,12,23,.9);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  box-shadow:0 10px 35px rgba(0,0,0,.65);
 }
-
-.nav-item{
-  color:#40E0D0;
+.bottom-nav .nav-item{
+  flex:1;
+  min-height:45px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  gap:3px;
+  padding:8px 5px;
+  border:1px solid transparent;
+  border-radius:13px;
+  color:#9caec5;
   text-decoration:none;
-  font-size:15px;
+  font-size:11px;
   font-weight:bold;
-  padding:8px 18px;
-  border-radius:20px;
-  transition:all .3s ease;
-  border:1px solid #40E0D0;
-  box-shadow:0 0 10px rgba(64,224,208,.3);
+  line-height:1.2;
+  transition:all .25s ease;
+}
+.bottom-nav .nav-icon{
+  font-size:18px;
+  line-height:1;
+}
+.bottom-nav .nav-item:hover,
+.bottom-nav .nav-item.active{
+  color:#00110a;
+  border-color:var(--cyan);
+  background:var(--cyan);
+  box-shadow:0 0 18px rgba(64,224,208,.65);
+  transform:translateY(-2px);
 }
 
-.nav-item.active,
-.nav-item:hover{
-  background:#40E0D0;
-  color:#000;
-  box-shadow:0 0 15px rgba(64,224,208,.6);
+::-webkit-scrollbar{ width:7px; }
+::-webkit-scrollbar-track{ background:#050507; }
+::-webkit-scrollbar-thumb{ background:linear-gradient(#00ff99,#40E0D0); border-radius:20px; }
+::selection{ color:#000; background:#00ff99; }
+
+@media (min-width:680px){
+  .container{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
 }
-
-/* ================= SCROLLBAR ================= */
-
-::-webkit-scrollbar{
-  width:7px;
+@media (min-width:1050px){
+  .container{
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
 }
-
-::-webkit-scrollbar-track{
-  background:#050507;
+@media (max-width:760px){
+  .shop-hero{
+    grid-template-columns:1fr;
+    padding:28px 20px;
+    text-align:center;
+  }
+  .shop-hero h1{ text-align:center; }
+  .shop-hero p{ margin:auto; }
+  .hero-actions{ justify-content:center; }
+  .hero-art{ min-height:190px; }
+  .shop-info{ grid-template-columns:repeat(2,1fr); }
+  .section-title{ display:block; }
+  .section-title p{ margin-top:6px; }
 }
-
-::-webkit-scrollbar-thumb{
-  background:linear-gradient(#00ff99,#40E0D0);
-  border-radius:20px;
+@media (max-width:500px){
+  .header-inner{ min-height:62px; }
+  .brand img{ width:38px; height:38px; }
+  .brand strong{ font-size:15px; }
+  .brand small{ font-size:9px; }
+  .header-links a{ padding:7px; font-size:10px; }
+  .container{ gap:11px; }
+  .card img{ height:135px; }
+  .card h3{ margin-right:10px; margin-left:10px; font-size:13px; }
+  .card p{ margin-right:10px; margin-left:10px; font-size:10px; }
+  .info-row{ margin-right:10px; margin-left:10px; }
+  .btn,.btn-yt{ margin-right:8px; margin-left:8px; font-size:9px; }
+  .bottom-nav{ bottom:10px; width:94%; padding:7px; }
+  .bottom-nav .nav-item{ min-height:42px; font-size:10px; }
+  .bottom-nav .nav-icon{ font-size:16px; }
+  .fixed-btn{ bottom:84px; padding:8px 9px; font-size:10px; }
 }
-
-::selection{
-  background:#00ff99;
-  color:#000;
-}
-
 </style>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -526,107 +584,119 @@ h1::after{
 
 <body>
 
-<!-- NAVBAR -->
+<header class="shop-header">
+  <div class="header-inner">
+    <a href="index.html" class="brand">
+      <img src="icon.png" alt="Cina Games logo">
+      <div>
+        <strong>CINA GAMES</strong>
+        <small>Android • PC • Winlator</small>
+      </div>
+    </a>
 
-<nav class="navbar">
+    <nav class="header-links" aria-label="Store navigation">
+      <a href="index.html">Home</a>
+      <a href="games.html" class="active">Games</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
 
-<div class="logo">
-🎮 Cina Games
-</div>
+<main class="shop-container">
 
-<div class="links">
-<a href="index.html">Home</a>
-<a href="games.html">Games</a>
-<a href="contact.html">Contact</a>
-</div>
+  <section class="shop-hero">
+    <div>
+      <div class="hero-label">Official Cina Games Store</div>
+      <h1>Discover Your Next Game</h1>
+      <p>
+        Explore Android games, PC games, Winlator projects, emulators,
+        sports games, action games and open-world adventures in the
+        Cina Games collection.
+      </p>
 
-</nav>
+      <div class="hero-actions">
+        <a class="hero-button primary" href="#game-list">🎮 Browse Games</a>
+        <a class="hero-button secondary" href="index.html">← Back Home</a>
+      </div>
+    </div>
 
+    <div class="hero-art">
+      <div class="hero-badge one">⚡ New Games</div>
+      <div class="hero-badge two">🎮 Winlator Ready</div>
+    </div>
+  </section>
 
-<h1>🎮 Cina Games Store</h1>
+  <section class="shop-info">
+    <div class="info-box">
+      <strong>🎮</strong>
+      <span>Android & PC Games</span>
+    </div>
+    <div class="info-box">
+      <strong>⚡</strong>
+      <span>Winlator Projects</span>
+    </div>
+    <div class="info-box">
+      <strong>🔎</strong>
+      <span>Fast Game Search</span>
+    </div>
+    <div class="info-box">
+      <strong>🆕</strong>
+      <span>Weekly Updates</span>
+    </div>
+  </section>
 
+  <section class="ad-wrapper">
+    <div style="text-align:center;margin:15px 0;">
+      <script>
+        atOptions={
+          'key':'ef860086d3acfd8fb188ea50dc15430c',
+          'format':'iframe',
+          'height':250,
+          'width':300,
+          'params':{}
+        };
+      </script>
+      <script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script>
+    </div>
+  </section>
 
-<!-- AD -->
+  <section class="section-title">
+    <div>
+      <h2>🎮 Game Collection</h2>
+      <p>Find Android, PC, Winlator and emulator games.</p>
+    </div>
+  </section>
 
-<div style="text-align:center;margin:15px 0;">
+  <section class="search-panel">
+    <div class="search-box">
+      <input
+        type="search"
+        id="searchInput"
+        placeholder="🔍 Search games, emulators or WWE..."
+        autocomplete="off"
+        aria-label="Search games">
+    </div>
+  </section>
 
-<script>
+  <div class="categories">
+    <button onclick="filterGames('all')">🎮 All Games</button>
+    <button onclick="filterGames('action')">🔥 Action</button>
+    <button onclick="filterGames('openworld')">🌆 Open World</button>
+    <button onclick="filterGames('sports')">🏆 Sports</button>
+    <button onclick="filterGames('lite')">⚡ Low-End Phones</button>
+  </div>
 
-atOptions={
-'key':'ef860086d3acfd8fb188ea50dc15430c',
-'format':'iframe',
-'height':250,
-'width':300,
-'params':{}
-};
+  <section id="game-list">
+    <div class="section-title">
+      <div>
+        <h2>🔥 Featured Games</h2>
+        <p>Download links and game pages from Cina Games.</p>
+      </div>
+    </div>
 
-</script>
-
-<script src="https://jonasfrozepyjamas.com/ef860086d3acfd8fb188ea50dc15430c/invoke.js"></script>
-
-</div>
-
-
-<div class="feature-label">
-<span>🔥 Featured Section</span>
-</div>
-
-<div class="weekly">
-⭐ New games added every week
-</div>
-
-
-<!-- SEARCH -->
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="🔍 Search games..."
-/>
-
-</div>
-
-
-<!-- CATEGORIES -->
-
-<div class="categories">
-
-<button onclick="filterGames('all')">
-All
-</button>
-
-<button onclick="filterGames('action')">
-Action
-</button>
-
-<button onclick="filterGames('openworld')">
-Open World
-</button>
-
-<button onclick="filterGames('sports')">
-Sports
-</button>
-
-<button
-onclick="filterGames('lite')"
-style="background:linear-gradient(90deg,#22c55e,#16a34a);color:white;"
->
-⚡ For Low-End Phones
-</button>
-
-</div>
-
-
-<!-- =====================================================
-     GAME CARDS
-     ===================================================== -->
-
-<div class="container">
+    <div class="container">
 
 <!-- ASSASSIN'S CREED IV: BLACK FLAG -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -664,9 +734,8 @@ Experience the legendary pirate adventure of Assassin's Creed IV: Black Flag on 
 </a>
 
 </div>
-  
-<!-- GTA SAN ANDREAS REMASTERED -->
 
+<!-- GTA SAN ANDREAS REMASTERED -->
 <div class="card action">
 
 <div style="background:#8A2BE2;color:white;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -702,9 +771,7 @@ Medium-level phone recommended for smooth gameplay.
 
 </div>
 
-
 <!-- DARK STREET 2 -->
-
 <div class="card action">
 
 <div style="background:#8A2BE2;color:white;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -739,9 +806,7 @@ Dark Street 2 is an open world action game featuring neon graphics designed in a
 
 </div>
 
-
 <!-- PROTOTYPE 1 -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -776,9 +841,7 @@ Prototype 1 special version for Winlator Android. Move freely across New York Ci
 
 </div>
 
-
 <!-- PROTOTYPE 2 -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -813,9 +876,7 @@ Prototype 2 special version for Winlator Android. Fight to get revenge on Alex M
 
 </div>
 
-
 <!-- ASSASSIN'S CREED III -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -850,9 +911,7 @@ The epic and legendary game Assassin's Creed III is now ready for offline play o
 
 </div>
 
-
 <!-- VECTOR 2 -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -887,9 +946,7 @@ A thrilling and captivating parkour game set in a cyberpunk and dark world. Esca
 
 </div>
 
-
 <!-- RESIDENT EVIL 3 -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -924,9 +981,7 @@ Resident Evil 3 Nemesis is an incredible survival horror game with realistic sto
 
 </div>
 
-
 <!-- RDR1 -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -965,9 +1020,7 @@ Experience the masterpiece Red Dead Redemption 1 on Android! Featuring beautiful
 
 </div>
 
-
 <!-- AETHERSX2 -->
-
 <div class="card lite sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1002,9 +1055,7 @@ AetherSX2 is a PlayStation 2 emulator for Android. Run nostalgic games such as G
 
 </div>
 
-
 <!-- WR3D -->
-
 <div class="card lite sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1039,9 +1090,7 @@ One of the most fun and popular Android wrestling mods, now prepared in its spec
 
 </div>
 
-
 <!-- WWE 2K18 -->
-
 <div class="card sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1088,9 +1137,7 @@ Nintendo Switch's WWE 2K18 wrestling game ready to run on Android using an emula
 
 </div>
 
-
 <!-- FAR CRY 3 -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1129,9 +1176,7 @@ An extraordinary lite and optimized version of Far Cry 3 for smooth running on A
 
 </div>
 
-
 <!-- GTA IV -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1170,9 +1215,7 @@ One of Rockstar's greatest open world games with superior graphics and an unforg
 
 </div>
 
-
 <!-- BATMAN -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1211,9 +1254,7 @@ Action and adventure game inspired by Batman. Enter Gotham City, fight enemies a
 
 </div>
 
-
 <!-- TEKKEN 8 -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1248,9 +1289,7 @@ Tekken 8 mobile version featuring amazing graphics, exciting battles and famous 
 
 </div>
 
-
 <!-- MADOUT2 -->
-
 <div class="card openworld">
 
 <img src="madout2.jpg" alt="MadOut2">
@@ -1281,9 +1320,7 @@ Open world game with vehicles, missions and online mode. If you like GTA-style g
 
 </div>
 
-
 <!-- GOD OF WAR II -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1318,9 +1355,7 @@ Legendary PS2 game featuring Kratos in Greek mythology and his revenge against Z
 
 </div>
 
-
 <!-- CALL OF DUTY -->
-
 <div class="card action">
 
 <img src="cod-strike-team.jpg" alt="Call of Duty Strike Team">
@@ -1351,9 +1386,7 @@ Call of Duty: Strike Team is an action and shooting game with offline story mode
 
 </div>
 
-
 <!-- CINA GAMES APK -->
-
 <div class="card lite action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1388,9 +1421,7 @@ Independent APK version of the Cina Games website for quick access to games, upd
 
 </div>
 
-
 <!-- PUBG -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1425,9 +1456,7 @@ PUBG Mobile is a popular battle royale game where you compete against other play
 
 </div>
 
-
 <!-- BULLY -->
-
 <div class="card openworld">
 
 <img src="bully.jpg" alt="Bully Anniversary Edition">
@@ -1458,9 +1487,7 @@ Rockstar's classic open world game where you play the role of a student completi
 
 </div>
 
-
 <!-- DARK WALLPAPER -->
-
 <div class="card lite action">
 
 <img src="dark-wallpaper.jpg" alt="Dark Person Wallpaper">
@@ -1491,9 +1518,7 @@ Collection of dark and high-quality wallpapers featuring action styling, Joker t
 
 </div>
 
-
 <!-- WWE 2K25 -->
-
 <div class="card sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1528,9 +1553,7 @@ Open Page
 
 </div>
 
-
 <!-- GTA SA -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1565,9 +1588,7 @@ Rockstar's famous open world masterpiece. If you haven't played it yet, you need
 
 </div>
 
-
 <!-- EDEN -->
-
 <div class="card lite action">
 
 <img src="eden.jpg" alt="Eden Golden Emulator">
@@ -1602,9 +1623,7 @@ Console game emulator designed for Switch games, including games such as WWE 2K1
 
 </div>
 
-
 <!-- WINLATOR -->
-
 <div class="card lite action">
 
 <img src="winlator.jpg" alt="Winlator">
@@ -1639,9 +1658,7 @@ Run PC games on Android using Winlator.
 
 </div>
 
-
 <!-- SPIDER-MAN -->
-
 <div class="card action">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1676,9 +1693,7 @@ Spider-Man action game specially tailored for Spider-Man fans with open world ga
 
 </div>
 
-
 <!-- WWE 2K15 -->
-
 <div class="card sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1717,9 +1732,7 @@ Open Page
 
 </div>
 
-
 <!-- GTA V -->
-
 <div class="card openworld">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1758,9 +1771,7 @@ Open Page
 
 </div>
 
-
 <!-- WATCH DOGS -->
-
 <div class="card action">
 
 <img src="watchdogs.jpg" alt="Watch Dogs">
@@ -1791,9 +1802,7 @@ Hacking and action game set in a mysterious open world.
 
 </div>
 
-
 <!-- EFOOTBALL -->
-
 <div class="card sports">
 
 <div style="background:#FFD700;color:black;padding:4px;text-align:center;font-weight:bold;font-size:9px;">
@@ -1828,9 +1837,7 @@ Professional football game for Android.
 
 </div>
 
-
 <!-- MINECRAFT -->
-
 <div class="card lite openworld">
 
 <img src="minecraft.jpg" alt="Minecraft">
@@ -1861,9 +1868,7 @@ Building and survival game.
 
 </div>
 
-
 <!-- FORTNITE -->
-
 <div class="card action">
 
 <img src="fortnite.jpg" alt="Fortnite">
@@ -1894,9 +1899,7 @@ Battle Royale.
 
 </div>
 
-
 <!-- UNDEFEATED HERO -->
-
 <div class="card lite action">
 
 <img src="undefeated.jpg" alt="Undefeated Hero Mod">
@@ -1927,177 +1930,106 @@ Powerful mod of the Undefeated game.
 
 </div>
 
+    </div>
+  </section>
+</main>
 
-</div>
+<a href="https://t.me/afghangamerx" target="_blank" class="fixed-btn" style="left:15px;background:#229ED9;color:white;">📲 Telegram</a>
+<a href="https://www.youtube.com/@CinaGames-b4v" target="_blank" class="fixed-btn" style="right:15px;background:#FF0000;color:white;">▶️ YouTube</a>
 
+<nav class="bottom-nav" aria-label="Main navigation">
+  <a href="index.html" class="nav-item">
+    <span class="nav-icon">⌂</span>
+    <span>Home</span>
+  </a>
 
-<!-- =====================================================
-     FIREBASE + SEARCH + FILTER
-     ===================================================== -->
+  <a href="games.html" class="nav-item active">
+    <span class="nav-icon">🎮</span>
+    <span>Games</span>
+  </a>
+
+  <a href="dashboard.html" class="nav-item">
+    <span class="nav-icon">📊</span>
+    <span>Dash</span>
+  </a>
+
+  <a href="settings.html" class="nav-item">
+    <span class="nav-icon">⚙</span>
+    <span>Settings</span>
+  </a>
+</nav>
 
 <script>
-
-const firebaseConfig={
-  apiKey:"YOUR_API_KEY",
-  authDomain:"YOUR_PROJECT_ID.firebaseapp.com",
-  databaseURL:"https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
-  projectId:"YOUR_PROJECT_ID",
-  storageBucket:"YOUR_PROJECT_ID.appspot.com",
-  messagingSenderId:"YOUR_SENDER_ID",
-  appId:"YOUR_APP_ID"
+const firebaseConfig = {
+  apiKey: "AIzaSyAQqPnniZ_QvzOi692uFAEB72TxDx2pDgI",
+  authDomain: "cina-games.firebaseapp.com",
+  databaseURL: "https://cina-games-default-rtdb.firebaseio.com",
+  projectId: "cina-games",
+  storageBucket: "cina-games.firebasestorage.app",
+  messagingSenderId: "449625451730",
+  appId: "1:449625451730:web:153b2aec57e6c42ec2510b",
+  measurementId: "G-YSQZ60ZNC8"
 };
 
 if(!firebase.apps.length){
   firebase.initializeApp(firebaseConfig);
 }
 
-const database=firebase.database();
-
+const database = firebase.database();
 
 function addDownloadPoints(){
-
-  const user=firebase.auth().currentUser;
+  const user = firebase.auth().currentUser;
 
   if(user){
-
-    const userRef=
-      database.ref('users/'+user.uid+'/xp');
-
-    userRef.transaction((currentXP)=>{
-
-      return(currentXP||0)+0.2;
-
-    }).catch((error)=>{
-
-      console.log(
-        "Firebase error:",
-        error.message
-      );
-
+    const userRef = database.ref('users/' + user.uid + '/xp');
+    userRef.transaction((currentXP) => {
+      return (currentXP || 0) + 0.2;
+    }).catch((error) => {
+      console.log("Firebase error:", error.message);
     });
-
-  }else{
-
-    console.log(
-      "User not logged in, points not added."
-    );
-
+  } else {
+    console.log("User not logged in, points not added.");
   }
-
 }
-
 
 /* SEARCH */
+const input = document.getElementById("searchInput");
+const cards = document.querySelectorAll(".card");
 
-const input=
-  document.getElementById("searchInput");
-
-const cards=
-  document.querySelectorAll(".card");
-
-
-input.addEventListener("keyup",function(){
-
-  let value=
-    this.value.toLowerCase();
+input.addEventListener("keyup", function(){
+  let value = this.value.toLowerCase();
 
   cards.forEach((card)=>{
+    let title = card.querySelector("h3");
+    if(!title) return;
 
-    let title=
-      card.querySelector("h3")
-      .innerText
-      .toLowerCase();
-
-    card.style.display=
-      title.includes(value)
-      ?"flex"
-      :"none";
-
+    let text = card.innerText.toLowerCase();
+    card.style.display = text.includes(value) ? "flex" : "none";
   });
-
 });
 
-
 /* FILTER */
+function filterGames(category) {
+  let cards = document.querySelectorAll(".card");
 
-function filterGames(category){
-
-  let cards=
-    document.querySelectorAll(".card");
-
-  cards.forEach((card)=>{
-
-    if(category==="all"){
-
-      card.style.display="flex";
-
-    }else{
-
-      card.style.display=
-        card.classList.contains(category)
-        ?"flex"
-        :"none";
-
+  cards.forEach((card) => {
+    if(category === "all"){
+      card.style.display = "flex";
+    } else {
+      card.style.display = card.classList.contains(category) ? "flex" : "none";
     }
-
   });
 
-}
+  document.querySelectorAll(".categories button").forEach((button) => {
+    button.classList.remove("active");
+  });
 
+  const activeButton = event && event.currentTarget ? event.currentTarget : null;
+  if (activeButton) activeButton.classList.add("active");
+}
 </script>
 
-
-<!-- TELEGRAM -->
-
-<a
-href="https://t.me/afghangamerx"
-target="_blank"
-class="fixed-btn"
-style="left:15px;background:#229ED9;color:white;"
->
-📲 Telegram
-</a>
-
-
-<!-- YOUTUBE -->
-
-<a
-href="https://www.youtube.com/@CinaGames-b4v"
-target="_blank"
-class="fixed-btn"
-style="right:15px;background:#FF0000;color:white;"
->
-▶️ YouTube
-</a>
-
-
-<!-- =====================================================
-     BOTTOM NAVIGATION
-     ===================================================== -->
-
-<div class="bottom-nav">
-
-<a href="index.html" class="nav-item">
-Home
-</a>
-
-<a href="games.html" class="nav-item active">
-Games
-</a>
-
-<a href="dashboard.html" class="nav-item">
-Dash
-</a>
-
-<a href="settings.html" class="nav-item">
-Setting
-</a>
-
-</div>
-
-
 <!-- THIRD AD -->
-
 <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
 
 </body>
