@@ -1,0 +1,358 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Over Peak | Sina Games</title>
+
+<style>
+:root {
+  --bg: #090b10;
+  --panel: #151923;
+  --gold: #FFD700;
+  --text: #f5f5f5;
+  --muted: #a9afbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 18px 16px;
+  background: #11151e;
+  border-bottom: 1px solid #292e3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 21px;
+  font-weight: 900;
+}
+
+header a, .back {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.container {
+  max-width: 900px;
+  padding: 20px;
+  margin: auto;
+}
+
+.hero {
+  background: linear-gradient(145deg, #202839, #11141c);
+  border: 1px solid #303747;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.cover {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #171c28;
+}
+
+.hero-content {
+  padding: 22px;
+}
+
+.tag {
+  display: inline-block;
+  background: #FFD700;
+  color: #111;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 5px;
+}
+
+h1 {
+  margin: 12px 0 4px;
+  font-size: 32px;
+  line-height: 1.25;
+}
+
+.subtitle {
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.rating {
+  color: var(--gold);
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid #2a3040;
+  border-radius: 10px;
+  padding: 12px 6px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  color: var(--gold);
+  font-size: 17px;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  padding: 13px 16px;
+  margin-top: 12px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.download {
+  background: var(--gold);
+  color: #111;
+}
+
+.back {
+  background: #202635;
+  border: 1px solid #363e50;
+  color: white;
+}
+
+.section {
+  background: var(--panel);
+  border: 1px solid #2a3040;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+h2 {
+  color: var(--gold);
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feature {
+  background: #202635;
+  border-radius: 9px;
+  padding: 12px;
+}
+
+.feature strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.feature span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 15px;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 27px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">SINA GAMES</div>
+  <a href="index.html">← Home</a>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <img
+      class="cover"
+      src="overpeak.jpg"
+      alt="Over Peak game cover"
+    >
+
+    <div class="hero-content">
+      <span class="tag">🔥 OPEN WORLD ACTION</span>
+
+      <h1>Over Peak</h1>
+
+      <div class="subtitle">
+        Rise above the city. Unleash your powers.
+      </div>
+
+      <div class="rating">
+        ★★★★☆ &nbsp; 4.3 / 5
+      </div>
+
+      <p>
+        Enter an action-packed open world, fly across the city,
+        unleash extraordinary superpowers and discover a world
+        full of challenges. Experience heroic action and intense
+        battles in Over Peak.
+      </p>
+
+      <div class="stats">
+        <div class="stat">
+          <strong>350 MB</strong>
+          <span>Game Size</span>
+        </div>
+
+        <div class="stat">
+          <strong>Action</strong>
+          <span>Game Genre</span>
+        </div>
+
+        <div class="stat">
+          <strong>Android</strong>
+          <span>Platform</span>
+        </div>
+      </div>
+
+      <a class="btn download"
+         href="https://an1.com/file_7606-dw.html"
+         target="_blank"
+         rel="noopener noreferrer">
+        ⬇ DOWNLOAD GAME
+      </a>
+
+      <a class="btn back" href="index.html">
+        ← Back to Sina Games
+      </a>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>🎮 About the Game</h2>
+
+    <p>
+      Over Peak is an open-world action experience built around
+      extraordinary abilities, aerial exploration and intense
+      combat. Explore the city, discover your powers and take on
+      challenging encounters.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>⚡ Game Features</h2>
+
+    <div class="features">
+      <div class="feature">
+        <strong>🌆 Open World</strong>
+        <span>Explore a large urban environment.</span>
+      </div>
+
+      <div class="feature">
+        <strong>🦸 Superpowers</strong>
+        <span>Fly and unleash powerful special abilities.</span>
+      </div>
+
+      <div class="feature">
+        <strong>💥 Action Combat</strong>
+        <span>Face enemies and experience intense battles.</span>
+      </div>
+
+      <div class="feature">
+        <strong>🏙️ City Exploration</strong>
+        <span>Discover locations across the game world.</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <h2>📱 Game Information</h2>
+
+    <ul>
+      <li><strong>Game:</strong> Over Peak</li>
+      <li><strong>Genre:</strong> Open World / Action</li>
+      <li><strong>File Size:</strong> Approximately 350 MB</li>
+      <li><strong>Platform:</strong> Android</li>
+      <li><strong>Device Target:</strong> Medium-range phones</li>
+      <li><strong>Rating:</strong> 4.3 / 5</li>
+      <li><strong>Download Source:</strong> AN1</li>
+    </ul>
+
+    <p class="subtitle">
+      Actual installation size and device compatibility may vary.
+      Check the download source before installing.
+    </p>
+
+    <a class="btn download"
+       href="https://an1.com/file_7606-dw.html"
+       target="_blank"
+       rel="noopener noreferrer">
+      ⬇ Download Over Peak
+    </a>
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Cina Games — Game On.
+</footer>
+
+</body>
+</html>
