@@ -1,226 +1,298 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Assassin's Creed IV: Black Flag - Winlator</title>
+<title>Assassin's Creed IV: Black Flag | Cina Games</title>
+<meta name="description" content="Discover Assassin's Creed IV: Black Flag for Android through Winlator. Game information, requirements, download and setup guide from Cina Games.">
 
 <style>
-*{
-    box-sizing:border-box;
+:root {
+    --bg: #080b0e;
+    --panel: #11161c;
+    --gold: #FFD700;
+    --text: #f5f5f5;
+    --muted: #a9afbd;
 }
 
-body{
-    margin:0;
-    font-family:Arial,sans-serif;
-    background:
-        radial-gradient(circle at top,#18242d 0%,#080b0e 45%,#030405 100%);
-    color:white;
+* {
+    box-sizing: border-box;
 }
 
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:25px;
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(
+        circle at top,
+        #18242d 0%,
+        #080b0e 45%,
+        #030405 100%
+    );
+    color: var(--text);
+    line-height: 1.7;
+}
+
+header {
+    padding: 18px 20px;
+    background: #11151e;
+    border-bottom: 1px solid #292e3a;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    color: var(--gold);
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+header a {
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 25px;
 }
 
 /* HERO */
 
-.hero{
-    position:relative;
-    min-height:430px;
-    border-radius:20px;
-    overflow:hidden;
-    display:flex;
-    align-items:flex-end;
-    padding:35px;
+.hero {
+    position: relative;
+    min-height: 460px;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+    padding: 35px;
     background:
-        linear-gradient(to top,rgba(0,0,0,.95),rgba(0,0,0,.15)),
-        url("ac4.jpg") center/cover;
-    box-shadow:0 15px 50px rgba(0,0,0,.7);
+        linear-gradient(
+            to top,
+            rgba(0,0,0,.96) 0%,
+            rgba(0,0,0,.55) 48%,
+            rgba(0,0,0,.12) 100%
+        ),
+        url("ac4.jpg") center/cover no-repeat;
+    border: 1px solid #303747;
+    box-shadow: 0 15px 50px rgba(0,0,0,.5);
 }
 
-.hero-content{
-    max-width:700px;
+.hero-content {
+    max-width: 720px;
+    position: relative;
 }
 
-.badge{
-    display:inline-block;
-    background:#FFD700;
-    color:#000;
-    padding:7px 13px;
-    border-radius:20px;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:12px;
+.badge {
+    display: inline-block;
+    background: var(--gold);
+    color: #000;
+    padding: 7px 13px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 12px;
 }
 
-.hero h1{
-    font-size:42px;
-    margin:5px 0;
-    text-shadow:0 4px 15px black;
+.hero h1 {
+    font-size: 42px;
+    line-height: 1.2;
+    margin: 5px 0 15px;
+    text-shadow: 0 4px 15px black;
 }
 
-.hero p{
-    color:#ddd;
-    line-height:1.6;
-    font-size:15px;
+.hero p {
+    color: #ddd;
+    line-height: 1.8;
+    font-size: 15px;
 }
 
 /* BUTTONS */
 
-.buttons{
-    display:flex;
-    flex-wrap:wrap;
-    gap:12px;
-    margin-top:20px;
+.buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
 }
 
-.btn{
-    display:inline-block;
-    text-decoration:none;
-    padding:13px 22px;
-    border-radius:10px;
-    font-weight:bold;
-    color:#000;
-    background:#FFD700;
-    transition:.25s;
+.btn,
+.btn-dark {
+    display: inline-block;
+    text-decoration: none;
+    padding: 13px 22px;
+    border-radius: 10px;
+    font-weight: bold;
+    text-align: center;
+    transition: .25s;
 }
 
-.btn:hover{
-    transform:translateY(-3px);
-    box-shadow:0 8px 25px rgba(255,215,0,.3);
+.btn {
+    color: #000;
+    background: var(--gold);
+    border: 1px solid var(--gold);
 }
 
-.btn-dark{
-    display:inline-block;
-    text-decoration:none;
-    padding:13px 22px;
-    border-radius:10px;
-    font-weight:bold;
-    color:white;
-    background:#15191d;
-    border:1px solid #333;
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255,215,0,.25);
+}
+
+.btn-dark {
+    color: white;
+    background: #15191d;
+    border: 1px solid #363e50;
+}
+
+.btn-dark:hover {
+    border-color: var(--gold);
+    color: var(--gold);
 }
 
 /* CONTENT */
 
-.section{
-    margin-top:25px;
-    background:rgba(15,18,21,.92);
-    border:1px solid #292d31;
-    border-radius:18px;
-    padding:25px;
-    box-shadow:0 10px 35px rgba(0,0,0,.35);
+.section {
+    margin-top: 25px;
+    background: rgba(17,22,28,.94);
+    border: 1px solid #292f38;
+    border-radius: 18px;
+    padding: 25px;
+    box-shadow: 0 10px 35px rgba(0,0,0,.3);
 }
 
-.section h2{
-    margin-top:0;
-    color:#FFD700;
-    font-size:23px;
+.section h2 {
+    margin-top: 0;
+    color: var(--gold);
+    font-size: 23px;
 }
 
-.section p{
-    color:#c9c9c9;
-    line-height:1.8;
+.section p {
+    color: #c9cdd3;
+    line-height: 1.9;
 }
 
-/* INFO */
+/* INFO GRID */
 
-.info-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
-    gap:15px;
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 15px;
 }
 
-.info-box{
-    background:#0b0e11;
-    border:1px solid #292d31;
-    border-radius:14px;
-    padding:18px;
+.info-box {
+    background: #0b0e11;
+    border: 1px solid #292f38;
+    border-radius: 14px;
+    padding: 18px;
+    overflow-wrap: anywhere;
 }
 
-.info-box span{
-    display:block;
-    color:#888;
-    font-size:12px;
-    margin-bottom:7px;
+.info-box span {
+    display: block;
+    color: #9299a5;
+    font-size: 12px;
+    margin-bottom: 7px;
 }
 
-.info-box strong{
-    font-size:15px;
+.info-box strong {
+    font-size: 15px;
 }
 
 /* REQUIREMENTS */
 
-.requirements{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:18px;
+.requirements {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
 }
 
-.req{
-    background:#0b0e11;
-    border-radius:14px;
-    padding:20px;
-    border-left:4px solid #FFD700;
+.req {
+    background: #0b0e11;
+    border-radius: 14px;
+    padding: 20px;
+    border-left: 4px solid var(--gold);
 }
 
-.req h3{
-    margin-top:0;
-    color:#FFD700;
+.req h3 {
+    margin-top: 0;
+    color: var(--gold);
 }
 
-.req ul{
-    padding-left:20px;
-    color:#ccc;
-    line-height:1.9;
+.req ul {
+    padding-left: 20px;
+    color: #ccc;
+    line-height: 1.9;
+}
+
+.req li {
+    margin-bottom: 5px;
 }
 
 /* WARNING */
 
-.warning{
-    background:rgba(255,193,7,.08);
-    border:1px solid #765f00;
-    color:#ddd;
-    padding:18px;
-    border-radius:12px;
-    line-height:1.7;
+.warning {
+    background: rgba(255,193,7,.07);
+    border: 1px solid #765f00;
+    color: #ddd;
+    padding: 18px;
+    border-radius: 12px;
+    line-height: 1.8;
 }
 
 /* FOOTER */
 
-footer{
-    text-align:center;
-    color:#777;
-    padding:35px 10px;
-    font-size:13px;
+footer {
+    text-align: center;
+    color: #777;
+    padding: 35px 10px;
+    font-size: 13px;
 }
 
-@media(max-width:700px){
+footer strong {
+    color: var(--gold);
+}
 
-    .container{
-        padding:14px;
+@media(max-width:700px) {
+    .container {
+        padding: 14px;
     }
 
-    .hero{
-        min-height:500px;
-        padding:22px;
+    .hero {
+        min-height: 500px;
+        padding: 22px;
+        background-position: center;
     }
 
-    .hero h1{
-        font-size:30px;
+    .hero h1 {
+        font-size: 30px;
     }
 
-    .requirements{
-        grid-template-columns:1fr;
+    .requirements {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 18px;
+    }
+
+    .buttons {
+        flex-direction: column;
     }
 
     .btn,
-    .btn-dark{
-        width:100%;
-        text-align:center;
+    .btn-dark {
+        width: 100%;
     }
 }
 </style>
@@ -228,206 +300,233 @@ footer{
 
 <body>
 
-<div class="container">
+<header>
+    <div class="logo">CINA GAMES</div>
+    <a href="index.html">← Home</a>
+</header>
+
+<main class="container">
 
 <!-- HERO -->
 
 <section class="hero">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<div class="badge">
-🏴‍☠️ HEAVY GAME • WINLATOR
-</div>
+        <div class="badge">
+            🏴‍☠️ OPEN WORLD • WINLATOR
+        </div>
 
-<h1>Assassin's Creed IV: Black Flag</h1>
+        <h1>Assassin's Creed IV: Black Flag</h1>
 
-<p>
-Experience the legendary pirate adventure of Assassin's Creed IV:
-Black Flag on Android through Winlator.
-Explore the Caribbean, sail across the open world and become the legendary pirate assassin.
-</p>
+        <p>
+            Experience the legendary pirate adventure of
+            Assassin's Creed IV: Black Flag on Android through
+            Winlator. Explore the Caribbean, sail across a vast
+            open world and become the legendary pirate assassin
+            Edward Kenway.
+        </p>
 
-<div class="buttons">
+        <div class="buttons">
 
-<a class="btn"
-href="https://gofile.io/d/Bh42OA"
-target="_blank"
-onclick="addDownloadPoints()">
-⬇ Download Game
-</a>
+            <a class="btn"
+               href="https://gofile.io/d/Bh42OA"
+               target="_blank"
+               rel="noopener noreferrer"
+               onclick="addDownloadPoints()">
+                ⬇ Download Game
+            </a>
 
-<a class="btn-dark" href="#requirements">
-⚙ Requirements
-</a>
+            <a class="btn-dark" href="#requirements">
+                ⚙ System Requirements
+            </a>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
-
-<!-- GAME INFO -->
+<!-- GAME INFORMATION -->
 
 <section class="section">
 
-<h2>🎮 Game Information</h2>
+    <h2>🎮 Game Information</h2>
 
-<div class="info-grid">
+    <div class="info-grid">
 
-<div class="info-box">
-<span>GAME</span>
-<strong>Assassin's Creed IV: Black Flag</strong>
-</div>
+        <div class="info-box">
+            <span>GAME TITLE</span>
+            <strong>Assassin's Creed IV: Black Flag</strong>
+        </div>
 
-<div class="info-box">
-<span>PLATFORM</span>
-<strong>PC / Winlator Android</strong>
-</div>
+        <div class="info-box">
+            <span>PLATFORM</span>
+            <strong>PC / Winlator on Android</strong>
+        </div>
 
-<div class="info-box">
-<span>MODE</span>
-<strong>🟢 Offline</strong>
-</div>
+        <div class="info-box">
+            <span>GAME MODE</span>
+            <strong>🟢 Single-Player / Offline</strong>
+        </div>
 
-<div class="info-box">
-<span>GENRE</span>
-<strong>Action • Open World • Adventure</strong>
-</div>
+        <div class="info-box">
+            <span>GENRE</span>
+            <strong>Action • Open World • Adventure</strong>
+        </div>
 
-<div class="info-box">
-<span>REQUIREMENT</span>
-<strong>🔴 High-End Phones</strong>
-</div>
+        <div class="info-box">
+            <span>DEVICE CLASS</span>
+            <strong>🔴 High-End Phones Recommended</strong>
+        </div>
 
-<div class="info-box">
-<span>STORAGE</span>
-<strong>💾 23 GB+</strong>
-</div>
+        <div class="info-box">
+            <span>STORAGE</span>
+            <strong>💾 Approximately 23 GB+</strong>
+        </div>
 
-</div>
+    </div>
 
 </section>
 
-
-<!-- ABOUT -->
+<!-- ABOUT THE GAME -->
 
 <section class="section">
 
-<h2>🏴‍☠️ About The Game</h2>
+    <h2>🏴‍☠️ About the Game</h2>
 
-<p>
-Assassin's Creed IV: Black Flag takes you into the golden age of piracy.
-Play as Edward Kenway, explore a huge open world, discover islands,
-fight enemies and experience intense naval battles.
-</p>
+    <p>
+        Assassin's Creed IV: Black Flag takes you into the
+        golden age of piracy. Play as Edward Kenway, explore
+        a huge open world, discover islands, battle enemies
+        and experience intense naval combat.
+    </p>
 
-<p>
-This version is intended for users who want to run the PC game on Android
-using the Winlator emulator. Because the game is demanding, a powerful
-Android phone is recommended for a better experience.
-</p>
+    <p>
+        Sail aboard your ship, uncover hidden treasures and
+        take part in exciting adventures across the Caribbean.
+        The game combines exploration, stealth, sword combat
+        and ship battles in a richly detailed historical world.
+    </p>
+
+    <p>
+        This page is intended for players interested in running
+        the PC version on Android using the Winlator emulator.
+        Performance depends on your device and configuration.
+    </p>
 
 </section>
-
 
 <!-- REQUIREMENTS -->
 
 <section class="section" id="requirements">
 
-<h2>📱 Winlator Requirements</h2>
+    <h2>📱 Winlator Requirements</h2>
 
-<div class="requirements">
+    <div class="requirements">
 
-<div class="req">
+        <div class="req">
 
-<h3>🔴 Recommended</h3>
+            <h3>🔴 Recommended Setup</h3>
 
-<ul>
-<li>High-End Android Phone</li>
-<li>Powerful Snapdragon CPU</li>
-<li>8 GB RAM or more</li>
-<li>At least 30 GB free storage</li>
-<li>Updated Winlator version</li>
-<li>Performance-focused configuration</li>
-</ul>
+            <ul>
+                <li>High-end Android phone</li>
+                <li>Powerful Snapdragon processor recommended</li>
+                <li>8 GB RAM or more recommended</li>
+                <li>At least 30 GB of free storage recommended</li>
+                <li>Compatible Winlator version</li>
+                <li>Graphics settings optimized for your device</li>
+            </ul>
 
-</div>
+        </div>
 
-<div class="req">
+        <div class="req">
 
-<h3>⚠️ Important</h3>
+            <h3>⚠️ Important Tips</h3>
 
-<ul>
-<li>Performance depends on your device</li>
-<li>FPS may vary between phones</li>
-<li>Use a cooler for long sessions</li>
-<li>Close background applications</li>
-<li>Keep enough free storage</li>
-<li>Different Winlator settings may be required</li>
-</ul>
+            <ul>
+                <li>Performance varies between devices</li>
+                <li>Frame rates depend on game settings</li>
+                <li>Close unnecessary background apps</li>
+                <li>Keep sufficient free storage available</li>
+                <li>Use a cooling accessory if your phone overheats</li>
+                <li>Different devices may need different configurations</li>
+            </ul>
 
-</div>
+        </div>
 
-</div>
+    </div>
+
+    <p>
+        These are general recommendations, not guaranteed minimum
+        requirements. Actual compatibility depends on the game
+        build, processor, graphics driver and Winlator settings.
+    </p>
 
 </section>
-
 
 <!-- DOWNLOAD -->
 
 <section class="section">
 
-<h2>⬇ Download</h2>
+    <h2>⬇ Download Assassin's Creed IV</h2>
 
-<div class="warning">
-⚠️ Make sure you have enough free storage before downloading.
-For the best experience, use a high-end Android phone and configure
-Winlator according to your device.
-</div>
+    <div class="warning">
+        ⚠️ Check the download details and available storage before
+        proceeding. PC games running through Winlator can require
+        substantial resources. Only download game files you are
+        legally entitled to use, and scan downloaded files before
+        opening them.
+    </div>
 
-<div class="buttons">
+    <div class="buttons">
 
-<a class="btn"
-href="https://gofile.io/d/Bh42OA"
-target="_blank"
-onclick="addDownloadPoints()">
-⬇ Download Assassin's Creed IV
-</a>
+        <a class="btn"
+           href="https://gofile.io/d/Bh42OA"
+           target="_blank"
+           rel="noopener noreferrer"
+           onclick="addDownloadPoints()">
+            ⬇ Download Game Files
+        </a>
 
-</div>
+        <a class="btn-dark" href="#requirements">
+            ⚙ Review Requirements
+        </a>
+
+    </div>
 
 </section>
-
 
 <!-- RUNNING GUIDE -->
 
 <section class="section">
 
-<h2>🎥 Running Guide</h2>
+    <h2>🎥 Winlator Running Guide</h2>
 
-<p>
-Need help setting up Assassin's Creed IV: Black Flag on Winlator?
-Add your YouTube running guide here.
-</p>
+    <p>
+        New to Winlator? Watch the running guide for help with
+        setting up the game and learning how to configure the
+        emulator on your Android device.
+    </p>
 
-<a class="btn-dark" href="https://youtube.com/shorts/k9WPCrHC-Gs?si=dE3uMGtFu7_OnkI9" target="_blank">
-▶ Watch Running Guide
-</a>
+    <a class="btn-dark"
+       href="https://youtube.com/shorts/k9WPCrHC-Gs?si=dE3uMGtFu7_OnkI9"
+       target="_blank"
+       rel="noopener noreferrer">
+        ▶ Watch Running Guide on YouTube
+    </a>
 
 </section>
 
+</main>
 
 <footer>
-© 2026 Cina Games • Assassin's Creed IV: Black Flag
+    © 2026 <strong>Cina Games</strong> • Assassin's Creed IV: Black Flag
 </footer>
 
-</div>
-
 <script>
-function addDownloadPoints(){
-    console.log("Download clicked");
+function addDownloadPoints() {
+    console.log("Download button clicked");
 }
 </script>
 
