@@ -1,28 +1,180 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Call of Duty - Cina Games</title>
+    <title>Call of Duty Mobile - Cina Games</title>
+
     <style>
-        body { font-family: Arial, sans-serif; background: #0b0b0b; color: white; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 20px; border-radius: 12px; border: 1px solid #00ff99; }
-        img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
-        h1 { color: #00ff99; }
-        p { color: #bbb; line-height: 1.6; }
-        .btn { display: inline-block; margin: 10px; padding: 10px 20px; background: linear-gradient(90deg, #00ff99, #00cc77); color: black; text-decoration: none; border-radius: 8px; font-weight: bold; }
-        .back-link { display: block; margin-top: 20px; color: #00ff99; text-decoration: none; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #0b0b0b;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+
+        header {
+            background: #111111;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #d4af37;
+        }
+
+        .logo {
+            color: #d4af37;
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+        }
+
+        .game-card {
+            background: #151515;
+            border: 1px solid #333333;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 5px 25px rgba(212, 175, 55, 0.08);
+        }
+
+        .game-image {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .game-content {
+            padding: 25px;
+        }
+
+        h1 {
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            color: #d4af37;
+            margin: 25px 0 10px;
+            font-size: 21px;
+        }
+
+        p {
+            color: #cccccc;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            padding-left: 22px;
+            color: #cccccc;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        .download-btn {
+            display: block;
+            text-align: center;
+            background: #d4af37;
+            color: #111111;
+            text-decoration: none;
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #f0cf58;
+            transform: translateY(-2px);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #d4af37;
+            text-decoration: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            color: #777777;
+            border-top: 1px solid #222222;
+        }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <img src="cod.jpg" alt="Call of Duty">
-        <h1>Call of Duty Mobile</h1>
-        <p>محبوب‌ترین و هیجان‌انگیزترین بازی شوتر جنگی روی موبایل با مودهای مختلف مولتی‌پلیر و بتل رویال.</p>
-        
-        <a class="btn" href="#" target="_blank">⬇ دانلود بازی</a>
-        
-        <a href="index.html" class="back-link">🔙 بازگشت به صفحه اصلی</a>
-    </div>
+
+    <header>
+        <div class="logo">CINA GAMES</div>
+    </header>
+
+    <main class="container">
+        <div class="game-card">
+
+            <img
+                src="cod.jpg"
+                alt="Call of Duty"
+                class="game-image"
+            >
+
+            <div class="game-content">
+                <h1>Call of Duty</h1>
+
+                <p>
+                    Experience intense combat, challenging missions,
+                    and thrilling action in the Call of Duty universe.
+                    Prepare for battle and test your skills on the battlefield.
+                </p>
+
+                <h2>Game Features</h2>
+                <ul>
+                    <li>Action-packed combat gameplay</li>
+                    <li>Challenging missions and battles</li>
+                    <li>Immersive 3D environments</li>
+                    <li>Engaging first-person shooter experience</li>
+                </ul>
+
+                <h2>Game Information</h2>
+                <p><strong>Game:</strong> Call of Duty</p>
+                <p><strong>Platform:</strong> Android</p>
+                <p><strong>Category:</strong> Action / Shooter</p>
+
+                <a
+                    href="https://apkaward.com/call-of-duty-strike-team-fix-android-10"
+                    class="download-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    Download Game
+                </a>
+
+                <a href="games.html" class="back-link">
+                    ← Back to Games
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        © 2026 Cina Games. All Rights Reserved.
+    </footer>
+
 </body>
 </html>
