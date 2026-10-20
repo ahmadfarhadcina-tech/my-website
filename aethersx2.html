@@ -1,28 +1,376 @@
+
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AetherSX2 - Cina Games</title>
-    <style>
-        body { font-family: Arial, sans-serif; background: #0b0b0b; color: white; text-align: center; padding: 20px; }
-        .container { max-width: 600px; margin: 0 auto; background: #1a1a1a; padding: 20px; border-radius: 12px; border: 1px solid #00ff99; }
-        img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
-        h1 { color: #00ff99; }
-        p { color: #bbb; line-height: 1.6; }
-        .btn { display: inline-block; margin: 10px; padding: 10px 20px; background: linear-gradient(90deg, #00ff99, #00cc77); color: black; text-decoration: none; border-radius: 8px; font-weight: bold; }
-        .back-link { display: block; margin-top: 20px; color: #00ff99; text-decoration: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AetherSX2 | Cina Games</title>
+<meta name="description" content="Download AetherSX2 for Android and explore classic PlayStation 2 gaming on your mobile device with Cina Games.">
+
+<style>
+:root {
+  --bg: #090b10;
+  --panel: #151923;
+  --gold: #FFD700;
+  --text: #f5f5f5;
+  --muted: #a9afbd;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  line-height: 1.7;
+}
+
+header {
+  padding: 18px 16px;
+  background: #11151e;
+  border-bottom: 1px solid #292e3a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  color: var(--gold);
+  font-size: 21px;
+  font-weight: 900;
+}
+
+header a {
+  color: var(--gold);
+  text-decoration: none;
+}
+
+.container {
+  max-width: 900px;
+  padding: 20px;
+  margin: auto;
+}
+
+.hero {
+  background: linear-gradient(145deg, #202839, #11141c);
+  border: 1px solid #303747;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+.cover {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  background: #171c28;
+}
+
+.hero-content {
+  padding: 22px;
+}
+
+.tag {
+  display: inline-block;
+  background: var(--gold);
+  color: #111;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 5px;
+}
+
+h1 {
+  margin: 12px 0 4px;
+  font-size: 32px;
+  line-height: 1.4;
+}
+
+.subtitle {
+  color: var(--muted);
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.stat {
+  background: var(--panel);
+  border: 1px solid #2a3040;
+  border-radius: 10px;
+  padding: 12px 6px;
+  text-align: center;
+}
+
+.stat strong {
+  display: block;
+  color: var(--gold);
+  font-size: 16px;
+}
+
+.stat span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.btn {
+  display: block;
+  text-align: center;
+  padding: 13px 16px;
+  margin-top: 12px;
+  border-radius: 9px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.btn:hover {
+  opacity: 0.85;
+}
+
+.download {
+  background: var(--gold);
+  color: #111;
+}
+
+.back {
+  background: #202635;
+  border: 1px solid #363e50;
+  color: white;
+}
+
+.section {
+  background: var(--panel);
+  border: 1px solid #2a3040;
+  border-radius: 14px;
+  padding: 20px;
+  margin-top: 20px;
+}
+
+h2 {
+  color: var(--gold);
+  font-size: 20px;
+  margin-top: 0;
+}
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.feature {
+  background: #202635;
+  border-radius: 9px;
+  padding: 12px;
+}
+
+.feature strong {
+  display: block;
+  margin-bottom: 3px;
+}
+
+.feature span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+ul {
+  padding-left: 22px;
+}
+
+li {
+  margin: 8px 0;
+}
+
+footer {
+  text-align: center;
+  color: var(--muted);
+  padding: 25px 15px;
+  font-size: 13px;
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 26px;
+  }
+
+  .container {
+    padding: 12px;
+  }
+
+  .stats {
+    gap: 6px;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+}
+</style>
 </head>
+
 <body>
-    <div class="container">
-        <img src="aethersx2.jpg" alt="AetherSX2">
-        <h1>AetherSX2 (PS2 Emulator)</h1>
-        <p>برنامه AetherSX2 بهترین و بی‌نظیرترین شبیه‌ساز کنسول پلی‌استیشن ۲ برای اندروید است! با این برنامه فوق‌العاده می‌توانید بازی‌های خاطره‌انگیز و بزرگی مثل God of War، GTA و بازی‌های کشتی‌کج قدیمی را با بالاترین کیفیت، گرافیک عالی و رزولوشن بالا روی موبایل خود اجرا کنید.</p>
-        
-        <a class="btn" href="https://www.mediafire.com/file/97x1poxpq30gi3h/aethersx2-v1-5-4248.apk/file" target="_blank">⬇ دانلود مستقیم شبیه‌ساز</a>
-        
-        <a href="index.html" class="back-link">🔙 بازگشت به صفحه اصلی</a>
+
+<header>
+  <div class="logo">CINA GAMES</div>
+  <a href="index.html">← Home</a>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+
+    <img
+      class="cover"
+      src="aethersx2.jpg"
+      alt="AetherSX2 PlayStation 2 Emulator"
+    >
+
+    <div class="hero-content">
+
+      <span class="tag">🎮 PLAYSTATION 2 EMULATOR</span>
+
+      <h1>AetherSX2</h1>
+
+      <div class="subtitle">
+        Relive Classic PlayStation 2 Games on Your Android Device
+      </div>
+
+      <p>
+        Experience classic PlayStation 2 games on your Android
+        device with AetherSX2. Enjoy your favorite gaming
+        memories with customizable settings designed to suit
+        your device's performance.
+      </p>
+
+      <div class="stats">
+
+        <div class="stat">
+          <strong>PS2</strong>
+          <span>Emulator Type</span>
+        </div>
+
+        <div class="stat">
+          <strong>Android</strong>
+          <span>Platform</span>
+        </div>
+
+        <div class="stat">
+          <strong>ISO / CHD</strong>
+          <span>Supported Game Formats*</span>
+        </div>
+
+      </div>
+
+      <a
+        class="btn download"
+        href="https://www.mediafire.com/file/97x1poxpq30gi3h/aethersx2-v1-5-4248.apk/file"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ⬇ Download AetherSX2
+      </a>
+
+      <a class="btn back" href="index.html">
+        🔙 Back to Cina Games
+      </a>
+
     </div>
+  </section>
+
+  <section class="section">
+
+    <h2>📖 About AetherSX2</h2>
+
+    <p>
+      AetherSX2 is a PlayStation 2 emulator for Android that
+      allows users to run many games from the classic console
+      on compatible mobile devices. Performance depends on
+      your device's processor, graphics capabilities, and
+      emulator settings.
+    </p>
+
+    <p>
+      You may need compatible game files and a legally obtained
+      PS2 BIOS. Compatibility and performance can vary from
+      one game and device to another.
+    </p>
+
+  </section>
+
+  <section class="section">
+
+    <h2>⚡ Key Features</h2>
+
+    <div class="features">
+
+      <div class="feature">
+        <strong>🎮 PS2 Game Emulation</strong>
+        <span>Experience classic console games on Android.</span>
+      </div>
+
+      <div class="feature">
+        <strong>🖼️ Graphics Settings</strong>
+        <span>Adjust visual settings to suit your device.</span>
+      </div>
+
+      <div class="feature">
+        <strong>🕹️ Flexible Controls</strong>
+        <span>Use touchscreen controls or compatible controllers.</span>
+      </div>
+
+      <div class="feature">
+        <strong>💾 Save Support</strong>
+        <span>Use supported save features to continue your games.</span>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>📱 App Information</h2>
+
+    <ul>
+      <li><strong>App Name:</strong> AetherSX2</li>
+      <li><strong>Category:</strong> Console Emulator</li>
+      <li><strong>Platform:</strong> Android</li>
+      <li><strong>File Version:</strong> 1.5-4248 (based on the linked filename)</li>
+      <li><strong>Download Source:</strong> MediaFire</li>
+      <li><strong>Requirements:</strong> A device compatible with PS2 emulation</li>
+    </ul>
+
+    <p class="subtitle">
+      Check the file details and device compatibility before
+      installing. Obtain game files and BIOS from lawful sources.
+    </p>
+
+    <a
+      class="btn download"
+      href="https://www.mediafire.com/file/97x1poxpq30gi3h/aethersx2-v1-5-4248.apk/file"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      ⬇ Download AetherSX2
+    </a>
+
+  </section>
+
+</main>
+
+<footer>
+  © 2026 Cina Games — Game On.
+</footer>
+
 </body>
 </html>
