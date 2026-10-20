@@ -1,63 +1,981 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Contact - Cina Games</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Contact Cina Games for game support, questions, feedback, partnerships, and gaming community updates.">
+<meta name="keywords" content="Cina Games, Contact, Gaming Support, Android Games, PC Games, Telegram, YouTube">
+<meta name="author" content="Cina Games">
+<meta name="theme-color" content="#050505">
+
+<title>Contact Us - Cina Games</title>
 
 <style>
-body{
-  font-family: Arial;
-  background:#0b0b0b;
-  color:white;
-  margin:0;
-  text-align:center;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-h1{
-  color:#00ff99;
-  margin-top:30px;
+html {
+    scroll-behavior: smooth;
 }
 
-.box{
-  max-width:600px;
-  margin:auto;
-  padding:20px;
-  background:#1a1a1a;
-  border-radius:15px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #050505;
+    color: #fff;
+    overflow-x: hidden;
+    line-height: 1.6;
 }
 
-p{
-  margin:10px 0;
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 20% 20%, rgba(0,255,153,.07), transparent 30%),
+        radial-gradient(circle at 80% 70%, rgba(0,255,153,.05), transparent 30%);
+    z-index: -1;
 }
 
-a{
-  color:#00ff99;
-  text-decoration:none;
+/* NAVBAR */
+
+.navbar {
+    width: 100%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5,5,5,.88);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0,255,153,.15);
 }
 
-.btn{
-  display:inline-block;
-  margin-top:20px;
-  padding:10px 20px;
-  background:#00ff99;
-  color:black;
-  border-radius:8px;
+.nav-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 18px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    text-decoration: none;
+    color: #00ff99;
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-shadow: 0 0 12px rgba(0,255,153,.5);
+    white-space: nowrap;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 13px;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #00ff99;
+}
+
+/* HERO */
+
+.hero {
+    min-height: 450px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(to bottom, rgba(0,0,0,.1), #050505),
+        radial-gradient(circle at center, #123629 0%, #080808 45%, #050505 75%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    border: 1px solid rgba(0,255,153,.12);
+    border-radius: 50%;
+    box-shadow:
+        0 0 80px rgba(0,255,153,.05),
+        inset 0 0 80px rgba(0,255,153,.03);
+}
+
+.hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1px solid rgba(0,255,153,.4);
+    border-radius: 30px;
+    background: rgba(0,255,153,.06);
+    color: #00ff99;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+
+.hero h1 {
+    font-size: clamp(42px, 8vw, 76px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 22px;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: #00ff99;
+    text-shadow:
+        0 0 10px rgba(0,255,153,.7),
+        0 0 35px rgba(0,255,153,.25);
+}
+
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: #aaa;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* GENERAL LAYOUT */
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 70px 20px;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 42px;
+}
+
+.section-title .mini {
+    color: #00ff99;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    margin-bottom: 12px;
+}
+
+.section-title p {
+    color: #777;
+    max-width: 650px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+/* CONTACT CARDS */
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+}
+
+.contact-card {
+    background: linear-gradient(145deg, #111, #0b0b0b);
+    border: 1px solid #1d1d1d;
+    border-radius: 20px;
+    padding: 28px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    min-width: 0;
+    transition: .3s;
+    box-shadow: 0 10px 40px rgba(0,0,0,.3);
+}
+
+.contact-card::after {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    right: -55px;
+    bottom: -65px;
+    background: #00ff99;
+    opacity: .035;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(0,255,153,.4);
+    box-shadow: 0 15px 50px rgba(0,255,153,.06);
+}
+
+.contact-icon {
+    width: 60px;
+    height: 60px;
+    min-width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    background: rgba(0,255,153,.08);
+    border: 1px solid rgba(0,255,153,.2);
+    font-size: 27px;
+}
+
+.contact-info {
+    min-width: 0;
+    flex: 1;
+    position: relative;
+    z-index: 1;
+}
+
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.contact-info p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 13px;
+}
+
+.contact-detail {
+    display: block;
+    color: #00ff99;
+    font-size: 14px;
+    font-weight: bold;
+    overflow-wrap: anywhere;
+    margin-bottom: 18px;
+}
+
+.contact-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 11px 17px;
+    border-radius: 9px;
+    background: #00ff99;
+    color: #000;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    transition: .3s;
+    box-shadow: 0 0 20px rgba(0,255,153,.1);
+}
+
+.contact-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 25px rgba(0,255,153,.25);
+}
+
+.contact-btn.outline {
+    color: #00ff99;
+    background: transparent;
+    border: 1px solid rgba(0,255,153,.55);
+    box-shadow: none;
+}
+
+.contact-btn.outline:hover {
+    background: rgba(0,255,153,.07);
+}
+
+/* SUPPORT SECTION */
+
+.support-section {
+    margin-top: 75px;
+    padding: 48px 30px;
+    text-align: center;
+    border-radius: 25px;
+    background:
+        radial-gradient(circle at center, rgba(0,255,153,.12), transparent 65%),
+        #0a0a0a;
+    border: 1px solid rgba(0,255,153,.2);
+    box-shadow: 0 0 50px rgba(0,255,153,.04);
+}
+
+.support-icon {
+    font-size: 42px;
+    margin-bottom: 12px;
+}
+
+.support-section h2 {
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.support-section p {
+    color: #999;
+    max-width: 720px;
+    margin: auto auto 25px;
+    line-height: 1.9;
+    font-size: 15px;
+}
+
+/* CONTACT PURPOSES */
+
+.purpose-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.purpose-card {
+    background: #0d0d0d;
+    border: 1px solid #1c1c1c;
+    border-radius: 18px;
+    padding: 25px;
+    transition: .3s;
+}
+
+.purpose-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(0,255,153,.35);
+}
+
+.purpose-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 13px;
+    background: rgba(0,255,153,.08);
+    border: 1px solid rgba(0,255,153,.2);
+    font-size: 23px;
+    margin-bottom: 17px;
+}
+
+.purpose-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.purpose-card p {
+    color: #888;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* SOCIAL CTA */
+
+.social-cta {
+    margin-top: 75px;
+    text-align: center;
+    padding: 45px 25px;
+    background: #0b0b0b;
+    border: 1px solid #202020;
+    border-radius: 23px;
+}
+
+.social-cta h2 {
+    font-size: 29px;
+    margin-bottom: 12px;
+}
+
+.social-cta p {
+    color: #888;
+    margin-bottom: 24px;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 13px 22px;
+    border-radius: 10px;
+    background: #00ff99;
+    color: #000;
+    text-decoration: none;
+    font-weight: 900;
+    font-size: 13px;
+    transition: .3s;
+    box-shadow: 0 0 20px rgba(0,255,153,.12);
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(0,255,153,.25);
+}
+
+.btn.secondary {
+    background: transparent;
+    color: #00ff99;
+    border: 1px solid #00ff99;
+    box-shadow: none;
+}
+
+.btn.secondary:hover {
+    background: rgba(0,255,153,.07);
+}
+
+/* FOOTER */
+
+footer {
+    margin-top: 50px;
+    padding: 45px 20px;
+    text-align: center;
+    border-top: 1px solid #171717;
+    background: #030303;
+}
+
+.footer-logo {
+    color: #00ff99;
+    font-size: 25px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    text-shadow: 0 0 12px rgba(0,255,153,.35);
+}
+
+footer p {
+    color: #555;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.footer-links a {
+    color: #777;
+    text-decoration: none;
+    font-size: 13px;
+    transition: .3s;
+}
+
+.footer-links a:hover {
+    color: #00ff99;
+}
+
+.copyright {
+    border-top: 1px solid #171717;
+    padding-top: 18px;
+    margin-top: 20px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 800px) {
+    .nav-links {
+        gap: 14px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .contact-grid {
+        gap: 15px;
+    }
+
+    .contact-card {
+        padding: 22px;
+        gap: 14px;
+    }
+
+    .contact-icon {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 23px;
+    }
+
+    .purpose-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        min-height: 400px;
+    }
+
+    .hero p {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-inner {
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .logo {
+        font-size: 19px;
+    }
+
+    .nav-links {
+        gap: 10px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .hero {
+        padding: 65px 18px;
+        min-height: 370px;
+    }
+
+    .hero h1 {
+        letter-spacing: -1px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .container {
+        padding: 50px 15px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .contact-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .contact-card {
+        padding: 22px 18px;
+    }
+
+    .support-section {
+        padding: 35px 18px;
+        margin-top: 55px;
+    }
+
+    .support-section h2 {
+        font-size: 26px;
+    }
+
+    .social-cta {
+        padding: 35px 18px;
+    }
+
+    .social-cta h2 {
+        font-size: 25px;
+    }
+
+    .social-buttons {
+        flex-direction: column;
+    }
+
+    .social-buttons .btn {
+        width: 100%;
+    }
+
+    .footer-links {
+        gap: 15px;
+    }
+}
+
+@media (max-width: 380px) {
+    .nav-inner {
+        flex-direction: column;
+    }
+
+    .nav-links {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .contact-card {
+        gap: 12px;
+    }
+
+    .contact-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 20px;
+    }
+
+    .contact-info h3 {
+        font-size: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *, *::before, *::after {
+        transition: none !important;
+    }
 }
 </style>
-
 </head>
 
 <body>
 
-<h1>📩 Contact Us</h1>
+<!-- NAVBAR -->
 
-<div class="box">
-  <p>📧 Email: ahmadfarhadcina@gmail.com</p>
-  <p>📱 WhatsApp: +93765648536</p>
+<nav class="navbar">
+    <div class="nav-inner">
 
-  <p>اگر سوال یا مشکل داشتی میتونی با ما تماس بگیری.</p>
-</div>
+        <a href="index.html" class="logo">
+            🎮 CINA GAMES
+        </a>
 
-<a class="btn" href="index.html">⬅ Back Home</a>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="games.html">GAMES</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html" class="active">CONTACT</a></li>
+        </ul>
+
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="hero-content">
+
+        <div class="hero-badge">
+            WE'RE HERE TO HELP
+        </div>
+
+        <h1>
+            CONTACT <span>US</span>
+        </h1>
+
+        <p>
+            Have a question, need help with a game, or want to share
+            an idea? Connect with Cina Games. We're always happy to
+            hear from our gaming community.
+        </p>
+
+    </div>
+</section>
+
+<!-- CONTACT INFORMATION -->
+
+<section class="container">
+
+    <div class="section-title">
+        <div class="mini">GET IN TOUCH</div>
+
+        <h2>Let's Connect</h2>
+
+        <p>
+            Choose your preferred contact method.
+            We're here for your questions, suggestions, and gaming inquiries.
+        </p>
+    </div>
+
+    <div class="contact-grid">
+
+        <!-- EMAIL -->
+
+        <article class="contact-card">
+
+            <div class="contact-icon">✉️</div>
+
+            <div class="contact-info">
+                <h3>Email Support</h3>
+
+                <p>
+                    Contact us about website issues, game questions,
+                    feedback, or business inquiries.
+                </p>
+
+                <a class="contact-detail"
+                   href="mailto:ahmadfarhadcina@gmail.com">
+                    ahmadfarhadcina@gmail.com
+                </a>
+
+                <a class="contact-btn"
+                   href="mailto:ahmadfarhadcina@gmail.com?subject=Cina%20Games%20Inquiry">
+                    Send Email ↗
+                </a>
+            </div>
+
+        </article>
+
+        <!-- WHATSAPP -->
+
+        <article class="contact-card">
+
+            <div class="contact-icon">📱</div>
+
+            <div class="contact-info">
+                <h3>WhatsApp</h3>
+
+                <p>
+                    Need direct assistance? Send us a message on WhatsApp.
+                </p>
+
+                <a class="contact-detail"
+                   href="https://wa.me/93765648536"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    +93 765 648 536
+                </a>
+
+                <a class="contact-btn"
+                   href="https://wa.me/93765648536?text=Hello%20Cina%20Games"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Chat on WhatsApp ↗
+                </a>
+            </div>
+
+        </article>
+
+        <!-- TELEGRAM -->
+
+        <article class="contact-card">
+
+            <div class="contact-icon">✈️</div>
+
+            <div class="contact-info">
+                <h3>Telegram</h3>
+
+                <p>
+                    Join our Telegram community and stay connected
+                    with gaming discussions and updates.
+                </p>
+
+                <a class="contact-detail"
+                   href="https://t.me/afghangamerx"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    @afghangamerx
+                </a>
+
+                <a class="contact-btn"
+                   href="https://t.me/afghangamerx"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Open Telegram ↗
+                </a>
+            </div>
+
+        </article>
+
+        <!-- YOUTUBE -->
+
+        <article class="contact-card">
+
+            <div class="contact-icon">▶️</div>
+
+            <div class="contact-info">
+                <h3>YouTube</h3>
+
+                <p>
+                    Explore our YouTube channel and discover gaming videos
+                    and content from Cina Games.
+                </p>
+
+                <a class="contact-detail"
+                   href="https://www.youtube.com/@CinaGames-b4v"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    @CinaGames-b4v
+                </a>
+
+                <a class="contact-btn"
+                   href="https://www.youtube.com/@CinaGames-b4v"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Visit YouTube ↗
+                </a>
+            </div>
+
+        </article>
+
+    </div>
+
+    <!-- SUPPORT SECTION -->
+
+    <section class="support-section">
+
+        <div class="support-icon">🎮</div>
+
+        <h2>Need Help With a Game?</h2>
+
+        <p>
+            Having trouble with a game page, download link, or installation?
+            Tell us what happened and include the game name in your message.
+            For the fastest direct contact, you can also reach us on WhatsApp.
+        </p>
+
+        <a class="btn"
+           href="mailto:ahmadfarhadcina@gmail.com?subject=Cina%20Games%20Game%20Support">
+            Contact Game Support ↗
+        </a>
+
+    </section>
+
+</section>
+
+<!-- WHAT YOU CAN CONTACT US ABOUT -->
+
+<section class="container">
+
+    <div class="section-title">
+
+        <div class="mini">HOW CAN WE HELP?</div>
+
+        <h2>We're Listening</h2>
+
+        <p>
+            Whether you're a player, visitor, or potential partner,
+            we'd like to hear from you.
+        </p>
+
+    </div>
+
+    <div class="purpose-grid">
+
+        <article class="purpose-card">
+            <div class="purpose-icon">🛠️</div>
+
+            <h3>Technical Support</h3>
+
+            <p>
+                Report broken links, website issues, or problems
+                accessing gaming content.
+            </p>
+        </article>
+
+        <article class="purpose-card">
+            <div class="purpose-icon">💡</div>
+
+            <h3>Suggestions & Feedback</h3>
+
+            <p>
+                Share ideas for new games, features, improvements,
+                and content you'd like to see.
+            </p>
+        </article>
+
+        <article class="purpose-card">
+            <div class="purpose-icon">🤝</div>
+
+            <h3>Business & Partnerships</h3>
+
+            <p>
+                Contact us about collaborations, promotions,
+                and other relevant business opportunities.
+            </p>
+        </article>
+
+    </div>
+
+    <!-- SOCIAL MEDIA CTA -->
+
+    <section class="social-cta">
+
+        <h2>Join the Cina Games Community</h2>
+
+        <p>
+            Follow our channels and stay connected with our gaming journey.
+        </p>
+
+        <div class="social-buttons">
+
+            <a class="btn"
+               href="https://www.youtube.com/@CinaGames-b4v"
+               target="_blank"
+               rel="noopener noreferrer">
+                ▶ YouTube Channel
+            </a>
+
+            <a class="btn secondary"
+               href="https://t.me/afghangamerx"
+               target="_blank"
+               rel="noopener noreferrer">
+                ✈ Telegram Community
+            </a>
+
+        </div>
+
+    </section>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    <div class="footer-logo">
+        🎮 CINA GAMES
+    </div>
+
+    <p>
+        Gaming. Creativity. Innovation.
+    </p>
+
+    <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="games.html">Games</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+
+        <a href="https://www.youtube.com/@CinaGames-b4v"
+           target="_blank"
+           rel="noopener noreferrer">YouTube</a>
+
+        <a href="https://t.me/afghangamerx"
+           target="_blank"
+           rel="noopener noreferrer">Telegram</a>
+    </div>
+
+    <p class="copyright">
+        © 2026 Cina Games. All Rights Reserved.
+    </p>
+
+</footer>
 
 </body>
 </html>
