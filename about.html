@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050b16">
 
 <meta name="description" content="Learn more about Cina Games - a modern gaming platform for Android and PC games, mods, tools, wallpapers and gaming content.">
 <meta name="keywords" content="Cina Games, Android Games, PC Games, Gaming, Mods, Wallpapers, Games">
@@ -10,918 +12,854 @@
 
 <title>About Us - Cina Games</title>
 
+<script>
+/* Shared theme: keep in sync with index.html */
+(function () {
+    try {
+        const savedTheme = localStorage.getItem("cina_theme");
+
+        if (savedTheme === "light" || savedTheme === "dark") {
+            document.documentElement.dataset.theme = savedTheme;
+        }
+    } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+    }
+})();
+</script>
+
 <style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+:root {
+    color-scheme: dark;
+    --bg: #050b16;
+    --bg-secondary: #080f1d;
+    --surface: rgba(15, 25, 42, .92);
+    --surface-soft: #101b2d;
+    --text: #f4f8ff;
+    --muted: #98a7bd;
+    --border: rgba(148, 163, 184, .15);
+    --accent: #00ff99;
+    --accent-rgb: 0, 255, 153;
+    --header: rgba(5, 11, 22, .88);
+    --shadow: 0 16px 45px rgba(0, 0, 0, .2);
 }
 
-html{
-    scroll-behavior:smooth;
+html[data-theme="light"] {
+    color-scheme: light;
+    --bg: #f2f6fc;
+    --bg-secondary: #eaf0f9;
+    --surface: rgba(255, 255, 255, .95);
+    --surface-soft: #f5f8fd;
+    --text: #172338;
+    --muted: #63738b;
+    --border: rgba(44, 62, 94, .14);
+    --accent: #009e68;
+    --accent-rgb: 0, 158, 104;
+    --header: rgba(255, 255, 255, .91);
+    --shadow: 0 16px 45px rgba(38, 56, 85, .09);
 }
 
-body{
-    font-family:Arial,Helvetica,sans-serif;
-    background:#050505;
-    color:#fff;
-    overflow-x:hidden;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* =========================
-   BACKGROUND
-========================= */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
 
-body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    pointer-events:none;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    overflow-x: hidden;
+    line-height: 1.6;
+    transition: background .25s, color .25s;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -1;
     background:
-        radial-gradient(circle at 20% 20%,rgba(0,255,153,.07),transparent 30%),
-        radial-gradient(circle at 80% 70%,rgba(0,255,153,.05),transparent 30%);
-    z-index:-1;
+        radial-gradient(circle at 12% 10%, rgba(var(--accent-rgb), .07), transparent 30%),
+        radial-gradient(circle at 88% 65%, rgba(65, 110, 255, .055), transparent 32%);
 }
 
-/* =========================
-   NAVBAR
-========================= */
-
-.navbar{
-    width:100%;
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(5,5,5,.88);
-    backdrop-filter:blur(15px);
-    border-bottom:1px solid rgba(0,255,153,.15);
+a {
+    -webkit-tap-highlight-color: transparent;
 }
 
-.nav-inner{
-    max-width:1150px;
-    margin:auto;
-    padding:18px 20px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: var(--header);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border-bottom: 1px solid var(--border);
 }
 
-.logo{
-    text-decoration:none;
-    color:#00ff99;
-    font-size:24px;
-    font-weight:900;
-    letter-spacing:1px;
-    text-shadow:0 0 12px rgba(0,255,153,.5);
+.nav-inner {
+    max-width: 1150px;
+    margin: auto;
+    padding: 15px 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
 }
 
-.nav-links{
-    display:flex;
-    gap:25px;
-    list-style:none;
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--accent);
+    text-decoration: none;
+    font-size: 21px;
+    font-weight: 900;
+    letter-spacing: .5px;
+    white-space: nowrap;
 }
 
-.nav-links a{
-    text-decoration:none;
-    color:#aaa;
-    font-size:14px;
-    font-weight:bold;
-    transition:.3s;
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    list-style: none;
 }
 
-.nav-links a:hover{
-    color:#00ff99;
+.nav-links a {
+    display: block;
+    padding: 9px 13px;
+    border: 1px solid transparent;
+    border-radius: 10px;
+    text-decoration: none;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 800;
+    transition: .2s;
 }
 
-/* =========================
-   HERO
-========================= */
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--accent);
+    background: rgba(var(--accent-rgb), .08);
+    border-color: rgba(var(--accent-rgb), .18);
+}
 
-.hero{
-    min-height:470px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align:center;
-    padding:80px 20px;
-    position:relative;
-    overflow:hidden;
+.hero {
+    min-height: 440px;
+    padding: 90px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
     background:
-        linear-gradient(to bottom,rgba(0,0,0,.1),#050505),
-        radial-gradient(circle at center,#123629 0%,#080808 45%,#050505 75%);
+        radial-gradient(ellipse at center, rgba(var(--accent-rgb), .12), transparent 58%),
+        linear-gradient(180deg, var(--bg-secondary), var(--bg));
 }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    border:1px solid rgba(0,255,153,.12);
-    border-radius:50%;
-    box-shadow:
-        0 0 80px rgba(0,255,153,.05),
-        inset 0 0 80px rgba(0,255,153,.03);
+.hero::before,
+.hero::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(var(--accent-rgb), .13);
+    border-radius: 50%;
+    pointer-events: none;
 }
 
-.hero-content{
-    max-width:850px;
-    position:relative;
-    z-index:2;
+.hero::before {
+    width: 410px;
+    height: 410px;
 }
 
-.hero-badge{
-    display:inline-block;
-    padding:8px 16px;
-    border:1px solid rgba(0,255,153,.4);
-    border-radius:30px;
-    background:rgba(0,255,153,.06);
-    color:#00ff99;
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:2px;
-    margin-bottom:22px;
+.hero::after {
+    width: 560px;
+    height: 560px;
+    opacity: .5;
 }
 
-.hero h1{
-    font-size:clamp(42px,8vw,76px);
-    font-weight:900;
-    line-height:1;
-    margin-bottom:22px;
-    letter-spacing:-2px;
+.hero-content {
+    max-width: 850px;
+    position: relative;
+    z-index: 1;
 }
 
-.hero h1 span{
-    color:#00ff99;
-    text-shadow:
-        0 0 10px rgba(0,255,153,.7),
-        0 0 35px rgba(0,255,153,.25);
+.hero-badge {
+    display: inline-block;
+    margin-bottom: 22px;
+    padding: 8px 15px;
+    border: 1px solid rgba(var(--accent-rgb), .28);
+    border-radius: 30px;
+    background: rgba(var(--accent-rgb), .07);
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 2px;
 }
 
-.hero p{
-    max-width:700px;
-    margin:auto;
-    color:#aaa;
-    font-size:18px;
-    line-height:1.8;
+.hero h1 {
+    font-size: clamp(36px, 7vw, 70px);
+    font-weight: 900;
+    line-height: 1.13;
+    letter-spacing: -1.8px;
+    margin-bottom: 22px;
 }
 
-/* =========================
-   MAIN
-========================= */
-
-.container{
-    max-width:1100px;
-    margin:auto;
-    padding:70px 20px;
+.hero h1 span {
+    display: block;
+    color: var(--accent);
+    text-shadow: 0 0 28px rgba(var(--accent-rgb), .2);
 }
 
-/* =========================
-   SECTION TITLE
-========================= */
-
-.section-title{
-    text-align:center;
-    margin-bottom:45px;
+.hero p {
+    max-width: 700px;
+    margin: auto;
+    color: var(--muted);
+    font-size: 17px;
+    line-height: 1.9;
 }
 
-.section-title .mini{
-    color:#00ff99;
-    font-size:12px;
-    font-weight:bold;
-    letter-spacing:3px;
-    text-transform:uppercase;
-    margin-bottom:10px;
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 65px 22px;
 }
 
-.section-title h2{
-    font-size:36px;
-    margin-bottom:12px;
+.section-title {
+    text-align: center;
+    margin-bottom: 35px;
 }
 
-.section-title p{
-    color:#777;
-    max-width:650px;
-    margin:auto;
-    line-height:1.7;
+.section-title .mini {
+    margin-bottom: 9px;
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 3px;
 }
 
-/* =========================
-   ABOUT INTRO
-========================= */
-
-.about-box{
-    display:grid;
-    grid-template-columns:1.2fr .8fr;
-    gap:25px;
+.section-title h2 {
+    margin-bottom: 12px;
+    font-size: clamp(26px, 4vw, 36px);
+    line-height: 1.3;
+    font-weight: 900;
 }
 
-.glass-card{
-    background:linear-gradient(145deg,#111,#0b0b0b);
-    border:1px solid #1d1d1d;
-    border-radius:20px;
-    padding:30px;
-    transition:.3s;
-    box-shadow:0 10px 40px rgba(0,0,0,.3);
+.section-title p {
+    max-width: 650px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 14px;
 }
 
-.glass-card:hover{
-    transform:translateY(-5px);
-    border-color:rgba(0,255,153,.35);
-    box-shadow:0 15px 50px rgba(0,255,153,.06);
+.about-box {
+    display: grid;
+    grid-template-columns: 1.2fr .8fr;
+    gap: 20px;
 }
 
-.glass-card h3{
-    font-size:23px;
-    margin-bottom:16px;
-    color:#fff;
+.glass-card,
+.feature,
+.stat,
+.value {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    transition: transform .25s, border-color .25s, background .25s;
 }
 
-.glass-card p{
-    color:#999;
-    line-height:1.9;
-    font-size:15px;
+.glass-card {
+    padding: 28px;
+    border-radius: 21px;
 }
 
-.green{
-    color:#00ff99;
+.glass-card:hover,
+.feature:hover,
+.stat:hover,
+.value:hover {
+    transform: translateY(-4px);
+    border-color: rgba(var(--accent-rgb), .35);
 }
 
-/* =========================
-   STATS
-========================= */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:15px;
-    margin-top:25px;
+.glass-card h3 {
+    font-size: 21px;
+    margin-bottom: 14px;
 }
 
-.stat{
-    text-align:center;
-    padding:25px 15px;
-    background:#0d0d0d;
-    border:1px solid #1c1c1c;
-    border-radius:16px;
+.glass-card p {
+    color: var(--muted);
+    line-height: 1.9;
+    font-size: 14px;
 }
 
-.stat strong{
-    display:block;
-    font-size:30px;
-    color:#00ff99;
-    margin-bottom:8px;
+.green {
+    color: var(--accent);
 }
 
-.stat span{
-    color:#777;
-    font-size:12px;
-    text-transform:uppercase;
-    letter-spacing:1px;
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 22px;
 }
 
-/* =========================
-   FEATURES
-========================= */
-
-.features{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:20px;
+.stat {
+    text-align: center;
+    padding: 23px 12px;
+    border-radius: 17px;
 }
 
-.feature{
-    background:#0d0d0d;
-    border:1px solid #1c1c1c;
-    border-radius:18px;
-    padding:28px;
-    position:relative;
-    overflow:hidden;
-    transition:.3s;
+.stat strong {
+    display: block;
+    color: var(--accent);
+    font-size: 30px;
+    margin-bottom: 8px;
 }
 
-.feature::after{
-    content:"";
-    position:absolute;
-    width:100px;
-    height:100px;
-    right:-40px;
-    bottom:-40px;
-    background:#00ff99;
-    opacity:.04;
-    border-radius:50%;
+.stat span {
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .6px;
+    text-transform: uppercase;
 }
 
-.feature:hover{
-    transform:translateY(-6px);
-    border-color:rgba(0,255,153,.4);
+.features {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.feature-icon{
-    width:55px;
-    height:55px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    border-radius:14px;
-    background:rgba(0,255,153,.08);
-    border:1px solid rgba(0,255,153,.2);
-    font-size:25px;
-    margin-bottom:20px;
+.feature {
+    position: relative;
+    overflow: hidden;
+    padding: 25px;
+    border-radius: 20px;
 }
 
-.feature h3{
-    margin-bottom:12px;
-    font-size:19px;
+.feature::after {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    right: -48px;
+    bottom: -48px;
+    border-radius: 50%;
+    background: var(--accent);
+    opacity: .045;
+    pointer-events: none;
 }
 
-.feature p{
-    color:#888;
-    font-size:14px;
-    line-height:1.8;
+.feature-icon {
+    width: 53px;
+    height: 53px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border-radius: 15px;
+    background: rgba(var(--accent-rgb), .08);
+    border: 1px solid rgba(var(--accent-rgb), .2);
+    font-size: 25px;
 }
 
-/* =========================
-   MISSION
-========================= */
+.feature h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
 
-.mission{
-    margin-top:70px;
-    padding:50px 30px;
-    border-radius:25px;
-    text-align:center;
+.feature p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.mission {
+    padding: 43px 28px;
+    text-align: center;
+    border-radius: 24px;
     background:
-        linear-gradient(135deg,rgba(0,255,153,.08),rgba(0,0,0,.4)),
-        #0b0b0b;
-    border:1px solid rgba(0,255,153,.2);
-    box-shadow:0 0 50px rgba(0,255,153,.04);
+        radial-gradient(ellipse at center, rgba(var(--accent-rgb), .1), transparent 75%),
+        var(--surface);
+    border: 1px solid rgba(var(--accent-rgb), .22);
+    box-shadow: var(--shadow);
 }
 
-.mission h2{
-    font-size:32px;
-    margin-bottom:18px;
+.mission h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
 }
 
-.mission p{
-    max-width:750px;
-    margin:auto;
-    color:#999;
-    line-height:1.9;
+.mission p {
+    max-width: 750px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.95;
+    font-size: 14px;
 }
 
-/* =========================
-   VALUES
-========================= */
-
-.values{
-    display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:20px;
+.values {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 17px;
 }
 
-.value{
-    display:flex;
-    gap:18px;
-    padding:25px;
-    border-radius:17px;
-    background:#0d0d0d;
-    border:1px solid #1b1b1b;
+.value {
+    display: flex;
+    align-items: flex-start;
+    gap: 17px;
+    padding: 23px;
+    border-radius: 18px;
 }
 
-.value-number{
-    min-width:45px;
-    height:45px;
-    border-radius:50%;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:#00ff99;
-    color:#000;
-    font-weight:900;
+.value-number {
+    min-width: 43px;
+    height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 14px;
+    background: rgba(var(--accent-rgb), .13);
+    border: 1px solid rgba(var(--accent-rgb), .2);
+    color: var(--accent);
+    font-size: 13px;
+    font-weight: 900;
 }
 
-.value h3{
-    margin-bottom:8px;
+.value h3 {
+    margin-bottom: 7px;
+    font-size: 17px;
 }
 
-.value p{
-    color:#888;
-    font-size:14px;
-    line-height:1.7;
+.value p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
 }
 
-/* =========================
-   JOURNEY
-========================= */
-
-.timeline{
-    position:relative;
-    max-width:800px;
-    margin:auto;
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: auto;
 }
 
-.timeline::before{
-    content:"";
-    position:absolute;
-    left:20px;
-    top:0;
-    bottom:0;
-    width:2px;
-    background:linear-gradient(#00ff99,transparent);
+.timeline::before {
+    content: "";
+    position: absolute;
+    left: 19px;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    background: linear-gradient(var(--accent), transparent);
 }
 
-.timeline-item{
-    position:relative;
-    padding-left:60px;
-    margin-bottom:35px;
+.timeline-item {
+    position: relative;
+    padding-left: 57px;
+    margin-bottom: 32px;
 }
 
-.timeline-dot{
-    position:absolute;
-    left:11px;
-    top:4px;
-    width:20px;
-    height:20px;
-    border-radius:50%;
-    background:#00ff99;
-    box-shadow:0 0 15px rgba(0,255,153,.7);
+.timeline-item:last-child {
+    margin-bottom: 0;
 }
 
-.timeline-item h3{
-    margin-bottom:7px;
+.timeline-dot {
+    position: absolute;
+    left: 10px;
+    top: 4px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    border: 5px solid var(--bg);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), .25);
 }
 
-.timeline-item span{
-    color:#00ff99;
-    font-size:12px;
-    font-weight:bold;
+.timeline-item > span {
+    color: var(--accent);
+    font-size: 11px;
+    font-weight: 900;
+    letter-spacing: 1px;
 }
 
-.timeline-item p{
-    color:#888;
-    margin-top:10px;
-    line-height:1.8;
+.timeline-item h3 {
+    margin-top: 5px;
+    margin-bottom: 7px;
+    font-size: 18px;
 }
 
-/* =========================
-   CTA
-========================= */
+.timeline-item p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.9;
+}
 
-.cta{
-    margin-top:80px;
-    padding:60px 25px;
-    text-align:center;
-    border-radius:25px;
+.cta {
+    padding: 48px 24px;
+    text-align: center;
+    border-radius: 24px;
     background:
-        radial-gradient(circle at center,rgba(0,255,153,.12),transparent 65%),
-        #0a0a0a;
-    border:1px solid #202020;
+        radial-gradient(ellipse at center, rgba(var(--accent-rgb), .11), transparent 70%),
+        var(--surface);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
 }
 
-.cta h2{
-    font-size:34px;
-    margin-bottom:15px;
+.cta h2 {
+    margin-bottom: 12px;
+    font-size: clamp(26px, 4vw, 34px);
 }
 
-.cta p{
-    color:#888;
-    margin-bottom:28px;
+.cta p {
+    color: var(--muted);
+    margin-bottom: 25px;
+    font-size: 14px;
 }
 
-.btn{
-    display:inline-block;
-    padding:14px 28px;
-    border-radius:10px;
-    background:#00ff99;
-    color:#000;
-    text-decoration:none;
-    font-weight:900;
-    transition:.3s;
-    box-shadow:0 0 20px rgba(0,255,153,.15);
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 46px;
+    padding: 12px 23px;
+    margin: 5px;
+    border-radius: 12px;
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    color: #04150e;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 900;
+    transition: transform .2s, box-shadow .2s;
 }
 
-.btn:hover{
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 0 30px rgba(0,255,153,.3);
+.btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(var(--accent-rgb), .2);
 }
 
-.btn.secondary{
-    background:transparent;
-    color:#00ff99;
-    border:1px solid #00ff99;
-    margin-left:10px;
+.btn.secondary {
+    color: var(--accent);
+    background: transparent;
 }
 
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-    margin-top:70px;
-    padding:45px 20px;
-    text-align:center;
-    border-top:1px solid #171717;
-    background:#030303;
+footer {
+    margin-top: 30px;
+    padding: 38px 20px;
+    text-align: center;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
 }
 
-.footer-logo{
-    color:#00ff99;
-    font-size:25px;
-    font-weight:900;
-    margin-bottom:12px;
+.footer-logo {
+    margin-bottom: 9px;
+    color: var(--accent);
+    font-size: 23px;
+    font-weight: 900;
 }
 
-footer p{
-    color:#555;
-    font-size:13px;
-    line-height:1.7;
+footer p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.8;
 }
 
-.footer-links{
-    margin:20px 0;
+.footer-links {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    margin: 18px 0;
 }
 
-.footer-links a{
-    color:#777;
-    text-decoration:none;
-    margin:0 10px;
-    font-size:13px;
+.footer-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color .2s;
 }
 
-.footer-links a:hover{
-    color:#00ff99;
+.footer-links a:hover {
+    color: var(--accent);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media(max-width:800px){
-
-    .nav-links{
-        gap:12px;
+@media (max-width: 800px) {
+    .about-box {
+        grid-template-columns: 1fr;
     }
 
-    .nav-links a{
-        font-size:12px;
+    .features {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .about-box{
-        grid-template-columns:1fr;
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .features{
-        grid-template-columns:1fr;
+    .hero {
+        min-height: 390px;
     }
 
-    .stats{
-        grid-template-columns:repeat(2,1fr);
+    .hero p {
+        font-size: 15px;
     }
-
-    .values{
-        grid-template-columns:1fr;
-    }
-
-    .hero{
-        min-height:420px;
-    }
-
-    .hero p{
-        font-size:15px;
-    }
-
 }
 
-@media(max-width:500px){
-
-    .nav-inner{
-        padding:15px;
+@media (max-width: 520px) {
+    .nav-inner {
+        padding: 13px 12px;
+        gap: 8px;
     }
 
-    .logo{
-        font-size:20px;
+    .logo {
+        font-size: 16px;
     }
 
-    .nav-links{
-        gap:8px;
+    .nav-links {
+        gap: 2px;
     }
 
-    .nav-links a{
-        font-size:10px;
+    .nav-links a {
+        padding: 8px 7px;
+        font-size: 10px;
     }
 
-    .container{
-        padding:55px 15px;
+    .hero {
+        min-height: 360px;
+        padding: 70px 17px;
     }
 
-    .section-title h2{
-        font-size:28px;
+    .hero h1 {
+        letter-spacing: -1px;
     }
 
-    .glass-card{
-        padding:23px;
+    .hero-badge {
+        font-size: 9px;
+        letter-spacing: 1px;
     }
 
-    .stats{
-        gap:10px;
+    .container {
+        padding: 48px 15px;
     }
 
-    .stat{
-        padding:20px 10px;
+    .section-title {
+        margin-bottom: 27px;
     }
 
-    .stat strong{
-        font-size:25px;
+    .glass-card {
+        padding: 22px;
     }
 
-    .mission{
-        padding:35px 20px;
+    .features {
+        grid-template-columns: 1fr;
+        gap: 13px;
     }
 
-    .cta{
-        padding:40px 18px;
+    .feature {
+        padding: 22px;
     }
 
-    .cta h2{
-        font-size:27px;
+    .values {
+        grid-template-columns: 1fr;
     }
 
-    .btn{
-        width:100%;
-        margin:5px 0 !important;
+    .value {
+        padding: 19px;
     }
 
+    .mission {
+        padding: 32px 20px;
+    }
+
+    .cta {
+        padding: 35px 17px;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+    }
+}
 </style>
 </head>
 
 <body>
 
-<!-- =========================
-     NAVBAR
-========================= -->
-
 <nav class="navbar">
-
     <div class="nav-inner">
-
-        <a href="index.html" class="logo">
-            🎮 CINA GAMES
-        </a>
+        <a href="index.html" class="logo">🎮 CINA GAMES</a>
 
         <ul class="nav-links">
             <li><a href="index.html">HOME</a></li>
             <li><a href="games.html">GAMES</a></li>
-            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="about.html" class="active" aria-current="page">ABOUT</a></li>
         </ul>
-
     </div>
-
 </nav>
 
-
-<!-- =========================
-     HERO
-========================= -->
-
 <section class="hero">
-
     <div class="hero-content">
+        <div class="hero-badge">WELCOME TO CINA GAMES</div>
 
-        <div class="hero-badge">
-            WELCOME TO CINA GAMES
-        </div>
-
-        <h1>
-            ABOUT <span>CINA GAMES</span>
-        </h1>
+        <h1>ABOUT <span>CINA GAMES</span></h1>
 
         <p>
             A gaming platform built for gamers who love Android games,
             PC games, mods, tools, wallpapers and everything gaming.
         </p>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     ABOUT
-========================= -->
-
 <section class="container">
-
     <div class="section-title">
-
         <div class="mini">WHO WE ARE</div>
-
         <h2>More Than Just A Gaming Website</h2>
-
         <p>
             Cina Games is being built with one simple idea:
             make gaming content easier to discover, access and enjoy.
         </p>
-
     </div>
 
-
     <div class="about-box">
-
         <div class="glass-card">
-
             <h3>🎮 What is <span class="green">Cina Games?</span></h3>
-
             <p>
                 Cina Games is a modern gaming platform focused on bringing
                 games and gaming content together in one place.
                 Our platform is designed for gamers who want a simple,
                 fast and clean experience.
             </p>
-
             <br>
-
             <p>
                 From Android and PC games to mods, tools, wallpapers,
                 gaming news and upcoming projects, our goal is to create
                 a place where gamers can easily find what they are looking for.
             </p>
-
         </div>
 
-
         <div class="glass-card">
-
             <h3>⚡ Built For Gamers</h3>
-
             <p>
                 We believe a gaming website should not feel complicated.
                 That's why Cina Games focuses on a clean interface,
                 easy navigation, mobile-friendly design and useful content.
             </p>
-
             <br>
-
             <p>
                 We are continuously improving the platform and adding
                 new features for the gaming community.
             </p>
-
         </div>
-
     </div>
 
-
-    <!-- STATS -->
-
     <div class="stats">
-
         <div class="stat">
             <strong>🎮</strong>
             <span>Gaming Focused</span>
         </div>
-
         <div class="stat">
             <strong>📱</strong>
             <span>Android Ready</span>
         </div>
-
         <div class="stat">
             <strong>💻</strong>
             <span>PC Gaming</span>
         </div>
-
         <div class="stat">
             <strong>🚀</strong>
             <span>Growing Platform</span>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     FEATURES
-========================= -->
-
 <section class="container">
-
     <div class="section-title">
-
         <div class="mini">WHAT WE OFFER</div>
-
         <h2>Everything Gaming</h2>
-
         <p>
             Cina Games is designed to become more than a simple game
             download website.
         </p>
-
     </div>
 
-
     <div class="features">
-
         <div class="feature">
-
             <div class="feature-icon">📱</div>
-
             <h3>Android Games</h3>
-
             <p>
                 Discover Android games and mobile gaming content
                 designed for players who enjoy gaming on their phones.
             </p>
-
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">💻</div>
-
             <h3>PC Games</h3>
-
             <p>
                 Explore PC gaming content, games, tools and projects
                 for desktop gamers.
             </p>
-
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🛠️</div>
-
-            <h3>Mods & Tools</h3>
-
+            <h3>Mods &amp; Tools</h3>
             <p>
                 Gaming mods, useful tools and resources that can
                 improve your gaming experience.
             </p>
-
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🖼️</div>
-
             <h3>Wallpapers</h3>
-
             <p>
                 Gaming wallpapers and visual content for gamers
                 who want to customize their devices.
             </p>
-
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🔥</div>
-
             <h3>Gaming Projects</h3>
-
             <p>
                 Follow original gaming projects created under the
                 Cina Games name.
             </p>
-
         </div>
 
-
         <div class="feature">
-
             <div class="feature-icon">🌐</div>
-
             <h3>Gaming Community</h3>
-
             <p>
                 A platform created with gamers in mind, with the goal
                 of growing into a larger gaming community.
             </p>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     MISSION
-========================= -->
-
 <section class="container">
-
     <div class="mission">
-
         <h2>🚀 Our Mission</h2>
-
         <p>
             Our mission is to build a modern gaming platform where
             players can discover games, explore gaming content and
@@ -929,254 +867,169 @@ footer p{
             We want Cina Games to become a recognizable name for
             gamers in Afghanistan and around the world.
         </p>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     VALUES
-========================= -->
-
 <section class="container">
-
     <div class="section-title">
-
         <div class="mini">OUR VALUES</div>
-
         <h2>What We Believe In</h2>
-
         <p>
             These principles guide the way we build and improve Cina Games.
         </p>
-
     </div>
 
-
     <div class="values">
-
         <div class="value">
-
             <div class="value-number">01</div>
-
             <div>
-
                 <h3>⚡ Simplicity</h3>
-
                 <p>
                     Gaming should be easy to access.
                     We focus on simple navigation and a clean experience.
                 </p>
-
             </div>
-
         </div>
 
-
         <div class="value">
-
             <div class="value-number">02</div>
-
             <div>
-
                 <h3>🎯 Quality</h3>
-
                 <p>
                     We want the platform to look professional
                     and provide useful gaming content.
                 </p>
-
             </div>
-
         </div>
 
-
         <div class="value">
-
             <div class="value-number">03</div>
-
             <div>
-
                 <h3>🚀 Innovation</h3>
-
                 <p>
                     We are always looking for new ideas,
                     features and ways to improve the gaming experience.
                 </p>
-
             </div>
-
         </div>
 
-
         <div class="value">
-
             <div class="value-number">04</div>
-
             <div>
-
                 <h3>🌍 Community</h3>
-
                 <p>
                     Cina Games is built for gamers and aims to grow
                     together with its community.
                 </p>
-
             </div>
-
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     JOURNEY
-========================= -->
-
 <section class="container">
-
     <div class="section-title">
-
         <div class="mini">THE JOURNEY</div>
-
         <h2>The Future of Cina Games</h2>
-
         <p>
             Cina Games is an ongoing project. This is only the beginning.
         </p>
-
     </div>
 
-
     <div class="timeline">
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
             <span>PHASE 01</span>
-
             <h3>🌱 The Beginning</h3>
-
             <p>
                 Cina Games started as an idea to create a gaming-focused
                 platform with a clean and simple design.
             </p>
-
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
             <span>PHASE 02</span>
-
             <h3>🎮 Growing The Platform</h3>
-
             <p>
                 More gaming pages, content, tools and features are being
                 developed to make the website more useful for gamers.
             </p>
-
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
             <span>PHASE 03</span>
-
             <h3>🔥 Original Projects</h3>
-
             <p>
                 Cina Games is also working toward creating and presenting
                 original gaming projects, including the upcoming
                 Ciner project.
             </p>
-
         </div>
 
-
         <div class="timeline-item">
-
             <div class="timeline-dot"></div>
-
             <span>FUTURE</span>
-
             <h3>🌍 A Bigger Gaming Platform</h3>
-
             <p>
                 The long-term vision is to grow Cina Games into a complete
                 gaming platform with games, projects, community features
                 and much more.
             </p>
-
         </div>
-
     </div>
-
 </section>
-
-
-<!-- =========================
-     CTA
-========================= -->
 
 <section class="container">
-
     <div class="cta">
-
         <h2>Ready To Explore?</h2>
+        <p>Discover what Cina Games has to offer.</p>
 
-        <p>
-            Discover what Cina Games has to offer.
-        </p>
-
-        <a href="index.html" class="btn">
-            🏠 Back To Home
-        </a>
-
-        <a href="games.html" class="btn secondary">
-            🎮 Explore Games
-        </a>
-
+        <a href="index.html" class="btn">🏠 Back To Home</a>
+        <a href="games.html" class="btn secondary">🎮 Explore Games</a>
     </div>
-
 </section>
 
-
-<!-- =========================
-     FOOTER
-========================= -->
-
 <footer>
-
-    <div class="footer-logo">
-        🎮 CINA GAMES
-    </div>
-
-    <p>
-        Gaming. Creativity. Innovation.
-    </p>
+    <div class="footer-logo">🎮 CINA GAMES</div>
+    <p>Gaming. Creativity. Innovation.</p>
 
     <div class="footer-links">
-
         <a href="index.html">Home</a>
         <a href="games.html">Games</a>
         <a href="about.html">About</a>
-
     </div>
 
-    <p>
-        © 2026 Cina Games. All Rights Reserved.
-    </p>
-
+    <p>© 2026 Cina Games. All Rights Reserved.</p>
 </footer>
+
+<script>
+/*
+ * Apply theme changes made in another open page or tab.
+ * The index page remains the shared source for the saved preference.
+ */
+(function () {
+    function applySavedTheme() {
+        try {
+            const theme = localStorage.getItem("cina_theme");
+
+            if (theme === "light" || theme === "dark") {
+                document.documentElement.dataset.theme = theme;
+            }
+        } catch (error) {
+            // Keep the current theme if storage is unavailable.
+        }
+    }
+
+    window.addEventListener("storage", function (event) {
+        if (event.key === "cina_theme" || event.key === null) {
+            applySavedTheme();
+        }
+    });
+
+    window.addEventListener("pageshow", applySavedTheme);
+})();
+</script>
 
 </body>
 </html>
