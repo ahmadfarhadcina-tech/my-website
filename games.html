@@ -7,353 +7,129 @@
     <script src="https://jonasfrozepyjamas.com/4d/3a/28/4d3a28c9044f42561d551d5f433b7481.js"></script>
 
 <script>
-    // اعمال فوری رنگ ذخیره شده از حافظه مرورگر در هنگام لود صفحه
-    const savedTheme = localStorage.getItem('cina_theme');
-    if (savedTheme) {
-        document.documentElement.style.setProperty('--accent-color', savedTheme);
-    }
+/* Use the same shared Cina Games theme setting as index.html and settings.html. */
+(function () {
+  let theme = 'dark';
+  try {
+    theme = localStorage.getItem('cina_theme') === 'light' ? 'light' : 'dark';
+  } catch (error) {}
+  document.documentElement.setAttribute('data-theme', theme);
+})();
 </script>
 
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#111C20">
     <title>Cina Games - Download Android & PC Games Free</title>
     <style>
-  :root {
-    --accent-color: #00ff99;
-    --accent-soft: rgba(0, 255, 153, 0.14);
-    --accent-glow: rgba(0, 255, 153, 0.28);
-    --page-bg: #050807;
-    --surface: rgba(15, 22, 20, 0.88);
-    --surface-strong: #101714;
-    --text-main: #f4fff9;
-    --text-muted: #aab8b1;
-    --border-color: rgba(255, 255, 255, 0.09);
-    --radius-card: 16px;
-    color-scheme: dark;
-  }
-
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: Arial, Helvetica, sans-serif;
-    color: var(--text-main);
-    margin: 0;
-    min-height: 100vh;
-    padding-bottom: 100px;
-    background:
-      radial-gradient(ellipse at 50% -12%, color-mix(in srgb, var(--accent-color) 13%, transparent), transparent 42%),
-      radial-gradient(circle at top, #111916 0, #080b09 48%, #020303 100%);
-  }
-
-  a { -webkit-tap-highlight-color: transparent; }
-
-  /* TOP NAVIGATION */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 12px;
-    background: rgba(5, 9, 7, 0.88);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
-    padding: 13px clamp(12px, 3vw, 28px);
-    position: sticky;
-    top: 0;
-    border-bottom: 1px solid color-mix(in srgb, var(--accent-color) 38%, transparent);
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-  }
-
-  .logo {
-    color: var(--accent-color);
-    font-weight: 900;
-    font-size: clamp(15px, 2.2vw, 19px);
-    letter-spacing: 0.2px;
-    white-space: nowrap;
-    text-shadow: 0 0 18px var(--accent-glow);
-  }
-
-  .links { display: flex; align-items: center; gap: clamp(8px, 2vw, 20px); }
-  .links a {
-    color: #e8f3ed;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 700;
-    transition: color .2s ease;
-  }
-  .links a:hover, .links a:focus-visible { color: var(--accent-color); }
-
-  /* PAGE TITLE */
-  h1 {
-    text-align: center;
-    padding: 26px 12px 8px;
-    color: var(--accent-color);
-    font-size: clamp(24px, 4vw, 34px);
-    line-height: 1.2;
-    text-shadow: 0 0 22px var(--accent-glow);
-    margin: 0;
-  }
-
-  /* SEARCH */
-  .search-box { text-align: center; margin: 18px 14px 12px; }
-  .search-box input {
-    display: block;
-    padding: 13px 16px;
-    width: 100%;
-    max-width: 520px;
-    margin: 0 auto;
-    border-radius: 12px;
-    border: 1px solid color-mix(in srgb, var(--accent-color) 28%, #28332d);
-    outline: none;
-    background: rgba(13, 19, 16, 0.96);
-    color: var(--text-main);
-    font-size: 14px;
-    box-shadow: 0 0 0 3px transparent, 0 8px 25px rgba(0, 0, 0, 0.16);
-    transition: border-color .2s ease, box-shadow .2s ease;
-  }
-  .search-box input::placeholder { color: #829088; }
-  .search-box input:focus {
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px var(--accent-soft), 0 8px 25px rgba(0, 0, 0, 0.2);
-  }
-
-  /* CATEGORY FILTERS */
-  .categories {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 7px;
-    margin: 8px 12px 14px;
-  }
-  .categories button {
-    padding: 8px 13px;
-    margin: 0;
-    border: 1px solid color-mix(in srgb, var(--accent-color) 42%, transparent);
-    border-radius: 999px;
-    background: var(--accent-soft);
-    color: var(--accent-color);
-    font-weight: 800;
-    font-size: 12px;
-    cursor: pointer;
-    transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
-  }
-  .categories button:hover, .categories button:focus-visible {
-    transform: translateY(-1px);
-    background: var(--accent-color);
-    color: #03110a;
-    box-shadow: 0 0 16px var(--accent-glow);
-  }
-  .categories button:active { transform: scale(.97); }
-
-  /* GAME GRID — cards and their content are untouched */
-  .container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 11px;
-    padding: 10px;
-    width: 100%;
-    max-width: 1280px;
-    margin: 0 auto;
-    align-items: stretch;
-  }
-
-  .card {
-    min-width: 0;
-    background: linear-gradient(155deg, rgba(22, 31, 26, 0.96), rgba(8, 12, 10, 0.98));
-    -webkit-backdrop-filter: blur(12px);
-    backdrop-filter: blur(12px);
-    border-radius: var(--radius-card);
-    overflow: hidden;
-    border: 1px solid var(--border-color);
-    display: flex;
-    flex-direction: column;
-    box-shadow: 0 7px 22px rgba(0, 0, 0, 0.22);
-    transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-  }
-  .card:hover {
-    transform: translateY(-3px);
-    border-color: color-mix(in srgb, var(--accent-color) 70%, transparent);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.32), 0 0 18px var(--accent-soft);
-  }
-
-  .card img {
-    display: block;
-    width: 100%;
-    height: 112px;
-    object-fit: cover;
-    background: #101713;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  }
-  .card h3 {
-    margin: 10px 10px 5px;
-    color: #f3fff8;
-    font-size: 13px;
-    line-height: 1.35;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  /* RATINGS AND GAME DETAILS */
-  .rating {
-    margin: 0 10px 7px;
-    font-size: 11px;
-    line-height: 1.45;
-    color: #d8e4dd;
-  }
-  .info-row {
-    margin: 0 10px 9px;
-    display: flex;
-    gap: 5px;
-    flex-wrap: wrap;
-    align-items: center;
-  }
-  .game-status, .game-size, .req-tag {
-    display: inline-block;
-    padding: 4px 6px;
-    border-radius: 6px;
-    font-size: 9px;
-    font-weight: 800;
-    line-height: 1.25;
-    text-align: center;
-  }
-  .status-offline { background: var(--accent-color); color: #03110a; }
-  .status-online { background: #00b9e8; color: #001017; }
-  .game-size { background: rgba(255, 255, 255, 0.09); color: #e8f2ec; border: 1px solid rgba(255, 255, 255, 0.07); }
-  .req-low { background: #16834b; color: #fff; }
-  .req-med, .req-medium { background: #d5a719; color: #171100; }
-  .req-high { background: #b8323b; color: #fff; }
-
-  .card p {
-    font-size: 11px;
-    color: var(--text-muted);
-    margin: 0 10px 12px;
-    line-height: 1.55;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    flex-grow: 1;
-  }
-
-  /* CARD ACTIONS */
-  .btn, .btn-yt {
-    display: block;
-    margin: 4px 8px;
-    padding: 9px 6px;
-    border-radius: 9px;
-    font-weight: 800;
-    font-size: 11px;
-    line-height: 1.35;
-    text-align: center;
-    text-decoration: none;
-    transition: transform .18s ease, filter .18s ease, box-shadow .18s ease;
-  }
-  .btn {
-    background: linear-gradient(100deg, var(--accent-color), color-mix(in srgb, var(--accent-color) 72%, #087d4d));
-    color: #03110a;
-    box-shadow: 0 3px 10px var(--accent-soft);
-  }
-  .btn-yt {
-    background: linear-gradient(100deg, #ff3838, #b90000);
-    color: white;
-    box-shadow: 0 3px 10px rgba(255, 0, 0, 0.18);
-  }
-  .btn:hover, .btn-yt:hover { transform: translateY(-1px); filter: brightness(1.08); }
-  .btn:active, .btn-yt:active { transform: scale(.98); }
-  .card .btn:last-child, .card .btn-yt:last-child { margin-bottom: 10px; }
-
-  /* FLOATING SOCIAL LINKS */
-  .fixed-btn {
-    position: fixed;
-    bottom: 78px;
-    padding: 10px 13px;
-    border-radius: 12px;
-    font-size: 12px;
-    font-weight: 800;
-    text-decoration: none;
-    box-shadow: 0 5px 16px rgba(0, 0, 0, 0.38);
-    z-index: 999;
-    transition: transform .2s ease;
-  }
-  .fixed-btn:hover { transform: translateY(-2px); }
-
-  /* BOTTOM NAVIGATION — uses the same saved accent theme */
-  .bottom-nav {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    background: rgba(4, 8, 6, 0.96);
-    -webkit-backdrop-filter: blur(18px);
-    backdrop-filter: blur(18px);
-    border-top: 1px solid color-mix(in srgb, var(--accent-color) 65%, transparent);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    gap: 5px;
-    padding: 9px 7px calc(9px + env(safe-area-inset-bottom));
-    z-index: 9999;
-    box-shadow: 0 -7px 24px rgba(0, 0, 0, 0.5);
-  }
-  .nav-item {
-    color: var(--accent-color);
-    text-decoration: none;
-    font-size: 12px;
-    font-weight: 800;
-    padding: 8px clamp(8px, 2.4vw, 18px);
-    border-radius: 999px;
-    transition: background .2s ease, color .2s ease, box-shadow .2s ease;
-    border: 1px solid color-mix(in srgb, var(--accent-color) 55%, transparent);
-    white-space: nowrap;
-  }
-  .nav-item.active, .nav-item:hover, .nav-item:focus-visible {
-    background: var(--accent-color);
-    color: #03110a;
-    box-shadow: 0 0 15px var(--accent-glow);
-  }
-
-  :focus-visible { outline: 2px solid var(--accent-color); outline-offset: 3px; }
-
-  @media (min-width: 560px) {
-    .container { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 15px; padding: 14px; }
-    .card img { height: 145px; }
-    .card h3 { font-size: 14px; }
-    .card p { font-size: 12px; }
-  }
-  @media (min-width: 850px) {
-    .container { grid-template-columns: repeat(auto-fill, minmax(245px, 1fr)); gap: 20px; padding: 20px; }
-    .card img { height: 165px; }
-    .btn, .btn-yt { font-size: 12px; }
-  }
-  @media (max-width: 360px) {
-    .navbar { padding: 11px 9px; }
-    .logo { font-size: 14px; }
-    .links { gap: 7px; }
-    .links a { font-size: 11px; }
-    .container { gap: 8px; padding: 7px; }
-    .card { border-radius: 12px; }
-    .card img { height: 95px; }
-    .card h3 { margin: 8px 7px 4px; font-size: 12px; }
-    .rating, .info-row { margin-left: 7px; margin-right: 7px; }
-    .card p { margin-left: 7px; margin-right: 7px; font-size: 10px; }
-    .btn, .btn-yt { margin-left: 5px; margin-right: 5px; font-size: 10px; }
-    .nav-item { padding: 8px 7px; font-size: 11px; }
-  }
-
-  @supports not (color: color-mix(in srgb, red, transparent)) {
-    body { background: radial-gradient(circle at top, #111916, #080b09 48%, #020303); }
-    .navbar { border-bottom-color: var(--accent-color); }
-    .search-box input { border-color: var(--accent-color); }
-    .categories button { border-color: var(--accent-color); }
-    .card:hover { border-color: var(--accent-color); }
-    .bottom-nav { border-top-color: var(--accent-color); }
-    .nav-item { border-color: var(--accent-color); }
-    .btn { background: var(--accent-color); }
-  }
+/* CINA GAMES — shared design system (matches index.html) */
+:root {
+  color-scheme: dark;
+  --accent-color: #79B9A8;
+  --accent-hover: #91C9B9;
+  --accent-soft: rgba(121,185,168,.12);
+  --bg: #111C20;
+  --surface: #19272C;
+  --surface-raised: #203137;
+  --surface-input: #152328;
+  --text: #E7EFEC;
+  --text-muted: #A5B6B0;
+  --border: #30433F;
+  --nav-bg: rgba(20,32,36,.94);
+  --shadow: 0 8px 26px rgba(0,0,0,.16);
+  --radius-card: 18px;
+  --radius-control: 12px;
+  --transition: background-color .22s ease,color .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+:root[data-theme="light"] {
+  color-scheme: light;
+  --accent-color: #528F80;
+  --accent-hover: #417B6D;
+  --accent-soft: rgba(82,143,128,.10);
+  --bg: #F3F7F5;
+  --surface: #FFFFFF;
+  --surface-raised: #EAF2EE;
+  --surface-input: #F8FAF9;
+  --text: #253833;
+  --text-muted: #71827C;
+  --border: #DCE7E1;
+  --nav-bg: rgba(255,255,255,.94);
+  --shadow: 0 6px 22px rgba(35,65,53,.07);
+}
+* { box-sizing: border-box; }
+html { min-height:100%; background:var(--bg); scroll-behavior:smooth; }
+body {
+  margin:0; min-height:100vh; padding-bottom:calc(84px + env(safe-area-inset-bottom));
+  font-family:Arial,sans-serif; color:var(--text); background:var(--bg);
+  transition:var(--transition); overflow-x:hidden;
+}
+a,button,input { font:inherit; }
+a { -webkit-tap-highlight-color:transparent; }
+button { cursor:pointer; }
+a:focus-visible,button:focus-visible,input:focus-visible { outline:2px solid var(--accent-color); outline-offset:3px; }
+/* Sticky top navigation */
+.navbar {
+  position:sticky; top:0; z-index:1000; display:flex; align-items:center; justify-content:space-between;
+  gap:12px; flex-wrap:wrap; padding:12px 16px; background:var(--nav-bg);
+  border-bottom:1px solid var(--border); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px);
+}
+.logo { color:var(--accent-color); font-weight:700; font-size:16px; white-space:nowrap; }
+.links { display:flex; align-items:center; justify-content:flex-end; flex-wrap:wrap; gap:7px; }
+.links a { color:var(--text); text-decoration:none; padding:8px 10px; border:1px solid transparent; border-radius:10px; font-size:13px; transition:var(--transition); }
+.links a:hover { color:var(--accent-color); background:var(--accent-soft); border-color:var(--border); }
+.theme-toggle {
+  display:inline-flex; align-items:center; justify-content:center; gap:6px; padding:8px 10px;
+  border:1px solid var(--border); border-radius:var(--radius-control); background:var(--surface);
+  color:var(--text); font-size:12px; font-weight:600; white-space:nowrap; transition:var(--transition);
+}
+.theme-toggle:hover { background:var(--surface-raised); border-color:var(--accent-color); }
+#themeIcon { color:var(--accent-color); font-size:15px; }
+/* Page heading and feature labels */
+h1 { text-align:center; margin:0; padding:25px 12px 8px; color:var(--text); font-size:clamp(24px,5vw,32px); letter-spacing:.1px; }
+.featured-label { display:inline-block; padding:5px 10px; border-radius:8px; background:var(--surface-raised); color:var(--accent-color); border:1px solid var(--border); font-size:11px; font-weight:700; }
+.weekly-note { text-align:center; color:var(--text-muted); font-size:12px; margin:8px 0 12px; }
+/* Search and category controls */
+.search-box { text-align:center; margin:15px 12px 12px; }
+.search-box input { width:90%; max-width:520px; padding:13px 15px; border:1px solid var(--border); border-radius:13px; outline:none; background:var(--surface-input); color:var(--text); font-size:14px; box-shadow:none; transition:var(--transition); }
+.search-box input::placeholder { color:var(--text-muted); }
+.search-box input:focus { border-color:var(--accent-color); box-shadow:0 0 0 3px var(--accent-soft); }
+.categories { display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:7px; margin:8px 10px 14px; }
+.categories button { padding:8px 12px; border:1px solid var(--border); border-radius:10px; background:var(--surface-raised); color:var(--text); font-size:12px; font-weight:700; transition:var(--transition); }
+.categories button:hover,.categories button:focus-visible { background:var(--accent-color); color:#102A24; border-color:var(--accent-color); }
+/* Game grid and cards */
+.container { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; padding:12px; max-width:1240px; margin:0 auto; }
+.card { min-width:0; overflow:hidden; display:flex; flex-direction:column; background:var(--surface); color:var(--text); border:1px solid var(--border); border-radius:var(--radius-card); box-shadow:var(--shadow); transition:transform .2s ease,border-color .2s ease,background-color .22s ease,box-shadow .22s ease; }
+.card:hover { transform:translateY(-3px); border-color:var(--accent-color); }
+.card img { display:block; width:100%; height:clamp(100px,25vw,150px); object-fit:cover; background:var(--surface-raised); }
+.card h3 { margin:10px 10px 4px; color:var(--text); font-size:13px; line-height:1.4; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.rating { margin:0 10px 6px; color:var(--text-muted); font-size:11px; }
+.info-row { display:flex; flex-wrap:wrap; gap:4px; margin:0 10px 9px; }
+.game-status,.game-size,.req-tag { display:inline-block; padding:3px 6px; border-radius:6px; font-size:9px; font-weight:700; text-align:center; }
+.status-offline { background:#D9EEE4; color:#285C49; }
+.status-online { background:#D9EAF3; color:#245B73; }
+.game-size { background:var(--surface-raised); color:var(--text-muted); border:1px solid var(--border); }
+.req-low { background:#D9EEE4; color:#285C49; }
+.req-med { background:#F7EAC7; color:#765A15; }
+.req-high { background:#F5DCDC; color:#8A3333; }
+.card p { margin:0 10px 12px; color:var(--text-muted); font-size:11px; line-height:1.5; display:-webkit-box; -webkit-line-clamp:3; -webkit-box-orient:vertical; overflow:hidden; flex-grow:1; }
+.btn,.btn-yt { display:block; margin:4px 8px; padding:9px 6px; border:1px solid var(--border); border-radius:10px; text-decoration:none; text-align:center; font-size:11px; font-weight:700; transition:var(--transition); }
+.btn { background:var(--accent-color); color:#102A24; border-color:var(--accent-color); }
+.btn:hover { background:var(--accent-hover); }
+.btn-yt { background:#B84B4B; color:#fff; border-color:#B84B4B; }
+.btn-yt:hover { background:#9F3E3E; }
+.card .btn:last-child,.card .btn-yt:last-child { margin-bottom:10px; }
+/* Fixed social links */
+.fixed-btn { position:fixed; bottom:calc(76px + env(safe-area-inset-bottom)); padding:10px 13px; border-radius:11px; font-size:12px; font-weight:700; text-decoration:none; box-shadow:var(--shadow); z-index:999; }
+/* Shared bottom navigation */
+.bottom-nav { position:fixed; left:0; right:0; bottom:0; display:flex; justify-content:space-around; align-items:center; gap:4px; width:100%; margin:0; padding:9px 8px calc(9px + env(safe-area-inset-bottom)); background:var(--nav-bg); border-top:1px solid var(--border); backdrop-filter:blur(18px); -webkit-backdrop-filter:blur(18px); box-shadow:0 -5px 24px rgba(0,0,0,.06); z-index:9999; }
+.nav-item { flex:1; min-width:0; padding:10px 4px; border:1px solid transparent; border-radius:12px; background:transparent; color:var(--text-muted); text-decoration:none; text-align:center; font-size:13px; font-weight:600; white-space:nowrap; transition:var(--transition); }
+.nav-item.active,.nav-item:hover { background:var(--accent-soft); border-color:var(--border); color:var(--accent-color); box-shadow:none; }
+/* Keep decorative labels readable in both themes */
+@media (min-width:600px) { .container { grid-template-columns:repeat(auto-fill,minmax(235px,1fr)); gap:18px; padding:18px; } .card img { height:160px; } .card h3 { font-size:14px; } .card p { font-size:12px; } }
+@media (max-width:520px) { .navbar { padding:10px 12px; gap:8px; } .links { gap:3px; } .links a { padding:7px 7px; font-size:11px; } .theme-toggle { padding:7px 8px; font-size:11px; } .container { gap:9px; padding:9px; } .card { border-radius:15px; } .card h3 { margin:8px 8px 4px; font-size:12px; } .rating { margin-left:8px; margin-right:8px; } .info-row { margin-left:8px; margin-right:8px; } .card p { margin-left:8px; margin-right:8px; font-size:10px; } .btn,.btn-yt { margin-left:6px; margin-right:6px; } .nav-item { font-size:12px; padding:10px 2px; } }
+@media (max-width:360px) { .logo { font-size:14px; } .links a { padding:6px 5px; font-size:10px; } .theme-toggle { gap:3px; } }
+@media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation-duration:.01ms!important; transition-duration:.01ms!important; scroll-behavior:auto!important; } }
 </style>
     
     <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
@@ -368,6 +144,10 @@
         <a href="index.html">Home</a>
         <a href="games.html">Games</a>
         <a href="contact.html">Contact</a>
+        <button type="button" id="cinaThemeToggle" class="theme-toggle" aria-label="Switch to light theme" title="Switch light or dark theme">
+          <span id="themeIcon" aria-hidden="true">☀</span>
+          <span id="themeLabel">Light</span>
+        </button>
       </div>
     </nav>
 
@@ -388,14 +168,10 @@
     </div>
 
     <div style="text-align:center;margin:5px;">
-      <span style="background:#FFD700;color:black;padding:4px 8px;border-radius:6px;font-weight:bold;font-size:11px;">
-        🔥 Featured Section
-      </span>
+      <span class="featured-label">🔥 Featured Section</span>
     </div>
 
-    <div style="text-align:center;color:#00ff99;font-size:12px;margin-bottom:10px;">
-      ⭐ New games added every week
-    </div>
+    <div class="weekly-note">⭐ New games added every week</div>
 
     <!-- SEARCH -->
     <div class="search-box">
@@ -1277,6 +1053,39 @@
       <a href="dashboard.html" class="nav-item">Dash</a>
       <a href="settings.html" class="nav-item">Setting</a>
     </div>
+
+    <script>
+    /* Shared dark/light theme: stays in sync with index.html and settings.html. */
+    (function () {
+      const root = document.documentElement;
+      const toggle = document.getElementById('cinaThemeToggle');
+      const icon = document.getElementById('themeIcon');
+      const label = document.getElementById('themeLabel');
+      const meta = document.querySelector('meta[name="theme-color"]');
+
+      function applyTheme(value) {
+        const theme = value === 'light' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        if (icon) icon.textContent = theme === 'dark' ? '☀' : '☾';
+        if (label) label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+        if (toggle) toggle.setAttribute('aria-label', theme === 'dark' ? 'Switch to light theme' : 'Switch to dark theme');
+        if (meta) meta.setAttribute('content', theme === 'dark' ? '#111C20' : '#F3F7F5');
+        try { localStorage.setItem('cina_theme', theme); } catch (error) {}
+      }
+
+      function toggleTheme() {
+        applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+      }
+
+      let saved = 'dark';
+      try { saved = localStorage.getItem('cina_theme') === 'light' ? 'light' : 'dark'; } catch (error) {}
+      applyTheme(saved);
+      if (toggle) toggle.addEventListener('click', toggleTheme);
+      window.addEventListener('storage', function (event) {
+        if (event.key === 'cina_theme') applyTheme(event.newValue === 'light' ? 'light' : 'dark');
+      });
+    })();
+    </script>
 
     <!-- Third Ad Script -->
     <script src="https://jonasfrozepyjamas.com/6a/1d/48/6a1d48bfe483de13a23aefd9fa0df162.js"></script>
