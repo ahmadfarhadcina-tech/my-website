@@ -172,7 +172,7 @@
             const text = userInput.value.trim();
             if (!text) return;
 
-            // نمایش پیام کاربر در سمت چپ صفحه (مخصوص متون گیمری و انگلیسی)
+            // نمایش پیام کاربر در سمت چپ صفحه
             appendMessage(text, 'user');
             userInput.value = '';
 
@@ -180,8 +180,10 @@
             const typingId = appendMessage('در حال نوشتن... 🐺', 'bot-typing');
 
             try {
-                // ارسال درخواست به سرور جدید گوگل با متد ایمن و استاندارد
-                const response = await fetch(`https://googleapis.com{GEMINI_API_KEY}`, {
+                // آدرس صحیح و استاندارد اتصال برای توکن‌های جدید گوگل بدون نقص ساختاری
+                const url = `https://googleapis.com{GEMINI_API_KEY}`;
+                
+                const response = await fetch(url, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({
@@ -194,17 +196,21 @@
                 const typingElement = document.getElementById(typingId);
                 if(typingElement) typingElement.remove();
                 
-                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                // بررسی دقیق و استخراج اصولی متن طبق فرمت استاندارد آبجکت پاسخ گوگل
+                if (data.candidates && data.candidates[0] && data.candidates[0].content && data.candidates[0].content.parts && data.candidates[0].content.parts[0]) {
                     const reply = data.candidates[0].content.parts[0].text;
                     appendMessage(reply, 'bot');
+                } else if (data.error) {
+                    console.error("Google API Error:", data.error);
+                    appendMessage('کاکا فرهاد، خطایی از سمت سرور رخ داد: ' + data.error.message, 'bot');
                 } else {
-                    appendMessage('کاکا فرهاد، دیتای دریافتی تغییر کرده؛ لطفاً کنسول مرورگر را بررسی کن رفیق!', 'bot');
+                    appendMessage('کاکا فرهاد، ساختار دیتای دریافتی تغییر کرده؛ لطفاً کنسول مرورگر را بررسی کن رفیق!', 'bot');
                 }
             } catch (error) {
                 const typingElement = document.getElementById(typingId);
                 if(typingElement) typingElement.remove();
                 appendMessage('مشکلی در اتصال پیش آمد رفیق، دوباره امتحان کن!', 'bot');
-                console.error(error);
+                console.error("Fetch Error:", error);
             }
         }
 
