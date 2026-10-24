@@ -20,15 +20,16 @@
             background: linear-gradient(145deg, #111827, #1f2937);
             border: 2px solid #10b981;
             border-radius: 20px;
-            padding: 30px;
-            max-width: 450px;
+            padding: 25px;
+            max-width: 480px;
             width: 100%;
             text-align: center;
             box-shadow: 0 10px 25px rgba(16, 185, 129, 0.2);
+            box-sizing: border-box;
         }
         .avatar-box {
-            font-size: 70px;
-            margin-bottom: 15px;
+            font-size: 60px;
+            margin-bottom: 5px;
             animation: pulse 2s infinite;
         }
         @keyframes pulse {
@@ -39,66 +40,98 @@
         h2 {
             color: #10b981;
             margin-top: 0;
-            font-size: 24px;
+            margin-bottom: 5px;
+            font-size: 22px;
             letter-spacing: 1px;
         }
-        .warning-text {
-            background-color: rgba(239, 68, 68, 0.15);
-            border: 1px solid #ef4444;
-            color: #fca5a5;
-            padding: 10px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-        .copy-box {
-            background: rgba(0, 0, 0, 0.4);
-            border: 2px dashed #10b981;
-            border-radius: 12px;
-            padding: 15px;
-            margin: 15px 0;
-            font-size: 14px;
+        p.welcome-text {
             color: #a7f3d0;
-            line-height: 1.6;
-            text-align: justify;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 14px;
         }
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: bold;
-            font-size: 15px;
-            transition: all 0.3s ease;
-            width: 80%;
-            margin: 8px 0;
-            cursor: pointer;
-            box-sizing: border-box;
+        
+        /* باکس چت مستقیم اختصاصی گرگی جان */
+        .gorgi-chat-box {
+            background-color: #0d1321;
+            border: 1px solid #1f2937;
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.5);
+            text-align: right;
         }
-        .copy-btn {
-            background-color: #f59e0b;
-            color: #000000;
-            border: none;
-            box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
-            animation: bounce 2s infinite;
+        .gorgi-chat-messages {
+            flex: 1;
+            padding: 15px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
         }
-        .copy-btn:hover {
-            background-color: #d97706;
-            transform: translateY(-2px);
+        .gorgi-msg {
+            padding: 10px 14px;
+            border-radius: 12px;
+            max-width: 85%;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            word-wrap: break-word;
         }
-        .chat-btn {
+        /* پیام‌های کاربر - سمت چپ، خط انگلیسی با رنگ خاکستری تیره */
+        .gorgi-msg.user {
+            background-color: #2d3748;
+            color: #ffffff;
+            align-self: flex-start;
+            border-bottom-left-radius: 2px;
+            text-align: left;
+            direction: ltr;
+        }
+        /* پیام‌های بات (گرگی جان) - سمت راست با رنگ فیروزه‌ای سنگین */
+        .gorgi-msg.bot {
+            background-color: #065f46;
+            color: #e6fffa;
+            align-self: flex-end;
+            border-bottom-right-radius: 2px;
+            text-align: right;
+            direction: rtl;
+            border: 1px solid #047857;
+        }
+        .gorgi-chat-input-area {
+            padding: 10px;
+            background-color: #111827;
+            display: flex;
+            gap: 8px;
+            border-top: 1px solid #1f2937;
+        }
+        .gorgi-input {
+            flex: 1;
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid #374151;
+            background-color: #1f2937;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+        .gorgi-input:focus {
+            outline: none;
+            border-color: #10b981;
+            box-shadow: 0 0 5px rgba(16, 185, 129, 0.4);
+        }
+        .gorgi-send-btn {
             background-color: #10b981;
             color: #ffffff;
-            box-shadow: 0 5px 15px rgba(16, 185, 129, 0.4);
+            border: none;
+            padding: 0 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9rem;
+            transition: background 0.2s ease;
         }
-        .chat-btn:hover {
+        .gorgi-send-btn:hover {
             background-color: #059669;
-            transform: translateY(-2px);
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
         }
     </style>
 </head>
@@ -107,32 +140,84 @@
     <div class="ai-container">
         <div class="avatar-box">🐺</div>
         <h2>اتاق مشاوره با گرگی جان</h2>
-        <p>به بخش هوش مصنوعی اختصاصی <b>Cina Games</b> خوش آمدی!</p>
+        <p class="welcome-text">هوش مصنوعی و راهنمای گیم اختصاصی استور <b>Cina Games</b></p>
         
-        <!-- کادر هشدار قرمز رنگ برای جلب توجه کاربر -->
-        <div class="warning-text">
-            ⚠️ خیلی مهم: حتماً قبل از ورود به چت، متن طلایی زیر را کپی کنید؛ در غیر این صورت گرگی جان به شما کمک درست نخواهد کرد
+        <!-- باکس چت مستقیم که درون کانتینر شما ست شده است -->
+        <div class="gorgi-chat-box">
+            <div class="gorgi-chat-messages" id="gorgi-chat-messages">
+                <div class="gorgi-msg bot">سلام رفیق! صفا آوردی به استور کاکا فرهاد. من گرگی جان هستم. هر سوالی در مورد دانلود گیم‌ها، نسخه‌های مود شده یا تنظیمات شبیه‌سازها داری بپرس تا سریع کلک‌اش را بکنیم! 🔥</div>
+            </div>
+            <div class="gorgi-chat-input-area">
+                <input type="text" id="gorgi-user-input" class="gorgi-input" placeholder="سؤالت را بپرس ستون...">
+                <button id="gorgi-send-btn" class="gorgi-send-btn">ارسال</button>
+            </div>
         </div>
-        
-        <!-- متن کپی شونده -->
-        <div class="copy-box" id="copyText">سلام! من از طرف استور Cina Games کاکا فرهاد آمدم. تو گرگی جان، هوش مصنوعی و راهنمای گیم این سایت هستی. با لحن رفیقانه، لوتی و خفن به من کمک کن و راهنمایی‌ام کن.</div>
-
-        <!-- دکمه اول: کپی کردن متن با رنگ زرد که تو چشم باشد -->
-        <button class="btn copy-btn" onclick="copyInstructions()">
-            Step 1: 📋 کپی کردن متن بالا
-        </button>
-
-        <!-- دکمه دوم: ورود به چت -->
-        <a href="https://gemini.google.com" target="_blank" class="btn chat-btn">
-            Step 2: 💬 ورود به چت و پیست کردن متن
-        </a>
     </div>
 
     <script>
-        function copyInstructions() {
-            var text = document.getElementById("copyText").innerText;
-            navigator.clipboard.writeText(text);
-            alert("✅ متن با موفقیت کپی شد! حالا روی دکمه سبز رنگ بزنید، وارد چت شوید و متن را پیست (Paste) کنید. 🔥");
+        // اتصال مستقیم کلید معتبر و جدید کاکا فرهاد
+        const GEMINI_API_KEY = "AQ.Ab8RN6IqX2BQNkiW_Saq1FVqNqrpkeqYkV-u6BDqqTOmRg54zg"; 
+        
+        // آموزش هویت به هوش مصنوعی برای درک کامل استور سینا گیمز و کاکا فرهاد
+        const SYSTEM_INSTRUCTION = "تو گرگی جان، هوش مصنوعی و راهنمای گیم اختصاصی استور Cina Games (به مدیریت کاکا فرهاد در کابل، افغانستان) هستی. کاربران بازی‌های اندروید، PC و شبیه‌سازها را دانلود می‌کنند. لحن تو باید کاملاً رفیقانه، لوتی، صمیمی، خفن و گیمری باشد. همیشه طوری صحبت کن که انگار یک رفیق صمیمی گیمر هستی.";
+
+        const sendBtn = document.getElementById('gorgi-send-btn');
+        const userInput = document.getElementById('gorgi-user-input');
+        const chatMessages = document.getElementById('gorgi-chat-messages');
+
+        sendBtn.addEventListener('click', sendMessage);
+        userInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') sendMessage(); });
+
+        async function sendMessage() {
+            const text = userInput.value.trim();
+            if (!text) return;
+
+            // نمایش پیام کاربر در سمت چپ صفحه (مخصوص متون گیمری و انگلیسی)
+            appendMessage(text, 'user');
+            userInput.value = '';
+
+            // نمایش وضعیت در حال تایپ گرگی جان
+            const typingId = appendMessage('در حال نوشتن... 🐺', 'bot-typing');
+
+            try {
+                // ارسال درخواست به سرور جدید گوگل با متد ایمن و استاندارد
+                const response = await fetch(`https://googleapis.com{GEMINI_API_KEY}`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: [{ parts: [{ text: text }] }],
+                        systemInstruction: { parts: [{ text: SYSTEM_INSTRUCTION }] }
+                    })
+                });
+                
+                const data = await response.json();
+                const typingElement = document.getElementById(typingId);
+                if(typingElement) typingElement.remove();
+                
+                if (data.candidates && data.candidates[0].content.parts[0].text) {
+                    const reply = data.candidates[0].content.parts[0].text;
+                    appendMessage(reply, 'bot');
+                } else {
+                    appendMessage('کاکا فرهاد، دیتای دریافتی تغییر کرده؛ لطفاً کنسول مرورگر را بررسی کن رفیق!', 'bot');
+                }
+            } catch (error) {
+                const typingElement = document.getElementById(typingId);
+                if(typingElement) typingElement.remove();
+                appendMessage('مشکلی در اتصال پیش آمد رفیق، دوباره امتحان کن!', 'bot');
+                console.error(error);
+            }
+        }
+
+        function appendMessage(text, sender) {
+            const msgDiv = document.createElement('div');
+            const id = 'msg-' + Math.random().toString(36).substr(2, 9);
+            msgDiv.id = id;
+            msgDiv.className = 'gorgi-msg ' + (sender === 'bot-typing' ? 'bot' : sender);
+            msgDiv.innerText = text;
+
+            chatMessages.appendChild(msgDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+            return id;
         }
     </script>
 </body>
